@@ -83,6 +83,9 @@ a:focus-visible {
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   font-family: var(--font-serif);
   font-weight: 700;
   font-size: 18px;
@@ -91,6 +94,13 @@ a:focus-visible {
 }
 
 .brand:hover { color: var(--color-accent); }
+
+.brand-logo {
+  width: 32px;
+  height: 32px;
+  display: block;
+  flex-shrink: 0;
+}
 
 .nav-links {
   list-style: none;
@@ -327,4 +337,79 @@ a:focus-visible {
 .site-footer p {
   max-width: var(--max-width);
   margin: 0 auto;
+}
+
+/* Images */
+.hero-inner {
+  display: grid;
+  gap: 32px;
+}
+
+@media (min-width: 720px) {
+  .hero-inner {
+    grid-template-columns: 260px 1fr;
+    align-items: center;
+  }
+}
+
+.hero-photo {
+  width: 100%;
+  max-width: 260px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  display: block;
+}
+
+@media (max-width: 719px) {
+  .hero-photo {
+    max-width: 200px;
+    justify-self: center;
+  }
+}
+
+.section-banner {
+  margin: 0 0 36px;
+  padding: 0;
+}
+
+.section-banner img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  object-position: right center;
+  border-radius: 8px;
+  display: block;
+}
+
+.section-banner figcaption {
+  font-size: 13px;
+  color: var(--color-muted);
+  margin-top: 10px;
+  font-style: italic;
+}
+
+@media (max-width: 600px) {
+  .section-banner img {
+    height: 220px;
+  }
+}
+
+.pub--with-image {
+  display: grid;
+  gap: 20px;
+}
+
+@media (min-width: 600px) {
+  .pub--with-image {
+    grid-template-columns: 240px 1fr;
+    align-items: start;
+  }
+}
+
+.pub-image img {
+  width: 100%;
+  border-radius: 6px;
+  display: block;
 }

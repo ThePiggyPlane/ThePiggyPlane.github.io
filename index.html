@@ -20,7 +20,10 @@
 <body>
   <header class="site-header">
     <nav class="site-nav" aria-label="Primary">
-      <a href="#top" class="brand">Tyler Peters</a>
+      <a href="#top" class="brand">
+        <img src="assets/logo.svg" alt="" class="brand-logo" width="32" height="32">
+        <span>Tyler Peters</span>
+      </a>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#experience">Experience</a></li>
@@ -34,18 +37,21 @@
   <main id="top">
     <section class="hero">
       <div class="hero-inner">
-        <h1>Tyler Peters</h1>
-        <p class="tagline">Former Foster Youth · Mentor · Advocate · Policy Researcher &amp; Writer</p>
-        <div class="hero-cta">
-          <a class="btn btn-primary" href="mailto:tylerjohnpeters@ucla.edu">Get in touch</a>
-          <!-- Add assets/resume.pdf to your repo before deploying, or remove this link. -->
-          <a class="btn btn-ghost" href="assets/resume.pdf" download>Download resume</a>
+        <img src="assets/headshot.jpg" alt="Tyler Peters" class="hero-photo">
+        <div class="hero-content">
+          <h1>Tyler Peters</h1>
+          <p class="tagline">Former Foster Youth · Mentor · Advocate · Policy Researcher &amp; Writer</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="mailto:tylerjohnpeters@ucla.edu">Get in touch</a>
+            <!-- Add assets/resume.pdf to your repo before deploying, or remove this link. -->
+            <a class="btn btn-ghost" href="assets/resume.pdf" download>Download resume</a>
+          </div>
+          <ul class="hero-meta">
+            <li>B.A. Political Science, UCLA · GPA 3.97</li>
+            <li>Valedictorian, College of the Desert</li>
+            <li>Published in <em>The Imprint</em></li>
+          </ul>
         </div>
-        <ul class="hero-meta">
-          <li>B.A. Political Science, UCLA · GPA 3.97</li>
-          <li>Valedictorian, College of the Desert</li>
-          <li>Published in <em>The Imprint</em></li>
-        </ul>
       </div>
     </section>
 
@@ -132,6 +138,10 @@
     </section>
 
     <section id="education" class="section">
+      <figure class="section-banner">
+        <img src="assets/valedictorian.jpg" alt="Tyler delivering the valedictorian address at College of the Desert graduation" loading="lazy">
+        <figcaption>Delivering the valedictorian address at College of the Desert, 2022.</figcaption>
+      </figure>
       <h2>Education</h2>
 
       <article class="edu">
@@ -157,10 +167,15 @@
         <p>Investigation into college-enrollment barriers faced by high-school foster youth, examining why comprehensive support programs remain underutilized despite proven success at California colleges.</p>
       </article>
 
-      <article class="pub">
-        <h3>LGBTQ+ Foster Youth: The Challenges Faced and the Support Needed</h3>
-        <p class="pub-meta">Presented to the Congressional Coalition on Adoption Institute and the inaugural 2024 UCDC Research Forum</p>
-        <p>Synthesis of best practices for supporting LGBTQ+ foster youth, delivered to congressional staff and academic audiences with policy recommendations and service-gap analysis.</p>
+      <article class="pub pub--with-image">
+        <div class="pub-image">
+          <img src="assets/poster.jpg" alt="Tyler presenting his research poster on LGBTQ+ foster youth" loading="lazy">
+        </div>
+        <div class="pub-body">
+          <h3>LGBTQ+ Foster Youth: The Challenges Faced and the Support Needed</h3>
+          <p class="pub-meta">Presented to the Congressional Coalition on Adoption Institute and the inaugural 2024 UCDC Research Forum</p>
+          <p>Synthesis of best practices for supporting LGBTQ+ foster youth, delivered to congressional staff and academic audiences with policy recommendations and service-gap analysis.</p>
+        </div>
       </article>
 
       <article class="pub">
