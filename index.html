@@ -16,6 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -46,7 +47,14 @@
           <h1>Tyler Peters</h1>
           <p class="tagline">Former Foster Youth · Mentor · Advocate · Policy Researcher &amp; Writer</p>
           <div class="hero-cta">
-            <a class="btn btn-primary" href="mailto:tylerjohnpeters@ucla.edu">Get in touch</a>
+            <div class="email-reveal" data-reveal>
+              <button type="button" class="btn btn-primary" data-reveal-trigger>Get in touch</button>
+              <div class="turnstile-slot" hidden></div>
+              <div class="email-shown" hidden>
+                <a class="email-link" data-email-link href="#"></a>
+                <button type="button" class="btn-copy" data-email-copy>Copy</button>
+              </div>
+            </div>
             <!-- Add assets/resume.pdf to your repo before deploying, or remove this link. -->
             <a class="btn btn-ghost" href="assets/resume.pdf" download>Download resume</a>
           </div>
@@ -217,7 +225,16 @@
       <h2>Contact</h2>
       <p class="contact-lead">Reach out about research collaborations, speaking engagements, or opportunities in child-welfare policy.</p>
       <ul class="contact-list">
-        <li><a href="mailto:tylerjohnpeters@ucla.edu">tylerjohnpeters@ucla.edu</a></li>
+        <li>
+          <div class="email-reveal" data-reveal>
+            <button type="button" class="btn-link" data-reveal-trigger>Show email address</button>
+            <div class="turnstile-slot" hidden></div>
+            <div class="email-shown" hidden>
+              <a class="email-link" data-email-link href="#"></a>
+              <button type="button" class="btn-copy" data-email-copy>Copy</button>
+            </div>
+          </div>
+        </li>
         <li><a href="https://www.linkedin.com/in/tyler-peters-7ba186272" target="_blank" rel="noopener">LinkedIn</a></li>
       </ul>
     </section>
@@ -229,6 +246,78 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <script>
+    (function () {
+      var SITE_KEY = '0x4AAAAAAC_looPbXjKsv3ra';
+      var PARTS = ['tylerjohnpeters', 'ucla.edu'];
+      function email() { return PARTS[0] + '\u0040' + PARTS[1]; }
+
+      function revealEmail(container) {
+        var slot = container.querySelector('.turnstile-slot');
+        var shown = container.querySelector('.email-shown');
+        var link = container.querySelector('[data-email-link]');
+        var copyBtn = container.querySelector('[data-email-copy]');
+        var addr = email();
+        link.textContent = addr;
+        link.href = 'mailto:' + addr;
+        slot.hidden = true;
+        shown.hidden = false;
+        if (copyBtn && !copyBtn.dataset.bound) {
+          copyBtn.dataset.bound = '1';
+          copyBtn.addEventListener('click', function () {
+            navigator.clipboard.writeText(addr).then(function () {
+              var old = copyBtn.textContent;
+              copyBtn.textContent = 'Copied';
+              setTimeout(function () { copyBtn.textContent = old; }, 1500);
+            }, function () {});
+          });
+        }
+      }
+
+      function renderWidget(container) {
+        var trigger = container.querySelector('[data-reveal-trigger]');
+        var slot = container.querySelector('.turnstile-slot');
+        trigger.hidden = true;
+        slot.hidden = false;
+        window.turnstile.render(slot, {
+          sitekey: SITE_KEY,
+          callback: function () { revealEmail(container); },
+          'error-callback': function () {
+            slot.innerHTML = '<p class="reveal-error">Verification failed. Please use LinkedIn instead.</p>';
+          }
+        });
+      }
+
+      function waitForTurnstile(container) {
+        if (window.turnstile && typeof window.turnstile.render === 'function') {
+          renderWidget(container);
+          return;
+        }
+        var tries = 0;
+        var iv = setInterval(function () {
+          if (window.turnstile && typeof window.turnstile.render === 'function') {
+            clearInterval(iv);
+            renderWidget(container);
+          } else if (++tries > 100) {
+            clearInterval(iv);
+            var slot = container.querySelector('.turnstile-slot');
+            slot.hidden = false;
+            slot.innerHTML = '<p class="reveal-error">Could not load verification. Please use LinkedIn instead.</p>';
+            container.querySelector('[data-reveal-trigger]').hidden = true;
+          }
+        }, 100);
+      }
+
+      document.addEventListener('click', function (e) {
+        var trigger = e.target.closest('[data-reveal-trigger]');
+        if (!trigger) return;
+        var container = trigger.closest('[data-reveal]');
+        if (!container) return;
+        waitForTurnstile(container);
+      });
+    })();
   </script>
 </body>
 </html>

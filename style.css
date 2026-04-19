@@ -430,3 +430,61 @@ a:focus-visible {
   border-radius: 6px;
   display: block;
 }
+
+/* Email reveal with CAPTCHA */
+.email-reveal {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.email-reveal .btn-copy {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  color: var(--color-muted);
+  padding: 6px 12px;
+  font-size: 13px;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.email-reveal .btn-copy:hover {
+  color: var(--color-text);
+  border-color: var(--color-muted);
+}
+
+.email-reveal .btn-link {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-size: 17px;
+  font-family: var(--font-sans);
+  cursor: pointer;
+}
+
+.email-reveal .btn-link:hover {
+  color: var(--color-accent-hover);
+}
+
+.email-shown:not([hidden]) {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.email-link {
+  font-size: 17px;
+}
+
+.reveal-error {
+  font-size: 14px;
+  color: var(--color-muted);
+  margin: 0;
+}
