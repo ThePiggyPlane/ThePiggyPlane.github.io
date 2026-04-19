@@ -83,9 +83,6 @@ a:focus-visible {
 }
 
 .brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
   font-family: var(--font-serif);
   font-weight: 700;
   font-size: 18px;
@@ -94,13 +91,6 @@ a:focus-visible {
 }
 
 .brand:hover { color: var(--color-accent); }
-
-.brand-logo {
-  width: 32px;
-  height: 32px;
-  display: block;
-  flex-shrink: 0;
-}
 
 .nav-links {
   list-style: none;
