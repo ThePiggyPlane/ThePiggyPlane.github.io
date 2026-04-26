@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Clear Path — College & careers for foster youth</title>
+<meta name="description" content="A straight answer on college, money, and what comes next — for current and former foster youth in San Bernardino, Riverside, and Orange County." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/clear-path.css" />
+</head>
+<body>
+<div id="root"></div>
+
+<template id="__bundler_thumbnail">
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="400" fill="#FAFAF8"/>
+  <path d="M 80 280 C 140 180, 200 180, 220 200 C 240 220, 300 100, 340 100" fill="none" stroke="#1E3A5F" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="340" cy="100" r="14" fill="#1E3A5F"/>
+</svg>
+</template>
+
+<!-- React + Babel -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<!-- Data: registries first, then careers + programs + meta + matcher -->
+<script src="lib/career-registry.js"></script>
+<script src="lib/program-registry.js"></script>
+<script src="lib/app-meta.js"></script>
+<script src="lib/matcher.js"></script>
+<script src="data/careers/architect.js"></script>
+<script src="data/careers/animator.js"></script>
+<script src="data/careers/mathematician.js"></script>
+<script src="data/careers/sociologist.js"></script>
+<script src="data/careers/urbanplanner.js"></script>
+<script src="data/careers/trades-electrician.js"></script>
+<script src="data/careers/nurse.js"></script>
+<script src="data/careers/writer.js"></script>
+<script src="data/programs.js"></script>
+
+<!-- Components -->
+<script type="text/babel" src="components/shell.jsx"></script>
+<script type="text/babel" src="components/home.jsx"></script>
+<script type="text/babel" src="components/pages.jsx"></script>
+<script type="text/babel" src="components/wizard.jsx"></script>
+<script type="text/babel" src="app.jsx"></script>
+</body>
+</html>
