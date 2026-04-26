@@ -63,7 +63,6 @@ const CpCareerRow = ({ c, saved, toggleSave, onOpen }) => (
   <article className="cp-career-row" onClick={() => onOpen(c.id)} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onOpen(c.id); } }}>
     <div className="cp-cr-name">
       <h3>{c.name}</h3>
-      <p>{c.tagline}</p>
     </div>
     <div className="cp-cr-stat"><div>${c.salary.median}K</div><div>median</div></div>
     <div className="cp-cr-stat"><div>{c.length}</div><div>time</div></div>
