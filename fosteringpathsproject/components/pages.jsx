@@ -121,7 +121,7 @@ const CpCareer = ({ careerId, saved, toggleSave, onBack, onOpenAid }) => {
                   </div>
                   <div className="cp-prog-money">
                     <div className="cp-prog-sticker">was ${p.sticker.toLocaleString()}</div>
-                    <div className="cp-prog-real">${p.realCost}<span>/yr for you</span></div>
+                    <div className="cp-prog-real">${p.realCost.toLocaleString()}<span>/yr after aid</span></div>
                   </div>
                 </div>
                 <div className="cp-prog-action">Next: {p.action}</div>
