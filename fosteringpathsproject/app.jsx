@@ -53,6 +53,9 @@ const App = () => {
     case "about":
       view = <CpAbout />;
       break;
+    case "map":
+      view = <CpMap onOpenCareer={onOpenCareer} />;
+      break;
     case "compare":
       view = <CpCompare saved={saved} toggleSave={toggleSave} onOpen={onOpenCareer} onBack={() => go("home")} />;
       break;
