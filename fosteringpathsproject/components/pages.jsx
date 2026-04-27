@@ -14,14 +14,59 @@ const fmtPct = (n, sign = false) => {
 
 const CpDolStats = ({ stats }) => {
   const s = stats;
+  // Wage premium / discount vs US national median
+  const wagePremiumPct = s.nationalMedianWage
+    ? ((s.medianWage - s.nationalMedianWage) / s.nationalMedianWage) * 100
+    : null;
+
   const rows = [
-    { label: "people employed",        value: <><strong>{fmtNum(s.employed)} people</strong></> },
-    { label: "yearly change",          value: <><strong>{fmtSigned(s.yearlyChange)} people</strong> <span className="cp-stat-meta">({fmtPct(s.yearlyChangePct, true)})</span></> },
-    { label: "workforce fraction",     value: <><strong>{fmtPct(s.fractionPct)}</strong> <span className="cp-stat-meta">(1 in {fmtNum(s.oneInN)})</span> <span className="cp-stat-meta">({s.vsNational}× national average)</span></> },
-    { label: "median wage",            value: <><strong>${fmtNum(s.medianWage)} per year</strong> <span className="cp-stat-meta">(US dollars per year)</span></> },
-    { label: "median wage yearly change", value: <><strong>{s.wageChange >= 0 ? "+" : "-"}${fmtNum(Math.abs(s.wageChange))} per year</strong> <span className="cp-stat-meta">(US dollars per year)</span> <span className="cp-stat-meta">({fmtPct(s.wageChangePct, true)})</span></> },
-    { label: "50% range",              value: <><strong>${fmtNum(s.range50Low)} to ${fmtNum(s.range50High)}</strong></> },
-    { label: "80% range",              value: <><strong>${fmtNum(s.range80Low)} to ${fmtNum(s.range80High)}</strong> <span className="cp-stat-meta">per year</span></> },
+    {
+      label: "people employed",
+      value: <>
+        <strong>{fmtNum(s.employed)} people</strong>
+        {s.nationalEmployed != null && (
+          <span className="cp-stat-meta"> (US: {fmtNum(s.nationalEmployed)})</span>
+        )}
+      </>,
+    },
+    {
+      label: "yearly change",
+      value: <>
+        <strong>{fmtSigned(s.yearlyChange)} people</strong>
+        <span className="cp-stat-meta"> ({fmtPct(s.yearlyChangePct, true)})</span>
+        {s.nationalGrowthPct != null && (
+          <span className="cp-stat-meta"> (US: {fmtPct(s.nationalGrowthPct, true)})</span>
+        )}
+      </>,
+    },
+    {
+      label: "workforce fraction",
+      value: <>
+        <strong>{fmtPct(s.fractionPct)}</strong>
+        <span className="cp-stat-meta"> (1 in {fmtNum(s.oneInN)})</span>
+        <span className="cp-stat-meta"> ({s.vsNational}× national average)</span>
+      </>,
+    },
+    {
+      label: "median wage",
+      value: <>
+        <strong>${fmtNum(s.medianWage)} per year</strong>
+        {s.nationalMedianWage != null ? (
+          <span className="cp-stat-meta"> (US: ${fmtNum(s.nationalMedianWage)}, {wagePremiumPct >= 0 ? "+" : ""}{Math.round(wagePremiumPct)}% local{wagePremiumPct >= 0 ? " premium" : " discount"})</span>
+        ) : (
+          <span className="cp-stat-meta"> (US dollars per year)</span>
+        )}
+      </>,
+    },
+    {
+      label: "median wage yearly change",
+      value: <>
+        <strong>{s.wageChange >= 0 ? "+" : "-"}${fmtNum(Math.abs(s.wageChange))} per year</strong>
+        <span className="cp-stat-meta"> ({fmtPct(s.wageChangePct, true)})</span>
+      </>,
+    },
+    { label: "50% range", value: <><strong>${fmtNum(s.range50Low)} to ${fmtNum(s.range50High)}</strong></> },
+    { label: "80% range", value: <><strong>${fmtNum(s.range80Low)} to ${fmtNum(s.range80High)}</strong> <span className="cp-stat-meta"> per year</span></> },
   ];
   return (
     <figure className="cp-dol">
@@ -36,7 +81,7 @@ const CpDolStats = ({ stats }) => {
         </tbody>
       </table>
       <figcaption className="cp-dol-cap">
-        ({s.dataYear || 2022} BLS data — Riverside–San Bernardino–Ontario MSA)
+        ({s.dataYear || 2022} BLS OES — Riverside–San Bernardino–Ontario MSA, with national figures for comparison)
       </figcaption>
     </figure>
   );
