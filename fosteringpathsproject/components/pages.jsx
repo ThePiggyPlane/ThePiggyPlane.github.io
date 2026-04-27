@@ -157,22 +157,183 @@ const CpCareer = ({ careerId, saved, toggleSave, onBack, onOpenAid }) => {
   );
 };
 
-const CpMoney = ({ onOpenAid }) => {
-  const aid = window.APP_META.aid;
-  const [school, setSchool] = React.useState("uc");
-  const [living, setLiving] = React.useState("dorms");
-  const stickers = { cc: 1150, csu: 7400, uc: 14400, private: 65000 };
-  const livingAdd = { home: 0, ils: 2000, dorms: 16000, solo: 20000 };
-  const aidTotal = { cc: 12000, csu: 26000, uc: 27000, private: 65000 };
-  const sticker = stickers[school] + livingAdd[living];
-  const aidCovered = Math.min(sticker, aidTotal[school] + 5000);
-  const gap = Math.max(0, sticker - aidCovered);
+// ----------------------------------------------------------------------
+//  Intake survey + aid logic
+// ----------------------------------------------------------------------
+
+// Default aid totals per school tier, for foster youth. Used as a fallback
+// when no profile exists, and as the ceiling that the profile multipliers
+// scale down from.
+const AID_TOTALS = {
+  foster:    { cc: 12000, csu: 26000, uc: 27000, private: 65000 },
+  agedout:   { cc: 12000, csu: 26000, uc: 27000, private: 50000 },
+  adopted:   { cc: 11000, csu: 22000, uc: 25000, private: 30000 },
+  probation: { cc:  9000, csu: 13000, uc: 22000, private: 10000 },
+  none:      { cc:  9000, csu: 13000, uc: 22000, private: 10000 },
+};
+
+// Which aid IDs each profile status typically qualifies for.
+const AID_FOR_STATUS = {
+  foster:    new Set(["chafee","pell","calgrant","ccpg","nextup","gs","jbay"]),
+  agedout:   new Set(["chafee","pell","calgrant","ccpg","nextup","gs","jbay"]),
+  adopted:   new Set(["chafee","pell","calgrant","ccpg","gs"]),
+  probation: new Set(["pell","calgrant","ccpg"]),
+  none:      new Set(["pell","calgrant","ccpg"]),
+};
+
+const aidStackForProfile = (profile, school) => {
+  if (!profile) return AID_TOTALS.foster[school];
+  const status = profile.status || "foster";
+  const base   = (AID_TOTALS[status] || AID_TOTALS.foster)[school] || 0;
+  // Out-of-state students lose Cal Grant / Promise Grant — drop ~$5K-$14K
+  if (!profile.resident) {
+    const caHit = { cc: 1150, csu: 6000, uc: 10000, private: 9000 }[school] || 0;
+    return Math.max(0, base - caHit);
+  }
+  return base;
+};
+
+const isAidEligible = (aidId, profile) => {
+  if (!profile) return true;
+  const set = AID_FOR_STATUS[profile.status] || AID_FOR_STATUS.foster;
+  if (!set.has(aidId)) return false;
+  // Cal Grant + CCPG require CA residency
+  if ((aidId === "calgrant" || aidId === "ccpg") && !profile.resident) return false;
+  return true;
+};
+
+const CpSurvey = ({ profile, onComplete, onCancel }) => {
+  const [status, setStatus]       = React.useState(profile?.status || "");
+  const [age, setAge]             = React.useState(profile?.age ?? "");
+  const [education, setEducation] = React.useState(profile?.education || "");
+  const [resident, setResident]   = React.useState(profile?.resident == null ? "" : (profile.resident ? "yes" : "no"));
+
+  const ageNum = parseInt(age, 10);
+  const ageOk = ageNum >= 14 && ageNum <= 60;
+  const canSubmit = status && ageOk && education && resident;
+
+  const submit = (e) => {
+    e.preventDefault();
+    if (!canSubmit) return;
+    onComplete({
+      status, age: ageNum, education,
+      resident: resident === "yes",
+      completedAt: new Date().toISOString(),
+    });
+  };
 
   return (
     <main className="cp-main narrow">
-      <div className="cp-eyebrow">Real cost calculator</div>
-      <h1 className="cp-h1">What this will actually cost you.</h1>
-      <p className="cp-lede">Pick a school type and living situation. We'll stack the aid most foster youth qualify for.</p>
+      {profile && onCancel && <button className="cp-back" onClick={onCancel}>← Cost calculator</button>}
+      <div className="cp-eyebrow">Quick check-in (60 seconds)</div>
+      <h1 className="cp-h1">Help us calculate your aid.</h1>
+      <p className="cp-lede">Foster youth, probation youth, and others qualify for different aid. Four questions, then we'll show you what programs actually cost.</p>
+
+      <form className="cp-survey" onSubmit={submit}>
+        <fieldset className="cp-survey-q">
+          <legend>1. Which describes you right now?</legend>
+          {[
+            ["foster",    "Currently in foster care"],
+            ["agedout",   "Aged out of foster care (within the last 6 years)"],
+            ["adopted",   "Adopted from foster care after age 16"],
+            ["probation", "On probation, or in a probation placement"],
+            ["none",      "None of the above"],
+          ].map(([v, l]) => (
+            <label key={v} className={"cp-survey-opt" + (status === v ? " on" : "")}>
+              <input type="radio" name="status" value={v} checked={status === v} onChange={() => setStatus(v)} />
+              <span>{l}</span>
+            </label>
+          ))}
+        </fieldset>
+
+        <fieldset className="cp-survey-q">
+          <legend>2. Your age</legend>
+          <input
+            type="number"
+            inputMode="numeric"
+            min="14" max="60"
+            className="cp-survey-num"
+            placeholder="e.g. 19"
+            value={age}
+            onChange={e => setAge(e.target.value)}
+          />
+        </fieldset>
+
+        <fieldset className="cp-survey-q">
+          <legend>3. Highest school you've completed</legend>
+          {[
+            ["inhs",      "Currently in high school"],
+            ["hsdiploma", "HS diploma or GED"],
+            ["somecoll",  "Some college, no degree yet"],
+            ["degree",    "Associate's or bachelor's degree"],
+          ].map(([v, l]) => (
+            <label key={v} className={"cp-survey-opt" + (education === v ? " on" : "")}>
+              <input type="radio" name="education" value={v} checked={education === v} onChange={() => setEducation(v)} />
+              <span>{l}</span>
+            </label>
+          ))}
+        </fieldset>
+
+        <fieldset className="cp-survey-q">
+          <legend>4. Are you a California resident?</legend>
+          {[["yes","Yes"],["no","No / out of state"]].map(([v, l]) => (
+            <label key={v} className={"cp-survey-opt" + (resident === v ? " on" : "")}>
+              <input type="radio" name="resident" value={v} checked={resident === v} onChange={() => setResident(v)} />
+              <span>{l}</span>
+            </label>
+          ))}
+        </fieldset>
+
+        <p className="cp-survey-priv">Your answers stay on this device — they're stored in your browser and never sent anywhere. Update them anytime from the cost calculator.</p>
+
+        <div className="cp-survey-actions">
+          <button type="submit" className="cp-btn" disabled={!canSubmit}>Show me my aid →</button>
+        </div>
+      </form>
+    </main>
+  );
+};
+
+const STATUS_LABEL = {
+  foster:    "current foster youth",
+  agedout:   "former foster youth",
+  adopted:   "adopted from foster care",
+  probation: "probationary youth",
+  none:      "non-foster, non-probation",
+};
+
+const CpMoney = ({ onOpenAid, profile, setProfile }) => {
+  const aid = window.APP_META.aid;
+  const [school, setSchool] = React.useState("uc");
+  const [living, setLiving] = React.useState("dorms");
+  const [editing, setEditing] = React.useState(false);
+
+  // Gate: until they fill out the survey, only show the survey.
+  if (!profile || editing) {
+    return <CpSurvey
+      profile={editing ? profile : null}
+      onComplete={(p) => { setProfile(p); setEditing(false); }}
+      onCancel={editing ? () => setEditing(false) : null}
+    />;
+  }
+
+  const stickers   = { cc: 1150, csu: 7400, uc: 14400, private: 65000 };
+  const livingAdd  = { home: 0, ils: 2000, dorms: 16000, solo: 20000 };
+  const sticker    = stickers[school] + livingAdd[living];
+  const baseAid    = aidStackForProfile(profile, school);
+  const chafeeBonus = (["foster","agedout"].includes(profile.status) && profile.age >= 14 && profile.age <= 23) ? 5000 : 0;
+  const aidCovered = Math.min(sticker, baseAid + chafeeBonus);
+  const gap        = Math.max(0, sticker - aidCovered);
+  const eligibleAid = aid.filter(a => isAidEligible(a.id, profile));
+
+  return (
+    <main className="cp-main narrow">
+      <h1 className="cp-h1">Cost Calculator.</h1>
+
+      <div className="cp-profile-summary">
+        <span>For: <strong>{STATUS_LABEL[profile.status] || profile.status}</strong>, age {profile.age}, {profile.resident ? "CA resident" : "out of state"}</span>
+        <button className="cp-link" onClick={() => setEditing(true)}>Update info</button>
+      </div>
 
       <div className="cp-calc">
         <div className="cp-calc-controls">
@@ -203,13 +364,13 @@ const CpMoney = ({ onOpenAid }) => {
               {gap > 0 && <div className="cp-bar-seg" style={{ width: `${(gap / sticker) * 100}%`, background: '#d4c3a8', color: '#1a1a1a' }}>Gap ${gap.toLocaleString()}</div>}
             </div>
           </div>
-          <p className="cp-calc-note">{gap === 0 ? "Your stack covers everything. Any surplus goes to rent, food, books, savings." : "Gap typically closed by JBAY emergency grants, campus Guardian Scholars funds, or work-study."}</p>
+          <p className="cp-calc-note">{gap === 0 ? "Your stack covers everything. Any surplus goes to rent, food, books, savings." : (profile.status === "probation" ? "Probation-specific scholarships (Project Rebound at CSU, BESH, restorative-justice funds) often close the rest." : "Gap typically closed by JBAY emergency grants, campus Guardian Scholars funds, or work-study.")}</p>
         </div>
       </div>
 
-      <h2 className="cp-h2">Seven aid sources</h2>
+      <h2 className="cp-h2">{eligibleAid.length} aid source{eligibleAid.length === 1 ? "" : "s"} you likely qualify for</h2>
       <div className="cp-aid-grid">
-        {aid.map(a => (
+        {eligibleAid.map(a => (
           <button className="cp-aid-card" key={a.id} onClick={() => onOpenAid(a.id)} aria-label={`Learn more about ${a.name}`}>
             <div className="cp-aid-amt">{a.amount}</div>
             <div className="cp-aid-name">{a.name}</div>
@@ -217,6 +378,9 @@ const CpMoney = ({ onOpenAid }) => {
           </button>
         ))}
       </div>
+      {eligibleAid.length < aid.length && (
+        <p className="cp-calc-note cp-aid-note">{aid.length - eligibleAid.length} other aid source{aid.length - eligibleAid.length === 1 ? " is" : "s are"} foster-youth specific and not shown for your situation.</p>
+      )}
     </main>
   );
 };

@@ -2,7 +2,8 @@
 // Routing uses the URL hash (e.g. #/map, #/career/architect) so refresh,
 // bookmarks, and browser back/forward all preserve the current view.
 
-const STORAGE_KEY = "clearpath:saved:v1";
+const STORAGE_KEY  = "clearpath:saved:v1";
+const PROFILE_KEY  = "clearpath:profile:v1";
 
 const useSaved = () => {
   const [saved, setSaved] = React.useState(() => {
@@ -18,6 +19,24 @@ const useSaved = () => {
     setSaved(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);
   }, []);
   return [saved, toggleSave];
+};
+
+// Aid-eligibility profile, gathered once via the intake survey before
+// the cost calculator is shown. null until the user completes it.
+const useProfile = () => {
+  const [profile, setProfile] = React.useState(() => {
+    try {
+      const raw = localStorage.getItem(PROFILE_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch { return null; }
+  });
+  React.useEffect(() => {
+    try {
+      if (profile) localStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
+      else         localStorage.removeItem(PROFILE_KEY);
+    } catch {}
+  }, [profile]);
+  return [profile, setProfile];
 };
 
 // ---- URL hash <-> route object -------------------------------------------
@@ -47,6 +66,7 @@ const App = () => {
   const [route, setRoute] = React.useState(() => parseHash());
   const [showWiz, setShowWiz] = React.useState(false);
   const [saved, toggleSave] = useSaved();
+  const [profile, setProfile] = useProfile();
 
   // hashchange (back/forward, manual edits, refresh) -> sync state
   React.useEffect(() => {
@@ -88,7 +108,7 @@ const App = () => {
       view = <CpCareer careerId={route.careerId} saved={saved} toggleSave={toggleSave} onBack={() => go("home")} onOpenAid={onOpenAid} />;
       break;
     case "money":
-      view = <CpMoney onOpenAid={onOpenAid} />;
+      view = <CpMoney onOpenAid={onOpenAid} profile={profile} setProfile={setProfile} />;
       break;
     case "aid":
       view = <CpAidDetail aidId={route.aidId} onBack={() => go("money")} />;

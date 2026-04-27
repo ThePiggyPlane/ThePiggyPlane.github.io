@@ -342,7 +342,7 @@ const CpMap = ({ onOpenCareer }) => {
       <div className="cp-map-head">
         <h1 className="cp-h1">Programs near you</h1>
         <p className="cp-lede">{stats.mode === "groups"
-          ? <>{stats.mapped} programs across <strong>{stats.visible}</strong> institutions, color-coded by school type. Click a marker to see all the programs there, or search to drill into a specific career.</>
+          ? <>{stats.mapped} programs across <strong>{stats.visible}</strong> institutions, color-coded by school type. Click a marker to see all the programs there, or search a specific career.</>
           : <>{stats.mapped} programs on this site, color-coded by school type. Click a marker to see what it offers.</>
         }</p>
         <div className="cp-map-search">
