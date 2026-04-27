@@ -1,5 +1,47 @@
 // Career detail, Money calculator, First Week, About — secondary pages.
 
+// Format an integer with thin spaces for thousands (Wolfram Alpha style: "34 570").
+const fmtNum = (n) => {
+  if (n == null || Number.isNaN(n)) return "—";
+  return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+};
+const fmtSigned = (n) => (n >= 0 ? "+" + fmtNum(n) : "-" + fmtNum(-n));
+const fmtPct = (n, sign = false) => {
+  if (n == null || Number.isNaN(n)) return "—";
+  const s = (Math.round(n * 10) / 10).toString();
+  return (sign && n >= 0 ? "+" : "") + s + "%";
+};
+
+const CpDolStats = ({ stats }) => {
+  const s = stats;
+  const rows = [
+    { label: "people employed",        value: <><strong>{fmtNum(s.employed)} people</strong></> },
+    { label: "yearly change",          value: <><strong>{fmtSigned(s.yearlyChange)} people</strong> <span className="cp-stat-meta">({fmtPct(s.yearlyChangePct, true)})</span></> },
+    { label: "workforce fraction",     value: <><strong>{fmtPct(s.fractionPct)}</strong> <span className="cp-stat-meta">(1 in {fmtNum(s.oneInN)})</span> <span className="cp-stat-meta">({s.vsNational}× national average)</span></> },
+    { label: "median wage",            value: <><strong>${fmtNum(s.medianWage)} per year</strong> <span className="cp-stat-meta">(US dollars per year)</span></> },
+    { label: "median wage yearly change", value: <><strong>{s.wageChange >= 0 ? "+" : "-"}${fmtNum(Math.abs(s.wageChange))} per year</strong> <span className="cp-stat-meta">(US dollars per year)</span> <span className="cp-stat-meta">({fmtPct(s.wageChangePct, true)})</span></> },
+    { label: "50% range",              value: <><strong>${fmtNum(s.range50Low)} to ${fmtNum(s.range50High)}</strong></> },
+    { label: "80% range",              value: <><strong>${fmtNum(s.range80Low)} to ${fmtNum(s.range80High)}</strong> <span className="cp-stat-meta">per year</span></> },
+  ];
+  return (
+    <figure className="cp-dol">
+      <table className="cp-dol-tbl">
+        <tbody>
+          {rows.map(r => (
+            <tr key={r.label}>
+              <th scope="row">{r.label}</th>
+              <td>{r.value}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <figcaption className="cp-dol-cap">
+        ({s.dataYear || 2022} BLS data — Riverside–San Bernardino–Ontario MSA)
+      </figcaption>
+    </figure>
+  );
+};
+
 const CpCareer = ({ careerId, saved, toggleSave, onBack, onOpenAid }) => {
   const career = window.CAREERS.byId(careerId);
   if (!career) return <main className="cp-main narrow"><button className="cp-back" onClick={onBack}>← Careers</button><p>Career not found.</p></main>;
@@ -21,12 +63,7 @@ const CpCareer = ({ careerId, saved, toggleSave, onBack, onOpenAid }) => {
             <div><div className="cp-stat">{(career.grads2yr || '—').split(' ')[0]}</div><div className="cp-stat-lbl">grads employed</div></div>
           </div>
 
-          {career.quote && (
-            <div className="cp-quote">
-              <p>"{career.quote.text}"</p>
-              <cite>{career.quote.who}</cite>
-            </div>
-          )}
+          {career.dolStats && <CpDolStats stats={career.dolStats} />}
 
           <h2 className="cp-h2">Programs</h2>
           <div className="cp-prog-list">
