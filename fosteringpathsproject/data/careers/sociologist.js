@@ -1,6 +1,6 @@
 window.registerCareer({
   id: "sociologist",
-  name: "Sociology / Social Work",
+  name: "Sociology",
   tagline: "Change systems like the one that raised you.",
   interests: ["helping", "words"],
   length: "2–4 yrs",
