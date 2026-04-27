@@ -1,4 +1,6 @@
 // Top-level app — routes between views, owns saved-state with localStorage.
+// Routing uses the URL hash (e.g. #/map, #/career/architect) so refresh,
+// bookmarks, and browser back/forward all preserve the current view.
 
 const STORAGE_KEY = "clearpath:saved:v1";
 
@@ -18,14 +20,58 @@ const useSaved = () => {
   return [saved, toggleSave];
 };
 
+// ---- URL hash <-> route object -------------------------------------------
+const SIMPLE_VIEWS = new Set(["home","map","money","week","about","compare"]);
+
+const parseHash = () => {
+  const h = (window.location.hash || "").replace(/^#\/?/, "");
+  if (!h) return { view: "home" };
+  const [view, id] = h.split("/");
+  if (view === "career" && id) return { view: "career", careerId: decodeURIComponent(id) };
+  if (view === "aid"    && id) return { view: "aid",    aidId:    decodeURIComponent(id) };
+  if (SIMPLE_VIEWS.has(view))  return { view };
+  // result has transient state (quiz answers); fall back to home on refresh
+  return { view: "home" };
+};
+
+const buildHash = (route) => {
+  const { view, careerId, aidId } = route;
+  if (!view || view === "home")          return "#/";
+  if (view === "career" && careerId)     return "#/career/" + encodeURIComponent(careerId);
+  if (view === "aid"    && aidId)        return "#/aid/"    + encodeURIComponent(aidId);
+  if (view === "result")                 return "#/";   // not addressable; quiz state is transient
+  return "#/" + view;
+};
+
 const App = () => {
-  const [route, setRoute] = React.useState({ view: "home" });
+  const [route, setRoute] = React.useState(() => parseHash());
   const [showWiz, setShowWiz] = React.useState(false);
   const [saved, toggleSave] = useSaved();
 
+  // hashchange (back/forward, manual edits, refresh) -> sync state
+  React.useEffect(() => {
+    const onHash = () => {
+      setRoute(parseHash());
+      window.scrollTo({ top: 0, behavior: "instant" });
+    };
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
+  }, []);
+
   const go = React.useCallback((view, extra = {}) => {
-    setRoute({ view, ...extra });
-    window.scrollTo({ top: 0, behavior: 'instant' });
+    const next = { view, ...extra };
+    const wantHash = buildHash(next);
+    if (window.location.hash === wantHash) {
+      // already at this hash — still update state (in case extra changed) + scroll
+      setRoute(next);
+      window.scrollTo({ top: 0, behavior: "instant" });
+    } else {
+      // setting hash fires hashchange → onHash() updates state + scrolls
+      window.location.hash = wantHash;
+      // Result view carries transient quiz data that the URL can't hold;
+      // keep it in state so the rendered page can read it.
+      if (view === "result") setRoute(next);
+    }
   }, []);
 
   const onOpenCareer = (id) => go("career", { careerId: id });
