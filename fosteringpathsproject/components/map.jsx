@@ -71,11 +71,34 @@ const buildProgramToCareers = () => {
 const CpMap = ({ onOpenCareer }) => {
   const mapRef = React.useRef(null);
   const containerRef = React.useRef(null);
+  const blurTimerRef = React.useRef(null);
   const [activeTiers, setActiveTiers] = React.useState({ cc: true, csu: true, uc: true, private: true, trade: true });
   const [query, setQuery] = React.useState("");
   const [stats, setStats] = React.useState({ total: 0, mapped: 0, missing: 0, visible: 0 });
+  const [sugOpen, setSugOpen] = React.useState(false);
+  const [sugIndex, setSugIndex] = React.useState(-1);
   const programToCareers = React.useMemo(buildProgramToCareers, []);
   const tierLabels = window.APP_META.tierLabels;
+  const allCareers = React.useMemo(() => window.CAREERS.all().map(c => c.name), []);
+
+  // Suggestions: careers whose name contains the query (case-insensitive),
+  // ranked so prefix matches come first.
+  const suggestions = React.useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return [];
+    const startsWith = [];
+    const contains = [];
+    allCareers.forEach(name => {
+      const lower = name.toLowerCase();
+      if (lower === q) return;       // already exact — no need to suggest
+      if (lower.startsWith(q)) startsWith.push(name);
+      else if (lower.includes(q)) contains.push(name);
+    });
+    return [...startsWith, ...contains].slice(0, 8);
+  }, [query, allCareers]);
+
+  // Reset highlight when suggestions change
+  React.useEffect(() => { setSugIndex(-1); }, [suggestions.length, query]);
 
   React.useEffect(() => {
     if (!window.L) {
@@ -204,7 +227,46 @@ const CpMap = ({ onOpenCareer }) => {
   }, [activeTiers, query]);
 
   const toggleTier = (t) => setActiveTiers(prev => ({ ...prev, [t]: !prev[t] }));
-  const clearQuery = () => setQuery("");
+  const clearQuery = () => { setQuery(""); setSugOpen(false); };
+
+  const pickSuggestion = (name) => {
+    setQuery(name);
+    setSugOpen(false);
+    setSugIndex(-1);
+  };
+
+  const onSearchFocus = () => {
+    clearTimeout(blurTimerRef.current);
+    if (suggestions.length) setSugOpen(true);
+  };
+  const onSearchBlur = () => {
+    // Defer so click on a suggestion can register before the dropdown unmounts.
+    blurTimerRef.current = setTimeout(() => setSugOpen(false), 120);
+  };
+  const onSearchChange = (e) => {
+    setQuery(e.target.value);
+    setSugOpen(true);
+  };
+  const onSearchKey = (e) => {
+    if (!sugOpen || suggestions.length === 0) {
+      if (e.key === "Escape") setSugOpen(false);
+      return;
+    }
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setSugIndex(i => (i + 1) % suggestions.length);
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setSugIndex(i => (i <= 0 ? suggestions.length - 1 : i - 1));
+    } else if (e.key === "Enter") {
+      if (sugIndex >= 0 && sugIndex < suggestions.length) {
+        e.preventDefault();
+        pickSuggestion(suggestions[sugIndex]);
+      }
+    } else if (e.key === "Escape") {
+      setSugOpen(false);
+    }
+  };
 
   return (
     <main className="cp-main">
@@ -212,14 +274,51 @@ const CpMap = ({ onOpenCareer }) => {
         <h1 className="cp-h1">Programs near you</h1>
         <p className="cp-lede">Every {stats.mapped} program on this site, color-coded by school type. Click a marker to see what it offers.</p>
         <div className="cp-map-search">
-          <input
-            type="search"
-            className="cp-map-search-input"
-            placeholder="Search programs, schools, careers, cities…"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            aria-label="Search programs"
-          />
+          <div className="cp-map-search-wrap">
+            <input
+              type="search"
+              className="cp-map-search-input"
+              placeholder="Search programs, schools, careers, cities…"
+              value={query}
+              onChange={onSearchChange}
+              onFocus={onSearchFocus}
+              onBlur={onSearchBlur}
+              onKeyDown={onSearchKey}
+              aria-label="Search programs"
+              aria-autocomplete="list"
+              aria-expanded={sugOpen && suggestions.length > 0}
+              aria-controls="cp-map-sug-list"
+              autoComplete="off"
+            />
+            {sugOpen && suggestions.length > 0 && (
+              <ul id="cp-map-sug-list" className="cp-map-suggestions" role="listbox">
+                {suggestions.map((name, i) => {
+                  const lower = name.toLowerCase();
+                  const q = query.trim().toLowerCase();
+                  const idx = q ? lower.indexOf(q) : -1;
+                  return (
+                    <li
+                      key={name}
+                      role="option"
+                      aria-selected={i === sugIndex}
+                      className={"cp-map-sug" + (i === sugIndex ? " on" : "")}
+                      onMouseDown={(e) => { e.preventDefault(); pickSuggestion(name); }}
+                      onMouseEnter={() => setSugIndex(i)}
+                    >
+                      {idx >= 0 ? (
+                        <>
+                          {name.slice(0, idx)}
+                          <strong>{name.slice(idx, idx + q.length)}</strong>
+                          {name.slice(idx + q.length)}
+                        </>
+                      ) : name}
+                      <span className="cp-map-sug-tag">career</span>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+          </div>
           {query && (
             <button className="cp-map-search-clear" onClick={clearQuery} aria-label="Clear search">×</button>
           )}

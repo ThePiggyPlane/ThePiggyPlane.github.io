@@ -269,9 +269,13 @@ a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-ra
   display: flex; align-items: center; gap: 12px;
   margin: 14px 0 10px;
 }
-.cp-map-search-input {
+.cp-map-search-wrap {
+  position: relative;
   flex: 1;
   min-width: 0;
+}
+.cp-map-search-input {
+  width: 100%;
   padding: 10px 14px;
   font: inherit;
   font-size: 14px;
@@ -279,6 +283,38 @@ a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-ra
   background: var(--bg-card);
   border-radius: 8px;
   color: var(--ink);
+}
+.cp-map-suggestions {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0; right: 0;
+  z-index: 1000;
+  margin: 0; padding: 4px 0;
+  list-style: none;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+  max-height: 280px;
+  overflow-y: auto;
+}
+.cp-map-sug {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px;
+  padding: 8px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  color: var(--ink-2);
+}
+.cp-map-sug.on, .cp-map-sug:hover { background: var(--blue-soft); color: var(--ink); }
+.cp-map-sug strong { color: var(--ink); font-weight: 600; }
+.cp-map-sug-tag {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-4);
+  font-weight: 500;
+  flex-shrink: 0;
 }
 .cp-map-search-input::placeholder { color: var(--ink-4); }
 .cp-map-search-input:focus { outline: 2px solid var(--blue); outline-offset: 2px; border-color: var(--blue); }
