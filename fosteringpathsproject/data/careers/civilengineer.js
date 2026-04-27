@@ -1,0 +1,14 @@
+window.registerCareer({
+  id: "civilengineer",
+  name: "Civil Engineer",
+  tagline: "Design the roads, bridges, and water systems people use daily.",
+  interests: ["building", "design", "outdoors"],
+  length: "4 yr BS + EIT/PE",
+  lengthBucket: "long",
+  salary: { low: 80, high: 145, median: 100 },
+  demand: "High — CA infrastructure + climate adaptation",
+  grads2yr: "94% employed in field within 12 months",
+  quote: { text: "I aged out into a homeless shelter on a freeway off-ramp. Civil engineering is how I'll design exits people don't have to sleep under.", who: "Devon, 25 — Cal Poly Pomona '24" },
+  programs: ["rcc-civilengin", "norco-civilengin", "sbvc-civilengin", "chaffey-civilengin", "mvc-civilengin", "msjc-civilengin", "mtsac-civilengin", "pcc-civilengin", "saddleback-civilengin", "occ-civilengin", "sac-civilengin", "fullertoncc-civilengin", "cpp-civilengin", "ucr-civilengin", "cbu-civilengin", "csuf-civilengin", "uci-civilengin", "chapman-civilengin"],
+  order: 110,
+});

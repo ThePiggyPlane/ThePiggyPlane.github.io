@@ -1,0 +1,14 @@
+window.registerCareer({
+  id: "datascience",
+  name: "Data Scientist",
+  tagline: "Find the pattern. Companies pay six figures for that.",
+  interests: ["numbers", "tech"],
+  length: "4 yr BS (CS / Math / Stats)",
+  lengthBucket: "long",
+  salary: { low: 90, high: 175, median: 115 },
+  demand: "Very high — fastest-growing IE STEM occupation",
+  grads2yr: "96% employed; remote-friendly entry roles",
+  quote: { text: "School counselors said I had 'a head for numbers' but no one told me what data science was. Now I make $90K analyzing healthcare data.", who: "Maya, 24 — UCR Data Science '23" },
+  programs: ["rcc-datascienc", "mvc-datascienc", "norco-datascienc", "chaffey-datascienc", "crafton-datascienc", "mtsac-datascienc", "saddleback-datascienc", "fullertoncc-datascienc", "occ-datascienc", "ucr-datascienc", "ucr-datascienc-2", "ucr-datascienc-3", "ucr-datascienc-4", "csusb-datascienc", "csusb-datascienc-2", "csusb-datascienc-3", "cbu-datascienc", "cpp-datascienc", "cpp-datascienc-2", "uci-datascienc", "uci-datascienc-2", "csuf-datascienc", "chapman-datascienc"],
+  order: 130,
+});

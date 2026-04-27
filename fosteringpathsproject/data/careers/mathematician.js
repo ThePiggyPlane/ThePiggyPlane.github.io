@@ -9,6 +9,6 @@ window.registerCareer({
   demand: "Very High",
   grads2yr: "92% employed — data, actuarial, software",
   quote: { text: "Nobody in my family went to college. I'm the first — and I'm studying the math behind climate models.", who: "Aaliyah, 20 — UCR" },
-  programs: ["rcc-math", "ucr-math", "cpp-math"],
+  programs: ["rcc-mathematic", "norco-mathematic", "mvc-mathematic", "sbvc-mathematic", "chaffey-mathematic", "msjc-mathematic", "mtsac-mathematic", "pcc-mathematic", "saddleback-mathematic", "occ-mathematic", "sac-mathematic", "cypress-mathematic", "fullertoncc-mathematic", "ucr-mathematic", "csusb-mathematic", "cpp-mathematic", "cbu-mathematic", "uci-mathematic", "csuf-mathematic", "chapman-mathematic"],
   order: 30,
 });

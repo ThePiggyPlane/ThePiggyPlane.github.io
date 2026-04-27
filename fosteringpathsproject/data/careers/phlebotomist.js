@@ -1,0 +1,14 @@
+window.registerCareer({
+  id: "phlebotomist",
+  name: "Phlebotomist",
+  tagline: "Short program. Steady hospital work. No debt.",
+  interests: ["people", "health", "hands-on"],
+  length: "3–6 mo cert + CA state cert",
+  lengthBucket: "short",
+  salary: { low: 38, high: 58, median: 45 },
+  demand: "High — IE hospitals + Quest/LabCorp hiring",
+  grads2yr: "90% placed in hospital or lab within 6 months",
+  quote: { text: "I'm needle-shy from too many ER visits as a kid. Becoming a phlebotomist was scary — now I take blood from kids who look like I did.", who: "Jasmine, 21 — Concorde Career College '24" },
+  programs: ["crafton-hills-phlebotomi", "aumt-institute-phlebotomi", "aumt-institute-phlebotomi-2", "aumt-institute-phlebotomi-3", "phlebotomy-usa-phlebotomi", "phlebotomy-usa-phlebotomi-2", "phlebotomy-usa-phlebotomi-3", "phlebotomy-usa-phlebotomi-4", "phlebotomy-usa-phlebotomi-5", "phlebotomy-usa-phlebotomi-6", "phlebotomy-usa-phlebotomi-7", "cali-phlebotomy-phlebotomi", "mission-career-phlebotomi", "mission-career-phlebotomi-2", "mission-career-phlebotomi-3", "saddleback-phlebotomi", "chaffey-phlebotomi", "chaffey-phlebotomi-2", "chaffey-phlebotomi-3", "victor-valley-phlebotomi", "palo-verde-phlebotomi", "loma-linda-phlebotomi", "us-colleges-phlebotomi", "us-colleges-phlebotomi-2", "us-colleges-phlebotomi-3", "us-colleges-phlebotomi-4", "healthstaff-phlebotomi", "healthstaff-phlebotomi-2", "healthstaff-phlebotomi-3", "genesis-medical-phlebotomi", "high-desert-medical-phlebotomi", "american-harbor-phlebotomi", "wagner-training-phlebotomi", "ca-trade-academy-phlebotomi", "calregional-phlebotomi", "calregional-phlebotomi-2", "calregional-phlebotomi-3", "ggusd-adult-phlebotomi", "jurupa-adult-phlebotomi", "rcoe-sce-phlebotomi", "rcoe-sce-phlebotomi-2"],
+  order: 180,
+});
