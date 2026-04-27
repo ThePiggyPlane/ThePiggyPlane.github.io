@@ -52,7 +52,6 @@ const CpCareer = ({ careerId, saved, toggleSave, onBack, onOpenAid }) => {
       <button className="cp-back" onClick={onBack}>← All careers</button>
       <div className="cp-detail-head">
         <h1 className="cp-h1">{career.name}</h1>
-        <p className="cp-lede">{career.tagline}</p>
       </div>
       <div className="cp-detail-grid">
         <div>
@@ -223,7 +222,7 @@ const CpAbout = () => (
   <main className="cp-main narrow cp-about">
     <div className="cp-eyebrow">About</div>
     <h1 className="cp-h1">How this guide is built — and how to trust it.</h1>
-    <p>Clear Path is an independent guide for current and former California foster youth in San Bernardino, Riverside, and Orange County. We exist because the existing systems — financial aid letters, college websites, well-meaning counselors — almost never give a straight, accurate answer to the only question that matters: <em>what will this actually cost me?</em></p>
+    <p>Fostering Paths is an independent guide for current and former California foster youth in San Bernardino, Riverside, and Orange County. We exist because the existing systems — financial aid letters, college websites, well-meaning counselors — almost never give a straight, accurate answer to the only question that matters: <em>what will this actually cost me?</em></p>
     <p>Every dollar figure is verified against current state and federal sources. Every program is one we've spoken to directly. Quotes are from real foster youth who agreed to share their story. Nothing on this site is paid for by a campus or scholarship.</p>
 
     <h2 className="cp-h2">Where the numbers come from</h2>

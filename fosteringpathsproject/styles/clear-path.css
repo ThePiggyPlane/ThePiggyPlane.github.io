@@ -1,4 +1,4 @@
-/* Clear Path — design tokens + base styles
+/* Fostering Paths — design tokens + base styles
    Single shared CSS so we can grow without per-component <style> blocks. */
 :root {
   --bg: #FAFAF8;

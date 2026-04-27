@@ -4,11 +4,11 @@ const CpHeader = ({ view, go, savedCount, onCompare }) => (
   <header className="cp-hdr">
     <div className="cp-hdr-in">
       <div className="cp-logo">
-        <button onClick={() => go("home")} aria-label="Clear Path home">
+        <button onClick={() => go("home")} aria-label="Fostering Paths home">
           <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
             <path d="M 2 18 C 6 10, 10 10, 11 11 C 12 12, 16 4, 20 4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
           </svg>
-          <span>Clear Path</span>
+          <span>Fostering Paths</span>
         </button>
       </div>
       <nav aria-label="Primary">

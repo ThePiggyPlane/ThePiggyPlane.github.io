@@ -69,7 +69,6 @@ const CpResult = ({ result, onOpen, onRetake, onBack }) => {
       <div className="cp-result-match">
         <div className="cp-result-eyebrow">Best match for your answers</div>
         <h1 className="cp-result-name">{top.name}</h1>
-        <p className="cp-result-tag">{top.tagline}</p>
         <div className="cp-result-because">
           <strong>Why:</strong> {result.reasoning}
         </div>
@@ -85,7 +84,6 @@ const CpResult = ({ result, onOpen, onRetake, onBack }) => {
             {alts.map(c => (
               <button className="cp-alt" key={c.id} onClick={() => onOpen(c.id)}>
                 <div className="cp-alt-name">{c.name}</div>
-                <div className="cp-alt-tag">{c.tagline}</div>
                 <div className="cp-alt-meta"><span>${c.salary.median}K</span><span>{c.length}</span></div>
               </button>
             ))}
