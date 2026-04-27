@@ -302,6 +302,20 @@ const STATUS_LABEL = {
   none:      "non-foster, non-probation",
 };
 
+// Profile-aware "how do you close the gap" note shown under the bar.
+const gapNote = (gap, profile) => {
+  if (gap === 0) return "Your stack covers everything. Any surplus goes to rent, food, books, savings.";
+  const fosterLike = ["foster","agedout","adopted"].includes(profile.status);
+  if (fosterLike) {
+    return "Gap typically closed by JBAY emergency grants, campus Guardian Scholars funds, or work-study.";
+  }
+  if (profile.status === "probation") {
+    return "Probation-specific scholarships (Project Rebound at CSU, BESH, restorative-justice funds) often close the rest.";
+  }
+  // status: none
+  return "Gap typically closed by Federal Direct Loans (subsidized first, ~$5.5K/yr first year), campus work-study, employer tuition benefits, or local scholarships.";
+};
+
 const CpMoney = ({ onOpenAid, profile, setProfile }) => {
   const aid = window.APP_META.aid;
   const [school, setSchool] = React.useState("uc");
@@ -331,8 +345,8 @@ const CpMoney = ({ onOpenAid, profile, setProfile }) => {
       <h1 className="cp-h1">Cost Calculator.</h1>
 
       <div className="cp-profile-summary">
-        <span>For: <strong>{STATUS_LABEL[profile.status] || profile.status}</strong>, age {profile.age}, {profile.resident ? "CA resident" : "out of state"}</span>
-        <button className="cp-link" onClick={() => setEditing(true)}>Update info</button>
+        <span>Calculated for: <strong>{STATUS_LABEL[profile.status] || profile.status}</strong>, age {profile.age}, {profile.resident ? "CA resident" : "out of state"}.</span>
+        <button className="cp-link" onClick={() => setEditing(true)}>Retake aid quiz</button>
       </div>
 
       <div className="cp-calc">
@@ -364,7 +378,7 @@ const CpMoney = ({ onOpenAid, profile, setProfile }) => {
               {gap > 0 && <div className="cp-bar-seg" style={{ width: `${(gap / sticker) * 100}%`, background: '#d4c3a8', color: '#1a1a1a' }}>Gap ${gap.toLocaleString()}</div>}
             </div>
           </div>
-          <p className="cp-calc-note">{gap === 0 ? "Your stack covers everything. Any surplus goes to rent, food, books, savings." : (profile.status === "probation" ? "Probation-specific scholarships (Project Rebound at CSU, BESH, restorative-justice funds) often close the rest." : "Gap typically closed by JBAY emergency grants, campus Guardian Scholars funds, or work-study.")}</p>
+          <p className="cp-calc-note">{gapNote(gap, profile)}</p>
         </div>
       </div>
 
