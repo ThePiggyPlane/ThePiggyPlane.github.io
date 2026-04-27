@@ -305,13 +305,15 @@ const CpMap = ({ onOpenCareer }) => {
                       onMouseDown={(e) => { e.preventDefault(); pickSuggestion(name); }}
                       onMouseEnter={() => setSugIndex(i)}
                     >
-                      {idx >= 0 ? (
-                        <>
-                          {name.slice(0, idx)}
-                          <strong>{name.slice(idx, idx + q.length)}</strong>
-                          {name.slice(idx + q.length)}
-                        </>
-                      ) : name}
+                      <span className="cp-map-sug-name">
+                        {idx >= 0 ? (
+                          <>
+                            {name.slice(0, idx)}
+                            <strong>{name.slice(idx, idx + q.length)}</strong>
+                            {name.slice(idx + q.length)}
+                          </>
+                        ) : name}
+                      </span>
                       <span className="cp-map-sug-tag">career</span>
                     </li>
                   );

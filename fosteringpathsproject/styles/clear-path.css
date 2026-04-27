@@ -299,7 +299,7 @@ a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-ra
   overflow-y: auto;
 }
 .cp-map-sug {
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex; align-items: baseline; justify-content: space-between;
   gap: 12px;
   padding: 8px 14px;
   font-size: 14px;
@@ -307,7 +307,8 @@ a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-ra
   color: var(--ink-2);
 }
 .cp-map-sug.on, .cp-map-sug:hover { background: var(--blue-soft); color: var(--ink); }
-.cp-map-sug strong { color: var(--ink); font-weight: 600; }
+.cp-map-sug-name { flex: 1; min-width: 0; }
+.cp-map-sug-name strong { color: var(--ink); font-weight: 600; }
 .cp-map-sug-tag {
   font-size: 11px;
   text-transform: uppercase;
