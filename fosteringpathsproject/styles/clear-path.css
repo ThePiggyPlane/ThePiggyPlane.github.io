@@ -265,6 +265,37 @@ a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-ra
 .cp-map-head { max-width: 880px; margin: 0 auto 18px; }
 .cp-map-head .cp-h1 { margin-bottom: 6px; }
 .cp-map-head .cp-lede { margin-bottom: 14px; }
+.cp-map-search {
+  display: flex; align-items: center; gap: 12px;
+  margin: 14px 0 10px;
+}
+.cp-map-search-input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 14px;
+  font: inherit;
+  font-size: 14px;
+  border: 1px solid var(--line);
+  background: var(--bg-card);
+  border-radius: 8px;
+  color: var(--ink);
+}
+.cp-map-search-input::placeholder { color: var(--ink-4); }
+.cp-map-search-input:focus { outline: 2px solid var(--blue); outline-offset: 2px; border-color: var(--blue); }
+.cp-map-search-clear {
+  width: 32px; height: 32px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--line);
+  background: var(--bg-card);
+  border-radius: 50%;
+  color: var(--ink-3);
+  font-size: 18px; line-height: 1;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.cp-map-search-clear:hover { color: var(--ink); border-color: var(--ink-4); }
+.cp-map-search-count { font-size: 13px; color: var(--ink-3); white-space: nowrap; flex-shrink: 0; }
+
 .cp-map-legend { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
 .cp-map-chip {
   display: inline-flex; align-items: center; gap: 8px;

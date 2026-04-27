@@ -8,6 +8,54 @@ const TIER_COLORS = {
   trade:   "#B54A1F",
 };
 
+// Common school nicknames so users can search by familiar shortforms.
+// Each pattern, if matched in the program name, adds extra search terms to the haystack.
+const SCHOOL_NICKNAMES = [
+  [/california state polytechnic university,?\s*pomona/i,            "cal poly pomona cpp"],
+  [/california polytechnic state university,?\s*san luis obispo/i,   "cal poly slo calpoly"],
+  [/california state polytechnic/i,                                  "cal poly"],
+  [/california state university,?\s*san bernardino/i,                "csusb cal state san bernardino"],
+  [/california state university,?\s*fullerton/i,                     "csuf cal state fullerton"],
+  [/california state university,?\s*long beach/i,                    "csulb cal state long beach"],
+  [/california state university,?\s*los angeles/i,                   "csula cal state la"],
+  [/california state university,?\s*northridge/i,                    "csun cal state northridge"],
+  [/university of california,?\s*riverside/i,                        "ucr uc riverside"],
+  [/university of california,?\s*irvine/i,                           "uci uc irvine"],
+  [/university of california,?\s*los angeles/i,                      "ucla"],
+  [/university of california,?\s*davis/i,                            "uc davis ucd"],
+  [/university of california,?\s*san diego/i,                        "ucsd uc san diego"],
+  [/university of california,?\s*santa barbara/i,                    "ucsb uc santa barbara"],
+  [/university of southern california/i,                             "usc"],
+  [/san bernardino valley college/i,                                 "sbvc"],
+  [/riverside city college|riverside community college/i,            "rcc"],
+  [/mt\.?\s*san jacinto college/i,                                   "msjc"],
+  [/mt\.?\s*san antonio college/i,                                   "mt sac mtsac"],
+  [/college of the desert/i,                                         "cod"],
+  [/orange coast college/i,                                          "occ"],
+  [/saddleback college/i,                                            "saddleback"],
+  [/santa ana college/i,                                             "sac"],
+  [/fullerton college/i,                                             "fullerton cc"],
+  [/cypress college/i,                                               "cypress"],
+  [/long beach city college/i,                                       "lbcc"],
+  [/pasadena city college/i,                                         "pcc pasadena cc"],
+  [/chaffey college/i,                                               "chaffey"],
+  [/norco college/i,                                                 "norco"],
+  [/crafton hills college/i,                                         "crafton"],
+  [/california baptist university/i,                                 "cbu cal baptist"],
+  [/loma linda university/i,                                         "loma linda llu"],
+  [/chapman university/i,                                            "chapman"],
+  [/ibew local 440/i,                                                "ibew 440"],
+  [/bricklayers and allied/i,                                        "bac bricklayers"],
+];
+
+const expandNicknames = (text) => {
+  let extra = "";
+  for (const [rx, nicks] of SCHOOL_NICKNAMES) {
+    if (rx.test(text)) extra += " " + nicks;
+  }
+  return text + extra;
+};
+
 // Reverse index: program id → list of {careerId, careerName}
 const buildProgramToCareers = () => {
   const map = {};
@@ -24,7 +72,8 @@ const CpMap = ({ onOpenCareer }) => {
   const mapRef = React.useRef(null);
   const containerRef = React.useRef(null);
   const [activeTiers, setActiveTiers] = React.useState({ cc: true, csu: true, uc: true, private: true, trade: true });
-  const [stats, setStats] = React.useState({ total: 0, mapped: 0, missing: 0 });
+  const [query, setQuery] = React.useState("");
+  const [stats, setStats] = React.useState({ total: 0, mapped: 0, missing: 0, visible: 0 });
   const programToCareers = React.useMemo(buildProgramToCareers, []);
   const tierLabels = window.APP_META.tierLabels;
 
@@ -83,12 +132,20 @@ const CpMap = ({ onOpenCareer }) => {
       });
       marker.bindPopup(popup, { maxWidth: 320 });
       marker._tier = p.tier;
+      // Build a single lowercased haystack for searching, including common
+      // school nicknames so "cal poly" matches "California State Polytechnic..." etc.
+      marker._haystack = expandNicknames([
+        p.name,
+        p.loc,
+        tierLabels[p.tier] || p.tier,
+        ...(careers.map(c => c.name)),
+      ].filter(Boolean).join(" ")).toLowerCase();
       markersByTier[p.tier].push(marker);
       layer.addLayer(marker);
     });
 
     map._markersByTier = markersByTier;
-    setStats({ total: all.length, mapped, missing });
+    setStats({ total: all.length, mapped, missing, visible: mapped });
 
     // Delegate clicks on career links inside popups to the React handler
     map.on("popupopen", (e) => {
@@ -114,29 +171,64 @@ const CpMap = ({ onOpenCareer }) => {
     return () => { map.remove(); };
   }, [onOpenCareer, programToCareers, tierLabels]);
 
-  // Toggle tier visibility
+  // Filter visibility based on active tiers AND search query
   React.useEffect(() => {
     const map = mapRef.current;
     if (!map || !map._markersByTier) return;
     const layer = map.markerLayer;
+    const q = query.trim().toLowerCase();
+    let visible = 0;
+    const visibleMarkers = [];
+
     Object.entries(map._markersByTier).forEach(([tier, markers]) => {
       markers.forEach(m => {
-        if (activeTiers[tier]) {
+        const tierMatch = activeTiers[tier];
+        const queryMatch = !q || m._haystack.includes(q);
+        const show = tierMatch && queryMatch;
+        if (show) {
           if (!layer.hasLayer(m)) layer.addLayer(m);
+          visible++;
+          visibleMarkers.push(m);
         } else {
           if (layer.hasLayer(m)) layer.removeLayer(m);
         }
       });
     });
-  }, [activeTiers]);
+    setStats(prev => ({ ...prev, visible }));
+
+    // If a search narrowed the results meaningfully, fit map to them
+    if (q && visibleMarkers.length > 0 && visibleMarkers.length < 30) {
+      const group = window.L.featureGroup(visibleMarkers);
+      map.fitBounds(group.getBounds().pad(0.15), { animate: true, maxZoom: 14 });
+    }
+  }, [activeTiers, query]);
 
   const toggleTier = (t) => setActiveTiers(prev => ({ ...prev, [t]: !prev[t] }));
+  const clearQuery = () => setQuery("");
 
   return (
     <main className="cp-main">
       <div className="cp-map-head">
         <h1 className="cp-h1">Programs near you</h1>
         <p className="cp-lede">Every {stats.mapped} program on this site, color-coded by school type. Click a marker to see what it offers.</p>
+        <div className="cp-map-search">
+          <input
+            type="search"
+            className="cp-map-search-input"
+            placeholder="Search programs, schools, careers, cities…"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            aria-label="Search programs"
+          />
+          {query && (
+            <button className="cp-map-search-clear" onClick={clearQuery} aria-label="Clear search">×</button>
+          )}
+          <span className="cp-map-search-count">
+            {stats.visible === stats.mapped
+              ? `${stats.mapped} programs`
+              : `${stats.visible} of ${stats.mapped}`}
+          </span>
+        </div>
         <div className="cp-map-legend">
           {["cc","csu","uc","private","trade"].map(t => (
             <button
