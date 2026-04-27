@@ -21,8 +21,7 @@ const CpHeader = ({ view, go, savedCount, onCompare }) => (
       <button
         className={"cp-saved-btn" + (savedCount === 0 ? " empty" : "")}
         onClick={onCompare}
-        disabled={savedCount < 2}
-        title={savedCount < 2 ? "Save at least 2 careers to compare" : "Compare saved careers"}
+        title={savedCount < 2 ? "Tap '+ Save' on careers to compare them side-by-side" : "Compare saved careers"}
       >
         Saved <span className="cp-count">{savedCount}</span>
       </button>
