@@ -123,7 +123,18 @@ const CpMap = ({ onOpenCareer }) => {
 
     const all = window.PROGRAMS.all();
     let mapped = 0, missing = 0;
-    const markersByTier = { cc: [], csu: [], uc: [], private: [], trade: [] };
+    // Per-program markers (used when there's a search query — shows everything)
+    const programMarkersByTier = { cc: [], csu: [], uc: [], private: [], trade: [] };
+    // Group programs by lat,lng so an institution shows once when no search is active
+    const groups = {};
+
+    const splitInstitution = (name) => {
+      // Program names look like "Org — Specific Program Name"; the em-dash
+      // separator was inserted by the import script. Strip it for grouping.
+      const i = name.indexOf(" — ");
+      if (i === -1) return { org: name, prog: name };
+      return { org: name.slice(0, i).trim(), prog: name.slice(i + 3).trim() };
+    };
 
     all.forEach(p => {
       if (typeof p.lat !== "number" || typeof p.lng !== "number") {
@@ -131,11 +142,14 @@ const CpMap = ({ onOpenCareer }) => {
         return;
       }
       mapped++;
+      const { org, prog } = splitInstitution(p.name || "");
       const color = TIER_COLORS[p.tier] || "#999";
       const careers = programToCareers[p.id] || [];
       const careerLinks = careers
         .map(c => `<a href="#" data-career-id="${c.id}" class="cp-map-clink">${c.name}</a>`)
         .join(", ");
+
+      // Per-program popup (used when searching)
       const popup = `
         <div class="cp-map-popup">
           <div class="cp-map-popup-tier" style="color:${color}">${tierLabels[p.tier] || p.tier}</div>
@@ -146,29 +160,74 @@ const CpMap = ({ onOpenCareer }) => {
           ${p.url ? `<div class="cp-map-popup-link"><a href="${p.url}" target="_blank" rel="noopener">Visit program site →</a></div>` : ""}
         </div>
       `;
-      const marker = window.L.circleMarker([p.lat, p.lng], {
-        radius: 7,
-        color: "#fff",
-        weight: 1.5,
-        fillColor: color,
-        fillOpacity: 0.85,
+      const progMarker = window.L.circleMarker([p.lat, p.lng], {
+        radius: 7, color: "#fff", weight: 1.5, fillColor: color, fillOpacity: 0.85,
       });
-      marker.bindPopup(popup, { maxWidth: 320 });
-      marker._tier = p.tier;
-      // Build a single lowercased haystack for searching, including common
-      // school nicknames so "cal poly" matches "California State Polytechnic..." etc.
-      marker._haystack = expandNicknames([
-        p.name,
-        p.loc,
-        tierLabels[p.tier] || p.tier,
-        ...(careers.map(c => c.name)),
+      progMarker.bindPopup(popup, { maxWidth: 360 });
+      progMarker._tier = p.tier;
+      progMarker._haystack = expandNicknames([
+        p.name, p.loc, tierLabels[p.tier] || p.tier, ...(careers.map(c => c.name)),
       ].filter(Boolean).join(" ")).toLowerCase();
-      markersByTier[p.tier].push(marker);
-      layer.addLayer(marker);
+      programMarkersByTier[p.tier].push(progMarker);
+
+      // Roll into the per-institution group keyed by precise lat/lng
+      const key = p.lat.toFixed(5) + "," + p.lng.toFixed(5);
+      if (!groups[key]) {
+        groups[key] = { lat: p.lat, lng: p.lng, tier: p.tier, org, loc: p.loc, programs: [] };
+      }
+      groups[key].programs.push({ p, prog, careers });
     });
 
-    map._markersByTier = markersByTier;
-    setStats({ total: all.length, mapped, missing, visible: mapped });
+    // Build one marker per group (institution-at-location)
+    const groupMarkersByTier = { cc: [], csu: [], uc: [], private: [], trade: [] };
+    Object.values(groups).forEach(g => {
+      const tier = g.tier;
+      const color = TIER_COLORS[tier] || "#999";
+      const tierLabel = tierLabels[tier] || tier;
+      const count = g.programs.length;
+
+      // Programs list inside the popup. Each row links to the careers it serves.
+      const progsHtml = g.programs.map(({ p, prog, careers }) => {
+        const careerLinks = careers
+          .map(c => `<a href="#" data-career-id="${c.id}" class="cp-map-clink">${c.name}</a>`)
+          .join(", ");
+        const url = p.url ? ` <a href="${p.url}" target="_blank" rel="noopener" class="cp-map-popup-progurl">site →</a>` : "";
+        const careerLine = careers.length
+          ? `<div class="cp-map-popup-progmeta"><span class="cp-stat-meta">For:</span> ${careerLinks}</div>`
+          : "";
+        return `
+          <li class="cp-map-popup-prog">
+            <div class="cp-map-popup-progname">${prog}${url}</div>
+            ${p.duration ? `<div class="cp-map-popup-progmeta"><span class="cp-stat-meta">${p.duration}</span></div>` : ""}
+            ${careerLine}
+          </li>
+        `;
+      }).join("");
+
+      const popup = `
+        <div class="cp-map-popup">
+          <div class="cp-map-popup-tier" style="color:${color}">${tierLabel}</div>
+          <div class="cp-map-popup-name">${g.org}</div>
+          <div class="cp-map-popup-meta">${g.loc || ""} · ${count} program${count === 1 ? "" : "s"}</div>
+          <ul class="cp-map-popup-progs">${progsHtml}</ul>
+        </div>
+      `;
+      // Slightly larger radius scales with program count, capped so big
+      // institutions don't dominate the map visually.
+      const radius = Math.min(13, 7 + Math.round(Math.log2(count + 1)));
+      const groupMarker = window.L.circleMarker([g.lat, g.lng], {
+        radius, color: "#fff", weight: 1.5, fillColor: color, fillOpacity: 0.85,
+      });
+      groupMarker.bindPopup(popup, { maxWidth: 380 });
+      groupMarker._tier = tier;
+      groupMarker._count = count;
+      groupMarkersByTier[tier].push(groupMarker);
+    });
+
+    map._programMarkersByTier = programMarkersByTier;
+    map._groupMarkersByTier = groupMarkersByTier;
+    map._groupCount = Object.keys(groups).length;
+    setStats({ total: all.length, mapped, missing, visible: Object.keys(groups).length, mode: "groups" });
 
     // Delegate clicks on career links inside popups to the React handler
     map.on("popupopen", (e) => {
@@ -183,30 +242,40 @@ const CpMap = ({ onOpenCareer }) => {
       });
     });
 
-    // Auto-fit bounds
-    const allMarkers = Object.values(markersByTier).flat();
-    if (allMarkers.length) {
-      const group = window.L.featureGroup(allMarkers);
-      map.fitBounds(group.getBounds().pad(0.05));
+    // Auto-fit bounds (use group markers since that's the default view)
+    const allGroupMarkers = Object.values(groupMarkersByTier).flat();
+    if (allGroupMarkers.length) {
+      const fg = window.L.featureGroup(allGroupMarkers);
+      map.fitBounds(fg.getBounds().pad(0.05));
     }
 
     // Cleanup on unmount
     return () => { map.remove(); };
   }, [onOpenCareer, programToCareers, tierLabels]);
 
-  // Filter visibility based on active tiers AND search query
+  // Filter visibility based on active tiers AND search query.
+  // Mode: empty search -> group markers (one per institution-location);
+  //       any search   -> per-program markers (the granular view).
   React.useEffect(() => {
     const map = mapRef.current;
-    if (!map || !map._markersByTier) return;
+    if (!map || !map._programMarkersByTier) return;
     const layer = map.markerLayer;
     const q = query.trim().toLowerCase();
+    const useGroups = !q;
+    const sourceByTier = useGroups ? map._groupMarkersByTier : map._programMarkersByTier;
+    const otherByTier  = useGroups ? map._programMarkersByTier : map._groupMarkersByTier;
+
+    // Make sure the inactive layer set is fully removed first
+    Object.values(otherByTier).flat().forEach(m => {
+      if (layer.hasLayer(m)) layer.removeLayer(m);
+    });
+
     let visible = 0;
     const visibleMarkers = [];
-
-    Object.entries(map._markersByTier).forEach(([tier, markers]) => {
+    Object.entries(sourceByTier).forEach(([tier, markers]) => {
       markers.forEach(m => {
         const tierMatch = activeTiers[tier];
-        const queryMatch = !q || m._haystack.includes(q);
+        const queryMatch = !q || (m._haystack && m._haystack.includes(q));
         const show = tierMatch && queryMatch;
         if (show) {
           if (!layer.hasLayer(m)) layer.addLayer(m);
@@ -217,7 +286,7 @@ const CpMap = ({ onOpenCareer }) => {
         }
       });
     });
-    setStats(prev => ({ ...prev, visible }));
+    setStats(prev => ({ ...prev, visible, mode: useGroups ? "groups" : "programs" }));
 
     // If a search narrowed the results meaningfully, fit map to them
     if (q && visibleMarkers.length > 0 && visibleMarkers.length < 30) {
@@ -272,7 +341,10 @@ const CpMap = ({ onOpenCareer }) => {
     <main className="cp-main">
       <div className="cp-map-head">
         <h1 className="cp-h1">Programs near you</h1>
-        <p className="cp-lede">Every {stats.mapped} program on this site, color-coded by school type. Click a marker to see what it offers.</p>
+        <p className="cp-lede">{stats.mode === "groups"
+          ? <>{stats.mapped} programs across <strong>{stats.visible}</strong> institutions, color-coded by school type. Click a marker to see all the programs there, or search to drill into a specific career.</>
+          : <>{stats.mapped} programs on this site, color-coded by school type. Click a marker to see what it offers.</>
+        }</p>
         <div className="cp-map-search">
           <div className="cp-map-search-wrap">
             <input
@@ -325,9 +397,11 @@ const CpMap = ({ onOpenCareer }) => {
             <button className="cp-map-search-clear" onClick={clearQuery} aria-label="Clear search">×</button>
           )}
           <span className="cp-map-search-count">
-            {stats.visible === stats.mapped
-              ? `${stats.mapped} programs`
-              : `${stats.visible} of ${stats.mapped}`}
+            {stats.mode === "groups"
+              ? `${stats.visible} institution${stats.visible === 1 ? "" : "s"}`
+              : (stats.visible === stats.mapped
+                  ? `${stats.mapped} programs`
+                  : `${stats.visible} of ${stats.mapped} programs`)}
           </span>
         </div>
         <div className="cp-map-legend">
