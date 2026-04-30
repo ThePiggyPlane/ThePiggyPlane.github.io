@@ -31,7 +31,7 @@ const CpHome = ({ onOpen, onWizard, saved, toggleSave }) => {
   return (
     <main className="cp-main">
       <section className="cp-hero">
-        <h1 className="cp-h1">Career Pathways in San Bernardino, Riverside &amp; Orange County</h1>
+        <h1 className="cp-h1">Career Pathways in San Bernardino, Riverside, &amp; Orange County</h1>
         <div className="cp-cta-row">
           <button className="cp-btn" onClick={() => document.querySelector('#careers').scrollIntoView({ behavior: 'smooth' })}>Browse all</button>
         </div>

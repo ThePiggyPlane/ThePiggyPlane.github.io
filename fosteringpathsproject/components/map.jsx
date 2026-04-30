@@ -473,9 +473,6 @@ const CpMap = ({ onOpenCareer }) => {
             </button>
           ))}
         </div>
-        {stats.missing > 0 && (
-          <p className="cp-map-note">{stats.missing} program{stats.missing === 1 ? "" : "s"} not pinned (address couldn't be located precisely).</p>
-        )}
       </div>
       <div ref={containerRef} className="cp-map-canvas" />
     </main>
