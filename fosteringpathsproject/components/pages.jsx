@@ -284,7 +284,7 @@ const CpSurvey = ({ profile, onComplete, onCancel }) => {
           ))}
         </fieldset>
 
-        <p className="cp-survey-priv">Your answers stay on this device — they're stored in your browser and never sent anywhere. Update them anytime from the cost calculator.</p>
+        <p className="cp-survey-priv">Your answers stay on this device and are not shared. Update them anytime from the cost calculator.</p>
 
         <div className="cp-survey-actions">
           <button type="submit" className="cp-btn" disabled={!canSubmit}>Show me my aid →</button>
