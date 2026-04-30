@@ -31,9 +31,7 @@ const CpHome = ({ onOpen, onWizard, saved, toggleSave }) => {
   return (
     <main className="cp-main">
       <section className="cp-hero">
-        <div className="cp-eyebrow">For foster youth in San Bernardino, Riverside &amp; Orange County</div>
-        <h1 className="cp-h1">A straight answer on college, money, and what comes next.</h1>
-        <p className="cp-lede">Real career paths. Real cost after aid. The five things to do this week. Nothing padded. Nothing sold.</p>
+        <h1 className="cp-h1">Career Pathways in San Bernardino, Riverside &amp; Orange County</h1>
         <div className="cp-cta-row">
           <button className="cp-btn" onClick={() => document.querySelector('#careers').scrollIntoView({ behavior: 'smooth' })}>Browse all</button>
         </div>
