@@ -1,6 +1,6 @@
 window.registerCareer({
   id: "mathematician",
-  name: "Data & Math",
+  name: "Mathematician",
   tagline: "Solve real problems with numbers.",
   interests: ["numbers"],
   length: "4 yrs (grad optional)",
