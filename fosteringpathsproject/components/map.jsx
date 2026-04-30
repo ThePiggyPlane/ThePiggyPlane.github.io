@@ -220,6 +220,7 @@ const CpMap = ({ onOpenCareer }) => {
       });
       groupMarker.bindPopup(popup, { maxWidth: 360 });
       groupMarker._tier = tier;
+      groupMarker._count = 1;   // each apprenticeship is one program
       groupMarker._isApprenticeship = true;
       // Stash on a parallel array we'll merge into groupMarkersByTier below
       if (!map._apprenticeshipGroupMarkers) map._apprenticeshipGroupMarkers = [];
@@ -326,6 +327,7 @@ const CpMap = ({ onOpenCareer }) => {
     });
 
     let visible = 0;
+    let visiblePrograms = 0;   // sum of programs across visible institution markers
     const visibleMarkers = [];
     Object.entries(sourceByTier).forEach(([tier, markers]) => {
       markers.forEach(m => {
@@ -335,13 +337,14 @@ const CpMap = ({ onOpenCareer }) => {
         if (show) {
           if (!layer.hasLayer(m)) layer.addLayer(m);
           visible++;
+          visiblePrograms += (m._count || 1);
           visibleMarkers.push(m);
         } else {
           if (layer.hasLayer(m)) layer.removeLayer(m);
         }
       });
     });
-    setStats(prev => ({ ...prev, visible, mode: useGroups ? "groups" : "programs" }));
+    setStats(prev => ({ ...prev, visible, visiblePrograms, mode: useGroups ? "groups" : "programs" }));
 
     // If a search narrowed the results meaningfully, fit map to them
     if (q && visibleMarkers.length > 0 && visibleMarkers.length < 30) {
@@ -397,7 +400,7 @@ const CpMap = ({ onOpenCareer }) => {
       <div className="cp-map-head">
         <h1 className="cp-h1">Programs near you</h1>
         <p className="cp-lede">{stats.mode === "groups"
-          ? <>{stats.mapped} programs across <strong>{stats.visible}</strong> institutions, color-coded by school type. Click a marker to see all the programs there, or search a specific career.</>
+          ? <><strong>{stats.visiblePrograms ?? stats.mapped}</strong> programs across <strong>{stats.visible}</strong> institutions, color-coded by school type. Click a marker to see all the programs there, or search a specific career.</>
           : <>{stats.mapped} programs on this site, color-coded by school type. Click a marker to see what it offers.</>
         }</p>
         <div className="cp-map-search">
@@ -453,7 +456,7 @@ const CpMap = ({ onOpenCareer }) => {
           )}
           <span className="cp-map-search-count">
             {stats.mode === "groups"
-              ? `${stats.visible} institution${stats.visible === 1 ? "" : "s"}`
+              ? `${stats.visiblePrograms ?? stats.mapped} program${(stats.visiblePrograms ?? stats.mapped) === 1 ? "" : "s"} · ${stats.visible} institution${stats.visible === 1 ? "" : "s"}`
               : (stats.visible === stats.mapped
                   ? `${stats.mapped} programs`
                   : `${stats.visible} of ${stats.mapped} programs`)}
