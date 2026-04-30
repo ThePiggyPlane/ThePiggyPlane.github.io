@@ -178,6 +178,55 @@ const CpMap = ({ onOpenCareer }) => {
       groups[key].programs.push({ p, prog, careers });
     });
 
+    // ----- Apprenticeships (CDSS / DAS) -----
+    // Treat each one as both a program-tier-trade marker (for search) and
+    // a group-tier-trade marker (so they show in the default grouped view too).
+    const apprenticeships = (window.APPRENTICESHIPS && window.APPRENTICESHIPS.all()) || [];
+    apprenticeships.forEach(a => {
+      if (typeof a.lat !== "number" || typeof a.lng !== "number") return;
+      const tier = "trade";
+      const color = TIER_COLORS[tier];
+      const url = a.websiteUrl || (a.website && /^https?:\/\//i.test(a.website) ? a.website : "");
+      const phone = a.phone ? `<a href="tel:${a.phone.replace(/[^0-9+]/g,"")}">${a.phone}</a>` : "";
+      const email = a.email ? `<a href="mailto:${a.email}">${a.email}</a>` : "";
+      const popup = `
+        <div class="cp-map-popup">
+          <div class="cp-map-popup-tier" style="color:${color}">CDSS Apprenticeship${a.industry ? " · " + a.industry : ""}</div>
+          <div class="cp-map-popup-name">${a.occupation || a.sponsor}</div>
+          <div class="cp-map-popup-meta">${a.sponsor || ""}</div>
+          ${a.length || a.minAge ? `<div class="cp-map-popup-meta">${a.length || ""}${a.length && a.minAge ? " · " : ""}${a.minAge ? "min age " + a.minAge : ""}</div>` : ""}
+          ${a.educationPrereq ? `<div class="cp-map-popup-careers"><strong>Prereq:</strong> ${a.educationPrereq}</div>` : ""}
+          ${(phone || email) ? `<div class="cp-map-popup-careers">${[phone,email].filter(Boolean).join(" · ")}</div>` : ""}
+          ${url ? `<div class="cp-map-popup-link"><a href="${url}" target="_blank" rel="noopener">Visit program site →</a></div>` : ""}
+        </div>
+      `;
+
+      // Per-program (search) marker
+      const progMarker = window.L.circleMarker([a.lat, a.lng], {
+        radius: 7, color: "#fff", weight: 1.5, fillColor: color, fillOpacity: 0.85,
+      });
+      progMarker.bindPopup(popup, { maxWidth: 360 });
+      progMarker._tier = tier;
+      progMarker._haystack = expandNicknames([
+        a.occupation, a.sponsor, a.industry, a.loc,
+        "apprenticeship cdss das",
+      ].filter(Boolean).join(" ")).toLowerCase();
+      programMarkersByTier[tier].push(progMarker);
+
+      // Group (default) marker — apprenticeships are point-locations, not
+      // multi-program institutions, so no aggregation needed.
+      const groupMarker = window.L.circleMarker([a.lat, a.lng], {
+        radius: 7, color: "#fff", weight: 1.5, fillColor: color, fillOpacity: 0.85,
+      });
+      groupMarker.bindPopup(popup, { maxWidth: 360 });
+      groupMarker._tier = tier;
+      groupMarker._isApprenticeship = true;
+      // Stash on a parallel array we'll merge into groupMarkersByTier below
+      if (!map._apprenticeshipGroupMarkers) map._apprenticeshipGroupMarkers = [];
+      map._apprenticeshipGroupMarkers.push(groupMarker);
+      mapped++;
+    });
+
     // Build one marker per group (institution-at-location)
     const groupMarkersByTier = { cc: [], csu: [], uc: [], private: [], trade: [] };
     Object.values(groups).forEach(g => {
@@ -224,10 +273,16 @@ const CpMap = ({ onOpenCareer }) => {
       groupMarkersByTier[tier].push(groupMarker);
     });
 
+    // Merge apprenticeship markers into the group view's trade tier so they
+    // show alongside the institution markers when the search box is empty.
+    if (map._apprenticeshipGroupMarkers) {
+      groupMarkersByTier.trade.push(...map._apprenticeshipGroupMarkers);
+    }
+
     map._programMarkersByTier = programMarkersByTier;
     map._groupMarkersByTier = groupMarkersByTier;
-    map._groupCount = Object.keys(groups).length;
-    setStats({ total: all.length, mapped, missing, visible: Object.keys(groups).length, mode: "groups" });
+    map._groupCount = Object.values(groupMarkersByTier).reduce((n, arr) => n + arr.length, 0);
+    setStats({ total: all.length + apprenticeships.length, mapped, missing, visible: map._groupCount, mode: "groups" });
 
     // Delegate clicks on career links inside popups to the React handler
     map.on("popupopen", (e) => {

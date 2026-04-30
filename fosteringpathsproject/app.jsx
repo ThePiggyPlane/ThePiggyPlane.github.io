@@ -40,7 +40,7 @@ const useProfile = () => {
 };
 
 // ---- URL hash <-> route object -------------------------------------------
-const SIMPLE_VIEWS = new Set(["home","map","money","week","about","compare"]);
+const SIMPLE_VIEWS = new Set(["home","map","apprenticeships","money","week","about","compare"]);
 
 const parseHash = () => {
   const h = (window.location.hash || "").replace(/^#\/?/, "");
@@ -121,6 +121,9 @@ const App = () => {
       break;
     case "map":
       view = <CpMap onOpenCareer={onOpenCareer} />;
+      break;
+    case "apprenticeships":
+      view = <CpApprenticeships />;
       break;
     case "compare":
       view = <CpCompare saved={saved} toggleSave={toggleSave} onOpen={onOpenCareer} onBack={() => go("home")} />;

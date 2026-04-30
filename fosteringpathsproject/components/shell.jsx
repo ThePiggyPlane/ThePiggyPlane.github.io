@@ -14,6 +14,7 @@ const CpHeader = ({ view, go, savedCount, onCompare }) => (
       <nav aria-label="Primary">
         <button className={view === "home" ? "on" : ""} onClick={() => go("home")}>Careers</button>
         <button className={view === "map" ? "on" : ""} onClick={() => go("map")}>Map</button>
+        <button className={view === "apprenticeships" ? "on" : ""} onClick={() => go("apprenticeships")}>CDSS Apprenticeships</button>
         <button className={view === "money" ? "on" : ""} onClick={() => go("money")}>Cost</button>
         <button className={view === "week" ? "on" : ""} onClick={() => go("week")}>First Week</button>
         <button className={view === "about" ? "on" : ""} onClick={() => go("about")}>About</button>

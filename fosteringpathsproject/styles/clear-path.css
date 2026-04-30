@@ -376,6 +376,104 @@ a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-ra
   .cp-dol-tbl th { width: 45%; white-space: normal; }
 }
 
+/* CDSS Apprenticeships page */
+.cp-app-filters {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  margin: 16px 0 8px;
+}
+.cp-app-search {
+  flex: 1; min-width: 220px;
+  padding: 10px 14px;
+  font-size: 14px;
+  border: 1px solid var(--line);
+  background: var(--bg-card);
+  border-radius: 8px;
+  color: var(--ink);
+}
+.cp-app-search:focus { outline: 2px solid var(--blue); outline-offset: 2px; border-color: var(--blue); }
+.cp-app-select {
+  padding: 10px 14px;
+  font-size: 14px;
+  border: 1px solid var(--line);
+  background: var(--bg-card);
+  border-radius: 8px;
+  color: var(--ink);
+  cursor: pointer;
+}
+.cp-app-count { font-size: 13px; color: var(--ink-3); margin: 4px 0 18px; }
+
+.cp-app-list { display: flex; flex-direction: column; gap: 10px; }
+.cp-app {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.cp-app[open] { box-shadow: var(--shadow-sm); border-color: var(--ink-4); }
+.cp-app summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 14px 18px;
+  position: relative;
+}
+.cp-app summary::-webkit-details-marker { display: none; }
+.cp-app summary::after {
+  content: "▾";
+  position: absolute;
+  right: 18px; top: 16px;
+  color: var(--ink-3);
+  transition: transform 0.15s;
+}
+.cp-app[open] summary::after { transform: rotate(180deg); }
+.cp-app summary:hover { background: var(--blue-soft); }
+.cp-app-summary > div { padding-right: 30px; }
+.cp-app-occ { font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+.cp-app-spon { font-size: 13px; color: var(--ink-2); margin-bottom: 6px; }
+.cp-app-meta {
+  display: flex; flex-wrap: wrap; gap: 8px 14px;
+  font-size: 12px; color: var(--ink-3);
+}
+.cp-app-tag {
+  background: var(--blue-soft); color: var(--blue);
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-weight: 500;
+}
+.cp-app-detail {
+  padding: 0 18px 18px;
+  border-top: 1px solid var(--line-2);
+  background: var(--bg);
+}
+.cp-app-detail-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px;
+  font-size: 13px; line-height: 1.5;
+  margin-top: 14px;
+}
+.cp-app-detail-grid > div { padding-top: 4px; }
+.cp-app-detail-grid dt {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--ink-3); font-weight: 500; margin-bottom: 2px;
+}
+.cp-app-detail-grid dd { margin: 0; color: var(--ink-2); }
+.cp-app-contact {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.cp-app-contact-h {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--ink-3); font-weight: 500; margin-bottom: 6px;
+}
+.cp-app-contact a { color: var(--blue); }
+.cp-app-source { font-size: 12px; color: var(--ink-3); margin-top: 24px; }
+@media (max-width: 700px) {
+  .cp-app-detail-grid { grid-template-columns: 1fr; }
+}
+
 /* Map */
 .cp-map-head { max-width: 880px; margin: 0 auto 18px; }
 .cp-map-head .cp-h1 { margin-bottom: 6px; }
