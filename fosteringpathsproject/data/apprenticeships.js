@@ -1346,11 +1346,11 @@ window.registerApprenticeships(
     "email": "Marcie.correa@trainingcenters.org",
     "website": "",
     "websiteUrl": "",
-    "address": "1717 S. Grove Avenue, Ont, CA 91761",
-    "loc": "Ont",
+    "address": "1717 S. Grove Avenue, Ontario, CA 91761",
+    "loc": "Ontario",
     "state": "CA",
-    "lat": 50.000678,
-    "lng": -86.000977
+    "lat": 34.0354,
+    "lng": -117.6228
   },
   {
     "id": "282",
@@ -3280,8 +3280,8 @@ window.registerApprenticeships(
     "address": "25347 S. Schulte Road, Tracy, CA 95377",
     "loc": "Tracy",
     "state": "CA",
-    "lat": 45.6735384,
-    "lng": -66.6845417
+    "lat": 37.7186,
+    "lng": -121.408
   },
   {
     "id": "9578",
@@ -3571,11 +3571,11 @@ window.registerApprenticeships(
     "email": "Marcie.correa@trainingcenters.org",
     "website": "",
     "websiteUrl": "",
-    "address": "1717 S. Grove Avenue, Ont, CA 91761",
-    "loc": "Ont",
+    "address": "1717 S. Grove Avenue, Ontario, CA 91761",
+    "loc": "Ontario",
     "state": "CA",
-    "lat": 50.000678,
-    "lng": -86.000977
+    "lat": 34.0354,
+    "lng": -117.6228
   },
   {
     "id": "4845",
@@ -9141,11 +9141,11 @@ window.registerApprenticeships(
     "email": "Marcie.correa@trainingcenters.org",
     "website": "",
     "websiteUrl": "",
-    "address": "1717 S. Grove Avenue, Ont, CA 91761",
-    "loc": "Ont",
+    "address": "1717 S. Grove Avenue, Ontario, CA 91761",
+    "loc": "Ontario",
     "state": "CA",
-    "lat": 50.000678,
-    "lng": -86.000977
+    "lat": 34.0354,
+    "lng": -117.6228
   },
   {
     "id": "10665",
@@ -13201,11 +13201,11 @@ window.registerApprenticeships(
     "email": "Marcie.correa@trainingcenters.org",
     "website": "",
     "websiteUrl": "",
-    "address": "1717 S. Grove Avenue, Ont, CA 91761",
-    "loc": "Ont",
+    "address": "1717 S. Grove Avenue, Ontario, CA 91761",
+    "loc": "Ontario",
     "state": "CA",
-    "lat": 50.000678,
-    "lng": -86.000977
+    "lat": 34.0354,
+    "lng": -117.6228
   },
   {
     "id": "743",
@@ -13226,11 +13226,11 @@ window.registerApprenticeships(
     "email": "Marcie.correa@trainingcenters.org",
     "website": "",
     "websiteUrl": "",
-    "address": "1717 S. Grove Avenue, Ont, CA 91761",
-    "loc": "Ont",
+    "address": "1717 S. Grove Avenue, Ontario, CA 91761",
+    "loc": "Ontario",
     "state": "CA",
-    "lat": 50.000678,
-    "lng": -86.000977
+    "lat": 34.0354,
+    "lng": -117.6228
   },
   {
     "id": "119",
@@ -13326,11 +13326,11 @@ window.registerApprenticeships(
     "email": "Marcie.correa@trainingcenters.org",
     "website": "",
     "websiteUrl": "",
-    "address": "1717 S. Grove Avenue, Ont, CA 91761",
-    "loc": "Ont",
+    "address": "1717 S. Grove Avenue, Ontario, CA 91761",
+    "loc": "Ontario",
     "state": "CA",
-    "lat": 50.000678,
-    "lng": -86.000977
+    "lat": 34.0354,
+    "lng": -117.6228
   },
   {
     "id": "4568",
@@ -13476,11 +13476,11 @@ window.registerApprenticeships(
     "email": "Marcie.correa@trainingcenters.org",
     "website": "",
     "websiteUrl": "",
-    "address": "1717 S. Grove Avenue, Ont, CA 91761",
-    "loc": "Ont",
+    "address": "1717 S. Grove Avenue, Ontario, CA 91761",
+    "loc": "Ontario",
     "state": "CA",
-    "lat": 50.000678,
-    "lng": -86.000977
+    "lat": 34.0354,
+    "lng": -117.6228
   },
   {
     "id": "8664",
@@ -13963,8 +13963,8 @@ window.registerApprenticeships(
     "address": "25347 S. Schulte Road, Tracy, CA 95377",
     "loc": "Tracy",
     "state": "CA",
-    "lat": 45.6735384,
-    "lng": -66.6845417
+    "lat": 37.7186,
+    "lng": -121.408
   },
   {
     "id": "9951",
@@ -13988,8 +13988,8 @@ window.registerApprenticeships(
     "address": "25347 S. Schulte Road, Tracy, CA 95377",
     "loc": "Tracy",
     "state": "CA",
-    "lat": 45.6735384,
-    "lng": -66.6845417
+    "lat": 37.7186,
+    "lng": -121.408
   },
   {
     "id": "10284",
@@ -14523,11 +14523,11 @@ window.registerApprenticeships(
     "email": "Marcie.correa@trainingcenters.org",
     "website": "",
     "websiteUrl": "",
-    "address": "1717 S. Grove Avenue, Ont, CA 91761",
-    "loc": "Ont",
+    "address": "1717 S. Grove Avenue, Ontario, CA 91761",
+    "loc": "Ontario",
     "state": "CA",
-    "lat": 50.000678,
-    "lng": -86.000977
+    "lat": 34.0354,
+    "lng": -117.6228
   },
   {
     "id": "10489",
@@ -14796,11 +14796,11 @@ window.registerApprenticeships(
     "email": "Marcie.correa@trainingcenters.org",
     "website": "",
     "websiteUrl": "",
-    "address": "1717 S. Grove Avenue, Ont, CA 91761",
-    "loc": "Ont",
+    "address": "1717 S. Grove Avenue, Ontario, CA 91761",
+    "loc": "Ontario",
     "state": "CA",
-    "lat": 50.000678,
-    "lng": -86.000977
+    "lat": 34.0354,
+    "lng": -117.6228
   },
   {
     "id": "8673",
@@ -14844,11 +14844,11 @@ window.registerApprenticeships(
     "email": "Marcie.correa@trainingcenters.org",
     "website": "",
     "websiteUrl": "",
-    "address": "1717 S. Grove Avenue, Ont, CA 91761",
-    "loc": "Ont",
+    "address": "1717 S. Grove Avenue, Ontario, CA 91761",
+    "loc": "Ontario",
     "state": "CA",
-    "lat": 50.000678,
-    "lng": -86.000977
+    "lat": 34.0354,
+    "lng": -117.6228
   },
   {
     "id": "9756",
@@ -16801,8 +16801,8 @@ window.registerApprenticeships(
     "address": "25347 S. Schulte Road, Tracy, CA 95377",
     "loc": "Tracy",
     "state": "CA",
-    "lat": 45.6735384,
-    "lng": -66.6845417
+    "lat": 37.7186,
+    "lng": -121.408
   },
   {
     "id": "10602",
@@ -16994,11 +16994,11 @@ window.registerApprenticeships(
     "email": "Marcie.correa@trainingcenters.org",
     "website": "",
     "websiteUrl": "",
-    "address": "1717 S. Grove Avenue, Ont, CA 91761",
-    "loc": "Ont",
+    "address": "1717 S. Grove Avenue, Ontario, CA 91761",
+    "loc": "Ontario",
     "state": "CA",
-    "lat": 50.000678,
-    "lng": -86.000977
+    "lat": 34.0354,
+    "lng": -117.6228
   },
   {
     "id": "761",
@@ -17019,11 +17019,11 @@ window.registerApprenticeships(
     "email": "Marcie.correa@trainingcenters.org",
     "website": "",
     "websiteUrl": "",
-    "address": "1717 S. Grove Avenue, Ont, CA 91761",
-    "loc": "Ont",
+    "address": "1717 S. Grove Avenue, Ontario, CA 91761",
+    "loc": "Ontario",
     "state": "CA",
-    "lat": 50.000678,
-    "lng": -86.000977
+    "lat": 34.0354,
+    "lng": -117.6228
   },
   {
     "id": "10515",
@@ -21030,8 +21030,8 @@ window.registerApprenticeships(
     "address": "25347 S. Schulte Road, Tracy, CA 95377",
     "loc": "Tracy",
     "state": "CA",
-    "lat": 45.6735384,
-    "lng": -66.6845417
+    "lat": 37.7186,
+    "lng": -121.408
   },
   {
     "id": "2167",
@@ -21126,8 +21126,8 @@ window.registerApprenticeships(
     "address": "25347 S. Schulte Road, Tracy, CA 95377",
     "loc": "Tracy",
     "state": "CA",
-    "lat": 45.6735384,
-    "lng": -66.6845417
+    "lat": 37.7186,
+    "lng": -121.408
   },
   {
     "id": "9922",
@@ -21390,11 +21390,11 @@ window.registerApprenticeships(
     "email": "Marcie.correa@trainingcenters.org",
     "website": "",
     "websiteUrl": "",
-    "address": "1717 S. Grove Avenue, Ont, CA 91761",
-    "loc": "Ont",
+    "address": "1717 S. Grove Avenue, Ontario, CA 91761",
+    "loc": "Ontario",
     "state": "CA",
-    "lat": 50.000678,
-    "lng": -86.000977
+    "lat": 34.0354,
+    "lng": -117.6228
   },
   {
     "id": "4844",
@@ -21463,11 +21463,11 @@ window.registerApprenticeships(
     "email": "Marcie.correa@trainingcenters.org",
     "website": "",
     "websiteUrl": "",
-    "address": "1717 S. Grove Avenue, Ont, CA 91761",
-    "loc": "Ont",
+    "address": "1717 S. Grove Avenue, Ontario, CA 91761",
+    "loc": "Ontario",
     "state": "CA",
-    "lat": 50.000678,
-    "lng": -86.000977
+    "lat": 34.0354,
+    "lng": -117.6228
   },
   {
     "id": "9571",
@@ -22139,11 +22139,11 @@ window.registerApprenticeships(
     "email": "Marcie.correa@trainingcenters.org",
     "website": "",
     "websiteUrl": "",
-    "address": "1717 S. Grove Avenue, Ont, CA 91761",
-    "loc": "Ont",
+    "address": "1717 S. Grove Avenue, Ontario, CA 91761",
+    "loc": "Ontario",
     "state": "CA",
-    "lat": 50.000678,
-    "lng": -86.000977
+    "lat": 34.0354,
+    "lng": -117.6228
   },
   {
     "id": "10853",

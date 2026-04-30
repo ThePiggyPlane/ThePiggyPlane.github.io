@@ -3,15 +3,52 @@
 
 const PAGE_SIZE = 12;
 
+// Classify a single program (from programs.js) into one or more path-type
+// buckets. A program can be in multiple — e.g. "AS / Certificate of
+// Achievement" matches both Degree and Certificate.
+const DEGREE_RX        = /\b(as|aa|aas|asn|adn|bs|ba|bfa|barch|as-?t|aa-?t|bsn|bsme|bsce|dvm|ms|ma|mfa|mds|murp|mba|md|mse|ph\.?d|bachelor|master|doctor|associate)\b/i;
+const CERTIFICATE_RX   = /\b(cert(ificate)?|diploma)\b/i;
+const APPRENTICESHIP_RX = /\b(apprentic|paid|jatc)\b/i;
+
+const programPathTypes = (p) => {
+  const text = ((p?.name || "") + " " + (p?.duration || "")).trim();
+  const types = [];
+  if (p?.tier === "trade" || APPRENTICESHIP_RX.test(text)) types.push("apprenticeship");
+  if (DEGREE_RX.test(text))        types.push("degree");
+  if (CERTIFICATE_RX.test(text))   types.push("certificate");
+  return types;
+};
+
+// All path types a career exposes, derived from its programs[].
+const careerPathTypes = (career) => {
+  const out = new Set();
+  (career.programs || []).forEach(pid => {
+    const p = window.PROGRAMS && window.PROGRAMS.get(pid);
+    if (!p) return;
+    programPathTypes(p).forEach(t => out.add(t));
+  });
+  return out;
+};
+
 const CpHome = ({ onOpen, onWizard, saved, toggleSave }) => {
   const [filter, setFilter] = React.useState("all");
   const [query, setQuery] = React.useState("");
   const [page, setPage] = React.useState(0);
 
   const all = window.CAREERS.all();
+
+  // Per-career path-type sets, computed once per career list change.
+  const pathTypesByCareer = React.useMemo(() => {
+    const m = new Map();
+    all.forEach(c => m.set(c.id, careerPathTypes(c)));
+    return m;
+  }, [all]);
+
   const filtered = React.useMemo(() => {
     let xs = all;
-    if (filter !== "all") xs = xs.filter(c => (c.lengthBucket || 'mid') === filter);
+    if (filter !== "all") {
+      xs = xs.filter(c => pathTypesByCareer.get(c.id)?.has(filter));
+    }
     if (query.trim()) {
       const q = query.toLowerCase();
       xs = xs.filter(c =>
@@ -21,7 +58,7 @@ const CpHome = ({ onOpen, onWizard, saved, toggleSave }) => {
       );
     }
     return xs;
-  }, [all, filter, query]);
+  }, [all, filter, query, pathTypesByCareer]);
 
   React.useEffect(() => { setPage(0); }, [filter, query]);
 
@@ -54,10 +91,10 @@ const CpHome = ({ onOpen, onWizard, saved, toggleSave }) => {
 
         <div className="cp-filters" role="toolbar" aria-label="Filter careers">
           {[
-            ["all", "All"],
-            ["fast", "Under 2 yrs"],
-            ["mid", "2–4 yrs"],
-            ["long", "4+ yrs"],
+            ["all",            "All"],
+            ["degree",         "Degree"],
+            ["certificate",    "Certificate"],
+            ["apprenticeship", "Apprenticeship"],
           ].map(([k, l]) => (
             <button key={k} className={"cp-chip " + (filter === k ? "on" : "")} onClick={() => setFilter(k)} aria-pressed={filter === k}>{l}</button>
           ))}

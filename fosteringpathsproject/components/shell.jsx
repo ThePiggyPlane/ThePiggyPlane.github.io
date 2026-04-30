@@ -30,6 +30,44 @@ const CpHeader = ({ view, go, savedCount, onCompare }) => (
   </header>
 );
 
+// Build and trigger download of an .ics file for a single all-day deadline.
+// Works in Apple Calendar / Outlook / Google Calendar (via import) etc.
+const downloadIcs = (label, isoDate) => {
+  const startCompact = isoDate.replace(/-/g, "");                       // "20260302"
+  const endDateObj = new Date(isoDate + "T00:00:00");
+  endDateObj.setDate(endDateObj.getDate() + 1);
+  const endCompact = endDateObj.toISOString().slice(0, 10).replace(/-/g, "");
+  const stamp = new Date().toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
+  const uid = "fp-" + isoDate + "-" + label.toLowerCase().replace(/[^a-z0-9]+/g, "-") + "@tylerjohnpeters.com";
+  const escape = (s) => String(s).replace(/[\\,;]/g, m => "\\" + m).replace(/\n/g, "\\n");
+  const ics = [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "PRODID:-//Fostering Paths//Deadlines//EN",
+    "CALSCALE:GREGORIAN",
+    "METHOD:PUBLISH",
+    "BEGIN:VEVENT",
+    "UID:" + uid,
+    "DTSTAMP:" + stamp,
+    "DTSTART;VALUE=DATE:" + startCompact,
+    "DTEND;VALUE=DATE:" + endCompact,
+    "SUMMARY:" + escape(label),
+    "DESCRIPTION:" + escape("Deadline from Fostering Paths — https://www.tylerjohnpeters.com/fosteringpathsproject/"),
+    "END:VEVENT",
+    "END:VCALENDAR",
+    "",
+  ].join("\r\n");
+  const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = label.toLowerCase().replace(/[^a-z0-9]+/g, "-") + ".ics";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 5000);
+};
+
 const CpDeadlines = () => {
   const next3 = [...window.APP_META.deadlines]
     .filter(d => window.daysUntil(d.date) >= 0)
@@ -52,7 +90,7 @@ const CpDeadlines = () => {
               <div className="cp-deadline-title">{d.label}</div>
               <div className="cp-deadline-date">{new Date(d.date + "T00:00:00").toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</div>
             </div>
-            <button className="cp-add-cal" aria-label={"Add " + d.label + " to calendar"}>+ Calendar</button>
+            <button className="cp-add-cal" onClick={() => downloadIcs(d.label, d.date)} aria-label={"Add " + d.label + " to calendar"}>+ Calendar</button>
           </div>
         ))}
       </div>
