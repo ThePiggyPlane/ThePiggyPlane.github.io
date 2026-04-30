@@ -424,8 +424,7 @@ const CpAidDetail = ({ aidId, onBack }) => {
 const CpWeek = () => (
   <main className="cp-main narrow">
     <div className="cp-eyebrow">This week</div>
-    <h1 className="cp-h1">Five things. About three hours.</h1>
-    <p className="cp-lede">Every path in this guide branches from these five. Do them once.</p>
+    <h1 className="cp-h1">The Core 5 Resources</h1>
     {[
       ["FAFSA or CADAA", "Master key. Unlocks Pell, Cal Grant, CCPG, campus aid. Check 'unaccompanied youth' — skip parent info."],
       ["Chafee ETV", "$5K/yr. Twenty minutes."],
