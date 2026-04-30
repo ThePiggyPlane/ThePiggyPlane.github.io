@@ -442,11 +442,6 @@ const CpWeek = () => (
 
 const CpAbout = () => (
   <main className="cp-main narrow cp-about">
-    <div className="cp-eyebrow">About</div>
-    <h1 className="cp-h1">How this guide is built — and how to trust it.</h1>
-    <p>Fostering Paths is an independent guide for current and former California foster youth in San Bernardino, Riverside, and Orange County. We exist because the existing systems — financial aid letters, college websites, well-meaning counselors — almost never give a straight, accurate answer to the only question that matters: <em>what will this actually cost me?</em></p>
-    <p>Every dollar figure is verified against current state and federal sources. Every program is one we've spoken to directly. Quotes are from real foster youth who agreed to share their story. Nothing on this site is paid for by a campus or scholarship.</p>
-
     <h2 className="cp-h2">Where the numbers come from</h2>
     <div className="cp-about-meta">
       <div><strong>Cal Grant</strong>California Student Aid Commission, current cycle</div>
@@ -456,12 +451,6 @@ const CpAbout = () => (
       <div><strong>Salary medians</strong>BLS &amp; EDD California Occupational Employment Statistics</div>
       <div><strong>Verified</strong>April 2026 · v1.0</div>
     </div>
-
-    <h2 className="cp-h2">If something is wrong, tell us</h2>
-    <p>Numbers change. Programs change. If you spot an error, email <a href="mailto:corrections@example.org">corrections@example.org</a>. We update within 7 days and publish a changelog.</p>
-
-    <h2 className="cp-h2">Who built this</h2>
-    <p>A small team of foster-youth alumni, social workers, and former Guardian Scholars staff. Independently funded. No campus pays us. No scholarship pays us.</p>
   </main>
 );
 
