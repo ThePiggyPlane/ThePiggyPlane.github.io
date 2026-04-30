@@ -39,7 +39,7 @@ const CpApprenticeships = () => {
   if (allApps.length === 0) {
     return (
       <main className="cp-main narrow">
-        <h1 className="cp-h1">CDSS Apprenticeships.</h1>
+        <h1 className="cp-h1">CDSS Apprenticeships</h1>
         <p className="cp-lede">No apprenticeship data loaded. Refresh the page or check your connection.</p>
       </main>
     );
@@ -47,12 +47,7 @@ const CpApprenticeships = () => {
 
   return (
     <main className="cp-main">
-      <h1 className="cp-h1">CDSS Apprenticeships.</h1>
-      <p className="cp-lede">
-        Every paid apprenticeship registered with the California Division of Apprenticeship Standards.
-        Apprentices earn while they learn — typically no tuition, with hourly wages that scale up across
-        the program's length.
-      </p>
+      <h1 className="cp-h1">CDSS Apprenticeships</h1>
 
       <div className="cp-app-filters">
         <input
