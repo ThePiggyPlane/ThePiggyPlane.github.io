@@ -5,7 +5,6 @@ const CpApprenticeships = () => {
   const allApps = React.useMemo(() => window.APPRENTICESHIPS?.all() || [], []);
   const [query, setQuery] = React.useState("");
   const [industry, setIndustry] = React.useState("");
-  const [state, setState] = React.useState("CA"); // default to CA-only since most users want California
 
   const industries = React.useMemo(() => {
     const counts = {};
@@ -18,7 +17,6 @@ const CpApprenticeships = () => {
   const filtered = React.useMemo(() => {
     const q = query.trim().toLowerCase();
     return allApps.filter(a => {
-      if (state === "CA" && a.state && a.state !== "CA") return false;
       if (industry && a.industry !== industry) return false;
       if (q) {
         const hay = (
@@ -32,7 +30,7 @@ const CpApprenticeships = () => {
       }
       return true;
     });
-  }, [allApps, query, industry, state]);
+  }, [allApps, query, industry]);
 
   const showCount = Math.min(filtered.length, 200);
 
@@ -63,10 +61,6 @@ const CpApprenticeships = () => {
           {industries.map(([name, count]) => (
             <option key={name} value={name}>{name} ({count})</option>
           ))}
-        </select>
-        <select className="cp-app-select" value={state} onChange={e => setState(e.target.value)} aria-label="Filter by state">
-          <option value="CA">California only</option>
-          <option value="">All states</option>
         </select>
         {(query || industry) && (
           <button className="cp-link" onClick={() => { setQuery(""); setIndustry(""); }}>Clear filters</button>
