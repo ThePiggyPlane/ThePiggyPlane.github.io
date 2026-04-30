@@ -433,7 +433,7 @@ const Ext = ({ href, children }) => (
 const STEPS = [
   {
     title: "FAFSA or CADAA",
-    body: <>Master key. Unlocks Pell, Cal Grant, CCPG, campus aid. Check "unaccompanied youth" — skip parent info.</>,
+    body: <>Federal (FAFSA) or state-only (CADAA, for non-citizens) financial aid application. Required for Pell, Cal Grant, CCPG, and most campus aid. Foster youth file as "unaccompanied youth" — parent income not required.</>,
     links: [
       { label: "FAFSA",  href: "https://studentaid.gov/h/apply-for-aid/fafsa" },
       { label: "CADAA",  href: "https://dream.csac.ca.gov/" },
@@ -441,14 +441,14 @@ const STEPS = [
   },
   {
     title: "Chafee ETV",
-    body: <>$5K/yr. Twenty minutes.</>,
+    body: <>California Chafee Educational and Training Voucher. $5,000 per year for foster youth ages 14–25 enrolled at least half-time. Renewable annually.</>,
     links: [
       { label: "Apply at chafee.csac.ca.gov", href: "https://chafee.csac.ca.gov/" },
     ],
   },
   {
-    title: "CCCApply or Cal State Apply",
-    body: <>CCCApply for CC (free, all of them). Cal State Apply opens Oct 1.</>,
+    title: "Apply to schools",
+    body: <>CCCApply for community colleges (free, no limit). Cal State Apply for CSU campuses (Oct 1 – Nov 30 priority). UC Application for UC campuses (Aug 1 – Nov 30).</>,
     links: [
       { label: "CCCApply",        href: "https://www.cccapply.org/" },
       { label: "Cal State Apply", href: "https://www.calstate.edu/apply" },
@@ -456,8 +456,8 @@ const STEPS = [
     ],
   },
   {
-    title: "Email Guardian Scholars / NextUp",
-    body: <>The biggest unlock. "I'm a foster youth thinking about applying — what does your program offer?"</>,
+    title: "Contact Guardian Scholars / NextUp",
+    body: <>Foster-youth support programs at most CSU/UC/private campuses (Guardian Scholars) and California community colleges (NextUp). Email or visit before applying to confirm eligibility and ask what your campus offers.</>,
     links: [
       { label: "Guardian Scholars campus directory", href: "https://www.csac.ca.gov/foster-youth-services" },
       { label: "NextUp / Foster Youth Success",      href: "https://www.cccco.edu/About-Us/Chancellors-Office/Divisions/Educational-Services-and-Support/What-we-do/Student-Services/cooperating-agencies/foster-youth-success-initiative" },
@@ -466,7 +466,7 @@ const STEPS = [
   },
   {
     title: "Gather documents",
-    body: <>HS transcript, foster-care proof letter (social worker/ILP), SSN, photo ID. Digital copies on your phone.</>,
+    body: <>High school transcript, foster-care verification letter (from your social worker or ILP coordinator), Social Security card or number, photo ID. Keep digital copies on your phone.</>,
     links: [],
   },
 ];
