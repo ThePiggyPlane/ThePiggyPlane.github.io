@@ -124,7 +124,12 @@ const CpCareer = ({ careerId, saved, toggleSave, onBack, onOpenAid }) => {
                     <div className="cp-prog-real">${p.realCost.toLocaleString()}<span>/yr after aid</span></div>
                   </div>
                 </div>
-                <div className="cp-prog-action">Next: {p.action}</div>
+                <div className="cp-prog-action">
+                  <span>Next: {p.action}</span>
+                  {p.url && (
+                    <a href={p.url} target="_blank" rel="noopener" className="cp-prog-link">Visit program site →</a>
+                  )}
+                </div>
               </div>
             ))}
           </div>
@@ -421,20 +426,67 @@ const CpAidDetail = ({ aidId, onBack }) => {
   );
 };
 
+const Ext = ({ href, children }) => (
+  <a href={href} target="_blank" rel="noopener" className="cp-step-link">{children}</a>
+);
+
+const STEPS = [
+  {
+    title: "FAFSA or CADAA",
+    body: <>Master key. Unlocks Pell, Cal Grant, CCPG, campus aid. Check "unaccompanied youth" — skip parent info.</>,
+    links: [
+      { label: "FAFSA",  href: "https://studentaid.gov/h/apply-for-aid/fafsa" },
+      { label: "CADAA",  href: "https://dream.csac.ca.gov/" },
+    ],
+  },
+  {
+    title: "Chafee ETV",
+    body: <>$5K/yr. Twenty minutes.</>,
+    links: [
+      { label: "Apply at chafee.csac.ca.gov", href: "https://chafee.csac.ca.gov/" },
+    ],
+  },
+  {
+    title: "CCCApply or Cal State Apply",
+    body: <>CCCApply for CC (free, all of them). Cal State Apply opens Oct 1.</>,
+    links: [
+      { label: "CCCApply",        href: "https://www.cccapply.org/" },
+      { label: "Cal State Apply", href: "https://www.calstate.edu/apply" },
+      { label: "UC Application",  href: "https://apply.universityofcalifornia.edu/" },
+    ],
+  },
+  {
+    title: "Email Guardian Scholars / NextUp",
+    body: <>The biggest unlock. "I'm a foster youth thinking about applying — what does your program offer?"</>,
+    links: [
+      { label: "Guardian Scholars campus directory", href: "https://www.csac.ca.gov/foster-youth-services" },
+      { label: "NextUp / Foster Youth Success",      href: "https://www.cccco.edu/About-Us/Chancellors-Office/Divisions/Educational-Services-and-Support/What-we-do/Student-Services/cooperating-agencies/foster-youth-success-initiative" },
+      { label: "JBAY emergency grants",              href: "https://jbaforyouth.org/emergency-grants/" },
+    ],
+  },
+  {
+    title: "Gather documents",
+    body: <>HS transcript, foster-care proof letter (social worker/ILP), SSN, photo ID. Digital copies on your phone.</>,
+    links: [],
+  },
+];
+
 const CpWeek = () => (
   <main className="cp-main narrow">
     <div className="cp-eyebrow">This week</div>
     <h1 className="cp-h1">The Core 5 Steps</h1>
-    {[
-      ["FAFSA or CADAA", "Master key. Unlocks Pell, Cal Grant, CCPG, campus aid. Check 'unaccompanied youth' — skip parent info."],
-      ["Chafee ETV", "$5K/yr. Twenty minutes."],
-      ["CCCApply or Cal State Apply", "CCCApply for CC (free, all of them). Cal State Apply opens Oct 1."],
-      ["Email Guardian Scholars / NextUp", "The biggest unlock. \"I'm a foster youth thinking about applying — what does your program offer?\""],
-      ["Gather documents", "HS transcript, foster-care proof letter (social worker/ILP), SSN, photo ID. Digital copies on your phone."]
-    ].map(([t, p], i) => (
+    {STEPS.map((s, i) => (
       <div className="cp-week-row" key={i}>
         <div className="cp-week-n">{String(i + 1).padStart(2, "0")}</div>
-        <div><h3>{t}</h3><p>{p}</p></div>
+        <div>
+          <h3>{s.title}</h3>
+          <p>{s.body}</p>
+          {s.links.length > 0 && (
+            <div className="cp-step-links">
+              {s.links.map(l => <Ext key={l.href} href={l.href}>{l.label} →</Ext>)}
+            </div>
+          )}
+        </div>
       </div>
     ))}
   </main>
