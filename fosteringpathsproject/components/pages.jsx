@@ -347,7 +347,7 @@ const CpMoney = ({ onOpenAid, profile, setProfile }) => {
 
   return (
     <main className="cp-main narrow">
-      <h1 className="cp-h1">Cost Calculator.</h1>
+      <h1 className="cp-h1">Cost Calculator</h1>
 
       <div className="cp-profile-summary">
         <span>Calculated for: <strong>{STATUS_LABEL[profile.status] || profile.status}</strong>, age {profile.age}, {profile.resident ? "CA resident" : "out of state"}.</span>
