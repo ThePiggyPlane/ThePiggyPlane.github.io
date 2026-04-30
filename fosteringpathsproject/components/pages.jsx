@@ -397,9 +397,6 @@ const CpMoney = ({ onOpenAid, profile, setProfile }) => {
           </button>
         ))}
       </div>
-      {eligibleAid.length < aid.length && (
-        <p className="cp-calc-note cp-aid-note">{aid.length - eligibleAid.length} other aid source{aid.length - eligibleAid.length === 1 ? " is" : "s are"} foster-youth specific and not shown for your situation.</p>
-      )}
     </main>
   );
 };
