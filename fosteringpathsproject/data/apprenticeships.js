@@ -10345,8 +10345,8 @@ window.registerApprenticeships(
     "address": "400 Grandy Dancer Dr., Tracy, CA 95377",
     "loc": "Tracy",
     "state": "CA",
-    "lat": 45.6735384,
-    "lng": -66.6845417
+    "lat": 37.7397,
+    "lng": -121.4252
   },
   {
     "id": "10399",
@@ -10674,11 +10674,11 @@ window.registerApprenticeships(
     "email": "Lupem@awlocal5.com",
     "website": "www.awlocal5.com",
     "websiteUrl": "https://www.awlocal5.com",
-    "address": "3833 Ebony Street P O Box 3160 Ontario 91761, Ontario, CA 91761",
+    "address": "3833 Ebony Street, Ontario, CA 91761",
     "loc": "Ontario",
     "state": "CA",
-    "lat": 50.000678,
-    "lng": -86.000977
+    "lat": 34.049,
+    "lng": -117.599
   },
   {
     "id": "7614",
