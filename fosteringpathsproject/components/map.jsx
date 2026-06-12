@@ -1,5 +1,12 @@
 // Map view — plots every program with lat/lng on a Leaflet/OpenStreetMap map.
 
+// HTML-escape for data interpolated into popup template literals. Popups are
+// the one place we build raw HTML from data (scraped + imported), so every
+// interpolated field goes through esc() / escAttr().
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c =>
+  ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const escAttr = esc;
+
 const TIER_COLORS = {
   cc:      "#5B8A72",
   csu:     "#2D6A9F",
@@ -146,18 +153,18 @@ const CpMap = ({ onOpenCareer }) => {
       const color = TIER_COLORS[p.tier] || "#999";
       const careers = programToCareers[p.id] || [];
       const careerLinks = careers
-        .map(c => `<a href="#" data-career-id="${c.id}" class="cp-map-clink">${c.name}</a>`)
+        .map(c => `<a href="#" data-career-id="${escAttr(c.id)}" class="cp-map-clink">${esc(c.name)}</a>`)
         .join(", ");
 
       // Per-program popup (used when searching)
       const popup = `
         <div class="cp-map-popup">
-          <div class="cp-map-popup-tier" style="color:${color}">${tierLabels[p.tier] || p.tier}</div>
-          <div class="cp-map-popup-name">${p.name}</div>
-          <div class="cp-map-popup-meta">${p.loc || ""}${p.duration ? " · " + p.duration : ""}</div>
-          ${p.action ? `<div class="cp-map-popup-action">${p.action}</div>` : ""}
+          <div class="cp-map-popup-tier" style="color:${escAttr(color)}">${esc(tierLabels[p.tier] || p.tier)}</div>
+          <div class="cp-map-popup-name">${esc(p.name)}</div>
+          <div class="cp-map-popup-meta">${esc(p.loc || "")}${p.duration ? " · " + esc(p.duration) : ""}</div>
+          ${p.action ? `<div class="cp-map-popup-action">${esc(p.action)}</div>` : ""}
           ${careers.length ? `<div class="cp-map-popup-careers"><strong>For:</strong> ${careerLinks}</div>` : ""}
-          ${p.url ? `<div class="cp-map-popup-link"><a href="${p.url}" target="_blank" rel="noopener">Visit program site →</a></div>` : ""}
+          ${p.url ? `<div class="cp-map-popup-link"><a href="${escAttr(p.url)}" target="_blank" rel="noopener">Visit program site →</a></div>` : ""}
         </div>
       `;
       const progMarker = window.L.circleMarker([p.lat, p.lng], {
@@ -187,17 +194,17 @@ const CpMap = ({ onOpenCareer }) => {
       const tier = "trade";
       const color = TIER_COLORS[tier];
       const url = a.websiteUrl || (a.website && /^https?:\/\//i.test(a.website) ? a.website : "");
-      const phone = a.phone ? `<a href="tel:${a.phone.replace(/[^0-9+]/g,"")}">${a.phone}</a>` : "";
-      const email = a.email ? `<a href="mailto:${a.email}">${a.email}</a>` : "";
+      const phone = a.phone ? `<a href="tel:${escAttr(a.phone.replace(/[^0-9+]/g,""))}">${esc(a.phone)}</a>` : "";
+      const email = a.email ? `<a href="mailto:${escAttr(a.email)}">${esc(a.email)}</a>` : "";
       const popup = `
         <div class="cp-map-popup">
-          <div class="cp-map-popup-tier" style="color:${color}">CDSS Apprenticeship${a.industry ? " · " + a.industry : ""}</div>
-          <div class="cp-map-popup-name">${a.occupation || a.sponsor}</div>
-          <div class="cp-map-popup-meta">${a.sponsor || ""}</div>
-          ${a.length || a.minAge ? `<div class="cp-map-popup-meta">${a.length || ""}${a.length && a.minAge ? " · " : ""}${a.minAge ? "min age " + a.minAge : ""}</div>` : ""}
-          ${a.educationPrereq ? `<div class="cp-map-popup-careers"><strong>Prereq:</strong> ${a.educationPrereq}</div>` : ""}
+          <div class="cp-map-popup-tier" style="color:${escAttr(color)}">CDSS Apprenticeship${a.industry ? " · " + esc(a.industry) : ""}</div>
+          <div class="cp-map-popup-name">${esc(a.occupation || a.sponsor)}</div>
+          <div class="cp-map-popup-meta">${esc(a.sponsor || "")}</div>
+          ${a.length || a.minAge ? `<div class="cp-map-popup-meta">${esc(a.length || "")}${a.length && a.minAge ? " · " : ""}${a.minAge ? "min age " + esc(a.minAge) : ""}</div>` : ""}
+          ${a.educationPrereq ? `<div class="cp-map-popup-careers"><strong>Prereq:</strong> ${esc(a.educationPrereq)}</div>` : ""}
           ${(phone || email) ? `<div class="cp-map-popup-careers">${[phone,email].filter(Boolean).join(" · ")}</div>` : ""}
-          ${url ? `<div class="cp-map-popup-link"><a href="${url}" target="_blank" rel="noopener">Visit program site →</a></div>` : ""}
+          ${url ? `<div class="cp-map-popup-link"><a href="${escAttr(url)}" target="_blank" rel="noopener">Visit program site →</a></div>` : ""}
         </div>
       `;
 
@@ -239,16 +246,16 @@ const CpMap = ({ onOpenCareer }) => {
       // Programs list inside the popup. Each row links to the careers it serves.
       const progsHtml = g.programs.map(({ p, prog, careers }) => {
         const careerLinks = careers
-          .map(c => `<a href="#" data-career-id="${c.id}" class="cp-map-clink">${c.name}</a>`)
+          .map(c => `<a href="#" data-career-id="${escAttr(c.id)}" class="cp-map-clink">${esc(c.name)}</a>`)
           .join(", ");
-        const url = p.url ? ` <a href="${p.url}" target="_blank" rel="noopener" class="cp-map-popup-progurl">site →</a>` : "";
+        const url = p.url ? ` <a href="${escAttr(p.url)}" target="_blank" rel="noopener" class="cp-map-popup-progurl">site →</a>` : "";
         const careerLine = careers.length
           ? `<div class="cp-map-popup-progmeta"><span class="cp-stat-meta">For:</span> ${careerLinks}</div>`
           : "";
         return `
           <li class="cp-map-popup-prog">
-            <div class="cp-map-popup-progname">${prog}${url}</div>
-            ${p.duration ? `<div class="cp-map-popup-progmeta"><span class="cp-stat-meta">${p.duration}</span></div>` : ""}
+            <div class="cp-map-popup-progname">${esc(prog)}${url}</div>
+            ${p.duration ? `<div class="cp-map-popup-progmeta"><span class="cp-stat-meta">${esc(p.duration)}</span></div>` : ""}
             ${careerLine}
           </li>
         `;
@@ -256,9 +263,9 @@ const CpMap = ({ onOpenCareer }) => {
 
       const popup = `
         <div class="cp-map-popup">
-          <div class="cp-map-popup-tier" style="color:${color}">${tierLabel}</div>
-          <div class="cp-map-popup-name">${g.org}</div>
-          <div class="cp-map-popup-meta">${g.loc || ""} · ${count} program${count === 1 ? "" : "s"}</div>
+          <div class="cp-map-popup-tier" style="color:${escAttr(color)}">${esc(tierLabel)}</div>
+          <div class="cp-map-popup-name">${esc(g.org)}</div>
+          <div class="cp-map-popup-meta">${esc(g.loc || "")} · ${count} program${count === 1 ? "" : "s"}</div>
           <ul class="cp-map-popup-progs">${progsHtml}</ul>
         </div>
       `;

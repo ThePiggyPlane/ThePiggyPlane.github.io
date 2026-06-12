@@ -541,18 +541,40 @@ const CpWeek = () => (
   </main>
 );
 
-const CpAbout = () => (
-  <main className="cp-main narrow cp-about">
-    <h2 className="cp-h2">Where the numbers come from</h2>
-    <div className="cp-about-meta">
-      <div><strong>Cal Grant</strong>California Student Aid Commission, current cycle</div>
-      <div><strong>Pell Grant</strong>U.S. Dept. of Education, 2025–26 schedule</div>
-      <div><strong>Chafee ETV</strong>CSAC Chafee program, current annual maximum</div>
-      <div><strong>Tuition stickers</strong>Each school's published 2025–26 cost of attendance</div>
-      <div><strong>Salary medians</strong>BLS &amp; EDD California Occupational Employment Statistics</div>
-      <div><strong>Verified</strong>April 2026 · v1.0</div>
-    </div>
-  </main>
-);
+const CpAbout = () => {
+  const [cleared, setCleared] = React.useState(false);
+  const clearData = () => {
+    try {
+      localStorage.removeItem("clearpath:saved:v1");
+      localStorage.removeItem("clearpath:profile:v1");
+      Object.keys(localStorage)
+        .filter(k => k.startsWith("cp:"))
+        .forEach(k => localStorage.removeItem(k));
+    } catch {}
+    setCleared(true);
+  };
+  return (
+    <main className="cp-main narrow cp-about">
+      <h2 className="cp-h2">Where the numbers come from</h2>
+      <div className="cp-about-meta">
+        <div><strong>Cal Grant</strong>California Student Aid Commission, current cycle</div>
+        <div><strong>Pell Grant</strong>U.S. Dept. of Education, 2025–26 schedule</div>
+        <div><strong>Chafee ETV</strong>CSAC Chafee program, current annual maximum</div>
+        <div><strong>Tuition stickers</strong>Each school's published 2025–26 cost of attendance</div>
+        <div><strong>Salary &amp; employment</strong>U.S. Bureau of Labor Statistics OEWS, 2025 release (Riverside–San Bernardino–Ontario MSA), via the BLS public API</div>
+        <div><strong>Apprenticeships</strong>CA Division of Apprenticeship Standards public registry</div>
+        <div><strong>Verified</strong>June 2026 · v1.1</div>
+      </div>
+
+      <h2 className="cp-h2">Your privacy</h2>
+      <p>This site stores your aid-quiz answers and saved careers in your own browser only — nothing is sent to a server. Anyone with access to this browser can see those answers, so if you're on a shared or public computer, clear your data before handing the device back.</p>
+      <p>
+        <button className="cp-btn-ghost" onClick={clearData} disabled={cleared}>
+          {cleared ? "✓ Data cleared" : "Clear my saved data"}
+        </button>
+      </p>
+    </main>
+  );
+};
 
 Object.assign(window, { CpCareer, CpMoney, CpAidDetail, CpWeek, CpAbout });
