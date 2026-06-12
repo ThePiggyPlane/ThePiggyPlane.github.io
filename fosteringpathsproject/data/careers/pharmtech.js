@@ -10,6 +10,7 @@ window.registerCareer({
   grads2yr: "92% placement; California license required",
   quote: { text: "My foster brother had asthma and I learned every inhaler by name. Pharm tech turned that into steady work with benefits.", who: "Lupita, 23 — SBVC Pharmacy Technology '23" },
   programs: ["rivsce-pharmtech", "ach-pharmtech", "sbvc-pharmtech", "csusb-pharmtech", "rivadult-pharmtech", "chaffey-pharmtech", "msjc-pharmtech", "uei-pharmtech", "nwc-pharmtech", "mtsac-pharmtech", "vvc-pharmtech", "charter-pharmtech", "acc-pharmtech", "intercoast-pharmtech"],
+  apprenticeshipMatch: ["pharmacy technician"],
   dolStats: {
     employed: 4630,
     yearlyChange: +84,

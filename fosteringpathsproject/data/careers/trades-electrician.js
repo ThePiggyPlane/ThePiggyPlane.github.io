@@ -10,6 +10,7 @@ window.registerCareer({
   grads2yr: "100% placement on completion",
   quote: { text: "I'm getting paid $24/hr as an apprentice. No debt. By year five I'll clear $100K.", who: "Reggie, 24 — IBEW Local 440" },
   programs: ["ibew-440", "sbvc-elec", "chaffey-elec"],
+  apprenticeshipMatch: ["electrician", "electrical"],
   dolStats: {
     employed: 7880,
     yearlyChange: +180,

@@ -118,4 +118,4 @@ const CpApprenticeshipCard = ({ a }) => (
   </details>
 );
 
-window.CpApprenticeships = CpApprenticeships;
+Object.assign(window, { CpApprenticeships, CpApprenticeshipCard });

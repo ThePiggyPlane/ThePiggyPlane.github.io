@@ -475,6 +475,9 @@ a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-ra
 }
 .cp-app-contact a { color: var(--blue); }
 .cp-app-source { font-size: 12px; color: var(--ink-3); margin-top: 24px; }
+.cp-app-more { font-size: 13px; margin: 12px 0 0; }
+.cp-app-more a { font-weight: 500; color: var(--blue); }
+.cp-app-more a:hover { color: var(--ink); }
 @media (max-width: 700px) {
   .cp-app-detail-grid { grid-template-columns: 1fr; }
 }

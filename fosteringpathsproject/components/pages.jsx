@@ -14,60 +14,71 @@ const fmtPct = (n, sign = false) => {
 
 const CpDolStats = ({ stats }) => {
   const s = stats;
-  // Wage premium / discount vs US national median
-  const wagePremiumPct = s.nationalMedianWage
+  // Wage premium / discount vs US national median — only when both medians exist
+  const wagePremiumPct = (s.nationalMedianWage != null && s.medianWage != null)
     ? ((s.medianWage - s.nationalMedianWage) / s.nationalMedianWage) * 100
     : null;
 
-  const rows = [
-    {
-      label: "people employed",
-      value: <>
-        <strong>{fmtNum(s.employed)} people</strong>
-        {s.nationalEmployed != null && (
-          <span className="cp-stat-meta"> (US: {fmtNum(s.nationalEmployed)})</span>
-        )}
-      </>,
-    },
-    {
-      label: "yearly change",
-      value: <>
-        <strong>{fmtSigned(s.yearlyChange)} people</strong>
-        <span className="cp-stat-meta"> ({fmtPct(s.yearlyChangePct, true)})</span>
-        {s.nationalGrowthPct != null && (
-          <span className="cp-stat-meta"> (US: {fmtPct(s.nationalGrowthPct, true)})</span>
-        )}
-      </>,
-    },
-    {
-      label: "workforce fraction",
-      value: <>
-        <strong>{fmtPct(s.fractionPct)}</strong>
-        <span className="cp-stat-meta"> (1 in {fmtNum(s.oneInN)})</span>
+  // Rows render only when their primary value exists — BLS suppresses MSA
+  // cells for small occupations, and a table of em-dashes helps nobody.
+  const rows = [];
+  if (s.employed != null) rows.push({
+    label: "people employed",
+    value: <>
+      <strong>{fmtNum(s.employed)} people</strong>
+      {s.nationalEmployed != null && (
+        <span className="cp-stat-meta"> (US: {fmtNum(s.nationalEmployed)})</span>
+      )}
+    </>,
+  });
+  if (s.yearlyChange != null) rows.push({
+    label: "yearly change",
+    value: <>
+      <strong>{fmtSigned(s.yearlyChange)} people</strong>
+      <span className="cp-stat-meta"> ({fmtPct(s.yearlyChangePct, true)})</span>
+      {s.nationalGrowthPct != null && (
+        <span className="cp-stat-meta"> (US: {fmtPct(s.nationalGrowthPct, true)})</span>
+      )}
+    </>,
+  });
+  if (s.fractionPct != null && s.oneInN != null) rows.push({
+    label: "workforce fraction",
+    value: <>
+      <strong>{fmtPct(s.fractionPct)}</strong>
+      <span className="cp-stat-meta"> (1 in {fmtNum(s.oneInN)})</span>
+      {s.vsNational != null && (
         <span className="cp-stat-meta"> ({s.vsNational}× national average)</span>
-      </>,
-    },
-    {
-      label: "median wage",
-      value: <>
-        <strong>${fmtNum(s.medianWage)} per year</strong>
-        {s.nationalMedianWage != null ? (
-          <span className="cp-stat-meta"> (US: ${fmtNum(s.nationalMedianWage)}, {wagePremiumPct >= 0 ? "+" : ""}{Math.round(wagePremiumPct)}% local{wagePremiumPct >= 0 ? " premium" : " discount"})</span>
-        ) : (
-          <span className="cp-stat-meta"> (US dollars per year)</span>
-        )}
-      </>,
-    },
-    {
-      label: "median wage yearly change",
-      value: <>
-        <strong>{s.wageChange >= 0 ? "+" : "-"}${fmtNum(Math.abs(s.wageChange))} per year</strong>
-        <span className="cp-stat-meta"> ({fmtPct(s.wageChangePct, true)})</span>
-      </>,
-    },
-    { label: "50% range", value: <><strong>${fmtNum(s.range50Low)} to ${fmtNum(s.range50High)}</strong></> },
-    { label: "80% range", value: <><strong>${fmtNum(s.range80Low)} to ${fmtNum(s.range80High)}</strong> <span className="cp-stat-meta"> per year</span></> },
-  ];
+      )}
+    </>,
+  });
+  if (s.medianWage != null) rows.push({
+    label: "median wage",
+    value: <>
+      <strong>${fmtNum(s.medianWage)} per year</strong>
+      {wagePremiumPct != null ? (
+        <span className="cp-stat-meta"> (US: ${fmtNum(s.nationalMedianWage)}, {wagePremiumPct >= 0 ? "+" : ""}{Math.round(wagePremiumPct)}% local{wagePremiumPct >= 0 ? " premium" : " discount"})</span>
+      ) : (
+        <span className="cp-stat-meta"> (US dollars per year)</span>
+      )}
+    </>,
+  });
+  if (s.wageChange != null) rows.push({
+    label: "median wage yearly change",
+    value: <>
+      <strong>{s.wageChange >= 0 ? "+" : "-"}${fmtNum(Math.abs(s.wageChange))} per year</strong>
+      <span className="cp-stat-meta"> ({fmtPct(s.wageChangePct, true)})</span>
+    </>,
+  });
+  if (s.range50Low != null && s.range50High != null) rows.push({
+    label: "50% range",
+    value: <><strong>${fmtNum(s.range50Low)} to ${fmtNum(s.range50High)}</strong></>,
+  });
+  if (s.range80Low != null && s.range80High != null) rows.push({
+    label: "80% range",
+    value: <><strong>${fmtNum(s.range80Low)} to ${fmtNum(s.range80High)}</strong> <span className="cp-stat-meta"> per year</span></>,
+  });
+
+  if (rows.length === 0) return null;
   return (
     <figure className="cp-dol">
       <table className="cp-dol-tbl">
@@ -81,9 +92,44 @@ const CpDolStats = ({ stats }) => {
         </tbody>
       </table>
       <figcaption className="cp-dol-cap">
-        ({s.dataYear || 2022} BLS OES — Riverside–San Bernardino–Ontario MSA, with national figures for comparison)
+        ({s.dataYear || 2022} BLS OES — {s.geoLabel || "Riverside–San Bernardino–Ontario MSA"}, with national figures for comparison)
       </figcaption>
     </figure>
+  );
+};
+
+// Apprenticeships from the CDSS registry whose occupation matches this
+// career's apprenticeshipMatch keywords. Occupation-only matching — sponsor
+// names cause false positives (a plumbers' union sponsoring an HVAC program).
+const matchApprenticeships = (career) => {
+  const kws = career.apprenticeshipMatch || [];
+  if (!kws.length || !window.APPRENTICESHIPS) return [];
+  return window.APPRENTICESHIPS.all()
+    .filter(a => {
+      const occ = (a.occupation || "").toLowerCase();
+      return kws.some(k => occ.includes(k));
+    })
+    .sort((a, b) => (a.occupation || "").localeCompare(b.occupation || ""));
+};
+
+const APPR_PREVIEW_COUNT = 12;
+
+const CpCareerApprenticeships = ({ career }) => {
+  const matches = React.useMemo(() => matchApprenticeships(career), [career]);
+  if (matches.length === 0) return null;
+  const shown = matches.slice(0, APPR_PREVIEW_COUNT);
+  return (
+    <>
+      <h2 className="cp-h2">Paid apprenticeships ({matches.length})</h2>
+      <div className="cp-app-list">
+        {shown.map(a => <CpApprenticeshipCard key={a.id} a={a} />)}
+      </div>
+      {matches.length > shown.length && (
+        <p className="cp-app-more">
+          <a href="#/apprenticeships">See all {matches.length} in CDSS Apprenticeships →</a>
+        </p>
+      )}
+    </>
   );
 };
 
@@ -109,7 +155,7 @@ const CpCareer = ({ careerId, saved, toggleSave, onBack, onOpenAid }) => {
 
           {career.dolStats && <CpDolStats stats={career.dolStats} />}
 
-          <h2 className="cp-h2">Programs</h2>
+          {progs.length > 0 && <h2 className="cp-h2">Programs</h2>}
           <div className="cp-prog-list">
             {progs.map(p => (
               <div className={"cp-prog " + p.tier} key={p.id}>
@@ -133,6 +179,8 @@ const CpCareer = ({ careerId, saved, toggleSave, onBack, onOpenAid }) => {
               </div>
             ))}
           </div>
+
+          <CpCareerApprenticeships career={career} />
         </div>
 
         <aside className="cp-aside">
@@ -143,10 +191,12 @@ const CpCareer = ({ careerId, saved, toggleSave, onBack, onOpenAid }) => {
           >
             {saved.includes(career.id) ? "✓ Saved to compare" : "+ Save this path"}
           </button>
-          <div className="cp-aside-card">
-            <div className="cp-aside-eyebrow">Grads 2 yrs out</div>
-            <div className="cp-aside-body">{career.grads2yr}</div>
-          </div>
+          {career.grads2yr && (
+            <div className="cp-aside-card">
+              <div className="cp-aside-eyebrow">Grads 2 yrs out</div>
+              <div className="cp-aside-body">{career.grads2yr}</div>
+            </div>
+          )}
           <div className="cp-aside-card">
             <div className="cp-aside-eyebrow">This week</div>
             <ol className="cp-aside-steps">

@@ -10,6 +10,7 @@ window.registerCareer({
   grads2yr: "92% placement; ASE-certified mechanics start ~$22/hr",
   quote: { text: "My foster dad showed me how to change my own oil at 16. Now I'm ASE-certified at a Ford dealership making more than my caseworker did.", who: "Marcus, 22 — SBVC Automotive Tech '24" },
   programs: ["rcc-automechan", "sbvc-automechan", "chaffey-automechan", "vvcv-automechan", "barstow-automechan", "cod-automechan", "norco-automechan", "mvc-automechan", "msjc-automechan", "saddleback-automechan", "occ-automechan", "cypress-automechan", "sac-automechan", "fullertoncc-automechan", "gwcc-automechan", "ivcs-automechan", "pcc-automechan", "utiur-automechan", "cpp-automechan", "ucr-automechan", "cbu-automechan", "csuf-automechan", "uci-automechan"],
+  apprenticeshipMatch: ["automotive", "auto body", "auto collision"],
   dolStats: {
     employed: 7680,
     yearlyChange: +240,

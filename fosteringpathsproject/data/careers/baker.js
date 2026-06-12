@@ -10,6 +10,7 @@ window.registerCareer({
   grads2yr: "85% placement; pastry chef path leads to $50K+ in 3 yr",
   quote: { text: "Three jobs in fast food got me through high school. Now I run morning bake at a downtown bakery and own my schedule.", who: "Devin, 21 — RCC Culinary Arts '25" },
   programs: ["rcc-baker", "sbvc-baker", "chaffey-baker", "chaffey-baker-2", "msjc-baker", "cod-baker", "rcoer-baker", "occ-baker", "saddleback-baker", "mtsac-baker", "pcc-baker", "cpp-baker", "csusb-baker", "csuf-baker"],
+  apprenticeshipMatch: ["baker", "baking", "pastry"],
   dolStats: {
     employed: 2900,
     yearlyChange: +40,

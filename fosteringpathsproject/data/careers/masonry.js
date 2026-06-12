@@ -10,6 +10,7 @@ window.registerCareer({
   grads2yr: "100% placement on completion of apprenticeship",
   quote: { text: "Construction jobs paid the bills before I aged out. Now I'm three years into the masonry apprenticeship — and the union has my back.", who: "Tony, 24 — BAC Local 4 apprentice" },
   programs: ["sccma-masonry", "sccra-masonry", "bac-masonry", "pcc-masonry", "mtsac-masonry", "iejcc-masonry", "sbvc-masonry", "carp-masonry", "cpp-masonry", "cbu-masonry"],
+  apprenticeshipMatch: ["brick", "stonemason", "terrazzo", "marble", "masonry"],
   dolStats: {
     employed: 540,
     yearlyChange: +45,

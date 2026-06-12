@@ -19,7 +19,9 @@ const programPathTypes = (p) => {
   return types;
 };
 
-// All path types a career exposes, derived from its programs[].
+// All path types a career exposes, derived from its programs[] plus its
+// CDSS-apprenticeship keyword matches (careers like Plumber or Barber may
+// have no college programs at all — their pathway IS the apprenticeship).
 const careerPathTypes = (career) => {
   const out = new Set();
   (career.programs || []).forEach(pid => {
@@ -27,6 +29,7 @@ const careerPathTypes = (career) => {
     if (!p) return;
     programPathTypes(p).forEach(t => out.add(t));
   });
+  if ((career.apprenticeshipMatch || []).length) out.add("apprenticeship");
   return out;
 };
 

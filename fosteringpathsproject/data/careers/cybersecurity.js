@@ -10,6 +10,7 @@ window.registerCareer({
   grads2yr: "92% employed; Security+ alone hits $70K starting",
   quote: { text: "Group homes had me passing through different routers all the time. Turns out tracing how networks work was a job people pay six figures for.", who: "Andre, 24 — CSUSB Cybersecurity '24" },
   programs: ["mvc-cybersecurity", "rcc-cybersecurity", "chaffey-cybersecurity", "sbvc-cybersecurity", "msjc-cybersecurity", "norco-cybersecurity", "csusb-cybersecurity", "cpp-cybersecurity", "ucrx-cybersecurity", "mtsac-cybersecurity", "vvc-cybersecurity", "launch-cybersecurity"],
+  apprenticeshipMatch: ["cyber"],
   dolStats: {
     employed: 350,
     yearlyChange: +82,

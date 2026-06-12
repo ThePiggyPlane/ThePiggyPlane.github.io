@@ -10,6 +10,7 @@ window.registerCareer({
   grads2yr: "94% placement; EPA 608 cert in months",
   quote: { text: "Heat in the IE will not let up. I learned to fix AC units and never had to wait for the next paycheck again.", who: "Jorge, 22 — Chaffey Adult Ed HVAC '24" },
   programs: ["rcc-hvac", "cod-hvac", "sbvc-hvac", "chaffey-hvac", "mtsac-hvac", "msjc-hvac", "vvc-hvac", "uei-hvac", "intercoast-hvac", "sjvc-hvac", "csusb-hvac", "ua364-hvac"],
+  apprenticeshipMatch: ["air conditioning", "refrigeration", "hvac"],
   dolStats: {
     employed: 4820,
     yearlyChange: +120,
