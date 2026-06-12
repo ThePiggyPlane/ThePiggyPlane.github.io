@@ -165,10 +165,12 @@ const CpCareer = ({ careerId, saved, toggleSave, onBack, onOpenAid }) => {
                     <div className="cp-prog-name">{p.name}</div>
                     <div className="cp-prog-loc">{p.loc} · {p.duration}</div>
                   </div>
-                  <div className="cp-prog-money">
-                    <div className="cp-prog-sticker">was ${p.sticker.toLocaleString()}</div>
-                    <div className="cp-prog-real">${p.realCost.toLocaleString()}<span>/yr after aid</span></div>
-                  </div>
+                  {p.sticker > 0 && (
+                    <div className="cp-prog-money">
+                      <div className="cp-prog-sticker">was ${p.sticker.toLocaleString()}</div>
+                      <div className="cp-prog-real">${p.realCost.toLocaleString()}<span>/yr after aid</span></div>
+                    </div>
+                  )}
                 </div>
                 <div className="cp-prog-action">
                   <span>Next: {p.action}</span>
