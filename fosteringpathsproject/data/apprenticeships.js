@@ -176,7 +176,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "7111 Firestone Blvd Suite 221, Buena Park, CA 90621",
     "loc": "Buena Park",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.873940815786,
+    "lng": -118.00940890369
   },
   {
     "id": "8717",
@@ -249,7 +251,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "600 Yosemite Boulevard, Modesto, CA 95354",
     "loc": "Modesto",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.637686661275,
+    "lng": -120.983994350575
   },
   {
     "id": "10513",
@@ -347,7 +351,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "8364 La Mesa Blvd, La Mesa, CA 91942",
     "loc": "La Mesa",
-    "state": "CA"
+    "state": "CA",
+    "lat": 32.76552315138,
+    "lng": -117.017806664106
   },
   {
     "id": "10855",
@@ -395,7 +401,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.fresnosheetmetal.com",
     "address": "5410 E. Home, Fresno, CA 93727",
     "loc": "Fresno",
-    "state": "CA"
+    "state": "CA",
+    "lat": 36.763065659397,
+    "lng": -119.708874282333
   },
   {
     "id": "9639",
@@ -618,7 +626,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "7001 W. Imperial Highway, Los Angeles, CA 90045",
     "loc": "Los Angeles",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.931422271735,
+    "lng": -118.421410787613
   },
   {
     "id": "10964",
@@ -641,7 +651,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "9000 Overland Avenue, Culver City, CA 90230",
     "loc": "Culver City",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.001707521325,
+    "lng": -118.391083984453
   },
   {
     "id": "10966",
@@ -664,7 +676,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "9000 Overland Avenue, Culver City, CA 90230",
     "loc": "Culver City",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.001707521325,
+    "lng": -118.391083984453
   },
   {
     "id": "9216",
@@ -712,7 +726,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "5735 Lemp Ave, North Hollywood, CA 91601",
     "loc": "North Hollywood",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.174615412741,
+    "lng": -118.384536032411
   },
   {
     "id": "9934",
@@ -735,7 +751,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "5735 Lemp Ave., North Hollywood, CA 91601",
     "loc": "North Hollywood",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.174615412741,
+    "lng": -118.384536032411
   },
   {
     "id": "10076",
@@ -856,7 +874,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "6115 1/2 South Victoria Ave, Los Angeles, CA 90043",
     "loc": "Los Angeles",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.98443005851,
+    "lng": -118.332388894261
   },
   {
     "id": "9752",
@@ -979,7 +999,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "925 Del Paso Blvd. #100, Sacramento, CA 95815",
     "loc": "Sacramento",
-    "state": "CA"
+    "state": "CA",
+    "lat": 38.601722289436,
+    "lng": -121.468131813462
   },
   {
     "id": "10471",
@@ -1002,7 +1024,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "9348 Civic Center Drive, Beverley Hills, CA 90210",
     "loc": "Beverley Hills",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.074151520033,
+    "lng": -118.399214697581
   },
   {
     "id": "10697",
@@ -1050,7 +1074,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "9348 Civic Center Drive, Beverley Hills, CA 90210",
     "loc": "Beverley Hills",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.074151520033,
+    "lng": -118.399214697581
   },
   {
     "id": "10452",
@@ -1398,7 +1424,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "9400 Cherry Avenue, Building A, Fontana, CA 92335",
     "loc": "Fontana",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.084088597765,
+    "lng": -117.488919118131
   },
   {
     "id": "334",
@@ -2063,7 +2091,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "6115 1/2 South Victoria Ave, Los Angeles, CA 90043",
     "loc": "Los Angeles",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.98443005851,
+    "lng": -118.332388894261
   },
   {
     "id": "9940",
@@ -2086,7 +2116,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "5735 Lemp Ave., North Hollywood, CA 91601",
     "loc": "North Hollywood",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.174615412741,
+    "lng": -118.384536032411
   },
   {
     "id": "10186",
@@ -2234,7 +2266,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "8865 Cadura Circle, Elk Grove, CA 95624",
     "loc": "Elk Grove",
-    "state": "CA"
+    "state": "CA",
+    "lat": 38.40254887399,
+    "lng": -121.372880982382
   },
   {
     "id": "664",
@@ -2257,7 +2291,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "630 Shatto Place, Los Angeles, CA 90005",
     "loc": "Los Angeles",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.061158178187,
+    "lng": -118.290230163439
   },
   {
     "id": "8175",
@@ -2380,7 +2416,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "610 W. Chapman Avenue, Placentia, CA 92870",
     "loc": "Placentia",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.873308186386,
+    "lng": -117.876355225096
   },
   {
     "id": "8457",
@@ -2478,7 +2516,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.SVABC.info",
     "address": "98 Almaden Ave. #2, San Jose, CA 95113",
     "loc": "San Jose",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.332839004885,
+    "lng": -121.892485481285
   },
   {
     "id": "8537",
@@ -2501,7 +2541,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "706 Est 1st Street, Los Angeles, CA 90012",
     "loc": "Los Angeles",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.048649353057,
+    "lng": -118.235990169869
   },
   {
     "id": "8539",
@@ -2549,7 +2591,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "618 S. Mt Vernon Ave. Suite 134, San Bernardino, CA 92410",
     "loc": "San Bernardino",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.089711453042,
+    "lng": -117.313933535998
   },
   {
     "id": "8571",
@@ -2597,7 +2641,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "8980 Benson Ave Suite A, Montclair, CA 91763",
     "loc": "Montclair",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.090991273951,
+    "lng": -117.680989011498
   },
   {
     "id": "8651",
@@ -2620,7 +2666,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.castelosbeauty.com/academy",
     "address": "7000 Franklin Blvd #660, Sacramento, CA 95823",
     "loc": "Sacramento",
-    "state": "CA"
+    "state": "CA",
+    "lat": 38.501225016613,
+    "lng": -121.462128158014
   },
   {
     "id": "8743",
@@ -2818,7 +2866,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "930 S. Andreasen Drive, Suite H, Escondido, CA 92029",
     "loc": "Escondido",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.112649427204,
+    "lng": -117.115450927567
   },
   {
     "id": "9275",
@@ -2966,7 +3016,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "9050 Telegraph Rd. Suite 102a, Downey, CA 90240",
     "loc": "Downey",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.960174956115,
+    "lng": -118.108992723783
   },
   {
     "id": "9503",
@@ -3012,7 +3064,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "607 East Santa Ana Blvd, Santa Ana, CA 92701",
     "loc": "Santa Ana",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.750503999799,
+    "lng": -117.862487745615
   },
   {
     "id": "9586",
@@ -3035,7 +3089,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "9619 International Blvd, Oakland, CA 94603",
     "loc": "Oakland",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.745569211594,
+    "lng": -122.171572838544
   },
   {
     "id": "10031",
@@ -3058,7 +3114,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://beauology.com/academy",
     "address": "5371 Mowry Avenue, Fremont , CA 94538",
     "loc": "Fremont",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.532973322462,
+    "lng": -122.001362632648
   },
   {
     "id": "10225",
@@ -3181,7 +3239,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "560 Barneveld Ave., San Francisco, CA 94124",
     "loc": "San Francisco",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.739861563885,
+    "lng": -122.404445895048
   },
   {
     "id": "10628",
@@ -3623,7 +3683,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "7111 Firestone Blvd. Ste. 221, Buena Park, CA 90621",
     "loc": "Buena Park",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.873940815786,
+    "lng": -118.00940890369
   },
   {
     "id": "10492",
@@ -3671,7 +3733,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "9000 Overland Avenue, Culver City, CA 90230",
     "loc": "Culver City",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.001707521325,
+    "lng": -118.391083984453
   },
   {
     "id": "9750",
@@ -3867,7 +3931,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.bcasd.org",
     "address": "6125 Imperial Ave. Suite 100, San Diego, CA 92114",
     "loc": "San Diego",
-    "state": "CA"
+    "state": "CA",
+    "lat": 32.709546080471,
+    "lng": -117.065824790589
   },
   {
     "id": "82",
@@ -3890,7 +3956,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "7111 Firestone Blvd Ste. 221, Buena Park, CA 90621",
     "loc": "Buena Park",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.873940815786,
+    "lng": -118.00940890369
   },
   {
     "id": "8916",
@@ -3938,7 +4006,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://dc36apprenticeships.org",
     "address": "6225 Federal Blvd, San Diego, CA 92114",
     "loc": "San Diego",
-    "state": "CA"
+    "state": "CA",
+    "lat": 32.729027664249,
+    "lng": -117.063370066312
   },
   {
     "id": "10908",
@@ -4059,7 +4129,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "5417 Peck Road, Arcadia, CA 91006",
     "loc": "Arcadia",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.103999262691,
+    "lng": -118.008179816773
   },
   {
     "id": "608",
@@ -4082,7 +4154,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "5417 Peck Road, Arcadia, CA 91006",
     "loc": "Arcadia",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.103999262691,
+    "lng": -118.008179816773
   },
   {
     "id": "9014",
@@ -4205,7 +4279,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.scsurveyjac.org",
     "address": "9480 Utica Avenue Suite 604, Rancho Cucamonga, CA 91730",
     "loc": "Rancho Cucamonga",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.080900645737,
+    "lng": -117.571482551636
   },
   {
     "id": "10297",
@@ -4228,7 +4304,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "555 College Ave., Lemoore, CA 93245",
     "loc": "Lemoore",
-    "state": "CA"
+    "state": "CA",
+    "lat": 36.294407507987,
+    "lng": -119.821643936584
   },
   {
     "id": "8380",
@@ -4326,7 +4404,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.scsurveyjac.org",
     "address": "9480 Utica Avenue Suite 604, Rancho Cucamonga, CA 91730",
     "loc": "Rancho Cucamonga",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.080900645737,
+    "lng": -117.571482551636
   },
   {
     "id": "10807",
@@ -4374,7 +4454,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://udwresourcecenter.org/",
     "address": "7777 Alvarado Road Suite 116, La Mesa, CA 91942",
     "loc": "La Mesa",
-    "state": "CA"
+    "state": "CA",
+    "lat": 32.772573728419,
+    "lng": -117.031552495604
   },
   {
     "id": "10520",
@@ -4695,7 +4777,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.laett.com",
     "address": "6023 S. Garfield Avenue, Los Angeles, CA 90040",
     "loc": "Los Angeles",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.980009643671,
+    "lng": -118.143152471458
   },
   {
     "id": "9957",
@@ -4718,7 +4802,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://cwad9jrs.org",
     "address": "720 Charcot Avenue, San Jose, CA 95131",
     "loc": "San Jose",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.385738341632,
+    "lng": -121.909286232957
   },
   {
     "id": "10124",
@@ -4841,7 +4927,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "7750 Pardee Ln, Oakland, CA 94621",
     "loc": "Oakland",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.742477923257,
+    "lng": -122.205649496458
   },
   {
     "id": "10154",
@@ -4864,7 +4952,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.westhillscollege.com/portal/",
     "address": "555 College Ave., Lemoore , CA 93245",
     "loc": "Lemoore",
-    "state": "CA"
+    "state": "CA",
+    "lat": 36.294407507987,
+    "lng": -119.821643936584
   },
   {
     "id": "10836",
@@ -4937,7 +5027,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "570 W 4th Street 2nd Floor, San Bernardino, CA 92401",
     "loc": "San Bernardino",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.10650490028,
+    "lng": -117.295747254516
   },
   {
     "id": "8465",
@@ -5010,7 +5102,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "5735 Lemp Ave., North Hollywood, CA 91601",
     "loc": "North Hollywood",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.174615412741,
+    "lng": -118.384536032411
   },
   {
     "id": "10715",
@@ -5575,7 +5669,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "630 Shatto Place, Los Angeles, CA 90005",
     "loc": "Los Angeles",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.061158178187,
+    "lng": -118.290230163439
   },
   {
     "id": "7107",
@@ -5646,7 +5742,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "741 Cooper Avenue, Yuba City, CA 95991",
     "loc": "Yuba City",
-    "state": "CA"
+    "state": "CA",
+    "lat": 39.136008228146,
+    "lng": -121.62343538271
   },
   {
     "id": "8179",
@@ -5769,7 +5867,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.SVABC.info",
     "address": "98 Almaden Ave. #2, San Jose, CA 95113",
     "loc": "San Jose",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.332839004885,
+    "lng": -121.892485481285
   },
   {
     "id": "848",
@@ -5817,7 +5917,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "706 Est 1st Street, Los Angeles, CA 90012",
     "loc": "Los Angeles",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.048649353057,
+    "lng": -118.235990169869
   },
   {
     "id": "8538",
@@ -5865,7 +5967,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "618 S. Mt Vernon Ave. Suite 134, San Bernardino, CA 92410",
     "loc": "San Bernardino",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.089711453042,
+    "lng": -117.313933535998
   },
   {
     "id": "8570",
@@ -5913,7 +6017,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "8980 Benson Ave Suite A, Montclair, CA 91763",
     "loc": "Montclair",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.090991273951,
+    "lng": -117.680989011498
   },
   {
     "id": "8579",
@@ -5986,7 +6092,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.castelosbeauty.com/academy",
     "address": "7000 Franklin Blvd #660, Sacramento, CA 95823",
     "loc": "Sacramento",
-    "state": "CA"
+    "state": "CA",
+    "lat": 38.501225016613,
+    "lng": -121.462128158014
   },
   {
     "id": "925",
@@ -6084,7 +6192,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "9050 Telegraph Rd. Suite 102a, Downey, CA 90240",
     "loc": "Downey",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.960174956115,
+    "lng": -118.108992723783
   },
   {
     "id": "9585",
@@ -6107,7 +6217,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "9619 International Blvd, Oakland, CA 94603",
     "loc": "Oakland",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.745569211594,
+    "lng": -122.171572838544
   },
   {
     "id": "8456",
@@ -6130,7 +6242,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "610 W. Chapman Avenue, Placentia, CA 92870",
     "loc": "Placentia",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.873308186386,
+    "lng": -117.876355225096
   },
   {
     "id": "9259",
@@ -6153,7 +6267,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "930 S. Andreasen Drive, Suite H, Escondido, CA 92029",
     "loc": "Escondido",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.112649427204,
+    "lng": -117.115450927567
   },
   {
     "id": "9634",
@@ -6201,7 +6317,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://beauology.com/academy",
     "address": "5371 Mowry Avenue, Fremont , CA 94538",
     "loc": "Fremont",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.532973322462,
+    "lng": -122.001362632648
   },
   {
     "id": "10540",
@@ -6224,7 +6342,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "607 East Santa Ana Blvd, Santa Ana, CA 92701",
     "loc": "Santa Ana",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.750503999799,
+    "lng": -117.862487745615
   },
   {
     "id": "8374",
@@ -6447,7 +6567,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "9348 Civic Center Drive, Beverley Hills, CA 90210",
     "loc": "Beverley Hills",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.074151520033,
+    "lng": -118.399214697581
   },
   {
     "id": "8287",
@@ -6693,7 +6815,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://rapidascent.com",
     "address": "6700 Koll Center Parkway Suite #230, Pleasanton, CA 94566",
     "loc": "Pleasanton",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.658493366907,
+    "lng": -121.899691008894
   },
   {
     "id": "10382",
@@ -6716,7 +6840,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "6785 Imperial Ave, San Diego , CA 92114",
     "loc": "San Diego",
-    "state": "CA"
+    "state": "CA",
+    "lat": 32.711268005992,
+    "lng": -117.051600019875
   },
   {
     "id": "10111",
@@ -6964,7 +7090,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "9000 Overland Avenue, Culver City, CA 90230",
     "loc": "Culver City",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.001707521325,
+    "lng": -118.391083984453
   },
   {
     "id": "9797",
@@ -7135,7 +7263,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.velocityvehiclegroup.com/career",
     "address": "8471 Maple Pl., Rancho Cucamonga, CA 91730",
     "loc": "Rancho Cucamonga",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.099674683824,
+    "lng": -117.562749018027
   },
   {
     "id": "10365",
@@ -7158,7 +7288,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://helixopp.com",
     "address": "833 Market Street, Suite 421, San Francisco , CA 94103",
     "loc": "San Francisco",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.784929048526,
+    "lng": -122.406765931629
   },
   {
     "id": "10414",
@@ -7181,7 +7313,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "833 Market Street Suite 421, San Francisco, CA 94103",
     "loc": "San Francisco",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.784929048526,
+    "lng": -122.406765931629
   },
   {
     "id": "10521",
@@ -7229,7 +7363,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "5735 Lemp Ave., North Hollywood, CA 91601",
     "loc": "North Hollywood",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.174615412741,
+    "lng": -118.384536032411
   },
   {
     "id": "10632",
@@ -7377,7 +7513,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "6115 1/2 South Victoria Ave, Los Angeles, CA 90043",
     "loc": "Los Angeles",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.98443005851,
+    "lng": -118.332388894261
   },
   {
     "id": "10172",
@@ -7550,7 +7688,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "7111 Firestone Blvd. Suite 221, Buena Park, CA 90621",
     "loc": "Buena Park",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.873940815786,
+    "lng": -118.00940890369
   },
   {
     "id": "2630",
@@ -7596,7 +7736,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.bcasd.org",
     "address": "6125 Imperial Ave. Suite 100, San Diego, CA 92114",
     "loc": "San Diego",
-    "state": "CA"
+    "state": "CA",
+    "lat": 32.709546080471,
+    "lng": -117.065824790589
   },
   {
     "id": "10095",
@@ -7619,7 +7761,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://dc36apprenticeships.org",
     "address": "7020 E. Slauson Ave., Commerce, CA 90040",
     "loc": "Commerce",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.980793435205,
+    "lng": -118.138247897528
   },
   {
     "id": "9042",
@@ -7813,7 +7957,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "9000 Overland Avenue, Culver City, CA 90230",
     "loc": "Culver City",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.001707521325,
+    "lng": -118.391083984453
   },
   {
     "id": "10971",
@@ -7861,7 +8007,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "5870 W. Olympic Blvd., Los Angeles, CA 90036",
     "loc": "Los Angeles",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.057442232782,
+    "lng": -118.359013575849
   },
   {
     "id": "10522",
@@ -7934,7 +8082,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "5420 E. Hedges Ave., Fresno, CA 93727",
     "loc": "Fresno",
-    "state": "CA"
+    "state": "CA",
+    "lat": 36.759141659654,
+    "lng": -119.707096544169
   },
   {
     "id": "10938",
@@ -7982,7 +8132,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.sfelectricaltraining.com",
     "address": "55 Fillmore Street, San Francisco, CA 94117",
     "loc": "San Francisco",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.769850585359,
+    "lng": -122.430069481947
   },
   {
     "id": "10490",
@@ -8205,7 +8357,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.ibew639.org",
     "address": "6363 Edna Road, San Luis Obispo, CA 93401",
     "loc": "San Luis Obispo",
-    "state": "CA"
+    "state": "CA",
+    "lat": 35.206329105878,
+    "lng": -120.614385135501
   },
   {
     "id": "690",
@@ -8303,7 +8457,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.laett.com",
     "address": "6023 S. Garfield Avenue, Los Angeles, CA 90040",
     "loc": "Los Angeles",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.980009643671,
+    "lng": -118.143152471458
   },
   {
     "id": "9012",
@@ -8601,7 +8757,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.neiep.org",
     "address": "690 Potrero Avenue, San Francisco, CA 94110",
     "loc": "San Francisco",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.760812127988,
+    "lng": -122.407152051582
   },
   {
     "id": "9476",
@@ -8849,7 +9007,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "8364 La Mesa Blvd, La Mesa, CA 91941",
     "loc": "La Mesa",
-    "state": "CA"
+    "state": "CA",
+    "lat": 32.76552315138,
+    "lng": -117.017806664106
   },
   {
     "id": "10475",
@@ -8872,7 +9032,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "9348 Civic Center Drive, Beverley Hills, CA 90210",
     "loc": "Beverley Hills",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.074151520033,
+    "lng": -118.399214697581
   },
   {
     "id": "10565",
@@ -8895,7 +9057,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "6115 1/2 South Victoria Ave, Los Angeles, CA 90043",
     "loc": "Los Angeles",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.98443005851,
+    "lng": -118.332388894261
   },
   {
     "id": "10501",
@@ -9414,7 +9578,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.universityofiron.org",
     "address": "5555 Fresca Drive, La Palma, CA 90623",
     "loc": "La Palma",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.861634580892,
+    "lng": -118.036609866507
   },
   {
     "id": "2615",
@@ -9437,7 +9603,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.universityofiron.org",
     "address": "5555 Fresca Drive, La Palma, CA 90623",
     "loc": "La Palma",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.861634580892,
+    "lng": -118.036609866507
   },
   {
     "id": "9144",
@@ -10108,7 +10276,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "5735 Lemp Ave, North Hollywood, CA 91601",
     "loc": "North Hollywood",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.174615412741,
+    "lng": -118.384536032411
   },
   {
     "id": "9935",
@@ -10131,7 +10301,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "5735 Lemp Ave., North Hollywood, CA 91601",
     "loc": "North Hollywood",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.174615412741,
+    "lng": -118.384536032411
   },
   {
     "id": "10760",
@@ -10179,7 +10351,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "9348 Civic Center Drive, Beverley Hills, CA 90210",
     "loc": "Beverley Hills",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.074151520033,
+    "lng": -118.399214697581
   },
   {
     "id": "505",
@@ -10252,7 +10426,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "9348 Civic Center Drive, Beverley Hills, CA 90210",
     "loc": "Beverley Hills",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.074151520033,
+    "lng": -118.399214697581
   },
   {
     "id": "10203",
@@ -10275,7 +10451,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "5735 Lemp Ave, North Hollywood, CA 91601",
     "loc": "North Hollywood",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.174615412741,
+    "lng": -118.384536032411
   },
   {
     "id": "10386",
@@ -10298,7 +10476,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.dc36apprenticeships.org",
     "address": "7020 E. Slauson Ave., Commerce , CA 90040",
     "loc": "Commerce",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.980793435205,
+    "lng": -118.138247897528
   },
   {
     "id": "1489",
@@ -10321,7 +10501,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://dc36apprenticeships.org",
     "address": "6225 Federal Blvd., San Diego, CA 92114",
     "loc": "San Diego",
-    "state": "CA"
+    "state": "CA",
+    "lat": 32.729027664249,
+    "lng": -117.063370066312
   },
   {
     "id": "436",
@@ -10419,7 +10601,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "9348 Civic Center Drive, Beverley Hills, CA 90210",
     "loc": "Beverley Hills",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.074151520033,
+    "lng": -118.399214697581
   },
   {
     "id": "10924",
@@ -10467,7 +10651,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "650 W Cienega Ave, San Dimas, CA 91773",
     "loc": "San Dimas",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.102994473356,
+    "lng": -117.81932666596
   },
   {
     "id": "1389",
@@ -10490,7 +10676,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "7111 Firestone Blvd. Ste. 221, Buena Park, CA 90621",
     "loc": "Buena Park",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.873940815786,
+    "lng": -118.00940890369
   },
   {
     "id": "9142",
@@ -10538,7 +10726,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "5860 Owens Dr 3rd Floor, Pleasanton, CA 94588",
     "loc": "Pleasanton",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.699812728297,
+    "lng": -121.896270119201
   },
   {
     "id": "9208",
@@ -10972,7 +11162,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "7750 Pardee Ln, Oakland, CA 94621",
     "loc": "Oakland",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.742477923257,
+    "lng": -122.205649496458
   },
   {
     "id": "10145",
@@ -11043,7 +11235,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "712 El Cerrito Plaza, El Cerrito, CA 94530",
     "loc": "El Cerrito",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.900626084763,
+    "lng": -122.298980875049
   },
   {
     "id": "10407",
@@ -11414,7 +11608,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "9000 Overland Avenue, Culver City, CA 90230",
     "loc": "Culver City",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.001707521325,
+    "lng": -118.391083984453
   },
   {
     "id": "9342",
@@ -11437,7 +11633,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "620 Enterprise Way Ste A, Bakersfield, CA 93307",
     "loc": "Bakersfield",
-    "state": "CA"
+    "state": "CA",
+    "lat": 35.349243616866,
+    "lng": -118.973742094838
   },
   {
     "id": "10891",
@@ -11510,7 +11708,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://dc36apprenticeships.org",
     "address": "7020 E. Slauson Ave., Commerce, CA 90040",
     "loc": "Commerce",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.980793435205,
+    "lng": -118.138247897528
   },
   {
     "id": "8323",
@@ -11779,7 +11979,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.pleasantonusd.net/",
     "address": "5758 W. Las Positas Blvd., Pleasanton, CA 94588",
     "loc": "Pleasanton",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.68568588089,
+    "lng": -121.892213422031
   },
   {
     "id": "10890",
@@ -11877,7 +12079,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "70 Oak Grove, San Francisco, CA 94107",
     "loc": "San Francisco",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.777071386907,
+    "lng": -122.401703262416
   },
   {
     "id": "10582",
@@ -11950,7 +12154,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.smjatc617.org",
     "address": "625 Industrial Road, San Carlos, CA 94070",
     "loc": "San Carlos",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.50991953944,
+    "lng": -122.25478859511
   },
   {
     "id": "10362",
@@ -12023,7 +12229,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "720-B Technology Way, Napa, CA 94558",
     "loc": "Napa",
-    "state": "CA"
+    "state": "CA",
+    "lat": 38.224314486455,
+    "lng": -122.267598205914
   },
   {
     "id": "9127",
@@ -12071,7 +12279,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://Fresnojatc.org",
     "address": "5420 E. Hedges, Fresno, CA 93727",
     "loc": "Fresno",
-    "state": "CA"
+    "state": "CA",
+    "lat": 36.759141659654,
+    "lng": -119.707096544169
   },
   {
     "id": "2726",
@@ -12094,7 +12304,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "5643 Vineland Avenue, North Hollywood, CA 91601",
     "loc": "North Hollywood",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.173375335587,
+    "lng": -118.370359531567
   },
   {
     "id": "10623",
@@ -12192,7 +12404,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "7111 Firestone Blvd. Ste. 221, Buena Park, CA 90621",
     "loc": "Buena Park",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.873940815786,
+    "lng": -118.00940890369
   },
   {
     "id": "10622",
@@ -12390,7 +12604,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "7190 W Sunset Blvd 32g, Los Angeles , CA 90046",
     "loc": "Los Angeles",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.097922849116,
+    "lng": -118.346843982792
   },
   {
     "id": "10738",
@@ -12613,7 +12829,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.sfdhr.org/apprenticeshipsf",
     "address": "One S. Van Ness Ave., 4th Floor, San Francisco, CA 94103",
     "loc": "San Francisco",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.775101649766,
+    "lng": -122.419097689648
   },
   {
     "id": "9267",
@@ -12809,7 +13027,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "9348 Civic Center Drive, Beverley Hills, CA 90210",
     "loc": "Beverley Hills",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.074151520033,
+    "lng": -118.399214697581
   },
   {
     "id": "9519",
@@ -12832,7 +13052,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "590 Franklin Street, Napa , CA 94559",
     "loc": "Napa",
-    "state": "CA"
+    "state": "CA",
+    "lat": 38.294804267062,
+    "lng": -122.287019439694
   },
   {
     "id": "2668",
@@ -13624,7 +13846,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "600 Yosemite Boulevard, Modesto, CA 95354",
     "loc": "Modesto",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.637686661275,
+    "lng": -120.983994350575
   },
   {
     "id": "394",
@@ -13672,7 +13896,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.ajtraining.org/bakersfieldtc.html",
     "address": "6820 Meany Ave, Bakersfield, CA 93308",
     "loc": "Bakersfield",
-    "state": "CA"
+    "state": "CA",
+    "lat": 35.394242396489,
+    "lng": -119.077662123888
   },
   {
     "id": "378",
@@ -13695,7 +13921,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.ualocal114.org",
     "address": "93 Thomas Road, Buellton, CA 93427",
     "loc": "Buellton",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.621451469905,
+    "lng": -120.187163536432
   },
   {
     "id": "502",
@@ -13718,7 +13946,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "8590 Utica Avenue Suite 200, Rancho Cucamonga, CA 91730",
     "loc": "Rancho Cucamonga",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.097407476847,
+    "lng": -117.573006754468
   },
   {
     "id": "528",
@@ -13841,7 +14071,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "Technical Education Department 436 College Ave, Modesto, CA 95350",
     "loc": "Modesto",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.650700601484,
+    "lng": -121.007365990574
   },
   {
     "id": "10980",
@@ -13914,7 +14146,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "600 Yosemite Boulevard, Modesto, CA 95354",
     "loc": "Modesto",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.637686661275,
+    "lng": -120.983994350575
   },
   {
     "id": "1369",
@@ -14012,7 +14246,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "9727 Business Park Dr Ste B, Sacramento, CA 95827",
     "loc": "Sacramento",
-    "state": "CA"
+    "state": "CA",
+    "lat": 38.569459611455,
+    "lng": -121.332444662282
   },
   {
     "id": "9437",
@@ -14060,7 +14296,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "600 Gate 5 Road, Sausalito, CA 94965",
     "loc": "Sausalito",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.868106993259,
+    "lng": -122.49830912788
   },
   {
     "id": "10631",
@@ -14108,7 +14346,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "9348 Civic Center Drive, Beverley Hills, CA 90210",
     "loc": "Beverley Hills",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.074151520033,
+    "lng": -118.399214697581
   },
   {
     "id": "9438",
@@ -14306,7 +14546,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "980 Fremont Street, Monterey , CA 93940",
     "loc": "Monterey",
-    "state": "CA"
+    "state": "CA",
+    "lat": 36.593795655917,
+    "lng": -121.882720968525
   },
   {
     "id": "10375",
@@ -14479,7 +14721,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "600 F. Street, Martinez , CA 94553",
     "loc": "Martinez",
-    "state": "CA"
+    "state": "CA",
+    "lat": 38.000871248421,
+    "lng": -122.131003113838
   },
   {
     "id": "10383",
@@ -14502,7 +14746,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "6785 Imperial Ave, San Diego , CA 92114",
     "loc": "San Diego",
-    "state": "CA"
+    "state": "CA",
+    "lat": 32.711268005992,
+    "lng": -117.051600019875
   },
   {
     "id": "770",
@@ -14725,7 +14971,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "7111 Firestone Blvd. Suite 221, Buena Park, CA 90621",
     "loc": "Buena Park",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.873940815786,
+    "lng": -118.00940890369
   },
   {
     "id": "10616",
@@ -14921,7 +15169,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "65 Civic Avenue, Pittsburg, CA 94565",
     "loc": "Pittsburg",
-    "state": "CA"
+    "state": "CA",
+    "lat": 38.021232853504,
+    "lng": -121.890854386014
   },
   {
     "id": "8973",
@@ -14992,7 +15242,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "9348 Civic Center Drive, Beverley Hills, CA 90210",
     "loc": "Beverley Hills",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.074151520033,
+    "lng": -118.399214697581
   },
   {
     "id": "10474",
@@ -15015,7 +15267,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "9348 Civic Center Drive, Beverley Hills, CA 90210",
     "loc": "Beverley Hills",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.074151520033,
+    "lng": -118.399214697581
   },
   {
     "id": "9351",
@@ -15088,7 +15342,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "70 Oak Grove, San Francisco, CA 94107",
     "loc": "San Francisco",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.777071386907,
+    "lng": -122.401703262416
   },
   {
     "id": "8438",
@@ -15211,7 +15467,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "707 3rd Street, West Sacramento, CA 95605",
     "loc": "West Sacramento",
-    "state": "CA"
+    "state": "CA",
+    "lat": 38.582984559432,
+    "lng": -121.511065568989
   },
   {
     "id": "9746",
@@ -15334,7 +15592,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "600 F. Street, Martinez, CA 94553",
     "loc": "Martinez",
-    "state": "CA"
+    "state": "CA",
+    "lat": 38.000871248421,
+    "lng": -122.131003113838
   },
   {
     "id": "8606",
@@ -15480,7 +15740,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://dc36apprenticeships.org",
     "address": "7020 E. Slauson Ave, Commerce, CA 90040",
     "loc": "Commerce",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.980793435205,
+    "lng": -118.138247897528
   },
   {
     "id": "9064",
@@ -15678,7 +15940,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "930 S. Andreasen Drive, Suite H, Escondido, CA 92029",
     "loc": "Escondido",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.112649427204,
+    "lng": -117.115450927567
   },
   {
     "id": "10749",
@@ -15701,7 +15965,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "707 3rd Street, West Sacramento, CA 95605",
     "loc": "West Sacramento",
-    "state": "CA"
+    "state": "CA",
+    "lat": 38.582984559432,
+    "lng": -121.511065568989
   },
   {
     "id": "10141",
@@ -15799,7 +16065,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "9000 Overland Avenue, Culver City, CA 90230",
     "loc": "Culver City",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.001707521325,
+    "lng": -118.391083984453
   },
   {
     "id": "10374",
@@ -15897,7 +16165,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "7111 Firestone Blvd. Suite 221, Buena Park, CA 90621",
     "loc": "Buena Park",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.873940815786,
+    "lng": -118.00940890369
   },
   {
     "id": "101",
@@ -15968,7 +16238,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.ajtraining.org/bakersfieldtc.html",
     "address": "6820 Meany Ave, Bakersfield, CA 93308",
     "loc": "Bakersfield",
-    "state": "CA"
+    "state": "CA",
+    "lat": 35.394242396489,
+    "lng": -119.077662123888
   },
   {
     "id": "527",
@@ -16041,7 +16313,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "8590 Utica Avenue Suite 200, Rancho Cucamonga, CA 91730",
     "loc": "Rancho Cucamonga",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.097407476847,
+    "lng": -117.573006754468
   },
   {
     "id": "8919",
@@ -16164,7 +16438,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "7111 Firestone Blvd. Suite 221, Buena Park, CA 90621",
     "loc": "Buena Park",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.873940815786,
+    "lng": -118.00940890369
   },
   {
     "id": "9737",
@@ -16385,7 +16661,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "8616 Cuyamaca Street, Santee, CA 92071",
     "loc": "Santee",
-    "state": "CA"
+    "state": "CA",
+    "lat": 32.831642199396,
+    "lng": -116.983840192705
   },
   {
     "id": "2252",
@@ -16483,7 +16761,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.ajtraining.org/bakersfieldtc.html",
     "address": "6820 Meany Ave, Bakersfield, CA 93308",
     "loc": "Bakersfield",
-    "state": "CA"
+    "state": "CA",
+    "lat": 35.394242396489,
+    "lng": -119.077662123888
   },
   {
     "id": "379",
@@ -16506,7 +16786,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.ualocal114.org",
     "address": "93 Thomas Road, Buellton, CA 93427",
     "loc": "Buellton",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.621451469905,
+    "lng": -120.187163536432
   },
   {
     "id": "503",
@@ -16529,7 +16811,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "8590 Utica Avenue Suite 200, Rancho Cucamonga, CA 91730",
     "loc": "Rancho Cucamonga",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.097407476847,
+    "lng": -117.573006754468
   },
   {
     "id": "529",
@@ -16727,7 +17011,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.pttc.edu",
     "address": "780 Commercial Street, San Jose, CA 95112",
     "loc": "San Jose",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.36536683316,
+    "lng": -121.890400868956
   },
   {
     "id": "9970",
@@ -16825,7 +17111,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "6398 Dougherty Rd. #35, Dublin, CA 94568",
     "loc": "Dublin",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.710514573874,
+    "lng": -121.910442346223
   },
   {
     "id": "10603",
@@ -16848,7 +17136,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "6398 Dougherty Rd. #35, Dublin, CA 94568",
     "loc": "Dublin",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.710514573874,
+    "lng": -121.910442346223
   },
   {
     "id": "10698",
@@ -17096,7 +17386,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.sccollege.edu/ECEAP",
     "address": "8045 East Chapman Ave., Orange, CA 92869",
     "loc": "Orange",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.794652384325,
+    "lng": -117.769451644638
   },
   {
     "id": "9928",
@@ -17194,7 +17486,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "5735 Lemp Ave, North Hollywood, CA 91601",
     "loc": "North Hollywood",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.174615412741,
+    "lng": -118.384536032411
   },
   {
     "id": "9942",
@@ -17217,7 +17511,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "5735 Lemp Ave., North Hollywood, CA 91601",
     "loc": "North Hollywood",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.174615412741,
+    "lng": -118.384536032411
   },
   {
     "id": "10919",
@@ -17463,7 +17759,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.ualocal114.org",
     "address": "93 Thomas Road, Buellton, CA 93427",
     "loc": "Buellton",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.621451469905,
+    "lng": -120.187163536432
   },
   {
     "id": "9391",
@@ -17536,7 +17834,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.pttc.edu",
     "address": "780 Commercial Street, San Jose, CA 95112",
     "loc": "San Jose",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.36536683316,
+    "lng": -121.890400868956
   },
   {
     "id": "100",
@@ -17732,7 +18032,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "C/O Alina Xiong; Nursing Services 8260 Longleaf Drive, Elk Grove, CA 95758",
     "loc": "Elk Grove",
-    "state": "CA"
+    "state": "CA",
+    "lat": 38.416949874605,
+    "lng": -121.402840714854
   },
   {
     "id": "10360",
@@ -17778,7 +18080,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "9000 Overland Avenue, Culver City, CA 90230",
     "loc": "Culver City",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.001707521325,
+    "lng": -118.391083984453
   },
   {
     "id": "8441",
@@ -17974,7 +18278,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.pttc.edu",
     "address": "780 Commercial Street, San Jose, CA 95112",
     "loc": "San Jose",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.36536683316,
+    "lng": -121.890400868956
   },
   {
     "id": "9766",
@@ -17997,7 +18303,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "620 Enterprise Way Suite A Suite 109, Bakersfield, CA 93307",
     "loc": "Bakersfield",
-    "state": "CA"
+    "state": "CA",
+    "lat": 35.349243616866,
+    "lng": -118.973742094838
   },
   {
     "id": "10711",
@@ -18045,7 +18353,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://Fresnojatc.org",
     "address": "5420 E. Hedges, Fresno, CA 93727",
     "loc": "Fresno",
-    "state": "CA"
+    "state": "CA",
+    "lat": 36.759141659654,
+    "lng": -119.707096544169
   },
   {
     "id": "4423",
@@ -18068,7 +18378,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.laett.com",
     "address": "6023 S. Garfield Avenue, Los Angeles, CA 90040",
     "loc": "Los Angeles",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.980009643671,
+    "lng": -118.143152471458
   },
   {
     "id": "9126",
@@ -18141,7 +18453,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://dc36apprenticeships.org",
     "address": "7020 E Slauson Ave, Commerce, CA 90040",
     "loc": "Commerce",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.980793435205,
+    "lng": -118.138247897528
   },
   {
     "id": "10373",
@@ -18214,7 +18528,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.pleasantonusd.net/",
     "address": "5758 W. Las Positas Blvd., Pleasanton , CA 94588",
     "loc": "Pleasanton",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.68568588089,
+    "lng": -121.892213422031
   },
   {
     "id": "10981",
@@ -18337,7 +18653,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "5537 East Lamona Ave, Suite 1, Fresno, CA 93727",
     "loc": "Fresno",
-    "state": "CA"
+    "state": "CA",
+    "lat": 36.760733293166,
+    "lng": -119.703219446261
   },
   {
     "id": "10015",
@@ -18658,7 +18976,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "7111 Firestone Blvd. St. 221, Buena Park, CA 90621",
     "loc": "Buena Park",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.873940815786,
+    "lng": -118.00940890369
   },
   {
     "id": "10552",
@@ -18754,7 +19074,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.infinera.com/careers/",
     "address": "6373 San Ignacio Ave, San Jose, CA 95119",
     "loc": "San Jose",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.235938709075,
+    "lng": -121.783958402322
   },
   {
     "id": "118",
@@ -18827,7 +19149,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "8616 Cuyamaca Street, Santee, CA 92071",
     "loc": "Santee",
-    "state": "CA"
+    "state": "CA",
+    "lat": 32.831642199396,
+    "lng": -116.983840192705
   },
   {
     "id": "9458",
@@ -18948,7 +19272,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.fresnosheetmetal.com",
     "address": "5410 E. Home, Fresno, CA 93727",
     "loc": "Fresno",
-    "state": "CA"
+    "state": "CA",
+    "lat": 36.763065659397,
+    "lng": -119.708874282333
   },
   {
     "id": "87",
@@ -19046,7 +19372,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.socalsma.org/application-process",
     "address": "633 Baldwin Park Blvd #E, Basset, CA 91746",
     "loc": "Basset",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.057902759112,
+    "lng": -117.991185959409
   },
   {
     "id": "185",
@@ -19069,7 +19397,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.fresnosheetmetal.com",
     "address": "5410 E. Home, Fresno, CA 93727",
     "loc": "Fresno",
-    "state": "CA"
+    "state": "CA",
+    "lat": 36.763065659397,
+    "lng": -119.708874282333
   },
   {
     "id": "2034",
@@ -19215,7 +19545,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "620 Enterprise Way Suite A Suite 109, Bakersfield, CA 93307",
     "loc": "Bakersfield",
-    "state": "CA"
+    "state": "CA",
+    "lat": 35.349243616866,
+    "lng": -118.973742094838
   },
   {
     "id": "9924",
@@ -19263,7 +19595,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "620 Enterprise Way Suite A Suite 109, Bakersfield, CA 93307",
     "loc": "Bakersfield",
-    "state": "CA"
+    "state": "CA",
+    "lat": 35.349243616866,
+    "lng": -118.973742094838
   },
   {
     "id": "9768",
@@ -19286,7 +19620,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "620 Enterprise Way Suite A Suite 109, Bakersfield, CA 93307",
     "loc": "Bakersfield",
-    "state": "CA"
+    "state": "CA",
+    "lat": 35.349243616866,
+    "lng": -118.973742094838
   },
   {
     "id": "10625",
@@ -19557,7 +19893,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "6785 Imperial Ave, San Diego , CA 92114",
     "loc": "San Diego",
-    "state": "CA"
+    "state": "CA",
+    "lat": 32.711268005992,
+    "lng": -117.051600019875
   },
   {
     "id": "9669",
@@ -19655,7 +19993,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "9348 Civic Center Drive, Beverley Hills, CA 90210",
     "loc": "Beverley Hills",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.074151520033,
+    "lng": -118.399214697581
   },
   {
     "id": "585",
@@ -19728,7 +20068,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "707 3rd Street, West Sacramento, CA 95605",
     "loc": "West Sacramento",
-    "state": "CA"
+    "state": "CA",
+    "lat": 38.582984559432,
+    "lng": -121.511065568989
   },
   {
     "id": "9754",
@@ -19801,7 +20143,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "9348 Civic Center Drive, Beverley Hills, CA 90210",
     "loc": "Beverley Hills",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.074151520033,
+    "lng": -118.399214697581
   },
   {
     "id": "549",
@@ -19824,7 +20168,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "560 Barneveld Ave., San Francisco, CA 94124",
     "loc": "San Francisco",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.739861563885,
+    "lng": -122.404445895048
   },
   {
     "id": "10139",
@@ -19872,7 +20218,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.ualocal114.org",
     "address": "93 Thomas Road, Buellton, CA 93427",
     "loc": "Buellton",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.621451469905,
+    "lng": -120.187163536432
   },
   {
     "id": "526",
@@ -19970,7 +20318,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.pttc.edu",
     "address": "780 Commercial Street, San Jose, CA 95112",
     "loc": "San Jose",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.36536683316,
+    "lng": -121.890400868956
   },
   {
     "id": "377",
@@ -19993,7 +20343,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.ualocal114.org",
     "address": "93 Thomas Road, Buellton, CA 93427",
     "loc": "Buellton",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.621451469905,
+    "lng": -120.187163536432
   },
   {
     "id": "9103",
@@ -20041,7 +20393,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "8616 Cuyamaca Street, Santee, CA 92071",
     "loc": "Santee",
-    "state": "CA"
+    "state": "CA",
+    "lat": 32.831642199396,
+    "lng": -116.983840192705
   },
   {
     "id": "9169",
@@ -20264,7 +20618,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "5735 Lemp Ave., North Hollywood, CA 91601",
     "loc": "North Hollywood",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.174615412741,
+    "lng": -118.384536032411
   },
   {
     "id": "10366",
@@ -20385,7 +20741,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "9348 Civic Center Drive, Beverley Hills, CA 90210",
     "loc": "Beverley Hills",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.074151520033,
+    "lng": -118.399214697581
   },
   {
     "id": "10450",
@@ -20708,7 +21066,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "5735 Lemp Ave., North Hollywood, CA 91601",
     "loc": "North Hollywood",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.174615412741,
+    "lng": -118.384536032411
   },
   {
     "id": "9901",
@@ -20981,7 +21341,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "7111 Firestone Blvd. Suite 221, Buena Park, CA 90621",
     "loc": "Buena Park",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.873940815786,
+    "lng": -118.00940890369
   },
   {
     "id": "2677",
@@ -21054,7 +21416,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "7111 Firestone Blvd. Suite 221, Buena Park, CA 90621",
     "loc": "Buena Park",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.873940815786,
+    "lng": -118.00940890369
   },
   {
     "id": "10285",
@@ -21077,7 +21441,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "9727 Business Park Dr Ste B, Sacramento, CA 95827",
     "loc": "Sacramento",
-    "state": "CA"
+    "state": "CA",
+    "lat": 38.569459611455,
+    "lng": -121.332444662282
   },
   {
     "id": "114",
@@ -21225,7 +21591,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.nctijatc.org",
     "address": "600 Pinnacle Place, Livermore, CA 94550",
     "loc": "Livermore",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.702924417448,
+    "lng": -121.70120557939
   },
   {
     "id": "10287",
@@ -21248,7 +21616,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "9727 Business Park Dr Ste B, Sacramento, CA 95827",
     "loc": "Sacramento",
-    "state": "CA"
+    "state": "CA",
+    "lat": 38.569459611455,
+    "lng": -121.332444662282
   },
   {
     "id": "1370",
@@ -21296,7 +21666,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.nctijatc.org",
     "address": "600 Pinnacle Place, Livermore, CA 94550",
     "loc": "Livermore",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.702924417448,
+    "lng": -121.70120557939
   },
   {
     "id": "10286",
@@ -21319,7 +21691,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "9727 Business Park Dr Ste B, Sacramento, CA 95827",
     "loc": "Sacramento",
-    "state": "CA"
+    "state": "CA",
+    "lat": 38.569459611455,
+    "lng": -121.332444662282
   },
   {
     "id": "115",
@@ -21586,7 +21960,9 @@ window.registerApprenticeships(
     "websiteUrl": "https://www.laett.com",
     "address": "6023 S. Garfield Ave., Los Angeles, CA 90040",
     "loc": "Los Angeles",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.980009643671,
+    "lng": -118.143152471458
   },
   {
     "id": "10039",
@@ -21609,7 +21985,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "575 E. Weber Avenue, Compton, CA 90222",
     "loc": "Compton",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.920282402869,
+    "lng": -118.219905044944
   },
   {
     "id": "395",
@@ -21880,7 +22258,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "5735 Lemp Ave, North Hollywood, CA 91601",
     "loc": "North Hollywood",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.174615412741,
+    "lng": -118.384536032411
   },
   {
     "id": "9936",
@@ -21903,7 +22283,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "5735 Lemp Ave., North Hollywood, CA 91601",
     "loc": "North Hollywood",
-    "state": "CA"
+    "state": "CA",
+    "lat": 34.174615412741,
+    "lng": -118.384536032411
   },
   {
     "id": "10112",
@@ -21926,7 +22308,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "8364 La Mesa Blvd, La Mesa, CA 91941",
     "loc": "La Mesa",
-    "state": "CA"
+    "state": "CA",
+    "lat": 32.76552315138,
+    "lng": -117.017806664106
   },
   {
     "id": "8858",
@@ -21999,7 +22383,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "560 Barneveld Ave., San Francisco, CA 94124",
     "loc": "San Francisco",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.739861563885,
+    "lng": -122.404445895048
   },
   {
     "id": "8672",
@@ -22045,7 +22431,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "7111 Firestone Blvd. St. 221, Buena Park, CA 90621",
     "loc": "Buena Park",
-    "state": "CA"
+    "state": "CA",
+    "lat": 33.873940815786,
+    "lng": -118.00940890369
   },
   {
     "id": "280",
@@ -22118,7 +22506,9 @@ window.registerApprenticeships(
     "websiteUrl": "",
     "address": "600 Yosemite Boulevard, Modesto, CA 95354",
     "loc": "Modesto",
-    "state": "CA"
+    "state": "CA",
+    "lat": 37.637686661275,
+    "lng": -120.983994350575
   },
   {
     "id": "767",
