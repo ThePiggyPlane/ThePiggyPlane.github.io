@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com; style-src 'self' 'unsafe-inline' https://unpkg.com https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.openstreetmap.org; connect-src 'self'; object-src 'none'; base-uri 'self'" />
 <title>Fostering Paths</title>
-<meta name="description" content="A straight answer on college, money, and what comes next — for current and former foster youth in San Bernardino, Riverside, and Orange County." />
+<meta name="description" content="Career pathways, programs, scholarships, and support for current and former foster youth: pick your state and region to see what is near you and what it really costs." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -35,6 +35,7 @@
 <script src="lib/career-registry.js"></script>
 <script src="lib/program-registry.js"></script>
 <script src="lib/apprenticeship-registry.js"></script>
+<script src="lib/state-registry.js"></script>
 <script src="lib/app-meta.js"></script>
 <script src="lib/matcher.js"></script>
 <script src="data/careers/architect.js"></script>
@@ -78,9 +79,18 @@
 <script src="data/careers/accountant.js"></script>
 <script src="data/programs.js"></script>
 <script src="data/apprenticeships.js"></script>
+<script src="data/national/resources.js"></script>
+<script src="data/national/scholarships.js"></script>
+<!-- Per-state data is lazy-loaded from data/states/<ST>/ via the manifest -->
+<script src="data/states/index.js"></script>
+<script src="lib/state-loader.js"></script>
 
 <!-- Components -->
 <script type="text/babel" src="components/shell.jsx"></script>
+<script type="text/babel" src="components/location.jsx"></script>
+<script type="text/babel" src="components/resources.jsx"></script>
+<script type="text/babel" src="components/scholarships.jsx"></script>
+<script type="text/babel" src="components/stateguide.jsx"></script>
 <script type="text/babel" src="components/home.jsx"></script>
 <script type="text/babel" src="components/pages.jsx"></script>
 <script type="text/babel" src="components/wizard.jsx"></script>

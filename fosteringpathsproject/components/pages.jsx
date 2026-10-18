@@ -133,11 +133,119 @@ const CpCareerApprenticeships = ({ career }) => {
   );
 };
 
+const TIER_ORDER = { cc: 0, csu: 1, public4: 1, uc: 2, private: 3, trade: 4 };
+const sortPrograms = (xs) => [...xs].sort((a, b) =>
+  (b.curated ? 1 : 0) - (a.curated ? 1 : 0) ||
+  (TIER_ORDER[a.tier] ?? 9) - (TIER_ORDER[b.tier] ?? 9) ||
+  (b.grads || 0) - (a.grads || 0) ||
+  (a.inst || a.name).localeCompare(b.inst || b.name));
+
+const CpProgramCard = ({ p }) => {
+  const tierLabels = window.APP_META.tierLabels;
+  return (
+    <div className={"cp-prog " + p.tier} key={p.id}>
+      <div className="cp-prog-head">
+        <div>
+          <div className="cp-prog-tier">{tierLabels[p.tier] || p.tier}{p.forProfit ? <span className="cp-badge warn" title="For-profit school: compare cost and job placement rates carefully before enrolling">for-profit</span> : null}{p.curated ? <span className="cp-badge good">verified listing</span> : null}</div>
+          <div className="cp-prog-name">{p.name}</div>
+          <div className="cp-prog-loc">{p.loc}{p.region && p.region !== p.loc ? `, ${p.region}` : ""} · {p.duration}{p.grads ? ` · ${p.grads} grads in 2023-24` : ""}</div>
+        </div>
+        {p.sticker > 0 && (
+          <div className="cp-prog-money">
+            <div className="cp-prog-sticker">sticker ${p.sticker.toLocaleString()}</div>
+            <div className="cp-prog-real">${(p.realCost || 0).toLocaleString()}<span>/yr after aid</span></div>
+          </div>
+        )}
+      </div>
+      <div className="cp-prog-action">
+        <span>Next: {p.action}</span>
+        <span className="cp-prog-links">
+          {p.phone && <a href={"tel:" + String(p.phone).replace(/[^0-9+]/g, "")} className="cp-prog-link">{p.phone}</a>}
+          {p.url && <a href={p.url} target="_blank" rel="noopener" className="cp-prog-link">Visit site →</a>}
+        </span>
+      </div>
+    </div>
+  );
+};
+
+const PROG_PREVIEW = 20;
+
+// The main program list for a career: filterable by school/city, 20 at a time.
+const CpProgramList = ({ progs, careerId }) => {
+  const [showAll, setShowAll] = React.useState(false);
+  const [pq, setPq] = React.useState("");
+  const [level, setLevel] = React.useState("all");
+  React.useEffect(() => { setShowAll(false); setPq(""); setLevel("all"); }, [careerId]);
+  const q = pq.trim().toLowerCase();
+  const levels = {};
+  progs.forEach(p => { if (p.level) levels[p.level] = (levels[p.level] || 0) + 1; });
+  const filtered = sortPrograms(progs.filter(p =>
+    (level === "all" || p.level === level) &&
+    (!q || [p.inst, p.name, p.loc, p.region, p.county].filter(Boolean).join(" ").toLowerCase().includes(q))));
+  const shown = showAll ? filtered : filtered.slice(0, PROG_PREVIEW);
+  const LEVEL_LABEL = { cert: "Certificate", assoc: "Associate", bach: "Bachelor's", grad: "Graduate" };
+  return (
+    <>
+      {progs.length > 8 && (
+        <div className="cp-filters" role="toolbar" aria-label="Filter programs">
+          {Object.keys(levels).length > 1 && (
+            <>
+              <button className={"cp-chip " + (level === "all" ? "on" : "")} onClick={() => setLevel("all")} aria-pressed={level === "all"}>All levels</button>
+              {["cert", "assoc", "bach", "grad"].filter(l => levels[l]).map(l => (
+                <button key={l} className={"cp-chip " + (level === l ? "on" : "")} onClick={() => setLevel(l)} aria-pressed={level === l}>{LEVEL_LABEL[l]} <span className="cp-chip-n">{levels[l]}</span></button>
+              ))}
+            </>
+          )}
+          <input className="cp-search" type="search" placeholder="Filter by school or city…" value={pq} onChange={e => setPq(e.target.value)} aria-label="Filter programs by school or city" />
+        </div>
+      )}
+      <div className="cp-prog-list">{shown.map(p => <CpProgramCard key={p.id} p={p} />)}</div>
+      {filtered.length > shown.length && (
+        <p className="cp-app-more"><button className="cp-link" onClick={() => setShowAll(true)}>Show all {filtered.length} programs →</button></p>
+      )}
+      {filtered.length === 0 && progs.length > 0 && <p className="cp-filter-meta">Nothing matches that filter.</p>}
+    </>
+  );
+};
+
+const CpProgramGroup = ({ title, progs, open, emptyText }) => {
+  const [showAll, setShowAll] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(open);
+  React.useEffect(() => { setIsOpen(open); setShowAll(false); }, [open, title]);
+  const shown = showAll ? progs : progs.slice(0, PROG_PREVIEW);
+  return (
+    <section className="cp-prog-group">
+      <button className="cp-prog-group-h" onClick={() => setIsOpen(o => !o)} aria-expanded={isOpen}>
+        <span>{title}</span><span className="cp-prog-group-n">{progs.length} {isOpen ? "▴" : "▾"}</span>
+      </button>
+      {isOpen && (progs.length === 0 ? <p className="cp-filter-meta">{emptyText}</p> : (
+        <>
+          <div className="cp-prog-list">{shown.map(p => <CpProgramCard key={p.id} p={p} />)}</div>
+          {progs.length > shown.length && (
+            <p className="cp-app-more"><button className="cp-link" onClick={() => setShowAll(true)}>Show all {progs.length} →</button></p>
+          )}
+        </>
+      ))}
+    </section>
+  );
+};
+
 const CpCareer = ({ careerId, saved, toggleSave, onBack, onOpenAid }) => {
   const career = window.CAREERS.byId(careerId);
+  const { loc, status } = useFpLocation();
   if (!career) return <main className="cp-main narrow"><button className="cp-back" onClick={onBack}>← Careers</button><p>Career not found.</p></main>;
-  const progs = (career.programs || []).map(pid => window.PROGRAMS.get(pid)).filter(Boolean);
-  const tierLabels = window.APP_META.tierLabels;
+  const stateName = window.stateName(loc.state);
+  const inState = sortPrograms(window.PROGRAMS.forCareer(career.id, { state: loc.state }));
+  const here = loc.region ? inState.filter(p => p.region === loc.region) : inState;
+  const elsewhere = loc.region ? inState.filter(p => p.region !== loc.region) : [];
+  const wages = window.WAGES.forCareer(loc.state, career.id);
+  const guide = window.STATE_GUIDES.get(loc.state);
+  const medianK = wages && wages.medianWage ? Math.round(wages.medianWage / 1000) : career.salary.median;
+  const payLabel = wages && wages.medianWage ? `median pay, ${loc.state}` : "median pay, CA";
+  const dolStats = wages && wages.medianWage ? { ...wages, geoLabel: wages.geo || stateName } : career.dolStats;
+  const steps = guide && guide.firstWeek && guide.firstWeek.length ? guide.firstWeek.slice(0, 4).map(s => s.title)
+    : (loc.state === "CA" ? ["FAFSA / CADAA", "Chafee ETV app", "CCCApply or Cal State Apply", "Email Guardian Scholars"]
+                           : ["FAFSA (independent student)", `${stateName} ETV application`, "Apply to the school (ask for a fee waiver)", "Email the campus foster youth program"]);
   return (
     <main className="cp-main narrow">
       <button className="cp-back" onClick={onBack}>← All careers</button>
@@ -147,40 +255,27 @@ const CpCareer = ({ careerId, saved, toggleSave, onBack, onOpenAid }) => {
       <div className="cp-detail-grid">
         <div>
           <div className="cp-detail-stats">
-            <div><div className="cp-stat">${career.salary.median}K</div><div className="cp-stat-lbl">median pay, CA</div></div>
+            <div><div className="cp-stat">${medianK}K</div><div className="cp-stat-lbl">{payLabel}</div></div>
             <div><div className="cp-stat">{career.length}</div><div className="cp-stat-lbl">time</div></div>
             <div><div className="cp-stat">{career.demand}</div><div className="cp-stat-lbl">demand</div></div>
             <div><div className="cp-stat">{(career.grads2yr || '—').split(' ')[0]}</div><div className="cp-stat-lbl">grads employed</div></div>
           </div>
 
-          {career.dolStats && <CpDolStats stats={career.dolStats} />}
+          {dolStats && (loc.state === "CA" || (wages && wages.medianWage)) && <CpDolStats stats={dolStats} />}
+          {loc.state !== "CA" && !(wages && wages.medianWage) && career.dolStats && career.dolStats.nationalMedianWage && (
+            <p className="cp-filter-meta">Pay shown is California's. Nationally, the median is ${fmtNum(career.dolStats.nationalMedianWage)} a year{career.dolStats.nationalEmployed ? ` across ${fmtNum(career.dolStats.nationalEmployed)} jobs` : ""} (BLS, {career.dolStats.dataYear || 2025}). {stateName} figures are being added.</p>
+          )}
 
-          {progs.length > 0 && <h2 className="cp-h2">Programs</h2>}
-          <div className="cp-prog-list">
-            {progs.map(p => (
-              <div className={"cp-prog " + p.tier} key={p.id}>
-                <div className="cp-prog-head">
-                  <div>
-                    <div className="cp-prog-tier">{tierLabels[p.tier]}</div>
-                    <div className="cp-prog-name">{p.name}</div>
-                    <div className="cp-prog-loc">{p.loc} · {p.duration}</div>
-                  </div>
-                  {p.sticker > 0 && (
-                    <div className="cp-prog-money">
-                      <div className="cp-prog-sticker">was ${p.sticker.toLocaleString()}</div>
-                      <div className="cp-prog-real">${p.realCost.toLocaleString()}<span>/yr after aid</span></div>
-                    </div>
-                  )}
-                </div>
-                <div className="cp-prog-action">
-                  <span>Next: {p.action}</span>
-                  {p.url && (
-                    <a href={p.url} target="_blank" rel="noopener" className="cp-prog-link">Visit program site →</a>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
+          <h2 className="cp-h2">Programs in {loc.region || stateName}</h2>
+          {status === "loading" && here.length === 0 && <p className="cp-filter-meta">Loading {stateName} programs…</p>}
+          {status !== "loading" && here.length === 0 && (
+            <p className="cp-filter-meta">No {career.name} programs found in {loc.region || stateName}{elsewhere.length ? ", but there are some elsewhere in the state below." : ". Try the map, or check a nearby state."}</p>
+          )}
+          <CpProgramList progs={here} careerId={career.id} />
+          {loc.region && elsewhere.length > 0 && (
+            <CpProgramGroup title={`Elsewhere in ${stateName}`} progs={sortPrograms(elsewhere)} open={here.length < 3} emptyText="" />
+          )}
+          <p className="cp-app-source">Program lists come from each school's federal reporting (IPEDS, 2023-24 graduates) plus verified listings. "After aid" assumes Pell plus ETV{loc.state === "CA" ? " and California grants" : ""}; a tuition waiver can bring public schools to $0. Confirm with the school.</p>
 
           <CpCareerApprenticeships career={career} />
         </div>
@@ -202,10 +297,7 @@ const CpCareer = ({ careerId, saved, toggleSave, onBack, onOpenAid }) => {
           <div className="cp-aside-card">
             <div className="cp-aside-eyebrow">This week</div>
             <ol className="cp-aside-steps">
-              <li>FAFSA / CADAA</li>
-              <li>Chafee ETV app</li>
-              <li>CCCApply or Cal State Apply</li>
-              <li>Email Guardian Scholars</li>
+              {steps.map((s, i) => <li key={i}>{s}</li>)}
             </ol>
           </div>
         </aside>
@@ -373,11 +465,111 @@ const gapNote = (gap, profile) => {
   return "Gap typically closed by Federal Direct Loans (subsidized first, ~$5.5K/yr first year), campus work-study, employer tuition benefits, or local scholarships.";
 };
 
-const CpMoney = ({ onOpenAid, profile, setProfile }) => {
+// Median in-state sticker (tuition + fees) for a tier, from the loaded programs of a state.
+const medianSticker = (st, tiers, fallback) => {
+  const vals = window.PROGRAMS.byState(st).filter(p => tiers.includes(p.tier) && p.sticker > 0 && !p.forProfit).map(p => p.sticker).sort((a, b) => a - b);
+  if (!vals.length) return fallback;
+  return vals[Math.floor(vals.length / 2)];
+};
+
+// Cost view for states other than California: Pell + ETV + the state's own
+// waiver, against that state's typical tuition.
+const CpMoneyState = ({ loc, profile, onEdit, go }) => {
+  const st = loc.state;
+  const stateName = window.stateName(st);
+  const guide = window.STATE_GUIDES.get(st);
+  const [school, setSchool] = React.useState("cc");
+  const [living, setLiving] = React.useState("home");
+  const stickers = {
+    cc: medianSticker(st, ["cc"], 4000),
+    public4: medianSticker(st, ["public4"], 11000),
+    private: medianSticker(st, ["private"], 40000),
+  };
+  const livingAdd = { home: 0, ils: 2000, dorms: 14000, solo: 18000 };
+  const sticker = stickers[school] + livingAdd[living];
+  const fosterLike = ["foster", "agedout", "adopted"].includes(profile.status);
+  const pell = 7395;
+  const etv = fosterLike && profile.age >= 14 && profile.age <= 26 ? 5000 : 0;
+  const waiverApplies = fosterLike && guide && guide.tuitionWaiver && guide.tuitionWaiver.exists && school !== "private";
+  const waiver = waiverApplies ? stickers[school] : 0;
+  const aidCovered = Math.min(sticker, pell + etv + waiver);
+  const gap = Math.max(0, sticker - aidCovered);
+  const stateAid = (guide && guide.stateAid) || [];
+  const natAid = window.SCHOLARSHIPS.national().filter(s => s.type === "etv" || s.type === "grant").slice(0, 6);
+
+  return (
+    <main className="cp-main narrow">
+      <h1 className="cp-h1">Cost Calculator</h1>
+      <div className="cp-profile-summary">
+        <span>Calculated for: <strong>{STATUS_LABEL[profile.status] || profile.status}</strong>, age {profile.age}, in <strong>{stateName}</strong>.</span>
+        <button className="cp-link" onClick={onEdit}>Retake aid quiz</button>
+      </div>
+
+      <div className="cp-calc">
+        <div className="cp-calc-controls">
+          <label>School type
+            <select value={school} onChange={e => setSchool(e.target.value)}>
+              <option value="cc">Community college</option>
+              <option value="public4">Public university</option>
+              <option value="private">Private</option>
+            </select>
+          </label>
+          <label>Living
+            <select value={living} onChange={e => setLiving(e.target.value)}>
+              <option value="home">With family / foster home</option>
+              <option value="ils">Transitional housing</option>
+              <option value="dorms">Campus dorms</option>
+              <option value="solo">Renting solo</option>
+            </select>
+          </label>
+        </div>
+        <div className="cp-calc-out">
+          <div className="cp-calc-eyebrow">Your cost (estimate)</div>
+          <div className="cp-calc-num">${gap.toLocaleString()}<span>/yr</span></div>
+          <div className="cp-calc-sticker">sticker: ${sticker.toLocaleString()}/yr (typical in-state tuition and fees in {stateName}{living !== "home" ? " plus housing" : ""})</div>
+          <div className="cp-calc-bar">
+            <div className="cp-bar-stack">
+              <div className="cp-bar-seg" style={{ width: `${Math.min(100, (aidCovered / sticker) * 100)}%`, background: '#1e3a5f' }}>Aid ${aidCovered.toLocaleString()}</div>
+              {gap > 0 && <div className="cp-bar-seg" style={{ width: `${(gap / sticker) * 100}%`, background: '#d4c3a8', color: '#1a1a1a' }}>Gap ${gap.toLocaleString()}</div>}
+            </div>
+          </div>
+          <p className="cp-calc-note">
+            Stack: Pell up to ${pell.toLocaleString()}{etv ? `, ${stateName} ETV up to $${etv.toLocaleString()}` : ""}{waiverApplies ? `, and the ${guide.tuitionWaiver.name} covering public tuition` : ""}.
+            {!guide ? ` We are still confirming ${stateName}'s waiver and ETV rules, so this leaves them out.` : ""}
+            {gap > 0 ? " Campus foster youth programs, scholarships, and work-study usually close the rest." : " Any surplus goes to rent, food, books, savings."}
+          </p>
+        </div>
+      </div>
+
+      <h2 className="cp-h2">Aid in {stateName}</h2>
+      {stateAid.length === 0 && <p className="cp-filter-meta">State-specific aid for {stateName} is still being added. The national programs below apply everywhere.</p>}
+      <div className="cp-aid-grid">
+        {stateAid.map(a => (
+          <a className="cp-aid-card" key={a.id} href={a.apply && a.apply.startsWith("http") ? a.apply : undefined} target="_blank" rel="noopener">
+            <div className="cp-aid-amt">{a.amount}</div>
+            <div className="cp-aid-name">{a.name}</div>
+            <p>{a.desc}{a.gotchas ? ` ${a.gotchas}` : ""}</p>
+          </a>
+        ))}
+        {natAid.map(s => (
+          <a className="cp-aid-card" key={s.id} href={s.url} target="_blank" rel="noopener">
+            <div className="cp-aid-amt">{s.amount}</div>
+            <div className="cp-aid-name">{s.name}</div>
+            <p>{s.eligibility}</p>
+          </a>
+        ))}
+      </div>
+      <p className="cp-app-more"><button className="cp-link" onClick={() => go("scholarships")}>See every scholarship for {stateName} →</button></p>
+    </main>
+  );
+};
+
+const CpMoney = ({ onOpenAid, profile, setProfile, go }) => {
   const aid = window.APP_META.aid;
   const [school, setSchool] = React.useState("uc");
   const [living, setLiving] = React.useState("dorms");
   const [editing, setEditing] = React.useState(false);
+  const { loc } = useFpLocation();
 
   // Gate: until they fill out the survey, only show the survey.
   if (!profile || editing) {
@@ -386,6 +578,9 @@ const CpMoney = ({ onOpenAid, profile, setProfile }) => {
       onComplete={(p) => { setProfile(p); setEditing(false); }}
       onCancel={editing ? () => setEditing(false) : null}
     />;
+  }
+  if (loc.state !== "CA") {
+    return <CpMoneyState loc={loc} profile={profile} onEdit={() => setEditing(true)} go={go || (() => {})} />;
   }
 
   const stickers   = { cc: 1150, csu: 7400, uc: 14400, private: 65000 };
@@ -520,26 +715,45 @@ const STEPS = [
   },
 ];
 
-const CpWeek = () => (
-  <main className="cp-main narrow">
-    <div className="cp-eyebrow">This week</div>
-    <h1 className="cp-h1">The Core 5 Steps</h1>
-    {STEPS.map((s, i) => (
-      <div className="cp-week-row" key={i}>
-        <div className="cp-week-n">{String(i + 1).padStart(2, "0")}</div>
-        <div>
-          <h3>{s.title}</h3>
-          <p>{s.body}</p>
-          {s.links.length > 0 && (
-            <div className="cp-step-links">
-              {s.links.map(l => <Ext key={l.href} href={l.href}>{l.label} →</Ext>)}
-            </div>
-          )}
+// Steps that are true in every state, used when a state guide has not written its own.
+const NATIONAL_STEPS = (stateName) => [
+  { title: "FAFSA", body: <>File at studentaid.gov. Answer yes to the foster care question: you are an independent student and no parent income is needed. This unlocks Pell (up to $7,395 a year) and most campus aid.</>, links: [{ label: "FAFSA", href: "https://studentaid.gov/h/apply-for-aid/fafsa" }] },
+  { title: `${stateName} ETV (Chafee) voucher`, body: <>Every state runs an Education and Training Voucher of up to $5,000 a year for youth who were in foster care. Your state's child welfare agency or its contractor takes the application. See the state guide for the link.</>, links: [{ label: "Find your state's ETV", href: "https://www.fc2success.org/programs/education-training-vouchers/" }] },
+  { title: "Apply to schools", body: <>Community colleges are open admission. Ask the admissions office for a fee waiver; foster youth qualify as independent, low-income applicants almost everywhere.</>, links: [] },
+  { title: "Contact the campus foster youth program", body: <>Most public campuses have a program for students from foster care (names vary: Guardian Scholars, Fostering Success, Renaissance Scholars). Email before you enroll; they often hold housing, grants, and priority registration.</>, links: [] },
+  { title: "Gather documents", body: <>Transcript, a foster care verification letter from your caseworker or agency, Social Security card or number, photo ID. Keep photos of each on your phone.</>, links: [] },
+];
+
+const CpWeek = ({ go }) => {
+  const { loc } = useFpLocation();
+  const stateName = window.stateName(loc.state);
+  const guide = window.STATE_GUIDES.get(loc.state);
+  let steps;
+  if (loc.state === "CA") steps = STEPS;
+  else if (guide && guide.firstWeek && guide.firstWeek.length) steps = guide.firstWeek.map(s => ({ title: s.title, body: s.body, links: s.url ? [{ label: "Open", href: s.url }] : [] }));
+  else steps = NATIONAL_STEPS(stateName);
+  return (
+    <main className="cp-main narrow">
+      <div className="cp-eyebrow">This week · {stateName}</div>
+      <h1 className="cp-h1">Do these first</h1>
+      {steps.map((s, i) => (
+        <div className="cp-week-row" key={i}>
+          <div className="cp-week-n">{String(i + 1).padStart(2, "0")}</div>
+          <div>
+            <h3>{s.title}</h3>
+            <p>{s.body}</p>
+            {s.links.length > 0 && (
+              <div className="cp-step-links">
+                {s.links.map(l => <Ext key={l.href} href={l.href}>{l.label} →</Ext>)}
+              </div>
+            )}
+          </div>
         </div>
-      </div>
-    ))}
-  </main>
-);
+      ))}
+      {go && <p className="cp-app-more"><button className="cp-link" onClick={() => go("state")}>See the full {stateName} guide →</button></p>}
+    </main>
+  );
+};
 
 const CpAbout = () => {
   const [cleared, setCleared] = React.useState(false);
@@ -557,14 +771,18 @@ const CpAbout = () => {
     <main className="cp-main narrow cp-about">
       <h2 className="cp-h2">Where the numbers come from</h2>
       <div className="cp-about-meta">
+        <div><strong>Programs, nationwide</strong>U.S. Dept. of Education IPEDS: institutions (HD2024), completions by program 2023-24 (C2024_A), tuition and fees (IC2023_AY). Only programs that graduated at least one student are listed.</div>
+        <div><strong>Verified listings (Inland SoCal)</strong>Each school's own program page, checked by hand</div>
+        <div><strong>Support resources, scholarships, state guides</strong>Each program's or agency's own page; every record carries the month it was checked</div>
         <div><strong>Cal Grant</strong>California Student Aid Commission, current cycle</div>
         <div><strong>Pell Grant</strong>U.S. Dept. of Education, 2025–26 schedule</div>
         <div><strong>Chafee ETV</strong>CSAC Chafee program, current annual maximum</div>
-        <div><strong>Tuition stickers</strong>Each school's published 2025–26 cost of attendance</div>
         <div><strong>Salary &amp; employment</strong>U.S. Bureau of Labor Statistics OEWS, 2025 release (Riverside–San Bernardino–Ontario MSA), via the BLS public API</div>
         <div><strong>Apprenticeships</strong>CA Division of Apprenticeship Standards public registry</div>
-        <div><strong>Verified</strong>June 2026 · v1.1</div>
+        <div><strong>Coverage</strong>{Object.keys(window.STATE_INDEX || {}).length} states · {Object.values(window.STATE_INDEX || {}).reduce((n, s) => n + (s.counts ? s.counts.programs : 0), 0).toLocaleString()} programs · {Object.values(window.STATE_INDEX || {}).reduce((n, s) => n + (s.counts ? s.counts.resources : 0), 0).toLocaleString()} support resources · {Object.values(window.STATE_INDEX || {}).filter(s => s.counts && s.counts.guide).length} state guides</div>
+        <div><strong>Updated</strong>October 2026 · v2.0</div>
       </div>
+      <p>Something wrong or missing? Tell Tyler through the contact form at <a href="https://www.tylerjohnpeters.com/#contact">tylerjohnpeters.com</a>. A wrong phone number gets fixed the same week.</p>
 
       <h2 className="cp-h2">Your privacy</h2>
       <p>This site stores your aid-quiz answers and saved careers in your own browser only — nothing is sent to a server. Anyone with access to this browser can see those answers, so if you're on a shared or public computer, clear your data before handing the device back.</p>

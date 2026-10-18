@@ -40,7 +40,7 @@ const useProfile = () => {
 };
 
 // ---- URL hash <-> route object -------------------------------------------
-const SIMPLE_VIEWS = new Set(["home","map","apprenticeships","money","week","about","compare"]);
+const SIMPLE_VIEWS = new Set(["home","map","apprenticeships","money","week","about","compare","resources","scholarships","state"]);
 
 const parseHash = () => {
   const h = (window.location.hash || "").replace(/^#\/?/, "");
@@ -65,8 +65,11 @@ const buildHash = (route) => {
 const App = () => {
   const [route, setRoute] = React.useState(() => parseHash());
   const [showWiz, setShowWiz] = React.useState(false);
+  const [showLoc, setShowLoc] = React.useState(false);
   const [saved, toggleSave] = useSaved();
   const [profile, setProfile] = useProfile();
+  // Re-render the whole tree when the location changes (pages read window.getLocation()).
+  useFpLocation();
 
   // hashchange (back/forward, manual edits, refresh) -> sync state
   React.useEffect(() => {
@@ -108,22 +111,31 @@ const App = () => {
       view = <CpCareer careerId={route.careerId} saved={saved} toggleSave={toggleSave} onBack={() => go("home")} onOpenAid={onOpenAid} />;
       break;
     case "money":
-      view = <CpMoney onOpenAid={onOpenAid} profile={profile} setProfile={setProfile} />;
+      view = <CpMoney onOpenAid={onOpenAid} profile={profile} setProfile={setProfile} go={go} />;
       break;
     case "aid":
       view = <CpAidDetail aidId={route.aidId} onBack={() => go("money")} />;
       break;
     case "week":
-      view = <CpWeek />;
+      view = <CpWeek go={go} />;
       break;
     case "about":
       view = <CpAbout />;
       break;
     case "map":
-      view = <CpMap onOpenCareer={onOpenCareer} />;
+      view = <CpMap onOpenCareer={onOpenCareer} onPickLocation={() => setShowLoc(true)} />;
       break;
     case "apprenticeships":
-      view = <CpApprenticeships />;
+      view = <CpApprenticeships onPickLocation={() => setShowLoc(true)} />;
+      break;
+    case "resources":
+      view = <CpResources onPickLocation={() => setShowLoc(true)} />;
+      break;
+    case "scholarships":
+      view = <CpScholarships onPickLocation={() => setShowLoc(true)} />;
+      break;
+    case "state":
+      view = <CpStateGuide go={go} onPickLocation={() => setShowLoc(true)} />;
       break;
     case "compare":
       view = <CpCompare saved={saved} toggleSave={toggleSave} onOpen={onOpenCareer} onBack={() => go("home")} />;
@@ -132,14 +144,15 @@ const App = () => {
       view = <CpResult result={route.result} onOpen={onOpenCareer} onRetake={() => setShowWiz(true)} onBack={() => go("home")} />;
       break;
     default:
-      view = <CpHome onOpen={onOpenCareer} onWizard={() => setShowWiz(true)} saved={saved} toggleSave={toggleSave} />;
+      view = <CpHome onOpen={onOpenCareer} onWizard={() => setShowWiz(true)} saved={saved} toggleSave={toggleSave} go={go} onPickLocation={() => setShowLoc(true)} />;
   }
 
   return (
     <>
-      <CpHeader view={route.view} go={go} savedCount={saved.length} onCompare={() => go("compare")} />
+      <CpHeader view={route.view} go={go} savedCount={saved.length} onCompare={() => go("compare")} onPickLocation={() => setShowLoc(true)} />
       {view}
       {showWiz && <CpWizard onClose={() => setShowWiz(false)} onMatch={handleMatch} />}
+      {showLoc && <CpLocationPicker onClose={() => setShowLoc(false)} />}
     </>
   );
 };

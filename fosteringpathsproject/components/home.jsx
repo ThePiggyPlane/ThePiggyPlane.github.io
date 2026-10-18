@@ -33,12 +33,23 @@ const careerPathTypes = (career) => {
   return out;
 };
 
-const CpHome = ({ onOpen, onWizard, saved, toggleSave }) => {
+const CpHome = ({ onOpen, onWizard, saved, toggleSave, go, onPickLocation }) => {
   const [filter, setFilter] = React.useState("all");
   const [query, setQuery] = React.useState("");
   const [page, setPage] = React.useState(0);
+  const { loc, status } = useFpLocation();
 
   const all = window.CAREERS.all();
+  const stateName = window.stateName(loc.state);
+  const placeLabel = loc.region || stateName;
+  const progsHere = React.useMemo(() => {
+    const xs = window.PROGRAMS.byState(loc.state);
+    return loc.region ? xs.filter(p => p.region === loc.region) : xs;
+  }, [loc.state, loc.region, status, window.PROGRAMS.count()]);
+  const instHere = React.useMemo(() => new Set(progsHere.map(p => p.inst)).size, [progsHere]);
+  const resHere = window.RESOURCES.byState(loc.state).length;
+  const schHere = window.SCHOLARSHIPS.byState(loc.state).length + window.SCHOLARSHIPS.national().length;
+  const guide = window.STATE_GUIDES.get(loc.state);
 
   // Per-career path-type sets, computed once per career list change.
   const pathTypesByCareer = React.useMemo(() => {
@@ -71,25 +82,28 @@ const CpHome = ({ onOpen, onWizard, saved, toggleSave }) => {
   return (
     <main className="cp-main">
       <section className="cp-hero">
-        <h1 className="cp-h1">Career Pathways in San Bernardino, Riverside, &amp; Orange County</h1>
+        <h1 className="cp-h1">Career pathways for foster youth in {placeLabel}</h1>
+        <p className="cp-lede">Real programs near you, what they cost after foster youth aid, and the people who help you get in. <button className="cp-link" onClick={onPickLocation}>Not in {placeLabel}? Change location</button></p>
         <div className="cp-cta-row">
-          <button className="cp-btn" onClick={() => document.querySelector('#careers').scrollIntoView({ behavior: 'smooth' })}>Browse all</button>
+          <button className="cp-btn" onClick={() => document.querySelector('#careers').scrollIntoView({ behavior: 'smooth' })}>Browse careers</button>
+          <button className="cp-btn-ghost" onClick={() => go("resources")}>Find support near you</button>
+          <button className="cp-btn-ghost" onClick={() => go("scholarships")}>Scholarships</button>
         </div>
 
         <div className="cp-hero-stats">
           <div><div className="cp-stat">{all.length}</div><div className="cp-stat-lbl">career paths</div></div>
-          <div><div className="cp-stat">$26K+</div><div className="cp-stat-lbl">aid you can stack</div></div>
-          <div><div className="cp-stat">$0</div><div className="cp-stat-lbl">typical real cost</div></div>
-          <div><div className="cp-stat">3 hr</div><div className="cp-stat-lbl">first-week setup</div></div>
+          <div><div className="cp-stat">{status === "loading" && progsHere.length === 0 ? "…" : progsHere.length.toLocaleString()}</div><div className="cp-stat-lbl">programs in {loc.region ? "your region" : stateName}{instHere ? ` at ${instHere} schools` : ""}</div></div>
+          <div><div className="cp-stat">{guide && guide.tuitionWaiver && guide.tuitionWaiver.exists ? "$0" : (loc.state === "CA" ? "$0" : "$12K+")}</div><div className="cp-stat-lbl">{guide && guide.tuitionWaiver && guide.tuitionWaiver.exists ? "public tuition with the state waiver" : (loc.state === "CA" ? "typical real cost at a CC or CSU" : "Pell + ETV you can stack every year")}</div></div>
+          <div><div className="cp-stat">{resHere ? resHere : (schHere ? schHere : "26")}</div><div className="cp-stat-lbl">{resHere ? `support programs in ${stateName}` : (schHere ? "scholarships and aid sources" : "age your free health coverage can last, in every state")}</div></div>
         </div>
       </section>
 
-      <CpDeadlines />
+      {loc.state === "CA" && <CpDeadlines />}
 
       <section id="careers" className="cp-careers">
         <div className="cp-sec-head">
           <h2>{all.length} career paths</h2>
-          <span className="cp-sec-meta">curated for Inland SoCal</span>
+          <span className="cp-sec-meta">programs shown for {placeLabel}</span>
         </div>
 
         <div className="cp-filters" role="toolbar" aria-label="Filter careers">

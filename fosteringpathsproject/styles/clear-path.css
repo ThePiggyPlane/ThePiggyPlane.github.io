@@ -646,3 +646,99 @@ a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-ra
   .cp-cmp-table tr { padding: 16px 0; border-bottom: 1px solid var(--line); }
   .cp-cmp-table th, .cp-cmp-table td { padding: 4px 0; border: none; }
 }
+
+/* ---------------------------------------------------------------------- */
+/* v2: location, resources, scholarships, state guide                      */
+/* ---------------------------------------------------------------------- */
+.cp-hdr-in { gap: 20px; }
+.cp-hdr nav { overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.cp-hdr nav::-webkit-scrollbar { display: none; }
+.cp-hdr nav button { white-space: nowrap; padding: 8px 10px; font-size: 13.5px; }
+.cp-logo { font-size: 16px; }
+.cp-logo span { white-space: nowrap; }
+.cp-loc-chip { display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; font-weight: 500; color: var(--ink-2); background: var(--bg-card); max-width: 220px; }
+.cp-loc-chip:hover { border-color: var(--ink); color: var(--ink); }
+.cp-loc-chip svg { color: var(--blue); flex-shrink: 0; }
+.cp-loc-chip-txt { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cp-loc-chip-st { color: var(--ink-4); font-size: 11px; font-weight: 600; letter-spacing: 0.04em; }
+.cp-loc-field { display: block; font-size: 13px; font-weight: 500; color: var(--ink-2); margin-bottom: 14px; }
+.cp-loc-field select { display: block; width: 100%; margin-top: 6px; padding: 12px 14px; font-size: 15px; font-family: inherit; border: 1px solid var(--line); border-radius: 10px; background: var(--bg-card); color: var(--ink); }
+.cp-loc-opt { color: var(--ink-4); font-weight: 400; }
+.cp-loc-counts { font-size: 13px; color: var(--ink-3); margin: 4px 0 18px; line-height: 1.5; }
+.cp-loc-actions { display: flex; gap: 10px; margin-bottom: 8px; }
+.cp-chip-n { color: var(--ink-4); font-size: 11px; margin-left: 2px; }
+.cp-chip.on .cp-chip-n { color: rgba(255,255,255,0.7); }
+.cp-filters-cats { padding-top: 0; }
+.cp-callout { background: var(--blue-soft); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; font-size: 15px; line-height: 1.55; color: var(--ink-2); margin: 0 0 28px; }
+.cp-callout.good { background: #EEF6F1; border-color: #CFE3D7; }
+.cp-callout.warn { background: var(--warm); border-color: #F1DDC2; }
+.cp-callout strong { color: var(--ink); }
+.cp-callout .cp-link { font-size: inherit; }
+
+/* Resource / scholarship cards */
+.cp-res-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 18px; }
+.cp-res, .cp-sch { background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px; border-left: 4px solid #7A3E9D; display: flex; flex-direction: column; gap: 8px; }
+.cp-res.campus { border-left-color: #5B8A72; }
+.cp-res.housing { border-left-color: #2D6A9F; }
+.cp-res.emergency { border-left-color: #B54A1F; }
+.cp-res.legal { border-left-color: #1E3A5F; }
+.cp-res.health { border-left-color: #C2185B; }
+.cp-res.ilp, .cp-res.agency { border-left-color: #6B7280; }
+.cp-res.employment { border-left-color: #8B5A3C; }
+.cp-res.mentoring, .cp-res.advocacy { border-left-color: #D4A017; }
+.cp-res.lgbtq { border-left-color: #E65100; }
+.cp-sch { border-left-color: var(--blue); }
+.cp-sch.waiver { border-left-color: #5B8A72; }
+.cp-sch.etv { border-left-color: #2D6A9F; }
+.cp-sch.emergency { border-left-color: #B54A1F; }
+.cp-res-head, .cp-sch-head { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+.cp-res-cat, .cp-sch-type { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); font-weight: 500; margin-bottom: 4px; }
+.cp-res-name, .cp-sch-name { font-size: 16px; font-weight: 600; letter-spacing: -0.015em; margin: 0; line-height: 1.25; }
+.cp-res-org { font-size: 13px; color: var(--ink-3); margin-top: 2px; }
+.cp-res-ages { font-size: 12px; color: var(--ink-2); background: var(--blue-soft); padding: 3px 8px; border-radius: 999px; white-space: nowrap; }
+.cp-sch-amt { font-size: 15px; font-weight: 600; color: var(--blue); text-align: right; letter-spacing: -0.01em; max-width: 40%; }
+.cp-res-line { font-size: 13.5px; line-height: 1.5; color: var(--ink-2); margin: 0; }
+.cp-res-line strong { color: var(--ink); font-weight: 600; }
+.cp-res-note { font-size: 12.5px; color: var(--ink-3); margin: 0; font-style: italic; }
+.cp-res-contact { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; padding-top: 10px; margin-top: auto; border-top: 1px solid var(--line-2); color: var(--ink-3); }
+.cp-res-contact a { font-weight: 500; }
+
+/* State guide */
+.cp-guide-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 8px 0 32px; }
+.cp-guide-stat { background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 16px; text-align: left; transition: border-color .15s; }
+.cp-guide-stat:hover { border-color: var(--ink); }
+.cp-guide-stat .cp-stat { font-size: 30px; }
+.cp-guide { border-top: 1px solid var(--line); }
+.cp-guide-row { display: grid; grid-template-columns: 200px 1fr; gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.cp-guide-lbl { font-size: 13px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.05em; padding-top: 2px; }
+.cp-guide-val { font-size: 15.5px; line-height: 1.55; color: var(--ink-2); }
+.cp-guide-val strong { color: var(--ink); }
+
+/* Program cards v2 */
+.cp-badge { display: inline-block; margin-left: 8px; padding: 1px 7px; border-radius: 999px; font-size: 10px; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 600; vertical-align: middle; }
+.cp-badge.warn { background: var(--warm); color: var(--warm-ink); }
+.cp-badge.good { background: #EEF6F1; color: #3E6B52; }
+.cp-prog.public4 { border-left-color: var(--tier-csu); }
+.cp-prog-links { display: flex; gap: 14px; flex-wrap: wrap; }
+.cp-prog-group { margin-top: 28px; }
+.cp-prog-group-h { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: 15px; font-weight: 600; margin-bottom: 12px; }
+.cp-prog-group-n { font-size: 13px; color: var(--ink-3); font-weight: 500; }
+.cp-aid-card { display: block; text-decoration: none; color: inherit; }
+.cp-aid-card:hover { text-decoration: none; }
+.cp-map-chip.public4 { --chip-color: #2D6A9F; }
+.cp-map-chip.support { --chip-color: #7A3E9D; }
+
+@media (max-width: 900px) {
+  .cp-res-list { grid-template-columns: 1fr; }
+  .cp-guide-stats { grid-template-columns: repeat(2, 1fr); }
+  .cp-guide-row { grid-template-columns: 1fr; gap: 6px; }
+  .cp-hdr-in { gap: 10px 12px; }
+  .cp-loc-chip { order: 1; margin-left: auto; max-width: 150px; padding: 6px 10px; }
+  .cp-saved-btn { order: 2; margin-left: 0; padding: 7px 11px; }
+  .cp-hdr nav { order: 3; }
+  .cp-logo { font-size: 15px; }
+}
+@media (max-width: 420px) {
+  .cp-logo span { display: none; }
+  .cp-loc-chip { max-width: 190px; }
+}

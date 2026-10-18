@@ -1,8 +1,10 @@
 // CDSS Apprenticeship view — searchable list of every California Division of
 // Apprenticeship Standards (DAS) registered program.
 
-const CpApprenticeships = () => {
-  const allApps = React.useMemo(() => window.APPRENTICESHIPS?.all() || [], []);
+const CpApprenticeships = ({ onPickLocation }) => {
+  const { loc, status, tick } = useFpLocation();
+  const stateName = window.stateName(loc.state);
+  const allApps = React.useMemo(() => (window.APPRENTICESHIPS?.all() || []).filter(a => (a.state || "CA") === loc.state), [loc.state, tick]);
   const [query, setQuery] = React.useState("");
   const [industry, setIndustry] = React.useState("");
 
@@ -37,15 +39,25 @@ const CpApprenticeships = () => {
   if (allApps.length === 0) {
     return (
       <main className="cp-main narrow">
-        <h1 className="cp-h1">CDSS Apprenticeships</h1>
-        <p className="cp-lede">No apprenticeship data loaded. Refresh the page or check your connection.</p>
+        <h1 className="cp-h1">Paid apprenticeships in {stateName}</h1>
+        {status === "loading" ? <p className="cp-lede">Loading {stateName}…</p> : (
+          <>
+            <p className="cp-lede">We have not loaded a registry for {stateName} yet (California's list comes from the state apprenticeship agency). Every state's registered apprenticeships are searchable on the federal finder, and many sponsors recruit foster youth directly.</p>
+            <div className="cp-cta-row">
+              <a className="cp-btn" href="https://www.apprenticeship.gov/apprenticeship-job-finder" target="_blank" rel="noopener">Search apprenticeship.gov for {stateName} →</a>
+              <button className="cp-btn-ghost" onClick={onPickLocation}>Change location</button>
+            </div>
+            <p className="cp-app-source">Tip: search your trade plus your city, then call the sponsor and say you are a current or former foster youth asking about open intake. Job Corps and YouthBuild are also free, paid pathways into the trades in every state.</p>
+          </>
+        )}
       </main>
     );
   }
 
   return (
     <main className="cp-main">
-      <h1 className="cp-h1">CDSS Apprenticeships</h1>
+      <h1 className="cp-h1">Paid apprenticeships in {stateName}</h1>
+      <p className="cp-lede">{allApps.length.toLocaleString()} registered programs. Apprenticeships pay you while you train, and most need only a diploma or GED. <button className="cp-link" onClick={onPickLocation}>Change location</button></p>
 
       <div className="cp-app-filters">
         <input
@@ -74,8 +86,8 @@ const CpApprenticeships = () => {
       </div>
 
       <p className="cp-app-source">
-        Data source: <a href="https://www.dir.ca.gov/databases/das/aigstart.asp" target="_blank" rel="noopener">CA DIR / Division of Apprenticeship Standards</a>.
-        Programs listed here are registered, but not all are recruiting — contact each one directly to ask about open intake.
+        Data source: {loc.state === "CA" ? <a href="https://www.dir.ca.gov/databases/das/aigstart.asp" target="_blank" rel="noopener">CA DIR / Division of Apprenticeship Standards</a> : "state apprenticeship registry"}.
+        Programs listed here are registered, but not all are recruiting. Contact each one directly to ask about open intake.
       </p>
     </main>
   );

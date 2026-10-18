@@ -189,13 +189,13 @@ records: `id` (prefix `<st>-`), `occupation`, `sponsor`, `state`, `loc`,
 
 ## Career ids (for `careers: [...]` and validation)
 
-accountant, animator, architect, automechanic, baker, barber, carpenter, chef,
-civilengineer, cosmetology, cybersecurity, datascience, dentalassistant,
-earlychildhood, emt, firefighter, hvac, infotech, librarytech, masonry,
-mathematician, mechanicalengineer, medassistant, nurse, paralegal, pharmtech,
-phlebotomist, photography, plumber, radtech, resptherapist, salesmanager,
-sociologist, technicalwriter, trades-electrician, urbanplanner, veterinarian,
-welding, writer
+accountant, animator, architect, author (writer), automechanic, baker, barber,
+carpenter, chef, civilengineer, cosmetology, cybersecurity, datascience,
+dentalassistant, earlychildhood, emt, firefighter, hvac, infotech, librarytech,
+masonry, mathematician, mechanicalengineer, medassistant, nurse, paralegal,
+pharmtech, phlebotomist, photography, plumber, radtech, resptherapist,
+salesmanager, sociologist, technicalwriter, trades (electrician), urbanplanner,
+veterinarian, welding
 
 ## Regions
 

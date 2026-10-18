@@ -82,8 +82,10 @@ window.APP_META = {
     cc: "Community College",
     csu: "CSU",
     uc: "UC",
+    public4: "Public University",
     private: "Private",
     trade: "Trades / Apprenticeship",
+    support: "Support program",
   },
 
   interests: [

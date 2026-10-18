@@ -1,6 +1,6 @@
 // Reusable bits: header, deadlines, career row, footer, modal scrim.
 
-const CpHeader = ({ view, go, savedCount, onCompare }) => (
+const CpHeader = ({ view, go, savedCount, onCompare, onPickLocation }) => (
   <header className="cp-hdr">
     <div className="cp-hdr-in">
       <div className="cp-logo">
@@ -11,12 +11,15 @@ const CpHeader = ({ view, go, savedCount, onCompare }) => (
           <span>Fostering Paths</span>
         </button>
       </div>
+      <CpLocationChip onOpen={onPickLocation} />
       <nav aria-label="Primary">
-        <button className={view === "home" ? "on" : ""} onClick={() => go("home")}>Careers</button>
+        <button className={view === "home" || view === "career" || view === "result" || view === "compare" ? "on" : ""} onClick={() => go("home")}>Careers</button>
         <button className={view === "map" ? "on" : ""} onClick={() => go("map")}>Map</button>
-        <button className={view === "apprenticeships" ? "on" : ""} onClick={() => go("apprenticeships")}>CDSS Apprenticeships</button>
-        <button className={view === "money" ? "on" : ""} onClick={() => go("money")}>Cost</button>
-        <button className={view === "week" ? "on" : ""} onClick={() => go("week")}>First Week</button>
+        <button className={view === "resources" ? "on" : ""} onClick={() => go("resources")}>Resources</button>
+        <button className={view === "scholarships" ? "on" : ""} onClick={() => go("scholarships")}>Scholarships</button>
+        <button className={view === "money" || view === "aid" ? "on" : ""} onClick={() => go("money")}>Cost</button>
+        <button className={view === "apprenticeships" ? "on" : ""} onClick={() => go("apprenticeships")}>Apprenticeships</button>
+        <button className={view === "state" || view === "week" ? "on" : ""} onClick={() => go("state")}>Your State</button>
         <button className={view === "about" ? "on" : ""} onClick={() => go("about")}>About</button>
       </nav>
       <button
