@@ -131,7 +131,7 @@ const CpCompare = ({ saved, toggleSave, onOpen, onBack }) => {
           <tr><th>Time to start</th>{careers.map(c => <td key={c.id}>{c.length}</td>)}</tr>
           <tr><th>Demand</th>{careers.map(c => <td key={c.id}>{c.demand}</td>)}</tr>
           <tr><th>Grads 2 yrs out</th>{careers.map(c => <td key={c.id}>{c.grads2yr}</td>)}</tr>
-          <tr><th>Programs</th>{careers.map(c => <td key={c.id}>{(c.programs || []).length} listed</td>)}</tr>
+          <tr><th>Programs near you</th>{careers.map(c => { const l = window.getLocation(); const n = window.PROGRAMS.forCareer(c.id, l.region ? { state: l.state, region: l.region } : { state: l.state }).length; return <td key={c.id}>{n} in {l.region || window.stateName(l.state)}</td>; })}</tr>
         </tbody>
       </table>
     </main>

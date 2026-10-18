@@ -753,3 +753,10 @@ a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-ra
 .cp-crisis { font-size: 14px; }
 .cp-crisis a { font-weight: 600; white-space: nowrap; }
 .cp-step-links .cp-link { margin-left: 0; font-size: inherit; }
+.cp-res-report { margin-left: auto; font-size: 11px; color: var(--ink-4); }
+@media print {
+  .cp-hdr, .cp-loc-chip, .cp-saved-btn, .cp-cta-row, .cp-filters, .cp-map-canvas, .cp-wiz-scrim { display: none !important; }
+  .cp-main { padding: 0; max-width: none; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 11px; color: #555; }
+  .cp-res, .cp-sch, .cp-prog, .cp-guide-row { break-inside: avoid; }
+}

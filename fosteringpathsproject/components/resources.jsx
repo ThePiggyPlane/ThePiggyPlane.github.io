@@ -39,6 +39,7 @@ const CpResourceCard = ({ r }) => (
       {r.email && <a href={"mailto:" + r.email}>{r.email}</a>}
       {r.address && <span>{r.address}</span>}
       {r.url && <a href={r.url} target="_blank" rel="noopener" className="cp-prog-link">Open site →</a>}
+      <a href={"https://www.tylerjohnpeters.com/#contact"} target="_blank" rel="noopener" className="cp-res-report" title={"Report a problem with " + r.id}>Wrong? Tell us</a>
     </div>
   </article>
 );
