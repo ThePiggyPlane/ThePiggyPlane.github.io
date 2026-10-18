@@ -40,7 +40,7 @@ const useProfile = () => {
 };
 
 // ---- URL hash <-> route object -------------------------------------------
-const SIMPLE_VIEWS = new Set(["home","map","apprenticeships","money","week","about","compare","resources","scholarships","state","start","faq"]);
+const SIMPLE_VIEWS = new Set(["home","map","apprenticeships","money","week","about","compare","resources","scholarships","state","start","faq","plan"]);
 
 const parseHash = () => {
   const h = (window.location.hash || "").replace(/^#\/?/, "");
@@ -146,6 +146,9 @@ const App = () => {
     case "state":
       view = <CpStateGuide go={go} onPickLocation={() => setShowLoc(true)} />;
       break;
+    case "plan":
+      view = <CpPlan go={go} saved={saved} toggleSave={toggleSave} />;
+      break;
     case "start":
       view = <CpStart go={go} />;
       break;
@@ -164,7 +167,7 @@ const App = () => {
 
   return (
     <>
-      <CpHeader view={route.view} go={go} savedCount={saved.length} onCompare={() => go("compare")} onPickLocation={() => setShowLoc(true)} />
+      <CpHeader view={route.view} go={go} savedCount={saved.length} onCompare={() => go("plan")} onPickLocation={() => setShowLoc(true)} />
       {view}
       {showWiz && <CpWizard onClose={() => setShowWiz(false)} onMatch={handleMatch} />}
       {showLoc && <CpLocationPicker onClose={() => setShowLoc(false)} />}

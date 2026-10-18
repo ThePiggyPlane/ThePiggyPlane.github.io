@@ -14,6 +14,8 @@ const normInst = (s) => String(s || "").toLowerCase()
 const CpSchool = ({ st, inst, go, saved, toggleSave }) => {
   const { loc, status } = useFpLocation();
   const stateName = window.stateName(st);
+  const [schools, toggleSchool] = useSavedSchools();
+  const isSaved = schools.some(x => x.st === st && x.inst === inst);
   const [showAll, setShowAll] = React.useState({});
   React.useEffect(() => { if (window.loadStateData) window.loadStateData(st); }, [st]);
   const progs = React.useMemo(() => window.PROGRAMS.byState(st).filter(p => p.inst === inst), [st, inst, status, window.PROGRAMS.count()]);
@@ -54,7 +56,10 @@ const CpSchool = ({ st, inst, go, saved, toggleSave }) => {
     <main className="cp-main narrow">
       <button className="cp-back" onClick={() => window.history.length > 1 ? window.history.back() : go("home")}>← Back</button>
       <div className="cp-eyebrow">{tierLabels[first.tier] || first.tier}{first.forProfit ? " · for-profit" : ""}{first.public === false && !first.forProfit ? " · private nonprofit" : ""}</div>
-      <h1 className="cp-h1">{inst}</h1>
+      <div className="cp-detail-head">
+        <h1 className="cp-h1">{inst}</h1>
+        <button className={"cp-cr-save cp-school-save " + (isSaved ? "on" : "")} onClick={() => toggleSchool(st, inst)} aria-pressed={isSaved}>{isSaved ? "✓ Saved to my plan" : "+ Save school"}</button>
+      </div>
       <p className="cp-lede">
         {first.address || first.loc}{first.region && first.region !== first.loc ? ` (${first.region})` : ""}{miles != null ? ` · ${fmtMiles(miles)} from you` : ""}.
         {" "}{progs.length} program{progs.length === 1 ? "" : "s"} here for {byCareer.length} of this site's careers{levels.length ? ` (${levels.map(l => LEVEL_LABEL[l] || l).join(", ")})` : ""}.

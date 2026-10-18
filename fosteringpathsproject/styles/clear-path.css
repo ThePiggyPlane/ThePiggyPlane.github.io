@@ -792,3 +792,27 @@ a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-ra
 .cp-school-career .cp-sec-head { margin-bottom: 6px; }
 .cp-school-career-name { font-size: 17px; font-weight: 700; }
 .cp-school-links { margin: 10px 0 4px; }
+
+/* my plan */
+.cp-plan-actions { margin: 6px 0 18px; align-items: center; }
+.cp-plan-list { list-style: none; padding: 0; margin: 0 0 8px; }
+.cp-plan-item { display: grid; grid-template-columns: 34px 1fr; gap: 12px; padding: 14px 0; border-top: 1px solid var(--line); }
+.cp-plan-item h3 { margin: 0 0 4px; font-size: 16.5px; font-weight: 650; letter-spacing: -0.01em; }
+.cp-plan-item p { margin: 0 0 6px; font-size: 14.5px; line-height: 1.5; color: var(--ink-2); }
+.cp-plan-item.done h3 { text-decoration: line-through; color: var(--ink-3); }
+.cp-plan-item.done p { color: var(--ink-3); }
+.cp-plan-check { position: relative; display: block; width: 26px; height: 26px; margin-top: 2px; cursor: pointer; }
+.cp-plan-check input { position: absolute; opacity: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+.cp-plan-check span { display: block; width: 24px; height: 24px; border: 2px solid var(--ink-3); border-radius: 7px; background: #fff; }
+.cp-plan-check input:checked + span { background: var(--ink); border-color: var(--ink); }
+.cp-plan-check input:checked + span::after { content: ""; position: absolute; left: 8px; top: 3px; width: 6px; height: 12px; border: solid #fff; border-width: 0 2.5px 2.5px 0; transform: rotate(45deg); }
+.cp-plan-check input:focus-visible + span { outline: 2px solid var(--blue); outline-offset: 2px; }
+.cp-plan-saved { margin: 4px 0 10px; }
+.cp-plan-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; padding: 10px 0; border-top: 1px solid var(--line); }
+.cp-plan-name { font-size: 16px; font-weight: 650; }
+.cp-plan-rm { margin-left: auto; background: none; border: 0; color: var(--ink-3); font-size: 13px; cursor: pointer; text-decoration: underline; }
+.cp-school-save { margin-top: 6px; }
+@media print {
+  .cp-plan-actions, .cp-plan-rm, .cp-callout button { display: none !important; }
+  .cp-plan-check span { border-color: #000; }
+}
