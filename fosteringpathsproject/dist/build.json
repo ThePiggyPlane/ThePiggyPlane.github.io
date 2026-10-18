@@ -1,13 +1,13 @@
 {
- "built": "2026-10-18T12:17:55.247Z",
+ "built": "2026-10-18T12:24:25.684Z",
  "files": {
   "components/shell.jsx": "a4d79049955f330ba2cf541fcdb7e4a75304e13a",
   "components/location.jsx": "21af4d7d5820be295f319bd696b85b4ad23579f0",
   "components/resources.jsx": "4f4db0e360fa7c68c898afdf99888eca07749de9",
   "components/scholarships.jsx": "18e0fb751bf83a465bf601fa45ddf59ba8440df5",
   "components/stateguide.jsx": "eb3bb857997b82f76582382f5f6ff76028f072ee",
-  "components/start.jsx": "a27fe308425570668eaf5832e11b23af79c7744b",
-  "components/faq.jsx": "9c77dd82153a69705ba145ff8840ac540d25cecf",
+  "components/start.jsx": "c0f414a651d6ba0dd6700837130f7bbce1a3333f",
+  "components/faq.jsx": "de4e12b25001d583c60b959e0b2840228ff5e9a5",
   "components/home.jsx": "5f80a73fa8c5db24341b6b5746df077056765ed1",
   "components/pages.jsx": "da34dfc4338b98f4ca92c9ad18408e9c50a19fe5",
   "components/school.jsx": "ace5bba144ba364094ee956111bd7600c628dd1c",

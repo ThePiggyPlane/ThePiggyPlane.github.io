@@ -47,6 +47,22 @@ const FAQ = [
     a: "Your state has a foster care ombudsperson or youth complaint line; in California it is 1-877-846-1602. Your dependency attorney still represents you while you are in care, including extended foster care. Campus foster youth programs and CASA volunteers can also push on your behalf.",
   },
   {
+    q: "What documents does the agency have to give me when I leave care?",
+    a: "Federal law says that if you were in foster care for six months or more, the agency must give you your birth certificate, Social Security card, health insurance information, medical records, and a driver's license or state ID before you leave. If you did not get them, ask your caseworker or the ombudsman for them by name; they are yours.",
+  },
+  {
+    q: "I am in extended foster care. Am I still independent on the FAFSA?",
+    a: "Yes. Being in care at 18 or later still counts, and extended foster care payments are not counted as your income on the FAFSA. The same goes for ETV and most foster youth scholarships.",
+  },
+  {
+    q: "Can I get Pell, ETV, and a scholarship all at once?",
+    a: "Yes, and you should. The only limit is the school's total cost of attendance (tuition, housing, food, books, transportation): all your aid together cannot go above it. If it would, the financial aid office trims loans first, then may reduce ETV. Ask them to raise your cost of attendance for real expenses like childcare or a laptop.",
+  },
+  {
+    q: "My placement ended and I have nowhere to sleep. What do I do today?",
+    a: "Call or text the National Runaway Safeline at 1-800-786-2929 (24/7, any age up to 21) for a safe place tonight, and 988 if you are in crisis. If you are enrolled, call the campus foster youth program or basic needs center; many hold emergency housing money and can place you in a dorm within days. If you left care in the last few years and are under 21, ask the child welfare agency about re-entering extended foster care. Under 25? Ask about an FYI housing voucher.",
+  },
+  {
     q: "Where does the data on this site come from?",
     a: "Programs come from each school's federal reporting (IPEDS), earnings from the College Scorecard, job descriptions from O*NET, and every resource, scholarship, and state rule from the agency's or organization's own page, with the month it was checked. See About for the full list and how to report a mistake.",
   },

@@ -67,7 +67,7 @@ const CpStart = ({ go }) => {
       ))}
       <p className="cp-app-more"><button className="cp-link" onClick={() => go("faq")}>Questions youth actually ask, and a glossary →</button></p>
       <div className="cp-callout">
-        <strong>Two documents to get now:</strong> a foster care verification letter from your caseworker or state ombudsperson, and your Social Security card. Schools, ETV, Medicaid, and housing all ask for them. Keep photos on your phone.
+        <strong>Two documents to get now:</strong> a foster care verification letter from your caseworker or state ombudsperson, and your Social Security card. Schools, ETV, Medicaid, and housing all ask for them. Keep photos on your phone. If you were in care six months or more, federal law says the agency must hand you your birth certificate, Social Security card, medical records, health insurance information, and a state ID or driver's license before you leave care; ask for them by name.
       </div>
     </main>
   );
