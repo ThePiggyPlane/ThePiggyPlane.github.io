@@ -21,7 +21,7 @@ window.STATE_INDEX = {
    "Kenai Peninsula Borough",
    "North Slope Borough"
   ],
-  "bytes": 68683
+  "bytes": 69929
  },
  "AL": {
   "name": "Alabama",
@@ -64,7 +64,7 @@ window.STATE_INDEX = {
    "Talladega",
    "Clarke County"
   ],
-  "bytes": 410677
+  "bytes": 418198
  },
  "AR": {
   "name": "Arkansas",
@@ -112,7 +112,7 @@ window.STATE_INDEX = {
    "Paragould",
    "Lawrence County"
   ],
-  "bytes": 373323
+  "bytes": 380251
  },
  "AZ": {
   "name": "Arizona",
@@ -138,7 +138,7 @@ window.STATE_INDEX = {
    "Sierra Vista",
    "Show Low"
   ],
-  "bytes": 481833
+  "bytes": 490634
  },
  "CA": {
   "name": "California",
@@ -172,7 +172,7 @@ window.STATE_INDEX = {
    "Imperial",
    "Sierra"
   ],
-  "bytes": 2288127
+  "bytes": 2330896
  },
  "CO": {
   "name": "Colorado",
@@ -207,7 +207,7 @@ window.STATE_INDEX = {
    "Gunnison County",
    "Alamosa"
   ],
-  "bytes": 474332
+  "bytes": 483013
  },
  "CT": {
   "name": "Connecticut",
@@ -229,7 +229,7 @@ window.STATE_INDEX = {
    "Waterbury",
    "Norwich"
   ],
-  "bytes": 224475
+  "bytes": 228438
  },
  "DC": {
   "name": "District of Columbia",
@@ -247,7 +247,7 @@ window.STATE_INDEX = {
   "regions": [
    "Washington"
   ],
-  "bytes": 101474
+  "bytes": 103318
  },
  "DE": {
   "name": "Delaware",
@@ -267,7 +267,7 @@ window.STATE_INDEX = {
    "Dover",
    "Seaford"
   ],
-  "bytes": 68027
+  "bytes": 69282
  },
  "FL": {
   "name": "Florida",
@@ -314,7 +314,7 @@ window.STATE_INDEX = {
    "Taylor County",
    "Wildwood"
   ],
-  "bytes": 1255346
+  "bytes": 1278514
  },
  "GA": {
   "name": "Georgia",
@@ -362,7 +362,7 @@ window.STATE_INDEX = {
    "White County",
    "Toccoa"
   ],
-  "bytes": 785519
+  "bytes": 800436
  },
  "HI": {
   "name": "Hawaii",
@@ -383,7 +383,7 @@ window.STATE_INDEX = {
    "Kapaa",
    "Kahului"
   ],
-  "bytes": 95511
+  "bytes": 97317
  },
  "IA": {
   "name": "Iowa",
@@ -429,7 +429,7 @@ window.STATE_INDEX = {
    "Henry County",
    "Spirit Lake"
   ],
-  "bytes": 413352
+  "bytes": 421012
  },
  "ID": {
   "name": "Idaho",
@@ -455,7 +455,7 @@ window.STATE_INDEX = {
    "Coeur d'Alene",
    "Burley"
   ],
-  "bytes": 188038
+  "bytes": 191524
  },
  "IL": {
   "name": "Illinois",
@@ -500,7 +500,7 @@ window.STATE_INDEX = {
    "Warren County",
    "Sterling"
   ],
-  "bytes": 1088665
+  "bytes": 1108939
  },
  "IN": {
   "name": "Indiana",
@@ -542,7 +542,7 @@ window.STATE_INDEX = {
    "Plymouth",
    "Starke County"
   ],
-  "bytes": 400658
+  "bytes": 407942
  },
  "KS": {
   "name": "Kansas",
@@ -590,7 +590,7 @@ window.STATE_INDEX = {
    "Rice County",
    "Marion County"
   ],
-  "bytes": 399658
+  "bytes": 407036
  },
  "KY": {
   "name": "Kentucky",
@@ -636,7 +636,7 @@ window.STATE_INDEX = {
    "Glasgow",
    "Johnson County"
   ],
-  "bytes": 439182
+  "bytes": 447245
  },
  "LA": {
   "name": "Louisiana",
@@ -668,7 +668,7 @@ window.STATE_INDEX = {
    "Opelousas",
    "New Iberia"
   ],
-  "bytes": 372727
+  "bytes": 379510
  },
  "MA": {
   "name": "Massachusetts",
@@ -693,7 +693,7 @@ window.STATE_INDEX = {
    "Barnstable Town",
    "Greenfield"
   ],
-  "bytes": 550250
+  "bytes": 560373
  },
  "MD": {
   "name": "Maryland",
@@ -719,7 +719,7 @@ window.STATE_INDEX = {
    "Kent County",
    "Lexington Park"
   ],
-  "bytes": 351776
+  "bytes": 358281
  },
  "ME": {
   "name": "Maine",
@@ -744,7 +744,7 @@ window.STATE_INDEX = {
    "Washington County",
    "Franklin County"
   ],
-  "bytes": 154714
+  "bytes": 157654
  },
  "MI": {
   "name": "Michigan",
@@ -796,7 +796,7 @@ window.STATE_INDEX = {
    "Cadillac",
    "Baraga County"
   ],
-  "bytes": 780659
+  "bytes": 795233
  },
  "MN": {
   "name": "Minnesota",
@@ -835,7 +835,7 @@ window.STATE_INDEX = {
    "Worthington",
    "New Ulm"
   ],
-  "bytes": 588083
+  "bytes": 598882
  },
  "MO": {
   "name": "Missouri",
@@ -879,7 +879,7 @@ window.STATE_INDEX = {
    "Texas County",
    "Vernon County"
   ],
-  "bytes": 516189
+  "bytes": 525721
  },
  "MS": {
   "name": "Mississippi",
@@ -921,7 +921,7 @@ window.STATE_INDEX = {
    "Greenville",
    "Monroe County"
   ],
-  "bytes": 351319
+  "bytes": 357874
  },
  "MT": {
   "name": "Montana",
@@ -955,7 +955,7 @@ window.STATE_INDEX = {
    "Chouteau County",
    "Rosebud County"
   ],
-  "bytes": 132371
+  "bytes": 134832
  },
  "NC": {
   "name": "North Carolina",
@@ -1019,7 +1019,7 @@ window.STATE_INDEX = {
    "Brevard",
    "Laurinburg"
   ],
-  "bytes": 1126882
+  "bytes": 1148175
  },
  "ND": {
   "name": "North Dakota",
@@ -1051,7 +1051,7 @@ window.STATE_INDEX = {
    "Barnes County",
    "Benson County"
   ],
-  "bytes": 127984
+  "bytes": 130348
  },
  "NE": {
   "name": "Nebraska",
@@ -1083,7 +1083,7 @@ window.STATE_INDEX = {
    "Dawes County",
    "Thurston County"
   ],
-  "bytes": 200413
+  "bytes": 204123
  },
  "NH": {
   "name": "New Hampshire",
@@ -1107,7 +1107,7 @@ window.STATE_INDEX = {
    "Coos County",
    "Laconia"
   ],
-  "bytes": 159050
+  "bytes": 161990
  },
  "NJ": {
   "name": "New Jersey",
@@ -1130,7 +1130,7 @@ window.STATE_INDEX = {
    "Vineland",
    "Allentown"
   ],
-  "bytes": 472175
+  "bytes": 480796
  },
  "NM": {
   "name": "New Mexico",
@@ -1166,7 +1166,7 @@ window.STATE_INDEX = {
    "Taos",
    "Quay County"
   ],
-  "bytes": 257264
+  "bytes": 262008
  },
  "NV": {
   "name": "Nevada",
@@ -1187,7 +1187,7 @@ window.STATE_INDEX = {
    "Elko",
    "Carson City"
   ],
-  "bytes": 135315
+  "bytes": 137819
  },
  "NY": {
   "name": "New York",
@@ -1235,7 +1235,7 @@ window.STATE_INDEX = {
    "Franklin County",
    "Chenango County"
   ],
-  "bytes": 1096191
+  "bytes": 1116188
  },
  "OH": {
   "name": "Ohio",
@@ -1291,7 +1291,7 @@ window.STATE_INDEX = {
    "Wilmington",
    "Celina"
   ],
-  "bytes": 1041569
+  "bytes": 1060854
  },
  "OK": {
   "name": "Oklahoma",
@@ -1337,7 +1337,7 @@ window.STATE_INDEX = {
    "Latimer County",
    "Seminole County"
   ],
-  "bytes": 435035
+  "bytes": 443449
  },
  "OR": {
   "name": "Oregon",
@@ -1372,7 +1372,7 @@ window.STATE_INDEX = {
    "Tillamook County",
    "The Dalles"
   ],
-  "bytes": 303320
+  "bytes": 309033
  },
  "PA": {
   "name": "Pennsylvania",
@@ -1425,7 +1425,7 @@ window.STATE_INDEX = {
    "Sayre",
    "Oil City"
   ],
-  "bytes": 1100864
+  "bytes": 1121158
  },
  "RI": {
   "name": "Rhode Island",
@@ -1443,7 +1443,7 @@ window.STATE_INDEX = {
   "regions": [
    "Providence"
   ],
-  "bytes": 104283
+  "bytes": 106195
  },
  "SC": {
   "name": "South Carolina",
@@ -1478,7 +1478,7 @@ window.STATE_INDEX = {
    "Gaffney",
    "Marion County"
   ],
-  "bytes": 394470
+  "bytes": 401827
  },
  "SD": {
   "name": "South Dakota",
@@ -1508,7 +1508,7 @@ window.STATE_INDEX = {
    "Todd County",
    "Roberts County"
   ],
-  "bytes": 117906
+  "bytes": 120060
  },
  "TN": {
   "name": "Tennessee",
@@ -1557,7 +1557,7 @@ window.STATE_INDEX = {
    "Monroe County",
    "Fayetteville"
   ],
-  "bytes": 533375
+  "bytes": 543211
  },
  "TX": {
   "name": "Texas",
@@ -1628,7 +1628,7 @@ window.STATE_INDEX = {
    "Wood County",
    "Eagle Pass"
   ],
-  "bytes": 1616489
+  "bytes": 1646650
  },
  "UT": {
   "name": "Utah",
@@ -1654,7 +1654,7 @@ window.STATE_INDEX = {
    "Vernal",
    "Heber"
   ],
-  "bytes": 284934
+  "bytes": 290450
  },
  "VA": {
   "name": "Virginia",
@@ -1695,7 +1695,7 @@ window.STATE_INDEX = {
    "Lexington City County",
    "Buena Vista City County"
   ],
-  "bytes": 501446
+  "bytes": 511087
  },
  "VT": {
   "name": "Vermont",
@@ -1717,7 +1717,7 @@ window.STATE_INDEX = {
    "Bennington",
    "Addison County"
   ],
-  "bytes": 67591
+  "bytes": 68851
  },
  "WA": {
   "name": "Washington",
@@ -1752,7 +1752,7 @@ window.STATE_INDEX = {
    "Centralia",
    "Longview"
   ],
-  "bytes": 528451
+  "bytes": 539023
  },
  "WI": {
   "name": "Wisconsin",
@@ -1796,7 +1796,7 @@ window.STATE_INDEX = {
    "Beaver Dam",
    "Shawano"
   ],
-  "bytes": 511313
+  "bytes": 521561
  },
  "WV": {
   "name": "West Virginia",
@@ -1833,7 +1833,7 @@ window.STATE_INDEX = {
    "Mingo County",
    "Jackson County"
   ],
-  "bytes": 231088
+  "bytes": 235669
  },
  "WY": {
   "name": "Wyoming",
@@ -1858,6 +1858,6 @@ window.STATE_INDEX = {
    "Goshen County",
    "Rock Springs"
   ],
-  "bytes": 77807
+  "bytes": 79375
  }
 };

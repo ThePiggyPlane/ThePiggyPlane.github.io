@@ -170,6 +170,7 @@ def main():
     ap.add_argument("--sfa", default=None, help="IPEDS SFA2223/sfa2223.csv (net price by income)")
     ap.add_argument("--ic", default=None, help="IPEDS IC2023/IC2023.csv (housing, childcare, application fee)")
     ap.add_argument("--scorecard", default=None, help="directory of College Scorecard page_*.json files (program earnings)")
+    ap.add_argument("--gr", default=None, help="IPEDS DRVGR2023/drvgr2023.csv (graduation rates)")
     a = ap.parse_args()
 
     hd = read_csv(os.path.join(a.ipeds, "HD2024", "HD2024.csv"))
@@ -229,6 +230,17 @@ def main():
             except Exception:
                 pass
             chars[int(row.UNITID)] = {"housing": flag("ROOM"), "childcare": flag("STUSRV8"), "applFee": fee}
+
+    # Graduation rate (150% of normal time, first-time full-time cohort)
+    gradrate = {}
+    if a.gr and os.path.exists(a.gr):
+        gr = read_csv(a.gr)
+        for row in gr.itertuples(index=False):
+            try:
+                v = float(row.GRRTTOT)
+                if v == v: gradrate[int(row.UNITID)] = int(round(v))
+            except Exception:
+                pass
 
     # College Scorecard program-level earnings: (unitid, cip4, credential level) -> earnings
     earn = {}
@@ -416,6 +428,8 @@ def main():
         }
         if uid in net30:
             rec["netPrice30k"] = net30[uid]
+        if uid in gradrate:
+            rec["gradRate"] = gradrate[uid]
         if ch.get("housing"):
             rec["housing"] = True
         if ch.get("childcare"):

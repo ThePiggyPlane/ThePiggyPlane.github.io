@@ -220,7 +220,7 @@ const CpProgramCard = ({ p }) => {
         <div>
           <div className="cp-prog-tier">{tierLabels[p.tier] || p.tier}{p.forProfit ? <span className="cp-badge warn" title="For-profit school: compare cost and job placement rates carefully before enrolling">for-profit</span> : null}{p.curated ? <span className="cp-badge good">verified listing</span> : null}{p.housing ? <span className="cp-badge info" title="This school has on-campus housing">campus housing</span> : null}{p.childcare ? <span className="cp-badge info" title="On-campus childcare available">childcare</span> : null}</div>
           <div className="cp-prog-name">{p.name}</div>
-          <div className="cp-prog-loc">{p.miles != null && <strong>{fmtMiles(p.miles)} · </strong>}{p.loc}{p.region && p.region !== p.loc ? `, ${p.region}` : ""} · {p.duration}{p.grads ? ` · ${p.grads} grads in 2023-24` : ""}</div>
+          <div className="cp-prog-loc">{p.miles != null && <strong>{fmtMiles(p.miles)} · </strong>}{p.loc}{p.region && p.region !== p.loc ? `, ${p.region}` : ""} · {p.duration}{p.grads ? ` · ${p.grads} grads in 2023-24` : ""}{p.gradRate != null && p.tier !== "cc" ? <span title="Share of first-time, full-time students who finish within 150% of the normal time (transfers out are not counted)">{` · ${p.gradRate}% graduate`}</span> : ""}</div>
           {earnLine}
         </div>
         {(p.sticker > 0 || p.netPrice30k != null) && (
