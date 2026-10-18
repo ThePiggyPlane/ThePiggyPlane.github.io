@@ -29,10 +29,14 @@ fosteringpathsproject/
   data/states/<ST>/wages.js       window.registerWages({...})  generated from BLS OES (tools/gen_wages_oes.py)
   data/national/wages.js          national BLS figures for comparison (generated)
   data/onet.js                    career descriptions from O*NET (tools/gen_onet.py)
+  data/outlook.js                 national job outlook per career, BLS projections (tools/gen_outlook.py)
   tools/validate.js               node tools/validate.js  -> must print OK before committing
   tools/build-index.js            regenerates data/states/index.js from the files on disk
   tools/gen_programs_ipeds.py     programs for every state from IPEDS + College Scorecard
   tools/gen_wages_oes.py          wages for every state and metro from the BLS OES tables
+  tools/gen_outlook.py            national outlook from the BLS employment matrix
+  tools/import_state_json.py      research report (JSON block) -> state guide, scholarships, resources
+  tools/smoke.js                  headless route check (Playwright)
 ```
 
 `<ST>` is the two-letter USPS code in upper case (`CA`, `TX`, `DC`).

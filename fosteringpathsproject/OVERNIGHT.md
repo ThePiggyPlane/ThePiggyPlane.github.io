@@ -1,82 +1,79 @@
-# Overnight run protocol (scheduled task, fresh session each hour)
+# Fostering Paths: status and how to continue
 
-Each hourly run is a fresh cloud session. Do exactly one unit of work, chosen
-by the current hour in America/Los_Angeles, then publish and stop.
+Written 2026-10-18 at the end of the first overnight build. Read AGENTS.md for
+the data contract; this file is the state of the project and the playbook.
 
-## 0. Setup (every run)
-1. `add_repo` ThePiggyPlane / ThePiggyPlane.github.io with access "push", then
-   `git clone --depth 1 https://github.com/ThePiggyPlane/thepiggyplane.github.io /home/claude/thepiggyplane.github.io`.
-2. If `fosteringpathsproject/AGENTS.md` is missing from the clone, the v2
-   framework has not been pushed yet: in the Google Drive folder
-   "Fostering Paths overnight" (search_files: title = 'Fostering Paths overnight'),
-   read the text files `AGENTS.md`, `validate.js`, `build-index.js` with the
-   Drive read tool and write them to `fosteringpathsproject/AGENTS.md`,
-   `fosteringpathsproject/tools/validate.js`, `fosteringpathsproject/tools/build-index.js`.
-   Create `fosteringpathsproject/data/states/<ST>/` directories as needed.
-3. Read `fosteringpathsproject/AGENTS.md`. It is the data contract.
-4. Make sure `node fosteringpathsproject/tools/validate.js` runs.
+## What is done
 
-## 1. Pick the unit by hour (PT)
-| hour | unit | output |
-|---|---|---|
-| 02 | State guides, Mid-Atlantic: NJ PA DE MD DC VA WV | data/states/<ST>/{guide,scholarships,resources}.js |
-| 03 | State guides, South Central + Alaska: KY AR LA OK MO KS AK | same |
-| 04 | State guides, Midwest: OH MI IN IL WI MN IA | same |
-| 05 | State guides, Plains and Mountain: ND SD NE MT WY CO UT ID | same |
-| 06 | Deep Texas: metro-level resources | data/states/TX/resources-metro.js |
-| 07 | Deep Florida: metro-level resources | data/states/FL/resources-metro.js |
-| 08 | Deep New York: metro-level resources | data/states/NY/resources-metro.js |
-| 09 | State wages from BLS OEWS May 2024 for all states | data/states/<ST>/wages.js |
-| 10+ | Disable this scheduled task (update_trigger enabled=false) and stop | |
+- Site is state-aware: pick a state and region (or share your location), and
+  programs, wages, resources, scholarships, the guide and the map follow it.
+- Programs for all 51 states from IPEDS 2023-24 completions (33,565 records at
+  about 4,000 schools), with net price for low-income students, graduation
+  rate, enrollment, housing, childcare, application fee, open admission, Pell
+  share, and College Scorecard earnings for about half the schools.
+- Wages for every state and about 390 metro areas (BLS OES May 2025, with
+  yearly change vs May 2024) and the national outlook per career (BLS
+  Employment Projections 2025-35).
+- Career descriptions, tasks and preparation from O*NET 30.1.
+- California: full state guide, 14 scholarships and grants, statewide and
+  LA / Sacramento resources, a campus foster youth record for all 141 public
+  campuses (office contacts still flagged unverified), the DAS apprenticeship
+  registry.
+- Pages: Start Here, FAQ and glossary, Your State, Resources, Scholarships,
+  My Plan (checklist with saved careers and schools), school pages, map.
 
-Already covered by the launch session (do not redo): CA (all files), national
-files, and state guides for NY MA CT RI NH VT ME, FL GA NC SC TN AL MS,
-TX AZ NV OR WA NM HI.
+## What is not done, in order of value
 
-## 2. Do the unit
-Split the unit across 3 or 4 parallel subagents (Agent tool), one file set per
-agent, each told to read AGENTS.md first and to follow the research method:
-open pages only through WebSearch results (or links listed in an earlier
-WebFetch result); never type a URL from memory; never fetch with curl, wget,
-or python; write files as records are confirmed; run the validator on their
-files before reporting. Give each subagent the exact file paths it owns.
+1. State guides, scholarships and resources for the other 50 states. Use the
+   research pipeline below; one state per research run; Texas, Florida, New
+   York, Ohio, Pennsylvania, Illinois, Georgia, North Carolina, Michigan,
+   Arizona, Washington first.
+2. California county resources beyond Los Angeles and Sacramento (ILP offices,
+   THP-Plus providers, FYI voucher contacts per county), and verified office
+   contacts for the 141 campus records (tag `campus-contact-unverified`).
+3. College Scorecard earnings for the remaining ~3,000 schools: needs an
+   api.data.gov key (free); then `scratchpad/ipeds/fetch_scorecard.py` logic
+   with skip-existing, and re-run tools/gen_programs_ipeds.py.
+4. Apprenticeship registries outside California (DOL RAPIDS data; the
+   apprenticeship.gov finder link is shown meanwhile).
+5. National scholarships beyond Foster Love and Pell (FC2S, Casey, iFoster and
+   others) through the research pipeline with scope "national".
 
-Deep-state units (TX, FL, NY): resources at metro level. Campus foster youth
-support programs at every public university and the 20 largest community
-colleges in the state; regional ILP / transition offices; transitional housing
-and FYI voucher contacts in the 5 largest metros; county or regional legal aid,
-CASA, Job Corps, YouthBuild; emergency funds. Category and schema per
-AGENTS.md; ids prefixed with the state code; `region` is the metro name.
+## Pipelines that need no browsing
 
-Wages unit: for each state page "Occupational Employment and Wage Statistics,
-May 2024, <State>" on bls.gov (find it with WebSearch, fetch the result URL),
-extract annual median wage and employment for these SOC codes and write
-`window.registerWages({ state, geo: "<State>", dataYear: 2024, source: "BLS OEWS May 2024", careers: { <careerId>: { medianWage, employed, meanWage } } })`:
-accountant 13-2011, animator 27-1014, architect 17-1011, author 27-3043,
-automechanic 49-3023, baker 51-3011, barber 39-5011, carpenter 47-2031,
-chef 35-1011, civilengineer 17-2051, cosmetology 39-5012, cybersecurity 15-1212,
-datascience 15-2051, dentalassistant 31-9091, earlychildhood 25-2011,
-emt 29-2042, firefighter 33-2011, hvac 49-9021, infotech 15-1232,
-librarytech 25-4031, masonry 47-2021, mathematician 15-2021,
-mechanicalengineer 17-2141, medassistant 31-9092, nurse 29-1141,
-paralegal 23-2011, pharmtech 29-2052, phlebotomist 31-9097, photography 27-4021,
-plumber 47-2152, radtech 29-2034, resptherapist 29-1126, salesmanager 11-2022,
-sociologist 19-3041, technicalwriter 27-3042, trades 47-2111,
-urbanplanner 19-3051, veterinarian 29-1131, welding 51-4121.
-Omit a career when the state page suppresses it. Sanity check: a state median
-should be within 0.5x to 2x the national median in data/careers/<id>.js.
+- Programs: `python3 tools/gen_programs_ipeds.py --ipeds <dir with HD2024, C2024_A, IC2023_AY, IC2023, SFA2223, DRVGR2023, DRVEF2023, cbsa_list1_2023.xlsx> --sfa ... --ic ... --scorecard ... --gr ...`
+  IPEDS files come from https://nces.ed.gov/ipeds/datacenter/data/<NAME>.zip.
+- Wages: download oesm<yy>st.zip, oesm<yy>ma.zip, oesm<yy>nat.zip (and the prior
+  year) from https://www.bls.gov/oes/special-requests/, filter to the covered
+  SOC codes, then `python3 tools/gen_wages_oes.py --csv <dir> --cbsa <cbsa xlsx>`.
+- Outlook: https://www.bls.gov/emp/ind-occ-matrix/occupation.xlsx, then
+  `python3 tools/gen_outlook.py --xlsx occupation.xlsx`.
+- O*NET: db text files from onetcenter.org, then `python3 tools/gen_onet.py --onet <dir>`.
+- California campus stubs: `python3 tools/gen_ca_campus_stubs.py --hd <HD2024.csv>`.
+- After any data change: `node tools/validate.js && node tools/build-index.js`.
+- Smoke test: `node tools/smoke.js "home,map,career/nurse,state" "CA,TX"` (needs Playwright).
 
-## 3. Publish (every run)
-1. `cd fosteringpathsproject && node tools/build-index.js && node tools/validate.js` (must print OK; fix or remove any failing file).
-2. `git add fosteringpathsproject && git commit -m "Fostering Paths overnight: <unit>"` (end the message with the Co-Authored-By line the session requires).
-3. `git pull --rebase origin main` (if index.js conflicts, re-run build-index and continue the rebase), then `git push origin HEAD:main`.
-4. If the push is refused (403: GitHub App not installed): create a subfolder
-   `overnight-<unit>-<YYYYMMDD-HHMM>` inside the "Fostering Paths overnight"
-   Drive folder and upload every new or changed file under
-   `fosteringpathsproject/data/` into it with the Drive create_file tool, one
-   call per file, as text (textContent, contentMimeType text/plain,
-   disableConversionToGoogleType true, title = `<ST>__<filename>` such as
-   `NJ__guide.js`). Also upload `REPORT.md` (what was done, counts, gaps).
-   Nothing is lost that way; the morning session merges.
-5. Finish with a 10-line summary: unit, files, counts, whether it was pushed or
-   uploaded, and gaps for the next shift.
+## Research pipeline (one state per run)
+
+1. Fill `tools/state_research_prompt.md` for the state and run it with the
+   Advanced Research tool (the user must have the Research toggle on for that
+   message; agents with WebFetch prompt the user on every page and must not be
+   used for this).
+2. Save the report to a file and run `python3 tools/import_state_json.py report.md`.
+3. Validate, build-index, read the guide once for tone, commit.
+
+## Publishing
+
+All work is committed on `main` locally. Pushing needs the Claude GitHub App
+installed for the ThePiggyPlane org (https://github.com/apps/claude/installations/select_target),
+then `git push origin HEAD:main` from the repo root. GitHub Pages serves the
+repo as-is; `.nojekyll` is in place.
+
+## Things that do not work from the cloud session
+
+- WebFetch and browsing agents: each page prompts the user. Do not use them
+  for bulk work.
+- api.bls.gov without a key: the shared daily quota is usually exhausted. The
+  OES special-request zips work with a plain project User-Agent.
+- Census API (needs a key), data.gov CKAN API (404), College Scorecard beyond
+  the DEMO_KEY daily limit.
