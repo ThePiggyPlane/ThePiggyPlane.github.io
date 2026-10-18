@@ -89,5 +89,23 @@ window.registerScholarships([
     notes: "Started in 2020 as a safety net for college students from foster care. Over 3,000 students helped by 2024. Ask your campus foster youth program to help you reach out.",
     tags: ["housing", "food", "laptop", "emergency"],
     verified: "2026-10"
-  }
+  },
+  {
+    id: "nat-pell-grant",
+    name: "Federal Pell Grant",
+    provider: "Federal Student Aid, U.S. Department of Education",
+    type: "grant",
+    scope: "national",
+    state: null,
+    amount: "Up to $7,395 per year",
+    eligibility: "Undergraduates with financial need. Foster youth file the FAFSA as independent students, so parent income does not count and most qualify for the full amount. No age limit.",
+    ages: "any",
+    deadline: "File the FAFSA as early as October 1; state and campus deadlines follow",
+    renewable: true,
+    url: "https://studentaid.gov/articles/dont-miss-out-on-pell-grants/",
+    howToApply: "File the FAFSA at studentaid.gov and answer yes to the foster care question. The school awards the grant automatically.",
+    notes: "Works at community colleges, trade schools, and universities. Never has to be paid back.",
+    tags: ["pell", "fafsa"],
+    verified: "2026-10",
+  },
 ]);
