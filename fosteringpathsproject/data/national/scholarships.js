@@ -91,7 +91,7 @@ window.registerScholarships([
     verified: "2026-10"
   },
   {
-    id: "nat-pell-grant",
+    id: "nat-pell-grant-aid",
     name: "Federal Pell Grant",
     provider: "Federal Student Aid, U.S. Department of Education",
     type: "grant",
