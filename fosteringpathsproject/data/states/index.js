@@ -143,12 +143,17 @@ window.STATE_INDEX = {
  "CA": {
   "name": "California",
   "files": [
+   "scholarships.js",
+   "resources-campus-4yr.js",
+   "resources-county-north.js",
+   "resources-county-south.js",
+   "resources-statewide.js",
    "programs-ipeds.js"
   ],
   "counts": {
    "programs": 3671,
-   "resources": 0,
-   "scholarships": 0,
+   "resources": 28,
+   "scholarships": 5,
    "guide": false,
    "apprenticeships": 907,
    "wages": 0
@@ -166,7 +171,7 @@ window.STATE_INDEX = {
    "Imperial",
    "Sierra"
   ],
-  "bytes": 1959776
+  "bytes": 2013253
  },
  "CO": {
   "name": "Colorado",
@@ -285,13 +290,13 @@ window.STATE_INDEX = {
    "Tallahassee",
    "Cape Coral",
    "Lakeland",
-   "Deltona",
+   "Daytona Beach",
    "Gainesville",
-   "North Port",
-   "Palm Bay",
+   "Sarasota",
+   "Melbourne",
    "Ocala",
    "Port St. Lucie",
-   "Crestview",
+   "Fort Walton Beach",
    "Panama City",
    "Naples",
    "Sebring",
@@ -300,15 +305,15 @@ window.STATE_INDEX = {
    "Jackson County",
    "Punta Gorda",
    "Suwannee County",
-   "Homosassa Springs",
+   "Citrus County",
    "Madison County",
-   "Sebastian",
+   "Vero Beach",
    "Key West",
    "Bradford County",
    "Taylor County",
    "Wildwood"
   ],
-  "bytes": 1117510
+  "bytes": 1118081
  },
  "GA": {
   "name": "Georgia",
@@ -372,12 +377,12 @@ window.STATE_INDEX = {
    "wages": 0
   },
   "regions": [
-   "Urban Honolulu",
+   "Honolulu",
    "Hilo-Kailua",
    "Kapaa",
    "Kahului"
   ],
-  "bytes": 84229
+  "bytes": 83743
  },
  "IA": {
   "name": "Iowa",
@@ -521,7 +526,7 @@ window.STATE_INDEX = {
    "Terre Haute",
    "Marion",
    "Bloomington",
-   "Louisville/Jefferson County",
+   "Louisville",
    "Richmond",
    "Kokomo",
    "Angola",
@@ -536,7 +541,7 @@ window.STATE_INDEX = {
    "Plymouth",
    "Starke County"
   ],
-  "bytes": 354510
+  "bytes": 354289
  },
  "KS": {
   "name": "Kansas",
@@ -600,7 +605,7 @@ window.STATE_INDEX = {
    "wages": 0
   },
   "regions": [
-   "Louisville/Jefferson County",
+   "Louisville",
    "Lexington",
    "Cincinnati",
    "Bowling Green",
@@ -630,7 +635,7 @@ window.STATE_INDEX = {
    "Glasgow",
    "Johnson County"
   ],
-  "bytes": 386286
+  "bytes": 384671
  },
  "LA": {
   "name": "Louisiana",
@@ -1202,7 +1207,7 @@ window.STATE_INDEX = {
    "Albany",
    "Rochester",
    "Syracuse",
-   "Kiryas Joel",
+   "Poughkeepsie",
    "Utica",
    "Massena",
    "Ithaca",
@@ -1229,7 +1234,7 @@ window.STATE_INDEX = {
    "Franklin County",
    "Chenango County"
   ],
-  "bytes": 945972
+  "bytes": 946024
  },
  "OH": {
   "name": "Ohio",
@@ -1462,7 +1467,7 @@ window.STATE_INDEX = {
    "Greenwood",
    "Charlotte",
    "Orangeburg",
-   "Hilton Head Island",
+   "Hilton Head",
    "Augusta",
    "Sumter",
    "Williamsburg County",
@@ -1472,7 +1477,7 @@ window.STATE_INDEX = {
    "Gaffney",
    "Marion County"
   ],
-  "bytes": 346842
+  "bytes": 346674
  },
  "SD": {
   "name": "South Dakota",
@@ -1734,7 +1739,7 @@ window.STATE_INDEX = {
    "Olympia",
    "Walla Walla",
    "Portland",
-   "Kennewick",
+   "Tri-Cities",
    "Pullman",
    "Bremerton",
    "Port Angeles",
@@ -1746,7 +1751,7 @@ window.STATE_INDEX = {
    "Centralia",
    "Longview"
   ],
-  "bytes": 490769
+  "bytes": 490793
  },
  "WI": {
   "name": "Wisconsin",

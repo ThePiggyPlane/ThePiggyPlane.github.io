@@ -199,6 +199,11 @@ def main():
         title = str(r["CBSA Title"]).split(",")[0]
         parts = title.split("-")
         short = parts[0] if len(parts) == 1 or len(parts[0]) > 4 else "-".join(parts[:2])
+        # A few CBSAs lead with a small place; use the name people say.
+        short = {"Kiryas Joel": "Poughkeepsie", "Urban Honolulu": "Honolulu", "Louisville/Jefferson County": "Louisville",
+                 "Nashville": "Nashville", "Crestview": "Fort Walton Beach", "Deltona": "Daytona Beach", "North Port": "Sarasota",
+                 "Homosassa Springs": "Citrus County", "Sebastian": "Vero Beach", "Palm Bay": "Melbourne", "Myrtle Beach": "Myrtle Beach",
+                 "Hilton Head Island": "Hilton Head", "Bremerton": "Bremerton", "Kennewick": "Tri-Cities", "Riverside": "Inland Empire"}.get(short, short)
         cbsa_name[int(r["CBSA Code"])] = short
 
     # CIP lookup

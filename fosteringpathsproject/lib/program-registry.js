@@ -24,6 +24,9 @@
     "Walnut": "Los Angeles", "Pomona": "Los Angeles", "Pasadena": "Los Angeles", "Long Beach": "Los Angeles",
     "Los Angeles": "Los Angeles", "Whittier": "Los Angeles", "Glendora": "Los Angeles", "Azusa": "Los Angeles",
     "La Verne": "Los Angeles", "Claremont": "Los Angeles", "San Marcos": "San Diego", "San Diego": "San Diego",
+    "Westminster": "Orange County", "Laguna Hills": "Orange County", "Blythe": "Inland Empire", "Montclair": "Inland Empire",
+    "Beaumont": "Inland Empire", "Bloomington": "Inland Empire", "Jurupa Valley": "Inland Empire", "Rialto": "Inland Empire",
+    "Huntington Park": "Los Angeles", "San Luis Obispo": "Central Coast", "San Francisco": "Bay Area", "San Jose": "Bay Area",
   };
 
   const add = (id, p) => {
