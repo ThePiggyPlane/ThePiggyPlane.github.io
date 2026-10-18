@@ -159,6 +159,8 @@ for (const f of files) {
     registerApprenticeship: (a) => checkApprenticeship(f, a, legacy),
     registerCareer: (c) => checkCareer(f, c),
     registerCareers: (arr) => arr.forEach(c => checkCareer(f, c)),
+    registerCareerDetails: (obj) => { Object.keys(obj || {}).forEach(id => { if (!careerIds.has(id)) err(f, `career detail for unknown career "${id}"`); }); },
+    registerWages: () => {},
     STATE_INDEX: null,
   };
   const ctx = { window: win, console };

@@ -133,6 +133,59 @@ const CpCareerApprenticeships = ({ career }) => {
   );
 };
 
+// "What the job is" from O*NET, when we have it for this career.
+const CpCareerAbout = ({ career, onOpen }) => {
+  const d = window.CAREER_DETAILS && window.CAREER_DETAILS.get(career.id);
+  const [more, setMore] = React.useState(false);
+  if (!d) return null;
+  const tasks = more ? d.tasks : d.tasks.slice(0, 4);
+  return (
+    <section className="cp-about-job">
+      <h2 className="cp-h2">What the job is</h2>
+      <p className="cp-job-desc">{d.description}</p>
+      {d.tasks && d.tasks.length > 0 && (
+        <>
+          <h3 className="cp-h3">What you would actually do</h3>
+          <ul className="cp-job-tasks">{tasks.map((t, i) => <li key={i}>{t}</li>)}</ul>
+          {d.tasks.length > 4 && <button className="cp-link" onClick={() => setMore(m => !m)}>{more ? "Show fewer" : `Show all ${d.tasks.length}`}</button>}
+        </>
+      )}
+      <div className="cp-job-grid">
+        {d.jobZoneText && (
+          <div className="cp-aside-card">
+            <div className="cp-aside-eyebrow">How much school</div>
+            <div className="cp-aside-body">{d.jobZoneText}{d.education && d.education.length ? <span className="cp-stat-meta"> People in this job: {d.education.map(e => `${e.pct}% ${e.level.toLowerCase()}`).join(", ")}.</span> : null}</div>
+          </div>
+        )}
+        {d.interests && d.interests.length > 0 && (
+          <div className="cp-aside-card">
+            <div className="cp-aside-eyebrow">You might like it if you are</div>
+            <div className="cp-aside-body">{d.interests.join(" · ")}</div>
+          </div>
+        )}
+        {d.titles && d.titles.length > 0 && (
+          <div className="cp-aside-card">
+            <div className="cp-aside-eyebrow">Job titles you will see</div>
+            <div className="cp-aside-body">{d.titles.join(", ")}</div>
+          </div>
+        )}
+        {d.tech && d.tech.length > 0 && (
+          <div className="cp-aside-card">
+            <div className="cp-aside-eyebrow">Tools and software</div>
+            <div className="cp-aside-body">{d.tech.join(", ")}</div>
+          </div>
+        )}
+      </div>
+      {d.related && d.related.length > 0 && (
+        <p className="cp-job-related"><strong>Related paths:</strong> {d.related.map((r, i) => (
+          <span key={i}>{i > 0 ? ", " : ""}{r.career ? <button className="cp-link" onClick={() => onOpen(r.career)}>{(window.CAREERS.byId(r.career) || {}).name || r.career}</button> : r.title}</span>
+        ))}</p>
+      )}
+      <p className="cp-app-source">Job description, tasks and preparation from the O*NET 30.1 Database (U.S. Department of Labor), CC BY 4.0.</p>
+    </section>
+  );
+};
+
 const TIER_ORDER = { cc: 0, csu: 1, public4: 1, uc: 2, private: 3, trade: 4 };
 const sortPrograms = (xs) => [...xs].sort((a, b) =>
   (b.curated ? 1 : 0) - (a.curated ? 1 : 0) ||
@@ -293,6 +346,8 @@ const CpCareer = ({ careerId, saved, toggleSave, onBack, onOpenAid }) => {
           {loc.state !== "CA" && !(wages && wages.medianWage) && career.dolStats && career.dolStats.nationalMedianWage && (
             <p className="cp-filter-meta">Pay shown is California's. Nationally, the median is ${fmtNum(career.dolStats.nationalMedianWage)} a year{career.dolStats.nationalEmployed ? ` across ${fmtNum(career.dolStats.nationalEmployed)} jobs` : ""} (BLS, {career.dolStats.dataYear || 2025}). {stateName} figures are being added.</p>
           )}
+
+          <CpCareerAbout career={career} onOpen={(id) => { window.location.hash = "#/career/" + encodeURIComponent(id); }} />
 
           <h2 className="cp-h2">Programs in {loc.region || stateName}</h2>
           {status === "loading" && here.length === 0 && <p className="cp-filter-meta">Loading {stateName} programs…</p>}
@@ -802,6 +857,7 @@ const CpAbout = () => {
       <h2 className="cp-h2">Where the numbers come from</h2>
       <div className="cp-about-meta">
         <div><strong>Programs, nationwide</strong>U.S. Dept. of Education IPEDS: institutions (HD2024), completions by program 2023-24 (C2024_A), tuition and fees (IC2023_AY), on-campus housing and childcare (IC2023), and average net price for students from families earning under $30,000 (SFA 2022-23). Only programs that graduated at least one student are listed.</div>
+        <div><strong>Job descriptions</strong>This site includes information from the O*NET 30.1 Database by the U.S. Department of Labor, Employment and Training Administration (USDOL/ETA), used under the CC BY 4.0 license. O*NET is a trademark of USDOL/ETA. Fostering Paths is not endorsed by USDOL/ETA.</div>
         <div><strong>Graduate earnings</strong>U.S. Dept. of Education College Scorecard: median earnings of graduates by program and credential, one and four years after completion, including Pell recipients, with the national median for the same program type.</div>
         <div><strong>Verified listings (Inland SoCal)</strong>Each school's own program page, checked by hand</div>
         <div><strong>Support resources, scholarships, state guides</strong>Each program's or agency's own page; every record carries the month it was checked</div>

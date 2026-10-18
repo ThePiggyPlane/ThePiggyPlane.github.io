@@ -760,3 +760,13 @@ a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-ra
   a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 11px; color: #555; }
   .cp-res, .cp-sch, .cp-prog, .cp-guide-row { break-inside: avoid; }
 }
+.cp-about-job { margin-top: 8px; }
+.cp-h3 { font-size: 16px; font-weight: 600; margin: 20px 0 8px; letter-spacing: -0.01em; }
+.cp-job-desc { font-size: 16px; line-height: 1.55; color: var(--ink-2); margin: 0; }
+.cp-job-tasks { margin: 0 0 8px; padding-left: 20px; font-size: 14.5px; line-height: 1.55; color: var(--ink-2); }
+.cp-job-tasks li { margin-bottom: 4px; }
+.cp-job-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 16px 0 10px; }
+.cp-job-grid .cp-aside-card { margin: 0; }
+.cp-job-related { font-size: 14px; color: var(--ink-2); }
+.cp-job-related .cp-link { font-size: 14px; margin-left: 0; }
+@media (max-width: 700px) { .cp-job-grid { grid-template-columns: 1fr; } }

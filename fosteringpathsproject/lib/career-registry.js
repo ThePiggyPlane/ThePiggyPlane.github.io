@@ -22,6 +22,13 @@
     byId.set(career.id, career);
   };
 
+  // Career detail text (O*NET): window.registerCareerDetails({ careerId: {...} })
+  const details = {};
+  window.registerCareerDetails = function (obj) {
+    Object.entries(obj || {}).forEach(([id, d]) => { details[id] = d; });
+  };
+  window.CAREER_DETAILS = { get: (id) => details[id], all: () => details };
+
   window.CAREERS = {
     all: () => [...list].sort((a, b) => (a.order ?? 999) - (b.order ?? 999)),
     byId: (id) => byId.get(id),
