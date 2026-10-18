@@ -242,7 +242,9 @@ const CpCareer = ({ careerId, saved, toggleSave, onBack, onOpenAid }) => {
   const guide = window.STATE_GUIDES.get(loc.state);
   const medianK = wages && wages.medianWage ? Math.round(wages.medianWage / 1000) : career.salary.median;
   const payLabel = wages && wages.medianWage ? `median pay, ${loc.state}` : "median pay, CA";
-  const dolStats = wages && wages.medianWage ? { ...wages, geoLabel: wages.geo || stateName } : career.dolStats;
+  const dolStats = wages && wages.medianWage
+    ? { nationalEmployed: career.dolStats && career.dolStats.nationalEmployed, nationalMedianWage: career.dolStats && career.dolStats.nationalMedianWage, dataYear: (window.WAGES.get(loc.state) || {}).dataYear || 2024, ...wages, geoLabel: (window.WAGES.get(loc.state) || {}).geo || stateName }
+    : career.dolStats;
   const steps = guide && guide.firstWeek && guide.firstWeek.length ? guide.firstWeek.slice(0, 4).map(s => s.title)
     : (loc.state === "CA" ? ["FAFSA / CADAA", "Chafee ETV app", "CCCApply or Cal State Apply", "Email Guardian Scholars"]
                            : ["FAFSA (independent student)", `${stateName} ETV application`, "Apply to the school (ask for a fee waiver)", "Email the campus foster youth program"]);
