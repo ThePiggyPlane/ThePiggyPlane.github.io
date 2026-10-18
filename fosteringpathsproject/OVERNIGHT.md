@@ -7,9 +7,12 @@ by the current hour in America/Los_Angeles, then publish and stop.
 1. `add_repo` ThePiggyPlane / ThePiggyPlane.github.io with access "push", then
    `git clone --depth 1 https://github.com/ThePiggyPlane/thepiggyplane.github.io /home/claude/thepiggyplane.github.io`.
 2. If `fosteringpathsproject/AGENTS.md` is missing from the clone, the v2
-   framework has not been pushed yet: find the Google Drive folder
-   "Fostering Paths overnight", download `fpp-v2-bundle.zip` (Google Drive
-   download tool, base64), unzip it over `/home/claude/thepiggyplane.github.io/fosteringpathsproject/`.
+   framework has not been pushed yet: in the Google Drive folder
+   "Fostering Paths overnight" (search_files: title = 'Fostering Paths overnight'),
+   read the text files `AGENTS.md`, `validate.js`, `build-index.js` with the
+   Drive read tool and write them to `fosteringpathsproject/AGENTS.md`,
+   `fosteringpathsproject/tools/validate.js`, `fosteringpathsproject/tools/build-index.js`.
+   Create `fosteringpathsproject/data/states/<ST>/` directories as needed.
 3. Read `fosteringpathsproject/AGENTS.md`. It is the data contract.
 4. Make sure `node fosteringpathsproject/tools/validate.js` runs.
 
@@ -67,12 +70,13 @@ should be within 0.5x to 2x the national median in data/careers/<id>.js.
 1. `cd fosteringpathsproject && node tools/build-index.js && node tools/validate.js` (must print OK; fix or remove any failing file).
 2. `git add fosteringpathsproject && git commit -m "Fostering Paths overnight: <unit>"` (end the message with the Co-Authored-By line the session requires).
 3. `git pull --rebase origin main` (if index.js conflicts, re-run build-index and continue the rebase), then `git push origin HEAD:main`.
-4. If the push is refused (403: GitHub App not installed): zip every new or
-   changed file under `fosteringpathsproject/data/` plus `data/states/index.js`
-   into `overnight-<unit>-<YYYYMMDD-HHMM>.zip`, upload it with the Google Drive
-   create_file tool (base64Content, contentMimeType application/zip,
-   disableConversionToGoogleType true) into the "Fostering Paths overnight"
-   folder, and also upload a short `overnight-<unit>-REPORT.md` (what was
-   done, counts, gaps). Nothing is lost that way; the morning session merges.
+4. If the push is refused (403: GitHub App not installed): create a subfolder
+   `overnight-<unit>-<YYYYMMDD-HHMM>` inside the "Fostering Paths overnight"
+   Drive folder and upload every new or changed file under
+   `fosteringpathsproject/data/` into it with the Drive create_file tool, one
+   call per file, as text (textContent, contentMimeType text/plain,
+   disableConversionToGoogleType true, title = `<ST>__<filename>` such as
+   `NJ__guide.js`). Also upload `REPORT.md` (what was done, counts, gaps).
+   Nothing is lost that way; the morning session merges.
 5. Finish with a 10-line summary: unit, files, counts, whether it was pushed or
    uploaded, and gaps for the next shift.
