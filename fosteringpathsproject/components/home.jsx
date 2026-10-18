@@ -105,6 +105,34 @@ const CpHome = ({ onOpen, onWizard, saved, toggleSave, go, onPickLocation }) => 
         </div>
       </section>
 
+      {window.getGeo && window.getGeo() && progsHere.length > 0 && (() => {
+        const g = window.getGeo();
+        const byInst = {};
+        window.PROGRAMS.byState(loc.state).forEach(p => {
+          if (typeof p.lat !== "number") return;
+          const k = p.inst + "|" + p.lat.toFixed(3);
+          if (!byInst[k]) byInst[k] = { inst: p.inst, tier: p.tier, loc: p.loc, miles: window.distanceMiles(g.lat, g.lng, p.lat, p.lng), n: 0, forProfit: p.forProfit };
+          byInst[k].n++;
+        });
+        const nearest = Object.values(byInst).sort((a, b) => a.miles - b.miles).slice(0, 6);
+        if (!nearest.length) return null;
+        const tierLabels = window.APP_META.tierLabels;
+        return (
+          <section className="cp-deadlines" aria-label="Closest schools">
+            <div className="cp-sec-head"><h2>Closest schools to you</h2><button className="cp-link" onClick={() => go("map")}>See the map →</button></div>
+            <div className="cp-near-list">
+              {nearest.map(x => (
+                <button key={x.inst + x.loc} className="cp-near" onClick={() => go("map")}>
+                  <span className="cp-near-dist">{x.miles < 10 ? x.miles.toFixed(1) : Math.round(x.miles)} mi</span>
+                  <span className="cp-near-name">{x.inst}</span>
+                  <span className="cp-near-meta">{tierLabels[x.tier] || x.tier}{x.forProfit ? " · for-profit" : ""} · {x.loc} · {x.n} program{x.n === 1 ? "" : "s"} for these careers</span>
+                </button>
+              ))}
+            </div>
+          </section>
+        );
+      })()}
+
       {loc.state === "CA" && <CpDeadlines />}
 
       <section id="careers" className="cp-careers">
