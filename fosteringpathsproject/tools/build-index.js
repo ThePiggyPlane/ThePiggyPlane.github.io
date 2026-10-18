@@ -56,10 +56,12 @@ for (const st of fs.readdirSync(STATES_DIR).sort()) {
     }
   }
   if (st === "CA") {
-    // Base files loaded on every page (legacy curated CA data) count toward CA.
+    // Legacy curated CA data: programs.js loads on every page (careers reference it);
+    // apprenticeships.js (CA DAS, 750 KB) is lazy-loaded with the CA bundle.
     for (const f of ["programs.js", "apprenticeships.js"]) {
       try { const c = countFile(path.join(ROOT, "data", f)); counts.programs += c.programs; counts.apprenticeships += c.apprenticeships; } catch (e) {}
     }
+    files.unshift("../../apprenticeships.js");
   }
   const regionList = Object.entries(regions).sort((a, b) => b[1] - a[1]).map(([r]) => r);
   index[st] = { name: NAMES[st], files, counts, regions: regionList, bytes };

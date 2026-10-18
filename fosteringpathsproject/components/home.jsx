@@ -1,10 +1,10 @@
 // Home page: hero + deadlines + filterable, paginated career list.
-// No flavor text below the list (per spec) — clean handoff to nav.
+// No flavor text below the list (per spec): clean handoff to nav.
 
 const PAGE_SIZE = 12;
 
 // Classify a single program (from programs.js) into one or more path-type
-// buckets. A program can be in multiple — e.g. "AS / Certificate of
+// buckets. A program can be in multiple, e.g. "AS / Certificate of
 // Achievement" matches both Degree and Certificate.
 const DEGREE_RX        = /\b(as|aa|aas|asn|adn|bs|ba|bfa|barch|as-?t|aa-?t|bsn|bsme|bsce|dvm|ms|ma|mfa|mds|murp|mba|md|mse|ph\.?d|bachelor|master|doctor|associate)\b/i;
 const CERTIFICATE_RX   = /\b(cert(ificate)?|diploma)\b/i;
@@ -19,15 +19,16 @@ const programPathTypes = (p) => {
   return types;
 };
 
-// All path types a career exposes, derived from its programs[] plus its
-// CDSS-apprenticeship keyword matches (careers like Plumber or Barber may
-// have no college programs at all — their pathway IS the apprenticeship).
-const careerPathTypes = (career) => {
+// All path types a career exposes in the chosen state, derived from the
+// programs on file there plus its apprenticeship keyword matches (careers like
+// Plumber or Barber may have no college programs at all; their pathway IS the
+// apprenticeship).
+const careerPathTypes = (career, state) => {
   const out = new Set();
-  (career.programs || []).forEach(pid => {
-    const p = window.PROGRAMS && window.PROGRAMS.get(pid);
-    if (!p) return;
-    programPathTypes(p).forEach(t => out.add(t));
+  window.PROGRAMS.forCareer(career.id, { state }).forEach(p => {
+    if (p.level === "cert") out.add("certificate");
+    else if (p.level) out.add("degree");
+    else programPathTypes(p).forEach(t => out.add(t));
   });
   if ((career.apprenticeshipMatch || []).length) out.add("apprenticeship");
   return out;
@@ -60,9 +61,9 @@ const CpHome = ({ onOpen, onWizard, saved, toggleSave, go, onPickLocation }) => 
   // Per-career path-type sets, computed once per career list change.
   const pathTypesByCareer = React.useMemo(() => {
     const m = new Map();
-    all.forEach(c => m.set(c.id, careerPathTypes(c)));
+    all.forEach(c => m.set(c.id, careerPathTypes(c, loc.state)));
     return m;
-  }, [all]);
+  }, [all, loc.state, status, progsHere.length]);
 
   const filtered = React.useMemo(() => {
     let xs = all;

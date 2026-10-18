@@ -98,7 +98,7 @@ const CpMap = ({ onOpenCareer, onPickLocation }) => {
   const allCareers = React.useMemo(() => window.CAREERS.all().map(c => c.name), []);
   const placeLabel = loc.region || window.stateName(loc.state);
   // Rebuild markers only when the state changes or its data finishes loading.
-  const dataKey = loc.state + ":" + (status === "ready" || status === "missing" ? "ready" : "loading") + ":" + window.PROGRAMS.count() + ":" + window.RESOURCES.count();
+  const dataKey = loc.state + ":" + (status === "ready" || status === "missing" ? "ready" : "loading") + ":" + window.PROGRAMS.count() + ":" + window.RESOURCES.count() + ":" + ((window.APPRENTICESHIPS && window.APPRENTICESHIPS.count()) || 0);
 
   // Suggestions: careers whose name contains the query (case-insensitive),
   // ranked so prefix matches come first.

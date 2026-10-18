@@ -147,6 +147,7 @@ window.STATE_INDEX = {
  "CA": {
   "name": "California",
   "files": [
+   "../../apprenticeships.js",
    "guide.js",
    "scholarships.js",
    "resources-campus-4yr.js",
