@@ -742,3 +742,7 @@ a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-ra
   .cp-logo span { display: none; }
   .cp-loc-chip { max-width: 190px; }
 }
+
+.cp-loc-geo { display: flex; align-items: center; gap: 14px; margin: 0 0 16px; }
+.cp-loc-geo-btn { padding: 10px 18px; font-size: 14px; }
+.cp-cr-nearby { font-size: 12px; color: var(--ink-3); margin-top: 2px; }

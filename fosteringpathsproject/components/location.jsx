@@ -60,11 +60,38 @@ const CpLocationPicker = ({ onClose }) => {
 
   const apply = () => { window.setLocation({ state, region }); onClose(); };
 
+  const [geoBusy, setGeoBusy] = React.useState(false);
+  const [geoMsg, setGeoMsg] = React.useState("");
+  const useMyLocation = () => {
+    if (!navigator.geolocation) { setGeoMsg("Your browser does not share location."); return; }
+    setGeoBusy(true); setGeoMsg("");
+    navigator.geolocation.getCurrentPosition((pos) => {
+      const { latitude: lat, longitude: lng } = pos.coords;
+      const st = window.stateForPoint(lat, lng);
+      window.setGeo({ lat, lng });
+      setState(st);
+      window.loadStateData(st).then(() => {
+        const r = window.regionForPoint(st, lat, lng);
+        setRegion(r || "");
+        setGeoBusy(false);
+        setGeoMsg(`Looks like ${r ? r + ", " : ""}${window.stateName(st)}. Programs and resources will sort by distance from you.`);
+      });
+    }, (err) => {
+      setGeoBusy(false);
+      setGeoMsg(err && err.code === 1 ? "Location permission was denied. Pick your state below instead." : "Could not get your location. Pick your state below.");
+    }, { enableHighAccuracy: false, timeout: 12000, maximumAge: 600000 });
+  };
+
   return (
     <CpModal onClose={onClose} ariaLabel="Choose your location">
       <button className="cp-wiz-x" onClick={onClose} aria-label="Close">Close</button>
       <div className="cp-wiz-step">Where are you?</div>
       <h2 className="cp-wiz-q">Show me programs and help near</h2>
+      <div className="cp-loc-geo">
+        <button type="button" className="cp-btn-ghost cp-loc-geo-btn" onClick={useMyLocation} disabled={geoBusy}>{geoBusy ? "Finding you…" : "Use my location"}</button>
+        {window.getGeo() && !geoBusy && <button type="button" className="cp-link" onClick={() => { window.setGeo(null); setGeoMsg("Location cleared."); }}>Clear</button>}
+      </div>
+      {geoMsg && <p className="cp-loc-counts">{geoMsg}</p>}
       <label className="cp-loc-field">State
         <select value={state} onChange={e => { setState(e.target.value); setRegion(""); }}>
           {window.FP_STATES.map(s => <option key={s.code} value={s.code}>{s.name}</option>)}

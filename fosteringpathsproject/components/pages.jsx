@@ -140,6 +140,14 @@ const sortPrograms = (xs) => [...xs].sort((a, b) =>
   (b.grads || 0) - (a.grads || 0) ||
   (a.inst || a.name).localeCompare(b.inst || b.name));
 
+const fmtMiles = (m) => m == null ? "" : (m < 10 ? m.toFixed(1) : Math.round(m)) + " mi";
+const withDistance = (xs) => {
+  const g = window.getGeo && window.getGeo();
+  if (!g) return xs;
+  return xs.map(x => (typeof x.lat === "number" && typeof x.lng === "number") ? { ...x, miles: window.distanceMiles(g.lat, g.lng, x.lat, x.lng) } : x);
+};
+const byDistance = (a, b) => (a.miles ?? 1e9) - (b.miles ?? 1e9);
+
 const CpProgramCard = ({ p }) => {
   const tierLabels = window.APP_META.tierLabels;
   return (
@@ -148,7 +156,7 @@ const CpProgramCard = ({ p }) => {
         <div>
           <div className="cp-prog-tier">{tierLabels[p.tier] || p.tier}{p.forProfit ? <span className="cp-badge warn" title="For-profit school: compare cost and job placement rates carefully before enrolling">for-profit</span> : null}{p.curated ? <span className="cp-badge good">verified listing</span> : null}</div>
           <div className="cp-prog-name">{p.name}</div>
-          <div className="cp-prog-loc">{p.loc}{p.region && p.region !== p.loc ? `, ${p.region}` : ""} · {p.duration}{p.grads ? ` · ${p.grads} grads in 2023-24` : ""}</div>
+          <div className="cp-prog-loc">{p.miles != null && <strong>{fmtMiles(p.miles)} · </strong>}{p.loc}{p.region && p.region !== p.loc ? `, ${p.region}` : ""} · {p.duration}{p.grads ? ` · ${p.grads} grads in 2023-24` : ""}</div>
         </div>
         {p.sticker > 0 && (
           <div className="cp-prog-money">
@@ -179,9 +187,12 @@ const CpProgramList = ({ progs, careerId }) => {
   const q = pq.trim().toLowerCase();
   const levels = {};
   progs.forEach(p => { if (p.level) levels[p.level] = (levels[p.level] || 0) + 1; });
-  const filtered = sortPrograms(progs.filter(p =>
+  const hasGeo = !!(window.getGeo && window.getGeo());
+  const [nearest, setNearest] = React.useState(true);
+  let filtered = sortPrograms(withDistance(progs).filter(p =>
     (level === "all" || p.level === level) &&
     (!q || [p.inst, p.name, p.loc, p.region, p.county].filter(Boolean).join(" ").toLowerCase().includes(q))));
+  if (hasGeo && nearest) filtered = [...filtered].sort(byDistance);
   const shown = showAll ? filtered : filtered.slice(0, PROG_PREVIEW);
   const LEVEL_LABEL = { cert: "Certificate", assoc: "Associate", bach: "Bachelor's", grad: "Graduate" };
   return (
@@ -196,6 +207,7 @@ const CpProgramList = ({ progs, careerId }) => {
               ))}
             </>
           )}
+          {hasGeo && <button className={"cp-chip " + (nearest ? "on" : "")} onClick={() => setNearest(n => !n)} aria-pressed={nearest}>Nearest first</button>}
           <input className="cp-search" type="search" placeholder="Filter by school or city…" value={pq} onChange={e => setPq(e.target.value)} aria-label="Filter programs by school or city" />
         </div>
       )}

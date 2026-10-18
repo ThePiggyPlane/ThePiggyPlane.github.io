@@ -47,6 +47,12 @@ const CpHome = ({ onOpen, onWizard, saved, toggleSave, go, onPickLocation }) => 
     return loc.region ? xs.filter(p => p.region === loc.region) : xs;
   }, [loc.state, loc.region, status, window.PROGRAMS.count()]);
   const instHere = React.useMemo(() => new Set(progsHere.map(p => p.inst)).size, [progsHere]);
+  // programs per career in the current place (curated lists count too)
+  const countsByCareer = React.useMemo(() => {
+    const m = new Map();
+    all.forEach(c => m.set(c.id, window.PROGRAMS.forCareer(c.id, loc.region ? { state: loc.state, region: loc.region } : { state: loc.state }).length));
+    return m;
+  }, [all, loc.state, loc.region, status, progsHere.length]);
   const resHere = window.RESOURCES.byState(loc.state).length;
   const schHere = window.SCHOLARSHIPS.byState(loc.state).length + window.SCHOLARSHIPS.national().length;
   const guide = window.STATE_GUIDES.get(loc.state);
@@ -136,7 +142,7 @@ const CpHome = ({ onOpen, onWizard, saved, toggleSave, go, onPickLocation }) => 
         ) : (
           <div className="cp-career-list">
             {pageItems.map(c => (
-              <CpCareerRow key={c.id} c={c} saved={saved} toggleSave={toggleSave} onOpen={onOpen} />
+              <CpCareerRow key={c.id} c={c} saved={saved} toggleSave={toggleSave} onOpen={onOpen} nearby={countsByCareer.get(c.id)} />
             ))}
           </div>
         )}

@@ -101,10 +101,11 @@ const CpDeadlines = () => {
   );
 };
 
-const CpCareerRow = ({ c, saved, toggleSave, onOpen }) => (
+const CpCareerRow = ({ c, saved, toggleSave, onOpen, nearby }) => (
   <article className="cp-career-row" onClick={() => onOpen(c.id)} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onOpen(c.id); } }}>
     <div className="cp-cr-name">
       <h3>{c.name}</h3>
+      {nearby != null && <div className="cp-cr-nearby">{nearby === 0 ? "no programs listed here yet" : `${nearby} program${nearby === 1 ? "" : "s"} near you`}</div>}
     </div>
     <div className="cp-cr-stat"><div>${c.salary.median}K</div><div>median</div></div>
     <div className="cp-cr-stat"><div>{c.length}</div><div>time</div></div>

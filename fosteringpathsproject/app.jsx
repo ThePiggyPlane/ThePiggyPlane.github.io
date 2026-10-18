@@ -70,6 +70,10 @@ const App = () => {
   const [profile, setProfile] = useProfile();
   // Re-render the whole tree when the location changes (pages read window.getLocation()).
   useFpLocation();
+  // First visit: ask where they are instead of assuming Inland SoCal.
+  React.useEffect(() => {
+    try { if (!localStorage.getItem("cp:location")) setShowLoc(true); } catch (e) {}
+  }, []);
 
   // hashchange (back/forward, manual edits, refresh) -> sync state
   React.useEffect(() => {

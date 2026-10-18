@@ -24,7 +24,7 @@ const CpResourceCard = ({ r }) => (
   <article className={"cp-res " + r.category}>
     <div className="cp-res-head">
       <div>
-        <div className="cp-res-cat">{RESOURCE_LABEL[r.category] || r.category}{r.state === "US" ? " · National" : (r.county ? ` · ${r.county} County` : (r.city ? ` · ${r.city}` : ""))}</div>
+        <div className="cp-res-cat">{RESOURCE_LABEL[r.category] || r.category}{r.state === "US" ? " · National" : (r.county ? ` · ${r.county} County` : (r.city ? ` · ${r.city}` : ""))}{r.miles != null ? ` · ${fmtMiles(r.miles)}` : ""}</div>
         <h3 className="cp-res-name">{r.name}</h3>
         {r.org && r.org !== r.name && <div className="cp-res-org">{r.org}</div>}
       </div>
@@ -58,14 +58,20 @@ const CpResources = ({ onPickLocation }) => {
   pool.forEach(r => { catCounts[r.category] = (catCounts[r.category] || 0) + 1; });
 
   const q = query.trim().toLowerCase();
-  const shown = pool.filter(r => {
+  const hasGeo = !!(window.getGeo && window.getGeo());
+  const shown = withDistance(pool).filter(r => {
     if (cat !== "all" && r.category !== cat) return false;
     if (!q) return true;
     const hay = [r.name, r.org, r.city, r.county, r.serves, r.provides, (r.tags || []).join(" ")].join(" ").toLowerCase();
     return hay.includes(q);
   });
-  // Regional first (if a region is set), then alphabetically by org
+  // Nearest first when we know where you are; otherwise regional first, then by org.
   shown.sort((a, b) => {
+    if (hasGeo && (a.miles != null || b.miles != null)) {
+      if (a.miles == null) return 1;
+      if (b.miles == null) return -1;
+      return a.miles - b.miles;
+    }
     const ar = loc.region && a.region === loc.region ? 0 : 1;
     const br = loc.region && b.region === loc.region ? 0 : 1;
     return ar - br || (a.org || a.name).localeCompare(b.org || b.name);
