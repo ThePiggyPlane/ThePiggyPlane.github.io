@@ -650,10 +650,11 @@ a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-ra
 /* ---------------------------------------------------------------------- */
 /* v2: location, resources, scholarships, state guide                      */
 /* ---------------------------------------------------------------------- */
-.cp-hdr-in { gap: 20px; }
+.cp-hdr-in { gap: 14px; }
+.cp-hdr nav { gap: 0; }
 .cp-hdr nav { overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
 .cp-hdr nav::-webkit-scrollbar { display: none; }
-.cp-hdr nav button { white-space: nowrap; padding: 8px 10px; font-size: 13.5px; }
+.cp-hdr nav button { white-space: nowrap; padding: 8px 8px; font-size: 13px; }
 .cp-logo { font-size: 16px; }
 .cp-logo span { white-space: nowrap; }
 .cp-loc-chip { display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; font-weight: 500; color: var(--ink-2); background: var(--bg-card); max-width: 220px; }
