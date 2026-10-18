@@ -20,6 +20,7 @@ const CpHeader = ({ view, go, savedCount, onCompare, onPickLocation }) => (
         <button className={view === "money" || view === "aid" ? "on" : ""} onClick={() => go("money")}>Cost</button>
         <button className={view === "apprenticeships" ? "on" : ""} onClick={() => go("apprenticeships")}>Apprenticeships</button>
         <button className={view === "state" || view === "week" ? "on" : ""} onClick={() => go("state")}>Your State</button>
+        <button className={view === "start" || view === "faq" ? "on" : ""} onClick={() => go("start")}>Start Here</button>
         <button className={view === "about" ? "on" : ""} onClick={() => go("about")}>About</button>
       </nav>
       <button
@@ -107,7 +108,7 @@ const CpCareerRow = ({ c, saved, toggleSave, onOpen, nearby }) => (
       <h3>{c.name}</h3>
       {nearby != null && <div className="cp-cr-nearby">{nearby === 0 ? "no programs listed here yet" : `${nearby} program${nearby === 1 ? "" : "s"} near you`}</div>}
     </div>
-    <div className="cp-cr-stat"><div>${c.salary.median}K</div><div>median</div></div>
+    <div className="cp-cr-stat"><div>${c.salary.median}K</div><div>{window.getLocation().state === "CA" ? "median" : "median (CA)"}</div></div>
     <div className="cp-cr-stat"><div>{c.length}</div><div>time</div></div>
     <div className="cp-cr-stat"><div>{c.demand}</div><div>demand</div></div>
     <button

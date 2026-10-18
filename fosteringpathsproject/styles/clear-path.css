@@ -770,3 +770,11 @@ a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-ra
 .cp-job-related { font-size: 14px; color: var(--ink-2); }
 .cp-job-related .cp-link { font-size: 14px; margin-left: 0; }
 @media (max-width: 700px) { .cp-job-grid { grid-template-columns: 1fr; } }
+.cp-faq-search { display: block; width: 100%; max-width: 480px; margin: 0 0 20px; padding: 10px 16px; font-size: 14px; }
+.cp-faq-list { display: flex; flex-direction: column; gap: 10px; }
+.cp-faq-a { margin: 0; font-size: 15px; line-height: 1.6; color: var(--ink-2); }
+.cp-gloss { display: grid; grid-template-columns: 1fr; gap: 0; margin: 0; }
+.cp-gloss div { display: grid; grid-template-columns: 200px 1fr; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.cp-gloss dt { font-weight: 600; font-size: 14px; }
+.cp-gloss dd { margin: 0; font-size: 14px; color: var(--ink-2); line-height: 1.5; }
+@media (max-width: 700px) { .cp-gloss div { grid-template-columns: 1fr; gap: 4px; } }

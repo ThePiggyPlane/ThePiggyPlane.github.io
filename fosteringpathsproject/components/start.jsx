@@ -65,6 +65,7 @@ const CpStart = ({ go }) => {
           </div>
         </div>
       ))}
+      <p className="cp-app-more"><button className="cp-link" onClick={() => go("faq")}>Questions youth actually ask, and a glossary →</button></p>
       <div className="cp-callout">
         <strong>Two documents to get now:</strong> a foster care verification letter from your caseworker or state ombudsperson, and your Social Security card. Schools, ETV, Medicaid, and housing all ask for them. Keep photos on your phone.
       </div>
