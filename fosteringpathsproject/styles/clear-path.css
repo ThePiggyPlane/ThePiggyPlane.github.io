@@ -816,3 +816,6 @@ a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-ra
   .cp-plan-actions, .cp-plan-rm, .cp-callout button { display: none !important; }
   .cp-plan-check span { border-color: #000; }
 }
+
+.cp-outlook { margin: 14px 0 0; }
+.cp-outlook .cp-aside-body a { font-weight: 600; }

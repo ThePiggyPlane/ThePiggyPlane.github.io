@@ -189,6 +189,7 @@ for (const f of files) {
     registerCareers: (arr) => arr.forEach(c => checkCareer(f, c)),
     registerCareerDetails: (obj) => { Object.keys(obj || {}).forEach(id => { if (!careerIds.has(id)) err(f, `career detail for unknown career "${id}"`); }); },
     registerWages: (w) => checkWages(f, w),
+    registerCareerOutlook: (obj) => { Object.entries(obj || {}).forEach(([id, o]) => { if (!careerIds.has(id)) err(f, `outlook for unknown career "${id}"`); if (typeof o.changePct !== "number") err(f, `outlook ${id}: changePct number required`); }); },
     STATE_INDEX: null,
   };
   const ctx = { window: win, console };

@@ -154,6 +154,17 @@ const CpCareerAbout = ({ career, onOpen }) => {
           {d.tasks.length > 4 && <button className="cp-link" onClick={() => setMore(m => !m)}>{more ? "Show fewer" : `Show all ${d.tasks.length}`}</button>}
         </>
       )}
+      {(() => { const o = window.CAREER_OUTLOOK && window.CAREER_OUTLOOK.get(career.id); if (!o) return null; return (
+        <div className="cp-aside-card cp-outlook">
+          <div className="cp-aside-eyebrow">Job outlook, United States</div>
+          <div className="cp-aside-body">
+            {o.openings != null && <><strong>About {fmtNum(o.openings)} openings a year</strong> nationally through {o.projYear}. </>}
+            {o.changePct != null && <>Employment is projected to {o.changePct >= 0 ? "grow" : "shrink"} {Math.abs(o.changePct)}% from {o.baseYear} to {o.projYear}{o.usChangePct != null ? ` (average for all jobs: ${o.usChangePct}%)` : ""}. </>}
+            {o.entryEducation && <>Typical entry: {o.entryEducation.toLowerCase()}{o.training && o.training !== "None" ? `, then ${o.training.toLowerCase()}` : ""}{o.experience && o.experience !== "None" ? `; employers usually want ${o.experience.toLowerCase()} of related experience` : ""}. </>}
+            {o.ooh && <a href={o.ooh} target="_blank" rel="noopener">BLS Occupational Outlook Handbook →</a>}
+          </div>
+        </div>
+      ); })()}
       <div className="cp-job-grid">
         {d.jobZoneText && (
           <div className="cp-aside-card">
@@ -185,7 +196,7 @@ const CpCareerAbout = ({ career, onOpen }) => {
           <span key={i}>{i > 0 ? ", " : ""}{r.career ? <button className="cp-link" onClick={() => onOpen(r.career)}>{(window.CAREERS.byId(r.career) || {}).name || r.career}</button> : r.title}</span>
         ))}</p>
       )}
-      <p className="cp-app-source">Job description, tasks and preparation from the O*NET 30.1 Database (U.S. Department of Labor), CC BY 4.0.</p>
+      <p className="cp-app-source">Job description, tasks and preparation from the O*NET 30.1 Database (U.S. Department of Labor), CC BY 4.0. Outlook from the BLS Employment Projections program.</p>
     </section>
   );
 };
@@ -349,7 +360,9 @@ const CpCareer = ({ careerId, saved, toggleSave, onBack, onOpenAid }) => {
           <div className="cp-detail-stats">
             <div><div className="cp-stat">${medianK}K</div><div className="cp-stat-lbl">{payLabel}</div></div>
             <div><div className="cp-stat">{career.length}</div><div className="cp-stat-lbl">time</div></div>
-            <div><div className="cp-stat">{career.demand}</div><div className="cp-stat-lbl">demand</div></div>
+            {(() => { const o = window.CAREER_OUTLOOK && window.CAREER_OUTLOOK.get(career.id); return o && o.changePct != null
+              ? <div><div className="cp-stat">{o.changePct >= 0 ? "+" : ""}{o.changePct}%</div><div className="cp-stat-lbl">US job growth to {o.projYear}{o.usChangePct != null ? ` (all jobs: +${o.usChangePct}%)` : ""}</div></div>
+              : <div><div className="cp-stat">{career.demand}</div><div className="cp-stat-lbl">demand</div></div>; })()}
             <div><div className="cp-stat">{(career.grads2yr || 'n/a').split(' ')[0]}</div><div className="cp-stat-lbl">grads employed</div></div>
           </div>
 
@@ -871,6 +884,7 @@ const CpAbout = () => {
       <h2 className="cp-h2">Where the numbers come from</h2>
       <div className="cp-about-meta">
         <div><strong>Programs, nationwide</strong>U.S. Dept. of Education IPEDS: institutions (HD2024), completions by program 2023-24 (C2024_A), tuition and fees (IC2023_AY), on-campus housing and childcare (IC2023), and average net price for students from families earning under $30,000 (SFA 2022-23). Only programs that graduated at least one student are listed.</div>
+        <div><strong>Job outlook</strong>U.S. Bureau of Labor Statistics Employment Projections, 2025-35 national employment matrix: projected growth, yearly openings, and typical entry education per occupation.</div>
         <div><strong>Job descriptions</strong>This site includes information from the O*NET 30.1 Database by the U.S. Department of Labor, Employment and Training Administration (USDOL/ETA), used under the CC BY 4.0 license. O*NET is a trademark of USDOL/ETA. Fostering Paths is not endorsed by USDOL/ETA.</div>
         <div><strong>Graduate earnings</strong>U.S. Dept. of Education College Scorecard: median earnings of graduates by program and credential, one and four years after completion, including Pell recipients, with the national median for the same program type.</div>
         <div><strong>Verified listings (Inland SoCal)</strong>Each school's own program page, checked by hand</div>

@@ -29,6 +29,13 @@
   };
   window.CAREER_DETAILS = { get: (id) => details[id], all: () => details };
 
+  // National job outlook (BLS Employment Projections): window.registerCareerOutlook({ careerId: {...} })
+  const outlook = {};
+  window.registerCareerOutlook = function (obj) {
+    Object.assign(outlook, obj || {});
+  };
+  window.CAREER_OUTLOOK = { get: (id) => outlook[id], all: () => outlook };
+
   window.CAREERS = {
     all: () => [...list].sort((a, b) => (a.order ?? 999) - (b.order ?? 999)),
     byId: (id) => byId.get(id),
