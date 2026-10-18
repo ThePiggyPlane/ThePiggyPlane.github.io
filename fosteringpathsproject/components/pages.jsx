@@ -148,25 +148,39 @@ const withDistance = (xs) => {
 };
 const byDistance = (a, b) => (a.miles ?? 1e9) - (b.miles ?? 1e9);
 
+const fmtK = (n) => n == null ? null : "$" + Math.round(n / 1000) + "K";
+
 const CpProgramCard = ({ p }) => {
   const tierLabels = window.APP_META.tierLabels;
+  const e = p.earnings || null;
+  const earnLine = e && (e.yr1 || e.yr4) ? (
+    <div className="cp-prog-earn">
+      <strong>{e.yr1 ? `Grads earned ${fmtK(e.yr1)} a year out` : `Grads earned ${fmtK(e.yr4)} four years out`}</strong>
+      {e.yr1 && e.yr1Pell ? ` (Pell students ${fmtK(e.yr1Pell)})` : ""}
+      {e.yr1 && e.yr1Nat ? ` · US average for this program ${fmtK(e.yr1Nat)}` : ""}
+      {e.yr1 && e.yr4 ? ` · ${fmtK(e.yr4)} after four years` : ""}
+    </div>
+  ) : null;
   return (
     <div className={"cp-prog " + p.tier} key={p.id}>
       <div className="cp-prog-head">
         <div>
-          <div className="cp-prog-tier">{tierLabels[p.tier] || p.tier}{p.forProfit ? <span className="cp-badge warn" title="For-profit school: compare cost and job placement rates carefully before enrolling">for-profit</span> : null}{p.curated ? <span className="cp-badge good">verified listing</span> : null}</div>
+          <div className="cp-prog-tier">{tierLabels[p.tier] || p.tier}{p.forProfit ? <span className="cp-badge warn" title="For-profit school: compare cost and job placement rates carefully before enrolling">for-profit</span> : null}{p.curated ? <span className="cp-badge good">verified listing</span> : null}{p.housing ? <span className="cp-badge info" title="This school has on-campus housing">campus housing</span> : null}{p.childcare ? <span className="cp-badge info" title="On-campus childcare available">childcare</span> : null}</div>
           <div className="cp-prog-name">{p.name}</div>
           <div className="cp-prog-loc">{p.miles != null && <strong>{fmtMiles(p.miles)} · </strong>}{p.loc}{p.region && p.region !== p.loc ? `, ${p.region}` : ""} · {p.duration}{p.grads ? ` · ${p.grads} grads in 2023-24` : ""}</div>
+          {earnLine}
         </div>
-        {p.sticker > 0 && (
+        {(p.sticker > 0 || p.netPrice30k != null) && (
           <div className="cp-prog-money">
-            <div className="cp-prog-sticker">sticker ${p.sticker.toLocaleString()}</div>
-            <div className="cp-prog-real">${(p.realCost || 0).toLocaleString()}<span>/yr after aid</span></div>
+            {p.sticker > 0 && <div className="cp-prog-sticker">tuition ${p.sticker.toLocaleString()}</div>}
+            {p.netPrice30k != null
+              ? <div className="cp-prog-real">${p.netPrice30k.toLocaleString()}<span>/yr typical, low-income students, incl. living costs</span></div>
+              : <div className="cp-prog-real">${(p.realCost || 0).toLocaleString()}<span>/yr tuition after aid</span></div>}
           </div>
         )}
       </div>
       <div className="cp-prog-action">
-        <span>Next: {p.action}</span>
+        <span>Next: {p.action}{p.applFee === 0 ? " (no application fee)" : ""}</span>
         <span className="cp-prog-links">
           {p.phone && <a href={"tel:" + String(p.phone).replace(/[^0-9+]/g, "")} className="cp-prog-link">{p.phone}</a>}
           {p.url && <a href={p.url} target="_blank" rel="noopener" className="cp-prog-link">Visit site →</a>}
@@ -289,7 +303,7 @@ const CpCareer = ({ careerId, saved, toggleSave, onBack, onOpenAid }) => {
           {loc.region && elsewhere.length > 0 && (
             <CpProgramGroup title={`Elsewhere in ${stateName}`} progs={sortPrograms(elsewhere)} open={here.length < 3} emptyText="" />
           )}
-          <p className="cp-app-source">Program lists come from each school's federal reporting (IPEDS, 2023-24 graduates) plus verified listings. "After aid" assumes Pell plus ETV{loc.state === "CA" ? " and California grants" : ""}; a tuition waiver can bring public schools to $0. Confirm with the school.</p>
+          <p className="cp-app-source">Program lists come from each school's federal reporting (IPEDS, 2023-24 graduates) plus verified listings. "Typical, low-income students" is the school's average net price for students from families earning under $30,000 (2022-23, housing and food included, before foster youth aid like ETV and waivers). Earnings are College Scorecard medians for graduates of that program. Confirm with the school.</p>
 
           <CpCareerApprenticeships career={career} />
         </div>
@@ -787,7 +801,8 @@ const CpAbout = () => {
     <main className="cp-main narrow cp-about">
       <h2 className="cp-h2">Where the numbers come from</h2>
       <div className="cp-about-meta">
-        <div><strong>Programs, nationwide</strong>U.S. Dept. of Education IPEDS: institutions (HD2024), completions by program 2023-24 (C2024_A), tuition and fees (IC2023_AY). Only programs that graduated at least one student are listed.</div>
+        <div><strong>Programs, nationwide</strong>U.S. Dept. of Education IPEDS: institutions (HD2024), completions by program 2023-24 (C2024_A), tuition and fees (IC2023_AY), on-campus housing and childcare (IC2023), and average net price for students from families earning under $30,000 (SFA 2022-23). Only programs that graduated at least one student are listed.</div>
+        <div><strong>Graduate earnings</strong>U.S. Dept. of Education College Scorecard: median earnings of graduates by program and credential, one and four years after completion, including Pell recipients, with the national median for the same program type.</div>
         <div><strong>Verified listings (Inland SoCal)</strong>Each school's own program page, checked by hand</div>
         <div><strong>Support resources, scholarships, state guides</strong>Each program's or agency's own page; every record carries the month it was checked</div>
         <div><strong>Cal Grant</strong>California Student Aid Commission, current cycle</div>

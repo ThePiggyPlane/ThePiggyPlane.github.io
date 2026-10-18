@@ -89,6 +89,10 @@ const CpResources = ({ onPickLocation }) => {
         {" "}<button className="cp-link" onClick={onPickLocation}>Change location</button>
       </p>
 
+      <div className="cp-callout warn cp-crisis">
+        <strong>Need help right now?</strong> Call or text <a href="tel:988">988</a> (Suicide and Crisis Lifeline, 24/7). No safe place to sleep tonight? National Runaway Safeline <a href="tel:18007862929">1-800-786-2929</a>, 24/7, for youth up to 21.{loc.state === "CA" ? <> California foster youth: Foster Care Ombudsperson <a href="tel:18778461602">1-877-846-1602</a> (weekdays).</> : null}
+      </div>
+
       <div className="cp-filters" role="toolbar" aria-label="Filter resources">
         {[
           ["here", loc.region ? loc.region : stateLabel, hereRes.length],

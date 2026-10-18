@@ -167,6 +167,9 @@ def main():
     ap.add_argument("--out", default=os.path.join(os.path.dirname(__file__), "..", "data", "states"))
     ap.add_argument("--legacy", default=os.path.join(os.path.dirname(__file__), "..", "data", "programs.js"))
     ap.add_argument("--careers", default=os.path.join(os.path.dirname(__file__), "..", "data", "careers"))
+    ap.add_argument("--sfa", default=None, help="IPEDS SFA2223/sfa2223.csv (net price by income)")
+    ap.add_argument("--ic", default=None, help="IPEDS IC2023/IC2023.csv (housing, childcare, application fee)")
+    ap.add_argument("--scorecard", default=None, help="directory of College Scorecard page_*.json files (program earnings)")
     a = ap.parse_args()
 
     hd = read_csv(os.path.join(a.ipeds, "HD2024", "HD2024.csv"))
@@ -191,6 +194,69 @@ def main():
         t1, f1 = money(row.get("TUITION1")), money(row.get("FEE1"))
         t2, f2 = money(row.get("TUITION2")), money(row.get("FEE2"))
         tuition[int(uid)] = {"indistrict": (t1 or 0) + (f1 or 0) if t1 else None, "instate": (t2 or 0) + (f2 or 0) if t2 else None}
+
+    # Net price for students from families earning under $30k (2022-23): the
+    # honest "what low-income students actually pay" number, living costs included.
+    net30 = {}
+    if a.sfa and os.path.exists(a.sfa):
+        sfa = read_csv(a.sfa)
+        for row in sfa.itertuples(index=False):
+            v = None
+            for col in ("NPIS412", "NPT412"):
+                try:
+                    x = float(getattr(row, col))
+                    if x == x and x >= 0:
+                        v = int(round(x)); break
+                except Exception:
+                    pass
+            if v is not None:
+                net30[int(row.UNITID)] = v
+
+    # Institutional characteristics: on-campus housing, childcare, application fee
+    chars = {}
+    if a.ic and os.path.exists(a.ic):
+        ic2 = read_csv(a.ic)
+        for row in ic2.itertuples(index=False):
+            def flag(col):
+                try:
+                    return int(float(getattr(row, col))) == 1
+                except Exception:
+                    return False
+            fee = None
+            try:
+                fv = float(getattr(row, "APPLFEEU"))
+                if fv == fv and fv >= 0: fee = int(fv)
+            except Exception:
+                pass
+            chars[int(row.UNITID)] = {"housing": flag("ROOM"), "childcare": flag("STUSRV8"), "applFee": fee}
+
+    # College Scorecard program-level earnings: (unitid, cip4, credential level) -> earnings
+    earn = {}
+    if a.scorecard and os.path.isdir(a.scorecard):
+        import glob as _glob
+        for fn in sorted(_glob.glob(os.path.join(a.scorecard, "page_*.json"))):
+            with open(fn, encoding="utf-8") as f:
+                page = json.load(f)
+            for sch in page.get("results", []):
+                uid = sch.get("id")
+                for pr in sch.get("latest.programs.cip_4_digit", []) or []:
+                    try:
+                        lvl = int((pr.get("credential") or {}).get("level"))
+                    except Exception:
+                        continue
+                    e = pr.get("earnings") or {}
+                    y1 = e.get("1_yr") or {}
+                    y4 = e.get("4_yr") or {}
+                    rec = {
+                        "yr1": y1.get("overall_median_earnings"),
+                        "yr1Pell": y1.get("pell_median_earnings"),
+                        "yr1Nat": y1.get("overall_median_earnings_national"),
+                        "yr4": y4.get("overall_median_earnings"),
+                        "yr4Nat": y4.get("overall_median_earnings_national"),
+                    }
+                    if any(v is not None for v in rec.values()):
+                        earn[(uid, str(pr.get("code")).zfill(4), lvl)] = {k: v for k, v in rec.items() if v is not None}
+    SC_LEVELS = {"cert": [1], "assoc": [2], "bach": [3], "grad": [5, 6, 7, 4, 8]}
 
     # CBSA code -> short metro name
     cbsa["CBSA Code"] = pd.to_numeric(cbsa["CBSA Code"], errors="coerce")
@@ -300,6 +366,20 @@ def main():
             real = max(0, sticker - PELL - ETV)
         top_cip = max(v["cips"].items(), key=lambda kv: kv[1])[0]
         title = v["titles"][top_cip]
+        cip4 = top_cip.replace(".", "")[:4]
+        earnings = None
+        for lvl in SC_LEVELS[bucket]:
+            if (uid, cip4, lvl) in earn:
+                earnings = earn[(uid, cip4, lvl)]; break
+        if earnings is None:
+            # fall back to any other CIP4 this career aggregates at this institution
+            for c6 in v["cips"]:
+                c4 = c6.replace(".", "")[:4]
+                for lvl in SC_LEVELS[bucket]:
+                    if (uid, c4, lvl) in earn:
+                        earnings = earn[(uid, c4, lvl)]; break
+                if earnings: break
+        ch = chars.get(uid, {})
         lat = float(inst.LATITUDE) if pd.notna(inst.LATITUDE) else None
         lng = float(inst.LONGITUD) if pd.notna(inst.LONGITUD) else None
         addr_parts = [str(inst.ADDR).strip() if isinstance(inst.ADDR, str) else "", str(inst.CITY).strip(), f"{st} {str(inst.ZIP).strip()[:5]}"]
@@ -334,6 +414,16 @@ def main():
             "source": "ipeds-2024",
             "verified": "2026-10",
         }
+        if uid in net30:
+            rec["netPrice30k"] = net30[uid]
+        if ch.get("housing"):
+            rec["housing"] = True
+        if ch.get("childcare"):
+            rec["childcare"] = True
+        if ch.get("applFee") is not None:
+            rec["applFee"] = ch["applFee"]
+        if earnings:
+            rec["earnings"] = earnings
         if rec["lat"] is None:
             rec.pop("lat"); rec.pop("lng")
         if not rec["phone"]:
