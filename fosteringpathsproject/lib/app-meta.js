@@ -93,7 +93,7 @@ window.APP_META = {
     uc: "UC",
     public4: "Public University",
     private: "Private",
-    trade: "Trades / Apprenticeship",
+    trade: "Trade school / apprenticeship",
     support: "Support program",
   },
 

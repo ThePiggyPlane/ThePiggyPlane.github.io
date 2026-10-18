@@ -92,6 +92,7 @@ const CpHome = ({ onOpen, onWizard, saved, toggleSave, go, onPickLocation }) => 
         <p className="cp-lede">Real programs near you, what they cost after foster youth aid, and the people who help you get in. <button className="cp-link" onClick={onPickLocation}>Not in {placeLabel}? Change location</button></p>
         <div className="cp-cta-row">
           <button className="cp-btn" onClick={() => document.querySelector('#careers').scrollIntoView({ behavior: 'smooth' })}>Browse careers</button>
+          <button className="cp-btn-ghost" onClick={() => go("start")}>New here? Start with your rights</button>
           <button className="cp-btn-ghost" onClick={() => go("resources")}>Find support near you</button>
           <button className="cp-btn-ghost" onClick={() => go("scholarships")}>Scholarships</button>
         </div>
