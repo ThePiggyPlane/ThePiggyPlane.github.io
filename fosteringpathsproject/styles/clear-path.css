@@ -827,3 +827,9 @@ a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-ra
 .cp-top-pay-name { font-weight: 650; }
 .cp-top-pay-val { font-weight: 700; font-variant-numeric: tabular-nums; }
 .cp-top-pay-row > .cp-stat-meta { grid-column: 1 / -1; }
+
+/* phones: wrap the nav into rows so Start Here and Your State are never hidden off-screen */
+@media (max-width: 700px) {
+  .cp-hdr nav { overflow-x: visible; flex-wrap: wrap; gap: 2px 0; }
+  .cp-hdr nav button { padding: 7px 9px; font-size: 13px; }
+}
