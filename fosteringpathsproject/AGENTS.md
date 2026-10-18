@@ -242,3 +242,11 @@ Other states: use the metro area name a local would say (`Houston`,
 3. `node tools/validate.js` from `fosteringpathsproject/`. Fix every error.
 4. Report back: file paths, record counts per category, and anything you could
    not verify (so the next shift can pick it up). Do not paste the data.
+
+## Workflow with the Advanced Research tool (no agents, no prompts)
+
+1. Fill `tools/state_research_prompt.md` for the state and run it as one research task.
+2. Save the report text to a file and run `python3 tools/import_state_json.py report.md`.
+   It writes `data/states/<ST>/guide.js`, `scholarships.js`, `resources.js`, drops records
+   missing required fields, and prints what it dropped.
+3. `node tools/validate.js && node tools/build-index.js`, read the guide once for tone, commit.
