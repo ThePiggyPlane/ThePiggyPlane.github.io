@@ -24,7 +24,7 @@ const START_ITEMS = [
   },
   {
     title: "Many states waive tuition at public colleges",
-    body: "About 35 states waive tuition and fees at public colleges for youth who were in foster care. Texas, Florida, Washington, Oregon, Arizona and others cover tuition entirely. California does it through grants that add up to the same thing at most public campuses. Check your state guide; this is the single biggest dollar amount on this site.",
+    body: "More than half the states waive tuition and fees at public colleges for youth who were in foster care, each with its own rules on who counts. Texas, Florida, Washington, Oregon, Arizona and others cover tuition entirely. California does it through grants that add up to the same thing at most public campuses. Check your state guide; this is the single biggest dollar amount on this site.",
     go: { label: "Does my state waive tuition?", view: "state" },
   },
   {

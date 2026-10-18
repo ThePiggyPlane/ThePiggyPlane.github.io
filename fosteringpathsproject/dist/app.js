@@ -331,7 +331,7 @@ const START_ITEMS = [
   },
   {
     title: "Many states waive tuition at public colleges",
-    body: "About 35 states waive tuition and fees at public colleges for youth who were in foster care. Texas, Florida, Washington, Oregon, Arizona and others cover tuition entirely. California does it through grants that add up to the same thing at most public campuses. Check your state guide; this is the single biggest dollar amount on this site.",
+    body: "More than half the states waive tuition and fees at public colleges for youth who were in foster care, each with its own rules on who counts. Texas, Florida, Washington, Oregon, Arizona and others cover tuition entirely. California does it through grants that add up to the same thing at most public campuses. Check your state guide; this is the single biggest dollar amount on this site.",
     go: { label: "Does my state waive tuition?", view: "state" }
   },
   {
@@ -431,7 +431,7 @@ const GLOSSARY = [
   ["SILP", "Supervised Independent Living Placement: living on your own while still in extended foster care and receiving the payment directly (California)."],
   ["THP-Plus / THP-NMD", "California transitional housing programs: THP-NMD while in extended care (18 to 21), THP-Plus after care (18 to 24)."],
   ["TILP", "Transitional Independent Living Plan: the written plan you and your worker make for life after care."],
-  ["Tuition waiver", "A state law that cancels tuition and fees at public colleges for youth who were in foster care. About 35 states have one."]
+  ["Tuition waiver", "A state law that cancels tuition and fees at public colleges for youth who were in foster care. More than half the states have one."]
 ];
 const CpFaq = ({ go }) => {
   const [open, setOpen] = React.useState(null);

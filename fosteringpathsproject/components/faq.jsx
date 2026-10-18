@@ -75,7 +75,7 @@ const GLOSSARY = [
   ["SILP", "Supervised Independent Living Placement: living on your own while still in extended foster care and receiving the payment directly (California)."],
   ["THP-Plus / THP-NMD", "California transitional housing programs: THP-NMD while in extended care (18 to 21), THP-Plus after care (18 to 24)."],
   ["TILP", "Transitional Independent Living Plan: the written plan you and your worker make for life after care."],
-  ["Tuition waiver", "A state law that cancels tuition and fees at public colleges for youth who were in foster care. About 35 states have one."],
+  ["Tuition waiver", "A state law that cancels tuition and fees at public colleges for youth who were in foster care. More than half the states have one."],
 ];
 
 const CpFaq = ({ go }) => {
