@@ -146,6 +146,7 @@ window.STATE_INDEX = {
    "guide.js",
    "scholarships.js",
    "resources-campus-4yr.js",
+   "resources-campus-ipeds.js",
    "resources-county-north.js",
    "resources-county-south.js",
    "resources-statewide.js",
@@ -153,7 +154,7 @@ window.STATE_INDEX = {
   ],
   "counts": {
    "programs": 3671,
-   "resources": 42,
+   "resources": 183,
    "scholarships": 14,
    "guide": true,
    "apprenticeships": 907,
@@ -172,7 +173,7 @@ window.STATE_INDEX = {
    "Imperial",
    "Sierra"
   ],
-  "bytes": 2330896
+  "bytes": 2521110
  },
  "CO": {
   "name": "Colorado",
