@@ -8,7 +8,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 89,
+   "programs": 91,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -22,7 +22,7 @@ window.STATE_INDEX = {
    "Kenai Peninsula Borough",
    "North Slope Borough"
   ],
-  "bytes": 98245
+  "bytes": 99936
  },
  "AL": {
   "name": "Alabama",
@@ -31,7 +31,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 552,
+   "programs": 557,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -43,8 +43,8 @@ window.STATE_INDEX = {
    "Huntsville",
    "Montgomery",
    "Mobile",
-   "Tuscaloosa",
    "Auburn",
+   "Tuscaloosa",
    "Florence",
    "Daphne",
    "Gadsden",
@@ -66,7 +66,7 @@ window.STATE_INDEX = {
    "Talladega",
    "Clarke County"
   ],
-  "bytes": 549005
+  "bytes": 553070
  },
  "AR": {
   "name": "Arkansas",
@@ -75,7 +75,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 500,
+   "programs": 501,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -115,7 +115,7 @@ window.STATE_INDEX = {
    "Paragould",
    "Lawrence County"
   ],
-  "bytes": 466954
+  "bytes": 467775
  },
  "AZ": {
   "name": "Arizona",
@@ -124,7 +124,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 662,
+   "programs": 676,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -142,7 +142,7 @@ window.STATE_INDEX = {
    "Sierra Vista",
    "Show Low"
   ],
-  "bytes": 585508
+  "bytes": 596360
  },
  "CA": {
   "name": "California",
@@ -159,7 +159,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 3671,
+   "programs": 3705,
    "resources": 180,
    "scholarships": 14,
    "guide": true,
@@ -179,7 +179,7 @@ window.STATE_INDEX = {
    "Imperial",
    "Sierra"
   ],
-  "bytes": 2769087
+  "bytes": 2794501
  },
  "CO": {
   "name": "Colorado",
@@ -188,7 +188,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 631,
+   "programs": 649,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -208,14 +208,14 @@ window.STATE_INDEX = {
    "Las Animas County",
    "Sterling",
    "Rio Blanco County",
+   "Delta County",
    "Durango",
    "Prowers County",
    "Otero County",
-   "Delta County",
    "Gunnison County",
    "Alamosa"
   ],
-  "bytes": 582697
+  "bytes": 596965
  },
  "CT": {
   "name": "Connecticut",
@@ -224,7 +224,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 290,
+   "programs": 291,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -238,7 +238,7 @@ window.STATE_INDEX = {
    "Waterbury",
    "Norwich"
   ],
-  "bytes": 296937
+  "bytes": 297817
  },
  "DC": {
   "name": "District of Columbia",
@@ -266,7 +266,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 92,
+   "programs": 93,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -278,7 +278,7 @@ window.STATE_INDEX = {
    "Dover",
    "Seaford"
   ],
-  "bytes": 99578
+  "bytes": 100395
  },
  "FL": {
   "name": "Florida",
@@ -287,7 +287,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 1707,
+   "programs": 1724,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -326,7 +326,7 @@ window.STATE_INDEX = {
    "Taylor County",
    "Wildwood"
   ],
-  "bytes": 1554776
+  "bytes": 1567979
  },
  "GA": {
   "name": "Georgia",
@@ -335,7 +335,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 1076,
+   "programs": 1085,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -346,8 +346,8 @@ window.STATE_INDEX = {
    "Atlanta",
    "Augusta",
    "Savannah",
-   "Columbus",
    "Athens",
+   "Columbus",
    "Albany",
    "Statesboro",
    "Valdosta",
@@ -355,8 +355,8 @@ window.STATE_INDEX = {
    "Gainesville",
    "Warner Robins",
    "Cornelia",
-   "Macon",
    "Thomasville",
+   "Macon",
    "Americus",
    "Waycross",
    "Vidalia",
@@ -375,7 +375,7 @@ window.STATE_INDEX = {
    "White County",
    "Toccoa"
   ],
-  "bytes": 970913
+  "bytes": 977912
  },
  "HI": {
   "name": "Hawaii",
@@ -384,7 +384,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 129,
+   "programs": 131,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -397,7 +397,7 @@ window.STATE_INDEX = {
    "Kapaa",
    "Kahului"
   ],
-  "bytes": 127932
+  "bytes": 129589
  },
  "IA": {
   "name": "Iowa",
@@ -406,7 +406,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 551,
+   "programs": 559,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -423,8 +423,8 @@ window.STATE_INDEX = {
    "Winneshiek County",
    "Ames",
    "Fort Dodge",
-   "Ottumwa",
    "Omaha",
+   "Ottumwa",
    "Iowa City",
    "Burlington",
    "Dubuque",
@@ -444,7 +444,7 @@ window.STATE_INDEX = {
    "Henry County",
    "Spirit Lake"
   ],
-  "bytes": 533765
+  "bytes": 540387
  },
  "ID": {
   "name": "Idaho",
@@ -453,7 +453,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 255,
+   "programs": 256,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -471,7 +471,7 @@ window.STATE_INDEX = {
    "Coeur d'Alene",
    "Burley"
   ],
-  "bytes": 261601
+  "bytes": 262416
  },
  "IL": {
   "name": "Illinois",
@@ -480,7 +480,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 1479,
+   "programs": 1490,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -517,7 +517,7 @@ window.STATE_INDEX = {
    "Warren County",
    "Sterling"
   ],
-  "bytes": 1281551
+  "bytes": 1290210
  },
  "IN": {
   "name": "Indiana",
@@ -526,7 +526,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 540,
+   "programs": 546,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -556,11 +556,11 @@ window.STATE_INDEX = {
    "Greencastle",
    "Gibson County",
    "Madison",
-   "Crawfordsville",
    "Plymouth",
+   "Crawfordsville",
    "Starke County"
   ],
-  "bytes": 559975
+  "bytes": 564714
  },
  "KS": {
   "name": "Kansas",
@@ -569,7 +569,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 537,
+   "programs": 541,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -609,7 +609,7 @@ window.STATE_INDEX = {
    "Rice County",
    "Marion County"
   ],
-  "bytes": 495484
+  "bytes": 498855
  },
  "KY": {
   "name": "Kentucky",
@@ -618,7 +618,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 581,
+   "programs": 587,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -641,10 +641,10 @@ window.STATE_INDEX = {
    "Murray",
    "Huntington",
    "Campbellsville",
+   "Rowan County",
    "Mason County",
    "Perry County",
    "Clarksville",
-   "Rowan County",
    "Harlan County",
    "Henderson",
    "Frankfort",
@@ -656,7 +656,7 @@ window.STATE_INDEX = {
    "Glasgow",
    "Johnson County"
   ],
-  "bytes": 554258
+  "bytes": 558953
  },
  "LA": {
   "name": "Louisiana",
@@ -665,7 +665,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 496,
+   "programs": 503,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -689,7 +689,7 @@ window.STATE_INDEX = {
    "Opelousas",
    "New Iberia"
   ],
-  "bytes": 488219
+  "bytes": 493930
  },
  "MA": {
   "name": "Massachusetts",
@@ -698,7 +698,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 740,
+   "programs": 747,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -715,7 +715,7 @@ window.STATE_INDEX = {
    "Barnstable Town",
    "Greenfield"
   ],
-  "bytes": 661522
+  "bytes": 667125
  },
  "MD": {
   "name": "Maryland",
@@ -724,7 +724,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 473,
+   "programs": 475,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -742,7 +742,7 @@ window.STATE_INDEX = {
    "Kent County",
    "Lexington Park"
   ],
-  "bytes": 442576
+  "bytes": 444100
  },
  "ME": {
   "name": "Maine",
@@ -751,7 +751,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 210,
+   "programs": 212,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -768,7 +768,7 @@ window.STATE_INDEX = {
    "Washington County",
    "Franklin County"
   ],
-  "bytes": 200330
+  "bytes": 201893
  },
  "MI": {
   "name": "Michigan",
@@ -777,7 +777,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 1054,
+   "programs": 1063,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -801,12 +801,12 @@ window.STATE_INDEX = {
    "Traverse City",
    "Muskegon",
    "Monroe",
+   "Adrian",
    "Alpena",
    "Sault Ste. Marie",
    "Houghton",
    "Clare County",
    "South Bend",
-   "Adrian",
    "Saginaw",
    "Escanaba",
    "Crawford County",
@@ -821,7 +821,7 @@ window.STATE_INDEX = {
    "Cadillac",
    "Baraga County"
   ],
-  "bytes": 971474
+  "bytes": 978578
  },
  "MN": {
   "name": "Minnesota",
@@ -830,7 +830,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 777,
+   "programs": 782,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -846,9 +846,9 @@ window.STATE_INDEX = {
    "Fergus Falls",
    "Willmar",
    "Pennington County",
+   "Rochester",
    "Yellow Medicine County",
    "Brainerd",
-   "Rochester",
    "Bemidji",
    "Austin",
    "Fargo",
@@ -861,7 +861,7 @@ window.STATE_INDEX = {
    "Worthington",
    "New Ulm"
   ],
-  "bytes": 717652
+  "bytes": 721809
  },
  "MO": {
   "name": "Missouri",
@@ -870,7 +870,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 685,
+   "programs": 691,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -895,9 +895,9 @@ window.STATE_INDEX = {
    "Rolla",
    "St. Joseph",
    "Grundy County",
+   "Moberly",
    "Quincy",
    "Marshall",
-   "Moberly",
    "Hannibal",
    "West Plains",
    "Livingston County",
@@ -906,7 +906,7 @@ window.STATE_INDEX = {
    "Texas County",
    "Vernon County"
   ],
-  "bytes": 628945
+  "bytes": 633805
  },
  "MS": {
   "name": "Mississippi",
@@ -915,7 +915,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 471,
+   "programs": 473,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -949,7 +949,7 @@ window.STATE_INDEX = {
    "Greenville",
    "Monroe County"
   ],
-  "bytes": 423970
+  "bytes": 425679
  },
  "MT": {
   "name": "Montana",
@@ -958,7 +958,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 177,
+   "programs": 179,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -976,15 +976,15 @@ window.STATE_INDEX = {
    "Roosevelt County",
    "Custer County",
    "Hill County",
-   "Lake County",
    "Beaverhead County",
+   "Lake County",
    "Blaine County",
    "Glacier County",
    "Dawson County",
    "Chouteau County",
    "Rosebud County"
   ],
-  "bytes": 188273
+  "bytes": 189779
  },
  "NC": {
   "name": "North Carolina",
@@ -993,7 +993,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 1525,
+   "programs": 1534,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -1035,10 +1035,10 @@ window.STATE_INDEX = {
    "Martin County",
    "Montgomery County",
    "Rockingham",
+   "Boone",
    "Washington",
    "Columbus County",
    "Cherokee County",
-   "Boone",
    "Bladen County",
    "Roanoke Rapids",
    "Waynesville",
@@ -1049,7 +1049,7 @@ window.STATE_INDEX = {
    "Brevard",
    "Laurinburg"
   ],
-  "bytes": 1364966
+  "bytes": 1372028
  },
  "ND": {
   "name": "North Dakota",
@@ -1082,7 +1082,7 @@ window.STATE_INDEX = {
    "Barnes County",
    "Benson County"
   ],
-  "bytes": 177079
+  "bytes": 177090
  },
  "NE": {
   "name": "Nebraska",
@@ -1091,7 +1091,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 269,
+   "programs": 272,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -1113,9 +1113,10 @@ window.STATE_INDEX = {
    "York County",
    "Nemaha County",
    "Dawes County",
+   "Frontier County",
    "Thurston County"
   ],
-  "bytes": 258716
+  "bytes": 261202
  },
  "NH": {
   "name": "New Hampshire",
@@ -1124,7 +1125,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 212,
+   "programs": 215,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -1140,7 +1141,7 @@ window.STATE_INDEX = {
    "Coos County",
    "Laconia"
   ],
-  "bytes": 200642
+  "bytes": 203104
  },
  "NJ": {
   "name": "New Jersey",
@@ -1149,7 +1150,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 634,
+   "programs": 637,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -1164,7 +1165,7 @@ window.STATE_INDEX = {
    "Vineland",
    "Allentown"
   ],
-  "bytes": 572196
+  "bytes": 574635
  },
  "NM": {
   "name": "New Mexico",
@@ -1173,7 +1174,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 342,
+   "programs": 347,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -1185,8 +1186,8 @@ window.STATE_INDEX = {
    "Las Cruces",
    "Santa Fe",
    "Gallup",
-   "Clovis",
    "Farmington",
+   "Clovis",
    "Roswell",
    "Hobbs",
    "Las Vegas",
@@ -1201,7 +1202,7 @@ window.STATE_INDEX = {
    "Taos",
    "Quay County"
   ],
-  "bytes": 319459
+  "bytes": 323638
  },
  "NV": {
   "name": "Nevada",
@@ -1210,7 +1211,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 185,
+   "programs": 190,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -1223,7 +1224,7 @@ window.STATE_INDEX = {
    "Elko",
    "Carson City"
   ],
-  "bytes": 181590
+  "bytes": 185455
  },
  "NY": {
   "name": "New York",
@@ -1232,7 +1233,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 1462,
+   "programs": 1477,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -1263,16 +1264,16 @@ window.STATE_INDEX = {
    "Amsterdam",
    "Watertown",
    "Glens Falls",
+   "Batavia",
    "Cortland",
    "Hudson",
-   "Batavia",
    "Yates County",
    "Corning",
    "Essex County",
    "Franklin County",
    "Chenango County"
   ],
-  "bytes": 1289759
+  "bytes": 1301808
  },
  "OH": {
   "name": "Ohio",
@@ -1281,7 +1282,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 1402,
+   "programs": 1417,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -1301,8 +1302,8 @@ window.STATE_INDEX = {
    "Athens",
    "Zanesville",
    "Mansfield",
-   "Springfield",
    "Weirton",
+   "Springfield",
    "Portsmouth",
    "Marietta",
    "Gallipolis",
@@ -1314,10 +1315,10 @@ window.STATE_INDEX = {
    "Henry County",
    "Tiffin",
    "Hardin County",
+   "New Philadelphia",
    "Huntington",
    "Chillicothe",
    "Fremont",
-   "New Philadelphia",
    "Salem",
    "Wooster",
    "Highland County",
@@ -1329,7 +1330,7 @@ window.STATE_INDEX = {
    "Wilmington",
    "Celina"
   ],
-  "bytes": 1253023
+  "bytes": 1264895
  },
  "OK": {
   "name": "Oklahoma",
@@ -1338,7 +1339,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 610,
+   "programs": 620,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -1369,14 +1370,14 @@ window.STATE_INDEX = {
    "Guymon",
    "Altus",
    "Hughes County",
-   "Le Flore County",
    "Johnston County",
+   "Le Flore County",
    "Miami",
    "Bartlesville",
    "Latimer County",
    "Seminole County"
   ],
-  "bytes": 517507
+  "bytes": 525225
  },
  "OR": {
   "name": "Oregon",
@@ -1385,7 +1386,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 412,
+   "programs": 417,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -1396,8 +1397,8 @@ window.STATE_INDEX = {
    "Portland",
    "Eugene",
    "Salem",
-   "Klamath Falls",
    "Bend",
+   "Klamath Falls",
    "Grants Pass",
    "Coos Bay",
    "Albany",
@@ -1406,13 +1407,13 @@ window.STATE_INDEX = {
    "Medford",
    "La Grande",
    "Ontario",
-   "Astoria",
    "Hermiston",
+   "Astoria",
    "Newport",
    "Tillamook County",
    "The Dalles"
   ],
-  "bytes": 399834
+  "bytes": 403868
  },
  "PA": {
   "name": "Pennsylvania",
@@ -1421,7 +1422,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 1462,
+   "programs": 1476,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -1452,8 +1453,8 @@ window.STATE_INDEX = {
    "Lebanon",
    "Pottsville",
    "Selinsgrove",
-   "Huntingdon",
    "Chambersburg",
+   "Huntingdon",
    "Jefferson County",
    "Sunbury",
    "Meadville",
@@ -1466,7 +1467,7 @@ window.STATE_INDEX = {
    "Sayre",
    "Oil City"
   ],
-  "bytes": 1315125
+  "bytes": 1326500
  },
  "RI": {
   "name": "Rhode Island",
@@ -1475,7 +1476,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 137,
+   "programs": 138,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -1485,7 +1486,7 @@ window.STATE_INDEX = {
   "regions": [
    "Providence"
   ],
-  "bytes": 131780
+  "bytes": 132636
  },
  "SC": {
   "name": "South Carolina",
@@ -1494,7 +1495,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 530,
+   "programs": 534,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -1521,7 +1522,7 @@ window.STATE_INDEX = {
    "Gaffney",
    "Marion County"
   ],
-  "bytes": 520632
+  "bytes": 523846
  },
  "SD": {
   "name": "South Dakota",
@@ -1530,7 +1531,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 155,
+   "programs": 156,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -1552,7 +1553,7 @@ window.STATE_INDEX = {
    "Todd County",
    "Roberts County"
   ],
-  "bytes": 161086
+  "bytes": 161875
  },
  "TN": {
   "name": "Tennessee",
@@ -1561,7 +1562,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 708,
+   "programs": 716,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -1582,9 +1583,9 @@ window.STATE_INDEX = {
    "Kingsport",
    "Clarksville",
    "Giles County",
+   "Claiborne County",
    "Athens",
    "Scott County",
-   "Claiborne County",
    "Carroll County",
    "Crossville",
    "Hardin County",
@@ -1602,7 +1603,7 @@ window.STATE_INDEX = {
    "Monroe County",
    "Fayetteville"
   ],
-  "bytes": 662408
+  "bytes": 669142
  },
  "TX": {
   "name": "Texas",
@@ -1611,7 +1612,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 2211,
+   "programs": 2231,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -1638,8 +1639,8 @@ window.STATE_INDEX = {
    "Odessa",
    "Texarkana",
    "Sherman",
-   "Athens",
    "College Station",
+   "Athens",
    "Abilene",
    "Brenham",
    "Eastland County",
@@ -1674,7 +1675,7 @@ window.STATE_INDEX = {
    "Wood County",
    "Eagle Pass"
   ],
-  "bytes": 1953486
+  "bytes": 1969317
  },
  "UT": {
   "name": "Utah",
@@ -1683,7 +1684,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 395,
+   "programs": 396,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -1701,7 +1702,7 @@ window.STATE_INDEX = {
    "Vernal",
    "Heber"
   ],
-  "bytes": 362765
+  "bytes": 363575
  },
  "VA": {
   "name": "Virginia",
@@ -1710,7 +1711,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 703,
+   "programs": 709,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -1729,9 +1730,9 @@ window.STATE_INDEX = {
    "Danville",
    "Bluefield",
    "Winchester",
+   "Staunton",
    "Kingsport",
    "Wise County",
-   "Staunton",
    "Lake of the Woods",
    "Martinsville",
    "Brunswick County",
@@ -1743,7 +1744,7 @@ window.STATE_INDEX = {
    "Lexington City County",
    "Buena Vista City County"
   ],
-  "bytes": 642047
+  "bytes": 646794
  },
  "VT": {
   "name": "Vermont",
@@ -1752,7 +1753,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 91,
+   "programs": 92,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -1766,7 +1767,7 @@ window.STATE_INDEX = {
    "Bennington",
    "Addison County"
   ],
-  "bytes": 90380
+  "bytes": 91184
  },
  "WA": {
   "name": "Washington",
@@ -1775,7 +1776,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 761,
+   "programs": 772,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -1802,7 +1803,7 @@ window.STATE_INDEX = {
    "Centralia",
    "Longview"
   ],
-  "bytes": 682389
+  "bytes": 690634
  },
  "WI": {
   "name": "Wisconsin",
@@ -1811,7 +1812,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 734,
+   "programs": 744,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -1847,7 +1848,7 @@ window.STATE_INDEX = {
    "Beaver Dam",
    "Shawano"
   ],
-  "bytes": 688496
+  "bytes": 695946
  },
  "WV": {
   "name": "West Virginia",
@@ -1856,7 +1857,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 329,
+   "programs": 333,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -1885,7 +1886,7 @@ window.STATE_INDEX = {
    "Mingo County",
    "Jackson County"
   ],
-  "bytes": 334416
+  "bytes": 337485
  },
  "WY": {
   "name": "Wyoming",
@@ -1894,7 +1895,7 @@ window.STATE_INDEX = {
    "programs-ipeds.js"
   ],
   "counts": {
-   "programs": 112,
+   "programs": 115,
    "resources": 0,
    "scholarships": 0,
    "guide": false,
@@ -1907,10 +1908,10 @@ window.STATE_INDEX = {
    "Cheyenne",
    "Riverton",
    "Sheridan",
-   "Cody",
    "Goshen County",
+   "Cody",
    "Rock Springs"
   ],
-  "bytes": 105685
+  "bytes": 107895
  }
 };

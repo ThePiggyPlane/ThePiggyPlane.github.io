@@ -65,7 +65,7 @@ CAREER_CIPS = {
     "technicalwriter": [("23.1303", "Professional and Technical Writing", ALL), ("23.1301", "Writing", ALL)],
     "trades": [("46.0302", "Electrician", ("cert", "assoc")), ("46.0301", "Electrical and Power Transmission Installation", ("cert", "assoc")), ("46.0303", "Lineworker", ("cert", "assoc"))],
     "urbanplanner": [("04.0301", "Urban and Regional Planning", ("bach", "grad"))],
-    "veterinarian": [("51.2401", "Veterinary Medicine (DVM)", ("grad",)), ("51.0808", "Veterinary Technology", ("cert", "assoc", "bach")), ("01.0901", "Animal Sciences (pre-vet)", ("bach",))],
+    "veterinarian": [("01.8001", "Veterinary Medicine (DVM)", ("grad",)), ("01.8301", "Veterinary Technology", ("cert", "assoc", "bach")), ("01.0901", "Animal Sciences (pre-vet)", ("bach",))],
     "welding": [("48.0508", "Welding Technology", ("cert", "assoc"))],
     "author": [("23.1302", "Creative Writing", ("bach", "grad", "cert")), ("23.0101", "English", ("assoc", "bach", "grad")), ("09.0401", "Journalism", ("assoc", "bach", "grad"))],
 }
