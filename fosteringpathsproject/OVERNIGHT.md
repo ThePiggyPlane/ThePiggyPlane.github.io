@@ -32,8 +32,9 @@ the data contract; this file is the state of the project and the playbook.
    THP-Plus providers, FYI voucher contacts per county), and verified office
    contacts for the 141 campus records (tag `campus-contact-unverified`).
 3. College Scorecard earnings for the remaining ~3,000 schools: needs an
-   api.data.gov key (free); then `scratchpad/ipeds/fetch_scorecard.py` logic
-   with skip-existing, and re-run tools/gen_programs_ipeds.py.
+   api.data.gov key (free, instant). Then
+   `SCORECARD_KEY=... SCORECARD_PAGES=<dir> python3 tools/fetch_scorecard.py`
+   (skips pages already saved) and re-run tools/gen_programs_ipeds.py.
 4. Apprenticeship registries outside California (DOL RAPIDS data; the
    apprenticeship.gov finder link is shown meanwhile).
 5. National scholarships beyond Foster Love and Pell (FC2S, Casey, iFoster and
@@ -44,8 +45,9 @@ the data contract; this file is the state of the project and the playbook.
 - Programs: `python3 tools/gen_programs_ipeds.py --ipeds <dir with HD2024, C2024_A, IC2023_AY, IC2023, SFA2223, DRVGR2023, DRVEF2023, cbsa_list1_2023.xlsx> --sfa ... --ic ... --scorecard ... --gr ...`
   IPEDS files come from https://nces.ed.gov/ipeds/datacenter/data/<NAME>.zip.
 - Wages: download oesm<yy>st.zip, oesm<yy>ma.zip, oesm<yy>nat.zip (and the prior
-  year) from https://www.bls.gov/oes/special-requests/, filter to the covered
-  SOC codes, then `python3 tools/gen_wages_oes.py --csv <dir> --cbsa <cbsa xlsx>`.
+  year) from https://www.bls.gov/oes/special-requests/ (a plain project
+  User-Agent is enough), unzip, `python3 tools/filter_oes.py <csv dir> <the xlsx files>`,
+  then `python3 tools/gen_wages_oes.py --csv <csv dir> --cbsa <cbsa_list1_2023.xlsx>`.
 - Outlook: https://www.bls.gov/emp/ind-occ-matrix/occupation.xlsx, then
   `python3 tools/gen_outlook.py --xlsx occupation.xlsx`.
 - O*NET: db text files from onetcenter.org, then `python3 tools/gen_onet.py --onet <dir>`.
