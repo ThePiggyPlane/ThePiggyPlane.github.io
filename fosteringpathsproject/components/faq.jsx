@@ -16,7 +16,7 @@ const FAQ = [
   },
   {
     q: "Can I keep my Medicaid if I move to another state?",
-    a: "Yes. Since 2023, youth who were in foster care at 18 can get Medicaid until 26 in any state, even if they aged out somewhere else. Apply in the new state and name the former foster youth group. California calls it Medi-Cal for Former Foster Youth (aid code 4M).",
+    a: "Usually. If you turned 18 in foster care on or after January 1, 2023, every state must cover you until 26, even if you aged out somewhere else. If you aged out before 2023, the state you were in care in covers you to 26 and other states may choose to. Apply in the new state and name the former foster youth group. California calls it Medi-Cal for Former Foster Youth (aid code 4M).",
   },
   {
     q: "Is a for-profit school a bad idea?",

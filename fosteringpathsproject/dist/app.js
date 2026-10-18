@@ -321,7 +321,7 @@ const START_ITEMS = [
   },
   {
     title: "Free health coverage to 26",
-    body: "If you were in foster care at 18 (or older, in states with extended care) and on Medicaid, you can stay on Medicaid until you turn 26, with no income test, in any state you move to. Ask the state Medicaid office for the former foster youth group.",
+    body: "If you were in foster care at 18 (or older, in states with extended care) and on Medicaid, you can stay on Medicaid until you turn 26, with no income test. If you aged out in 2023 or later, every state must cover you, even one you moved to; if you aged out earlier, the state you were in care in covers you. Ask the state Medicaid office for the former foster youth group.",
     go: { label: "How your state enrolls you", view: "state" }
   },
   {
@@ -373,7 +373,7 @@ const FAQ = [
   },
   {
     q: "Can I keep my Medicaid if I move to another state?",
-    a: "Yes. Since 2023, youth who were in foster care at 18 can get Medicaid until 26 in any state, even if they aged out somewhere else. Apply in the new state and name the former foster youth group. California calls it Medi-Cal for Former Foster Youth (aid code 4M)."
+    a: "Usually. If you turned 18 in foster care on or after January 1, 2023, every state must cover you until 26, even if you aged out somewhere else. If you aged out before 2023, the state you were in care in covers you to 26 and other states may choose to. Apply in the new state and name the former foster youth group. California calls it Medi-Cal for Former Foster Youth (aid code 4M)."
   },
   {
     q: "Is a for-profit school a bad idea?",
@@ -1035,7 +1035,7 @@ const planItems = (loc, guide, stateName) => {
     { id: "letter", title: "Get your foster care verification letter", body: "From your caseworker, the state agency, or the foster care ombudsman. Keep a photo on your phone; every program below asks for it.", href: guide && guide.agency && guide.agency.url, label: guide && guide.agency ? guide.agency.name : "Your state agency" },
     { id: "fafsa", title: "File the FAFSA as an independent student", body: "Answer yes to the foster care question. No parent information. This unlocks the Pell Grant and most campus aid.", href: "https://studentaid.gov/h/apply-for-aid/fafsa", label: "studentaid.gov" },
     { id: "etv", title: `Apply for the ${stateName} ETV (Chafee) voucher`, body: "Up to $5,000 a year for school, housing, books, a laptop, or transportation.", href: guide && guide.etv && guide.etv.url, view: "state", label: guide && guide.etv && guide.etv.admin ? guide.etv.admin : "How your state runs ETV" },
-    { id: "medicaid", title: "Enroll in Medicaid for former foster youth (to 26)", body: "No income test if you were in care at 18. Works in any state you move to.", href: guide && guide.medicaidTo26 && guide.medicaidTo26.url, view: "state", label: guide && guide.medicaidTo26 && guide.medicaidTo26.name ? guide.medicaidTo26.name : "Your state's program" },
+    { id: "medicaid", title: "Enroll in Medicaid for former foster youth (to 26)", body: "No income test if you were in care at 18. Any state must cover you if you aged out in 2023 or later.", href: guide && guide.medicaidTo26 && guide.medicaidTo26.url, view: "state", label: guide && guide.medicaidTo26 && guide.medicaidTo26.name ? guide.medicaidTo26.name : "Your state's program" },
     { id: "efc", title: "If you are under 21: ask about extended foster care", body: "A place to live, a monthly payment, and a worker while you start school or work. You can usually re-enter after leaving.", view: "state", label: "Your state's rules" },
     { id: "campus", title: "Email the foster youth program at each school you are considering", body: "Ask about priority registration, housing over breaks, laptops, and the application fee waiver. Save schools from their pages and they show up below.", view: "resources", label: "Campus programs" },
     { id: "apply", title: "Apply to the school and ask for the fee waiver", body: "Community colleges usually have no fee and no deadline. Universities have deadlines; the foster youth program can get the fee waived.", href: guide && guide.collegeApps && guide.collegeApps[0] && guide.collegeApps[0].url, label: guide && guide.collegeApps && guide.collegeApps[0] ? guide.collegeApps[0].name : null },

@@ -14,7 +14,7 @@ const START_ITEMS = [
   },
   {
     title: "Free health coverage to 26",
-    body: "If you were in foster care at 18 (or older, in states with extended care) and on Medicaid, you can stay on Medicaid until you turn 26, with no income test, in any state you move to. Ask the state Medicaid office for the former foster youth group.",
+    body: "If you were in foster care at 18 (or older, in states with extended care) and on Medicaid, you can stay on Medicaid until you turn 26, with no income test. If you aged out in 2023 or later, every state must cover you, even one you moved to; if you aged out earlier, the state you were in care in covers you. Ask the state Medicaid office for the former foster youth group.",
     go: { label: "How your state enrolls you", view: "state" },
   },
   {
