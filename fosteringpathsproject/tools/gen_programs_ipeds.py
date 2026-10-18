@@ -258,6 +258,16 @@ def main():
             chars[int(row.UNITID)] = {"housing": flag("ROOM"), "childcare": flag("STUSRV8"), "applFee": fee}
 
     # Graduation rate (150% of normal time, first-time full-time cohort)
+    students = {}
+    ef_path = os.path.join(a.ipeds, "DRVEF2023", "drvef2023.csv")
+    if os.path.exists(ef_path):
+        ef = read_csv(ef_path)
+        for row in ef.itertuples(index=False):
+            try:
+                v = float(row.ENRTOT)
+                if v == v and v > 0: students[int(row.UNITID)] = int(v)
+            except Exception:
+                pass
     gradrate = {}
     if a.gr and os.path.exists(a.gr):
         gr = read_csv(a.gr)
@@ -446,6 +456,8 @@ def main():
             rec["netPrice30k"] = net30[uid]
         if uid in gradrate:
             rec["gradRate"] = gradrate[uid]
+        if uid in students:
+            rec["students"] = students[uid]
         if ch.get("housing"):
             rec["housing"] = True
         if ch.get("childcare"):

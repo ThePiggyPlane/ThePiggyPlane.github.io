@@ -180,9 +180,19 @@ added.
   url: "https://...",
   careers: ["paralegal"],              // new: career ids this program leads to
   cip: "22.0302",                      // optional
-  source: "ipeds-2023",                // optional
+  source: "ipeds-2024",                // optional
   requirements: "", notes: "",
-  verified: "2026-10"
+  verified: "2026-10",
+  // generated school facts (IPEDS / Scorecard), all optional:
+  level: "assoc",                      // cert | assoc | bach | grad
+  grads: 42,                           // completions 2023-24
+  public: true, forProfit: false,
+  netPrice30k: 6100,                   // average net price, families under $30k, housing and food included
+  gradRate: 17,                        // 150%-time graduation rate (shown for non-cc tiers)
+  students: 45000,                     // total enrollment, fall 2023
+  housing: true, childcare: false, applFee: 0,
+  earnings: { yr1: 38000, yr1Pell: 36000, yr1Nat: 41000, yr4: 52000, yr4Nat: 55000 },
+  phone: "(713) 718-2000"
 }
 ```
 

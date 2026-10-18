@@ -63,7 +63,9 @@ const CpSchool = ({ st, inst, go, saved, toggleSave }) => {
         {first.netPrice30k != null && <div><div className="cp-stat">${Math.round(first.netPrice30k / 1000)}K</div><div className="cp-stat-lbl">a year, typical low-income student, before foster youth aid</div></div>}
         {first.sticker > 0 && <div><div className="cp-stat">${first.sticker.toLocaleString()}</div><div className="cp-stat-lbl">in-state tuition and fees</div></div>}
         {first.gradRate != null && first.tier !== "cc" && <div><div className="cp-stat">{first.gradRate}%</div><div className="cp-stat-lbl">graduate on time</div></div>}
-        <div><div className="cp-stat">{first.housing ? "Yes" : "No"}</div><div className="cp-stat-lbl">campus housing{first.childcare ? " · childcare on campus" : ""}</div></div>
+        {first.students > 0 && <div><div className="cp-stat">{first.students >= 10000 ? Math.round(first.students / 1000) + "K" : first.students.toLocaleString()}</div><div className="cp-stat-lbl">students</div></div>}
+        <div><div className="cp-stat">{first.housing ? "Yes" : "No"}</div><div className="cp-stat-lbl">campus housing</div></div>
+        {first.childcare && <div><div className="cp-stat">Yes</div><div className="cp-stat-lbl">childcare on campus</div></div>}
       </div>
       <div className="cp-prog-action cp-school-links">
         <span>{first.applFee === 0 ? "No application fee." : first.applFee ? `Application fee $${first.applFee} (ask the foster youth program for a waiver).` : "Ask the foster youth program about an application fee waiver."}</span>
