@@ -38,6 +38,11 @@ const START_ITEMS = [
     go: { label: "Housing help near you", view: "resources" },
   },
   {
+    title: "A tax refund at 18, not 25",
+    body: "Former foster youth (in care at 14 or later) can claim the federal Earned Income Tax Credit starting at 18, years before most single adults qualify. File a free return every year you work, even part time; it can be worth several hundred dollars, more with a child.",
+    link: { label: "IRS: EITC for former foster youth", href: "https://www.irs.gov/credits-deductions/individuals/earned-income-tax-credit-eitc" },
+  },
+  {
     title: "Money you may not know you have",
     body: "Some states deposit money in accounts for foster youth (California's CalKIDS and HOPE accounts, for example). Many offer a state tax credit for former foster youth. Scholarships from Foster Care to Success, Foster Love, and local foundations stack on top of everything above.",
     go: { label: "Scholarships for your state", view: "scholarships" },
@@ -51,7 +56,7 @@ const CpStart = ({ go }) => {
     <main className="cp-main narrow">
       <div className="cp-eyebrow">Start here</div>
       <h1 className="cp-h1">What foster youth get, in every state</h1>
-      <p className="cp-lede">Eight things that are true for you no matter where you live. The <button className="cp-link" onClick={() => go("state")}>{stateName} guide</button> has the details and links for your state.</p>
+      <p className="cp-lede">Nine things that are true for you no matter where you live. The <button className="cp-link" onClick={() => go("state")}>{stateName} guide</button> has the details and links for your state.</p>
       {START_ITEMS.map((it, i) => (
         <div className="cp-week-row" key={i}>
           <div className="cp-week-n">{String(i + 1).padStart(2, "0")}</div>
@@ -73,4 +78,4 @@ const CpStart = ({ go }) => {
   );
 };
 
-Object.assign(window, { CpStart });
+Object.assign(window, { CpStart, START_ITEMS });

@@ -819,3 +819,11 @@ a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-ra
 
 .cp-outlook { margin: 14px 0 0; }
 .cp-outlook .cp-aside-body a { font-weight: 600; }
+
+/* state page without a guide: pay table */
+.cp-top-pay { display: grid; gap: 6px; margin: 4px 0 6px; }
+.cp-top-pay-row { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; align-items: baseline; text-align: left; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: #fff; cursor: pointer; font: inherit; color: inherit; }
+.cp-top-pay-row:hover { border-color: var(--ink); }
+.cp-top-pay-name { font-weight: 650; }
+.cp-top-pay-val { font-weight: 700; font-variant-numeric: tabular-nums; }
+.cp-top-pay-row > .cp-stat-meta { grid-column: 1 / -1; }

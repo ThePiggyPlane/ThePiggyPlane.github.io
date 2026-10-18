@@ -18,7 +18,19 @@ const CpStateGuide = ({ go, onPickLocation }) => {
   const counts = idx ? idx.counts : { programs: 0, resources: 0, scholarships: 0, apprenticeships: 0 };
   const resCount = window.RESOURCES.byState(st).length || counts.resources;
   const schCount = window.SCHOLARSHIPS.byState(st).length || counts.scholarships;
+  const natSch = window.SCHOLARSHIPS.national().length;
+  const natRes = window.RESOURCES.national().length;
   const progCount = window.PROGRAMS.byState(st).length || counts.programs;
+  const wagesHere = window.WAGES.get(st);
+  // Best-paying careers in this state that have programs here (for states without a guide yet).
+  const topPay = React.useMemo(() => {
+    if (!wagesHere) return [];
+    return window.CAREERS.all()
+      .map(c => ({ c, w: window.WAGES.salary(c, { state: st }), n: window.PROGRAMS.forCareer(c.id, { state: st }).length }))
+      .filter(x => x.w && x.w.label !== "median, CA" && x.n > 0)
+      .sort((a, b) => b.w.median - a.w.median)
+      .slice(0, 8);
+  }, [st, status, progCount]);
 
   return (
     <main className="cp-main narrow">
@@ -31,17 +43,48 @@ const CpStateGuide = ({ go, onPickLocation }) => {
 
       <div className="cp-guide-stats">
         <button className="cp-guide-stat" onClick={() => go("home")}><div className="cp-stat">{progCount.toLocaleString()}</div><div className="cp-stat-lbl">programs</div></button>
-        <button className="cp-guide-stat" onClick={() => go("resources")}><div className="cp-stat">{resCount}</div><div className="cp-stat-lbl">support resources</div></button>
-        <button className="cp-guide-stat" onClick={() => go("scholarships")}><div className="cp-stat">{schCount}</div><div className="cp-stat-lbl">scholarships</div></button>
+        <button className="cp-guide-stat" onClick={() => go("resources")}><div className="cp-stat">{resCount || natRes}</div><div className="cp-stat-lbl">{resCount ? "support resources" : "national resources"}</div></button>
+        <button className="cp-guide-stat" onClick={() => go("scholarships")}><div className="cp-stat">{schCount || natSch}</div><div className="cp-stat-lbl">{schCount ? "scholarships" : "national scholarships"}</div></button>
         <button className="cp-guide-stat" onClick={() => go("apprenticeships")}><div className="cp-stat">{(counts.apprenticeships || (st === "CA" && window.APPRENTICESHIPS ? window.APPRENTICESHIPS.count() : 0)).toLocaleString()}</div><div className="cp-stat-lbl">apprenticeships</div></button>
       </div>
 
       {status === "loading" && <p className="cp-filter-meta">Loading {name}…</p>}
 
       {!g && status !== "loading" && (
-        <div className="cp-callout warn">
-          <strong>The {name} guide is still being written.</strong> Three things are true in every state: you can file the FAFSA as an independent student (no parent income needed), your state runs a Chafee Education and Training Voucher of up to $5,000 a year, and if you were in foster care at 18 you can get Medicaid until 26 in any state. See <button className="cp-link" onClick={() => go("scholarships")}>national scholarships</button> and <button className="cp-link" onClick={() => go("resources")}>national resources</button> while we finish {name}.
-        </div>
+        <>
+          <div className="cp-callout warn">
+            <strong>The {name} guide is still being written.</strong> The programs, pay, and school facts for {name} are live; the state rules below are the federal ones that apply everywhere. Ask your caseworker or the campus foster youth program for {name}'s tuition waiver, ETV office, and extended foster care rules.
+          </div>
+          {topPay.length > 0 && (
+            <>
+              <h2 className="cp-h2">What these jobs pay in {name}</h2>
+              <div className="cp-top-pay">
+                {topPay.map(({ c, w, n }) => (
+                  <button key={c.id} className="cp-top-pay-row" onClick={() => { window.location.hash = "#/career/" + encodeURIComponent(c.id); }}>
+                    <span className="cp-top-pay-name">{c.name}</span>
+                    <span className="cp-top-pay-val">${w.median}K <span className="cp-stat-meta">median</span></span>
+                    <span className="cp-stat-meta">{n} program{n === 1 ? "" : "s"} · {c.length}</span>
+                  </button>
+                ))}
+              </div>
+              <p className="cp-app-source">BLS Occupational Employment and Wage Statistics, May {wagesHere.dataYear}, statewide medians for all workers in the job.</p>
+            </>
+          )}
+          <h2 className="cp-h2">What you get in every state</h2>
+          {(window.START_ITEMS || []).map((it, i) => (
+            <div className="cp-week-row" key={i}>
+              <div className="cp-week-n">{String(i + 1).padStart(2, "0")}</div>
+              <div>
+                <h3>{it.title}</h3>
+                <p>{it.body}</p>
+                <div className="cp-step-links">
+                  {it.link && <a className="cp-step-link" href={it.link.href} target="_blank" rel="noopener">{it.link.label} →</a>}
+                  {it.go && it.go.view !== "state" && <button className="cp-step-link cp-link" onClick={() => go(it.go.view)}>{it.go.label} →</button>}
+                </div>
+              </div>
+            </div>
+          ))}
+        </>
       )}
 
       {g && (
