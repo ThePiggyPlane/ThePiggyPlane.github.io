@@ -25,7 +25,7 @@ const CpResourceCard = ({ r }) => (
     <div className="cp-res-head">
       <div>
         <div className="cp-res-cat">{RESOURCE_LABEL[r.category] || r.category}{r.state === "US" ? " · National" : (r.county ? ` · ${r.county} County` : (r.city ? ` · ${r.city}` : ""))}{r.miles != null ? ` · ${fmtMiles(r.miles)}` : ""}</div>
-        <h3 className="cp-res-name">{r.name}</h3>
+        <h3 className="cp-res-name">{r.name}{(r.tags || []).includes("campus-contact-unverified") ? <span className="cp-badge warn" title="Main campus number and website only; the program office contact has not been checked yet">office contact unverified</span> : null}</h3>
         {r.org && r.org !== r.name && <div className="cp-res-org">{r.org}</div>}
       </div>
       {r.ages && <div className="cp-res-ages">ages {r.ages}</div>}
