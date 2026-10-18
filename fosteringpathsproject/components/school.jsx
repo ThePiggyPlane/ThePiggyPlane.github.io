@@ -68,12 +68,13 @@ const CpSchool = ({ st, inst, go, saved, toggleSave }) => {
         {first.netPrice30k != null && <div><div className="cp-stat">${Math.round(first.netPrice30k / 1000)}K</div><div className="cp-stat-lbl">a year, typical low-income student, before foster youth aid</div></div>}
         {first.sticker > 0 && <div><div className="cp-stat">${first.sticker.toLocaleString()}</div><div className="cp-stat-lbl">in-state tuition and fees</div></div>}
         {first.gradRate != null && first.tier !== "cc" && <div><div className="cp-stat">{first.gradRate}%</div><div className="cp-stat-lbl">graduate on time</div></div>}
+        {first.pellPct != null && <div><div className="cp-stat">{first.pellPct}%</div><div className="cp-stat-lbl">of new students get a Pell Grant (low-income)</div></div>}
         {first.students > 0 && <div><div className="cp-stat">{first.students >= 10000 ? Math.round(first.students / 1000) + "K" : first.students.toLocaleString()}</div><div className="cp-stat-lbl">students</div></div>}
         <div><div className="cp-stat">{first.housing ? "Yes" : "No"}</div><div className="cp-stat-lbl">campus housing</div></div>
         {first.childcare && <div><div className="cp-stat">Yes</div><div className="cp-stat-lbl">childcare on campus</div></div>}
       </div>
       <div className="cp-prog-action cp-school-links">
-        <span>{first.applFee === 0 ? "No application fee." : first.applFee ? `Application fee $${first.applFee} (ask the foster youth program for a waiver).` : "Ask the foster youth program about an application fee waiver."}</span>
+        <span>{first.openAdmission ? "Open admission: a diploma or GED gets you in. " : ""}{first.applFee === 0 ? "No application fee." : first.applFee ? `Application fee $${first.applFee} (ask the foster youth program for a waiver).` : "Ask the foster youth program about an application fee waiver."}</span>
         <span className="cp-prog-links">
           {first.phone && <a href={"tel:" + String(first.phone).replace(/[^0-9+]/g, "")} className="cp-prog-link">{first.phone}</a>}
           {first.url && <a href={first.url} target="_blank" rel="noopener" className="cp-prog-link">Website →</a>}

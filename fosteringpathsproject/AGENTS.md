@@ -190,7 +190,7 @@ added.
   netPrice30k: 6100,                   // average net price, families under $30k, housing and food included
   gradRate: 17,                        // 150%-time graduation rate (shown for non-cc tiers)
   students: 45000,                     // total enrollment, fall 2023
-  housing: true, childcare: false, applFee: 0,
+  housing: true, childcare: false, applFee: 0, openAdmission: true, pellPct: 62,
   earnings: { yr1: 38000, yr1Pell: 36000, yr1Nat: 41000, yr4: 52000, yr4Nat: 55000 },
   phone: "(713) 718-2000"
 }

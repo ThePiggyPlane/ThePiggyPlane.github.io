@@ -225,6 +225,7 @@ def main():
     # Net price for students from families earning under $30k (2022-23): the
     # honest "what low-income students actually pay" number, living costs included.
     net30 = {}
+    pell_pct = {}
     if a.sfa and os.path.exists(a.sfa):
         sfa = read_csv(a.sfa)
         for row in sfa.itertuples(index=False):
@@ -238,6 +239,12 @@ def main():
                     pass
             if v is not None:
                 net30[int(row.UNITID)] = v
+            try:
+                pp = float(getattr(row, "PGRNT_P"))   # share of first-time full-time undergrads with a Pell Grant
+                if pp == pp and 0 <= pp <= 100:
+                    pell_pct[int(row.UNITID)] = int(round(pp))
+            except Exception:
+                pass
 
     # Institutional characteristics: on-campus housing, childcare, application fee
     chars = {}
@@ -255,7 +262,7 @@ def main():
                 if fv == fv and fv >= 0: fee = int(fv)
             except Exception:
                 pass
-            chars[int(row.UNITID)] = {"housing": flag("ROOM"), "childcare": flag("STUSRV8"), "applFee": fee}
+            chars[int(row.UNITID)] = {"housing": flag("ROOM"), "childcare": flag("STUSRV8"), "applFee": fee, "openAdmission": flag("OPENADMP")}
 
     # Graduation rate (150% of normal time, first-time full-time cohort)
     students = {}
@@ -464,6 +471,10 @@ def main():
             rec["childcare"] = True
         if ch.get("applFee") is not None:
             rec["applFee"] = ch["applFee"]
+        if ch.get("openAdmission"):
+            rec["openAdmission"] = True
+        if uid in pell_pct:
+            rec["pellPct"] = pell_pct[uid]
         if earnings:
             rec["earnings"] = earnings
         if rec["lat"] is None:
