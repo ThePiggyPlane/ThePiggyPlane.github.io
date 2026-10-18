@@ -51,6 +51,8 @@ the data contract; this file is the state of the project and the playbook.
 - O*NET: db text files from onetcenter.org, then `python3 tools/gen_onet.py --onet <dir>`.
 - California campus stubs: `python3 tools/gen_ca_campus_stubs.py --hd <HD2024.csv>`.
 - After any data change: `node tools/validate.js && node tools/build-index.js`.
+- After any .jsx change: `node tools/build.js` (esbuild) and commit dist/app.js.
+  Without it the site still works through in-browser Babel, about 2 seconds slower.
 - Smoke test: `node tools/smoke.js "home,map,career/nurse,state" "CA,TX"` (needs Playwright).
 
 ## Research pipeline (one state per run)

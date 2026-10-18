@@ -13,7 +13,10 @@ no server and no database. GitHub Pages serves the repo as-is.
 
 ```
 fosteringpathsproject/
-  index.html                      loads libs, registries, base data, components
+  index.html                      loads libs, registries, base data, then lib/boot.js
+  components/*.jsx, app.jsx       the UI source (edit these)
+  dist/app.js                     compiled components; run `node tools/build.js` after editing any .jsx
+                                  (lib/boot.js falls back to in-browser Babel when dist/app.js is missing)
   lib/*.js                        registries + loader (do not edit for data work)
   data/careers/<id>.js            40 careers (window.registerCareer)
   data/programs.js                legacy curated CA Inland-SoCal programs (keep)
@@ -37,6 +40,7 @@ fosteringpathsproject/
   tools/gen_outlook.py            national outlook from the BLS employment matrix
   tools/import_state_json.py      research report (JSON block) -> state guide, scholarships, resources
   tools/smoke.js                  headless route check (Playwright)
+  tools/build.js                  compiles the JSX sources to dist/app.js (esbuild)
 ```
 
 `<ST>` is the two-letter USPS code in upper case (`CA`, `TX`, `DC`).
@@ -62,7 +66,9 @@ matters less than correctness. National files load on every page.
    it was assigned. Shared files (`index.html`, `lib/*`, `components/*`) are
    edited only by the integrator.
 6. **Validate.** `node tools/validate.js` must pass. It checks schema, id
-   uniqueness, lat/lng ranges, URL shape, and that referenced career ids exist.
+   uniqueness, lat/lng ranges, URL shape, that referenced career ids exist, and
+   that `dist/app.js` is current. After editing any `.jsx` file run
+   `node tools/build.js` (needs esbuild: `npm i -D esbuild`) and commit `dist/`.
 
 ## Schemas
 

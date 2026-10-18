@@ -29,10 +29,9 @@
 </svg>
 </template>
 
-<!-- React + Babel -->
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<!-- React (production builds). Babel standalone is loaded by lib/boot.js only if dist/app.js is missing. -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
 
 <!-- Leaflet (map) -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH" crossorigin="anonymous"></script>
@@ -93,21 +92,8 @@
 <script src="data/states/index.js"></script>
 <script src="lib/state-loader.js"></script>
 
-<!-- Components -->
-<script type="text/babel" src="components/shell.jsx"></script>
-<script type="text/babel" src="components/location.jsx"></script>
-<script type="text/babel" src="components/resources.jsx"></script>
-<script type="text/babel" src="components/scholarships.jsx"></script>
-<script type="text/babel" src="components/stateguide.jsx"></script>
-<script type="text/babel" src="components/start.jsx"></script>
-<script type="text/babel" src="components/faq.jsx"></script>
-<script type="text/babel" src="components/home.jsx"></script>
-<script type="text/babel" src="components/pages.jsx"></script>
-<script type="text/babel" src="components/school.jsx"></script>
-<script type="text/babel" src="components/plan.jsx"></script>
-<script type="text/babel" src="components/wizard.jsx"></script>
-<script type="text/babel" src="components/map.jsx"></script>
-<script type="text/babel" src="components/apprenticeships.jsx"></script>
-<script type="text/babel" src="app.jsx"></script>
+<!-- Components: compiled by tools/build.js into dist/app.js (lib/boot.js falls back to in-browser Babel) -->
+<script src="lib/jsx-files.js"></script>
+<script src="lib/boot.js"></script>
 </body>
 </html>

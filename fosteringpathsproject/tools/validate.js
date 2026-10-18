@@ -209,6 +209,23 @@ for (const f of files) {
   }
 }
 
+// ---------- compiled components up to date? ----------
+try {
+  const crypto = require("crypto");
+  const list = fs.readFileSync(path.join(ROOT, "lib", "jsx-files.js"), "utf8");
+  const jsx = [...list.matchAll(/"([^"]+\.jsx)"/g)].map(m => m[1]);
+  const buildPath = path.join(ROOT, "dist", "build.json");
+  if (!fs.existsSync(buildPath)) {
+    warn("dist/app.js", "not built; run `node tools/build.js` (the site falls back to in-browser Babel, which is slower)");
+  } else {
+    const built = JSON.parse(fs.readFileSync(buildPath, "utf8")).files || {};
+    for (const f of jsx) {
+      const h = crypto.createHash("sha1").update(fs.readFileSync(path.join(ROOT, f), "utf8")).digest("hex");
+      if (built[f] !== h) err("dist/app.js", `stale: ${f} changed since the last build; run \`node tools/build.js\``);
+    }
+  }
+} catch (e) { warn("dist/app.js", "could not check build freshness: " + e.message); }
+
 // ---------- report ----------
 const rel = (f) => path.relative(ROOT, f);
 if (warnings.length) {
