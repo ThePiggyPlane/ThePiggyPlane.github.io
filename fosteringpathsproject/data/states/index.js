@@ -160,7 +160,7 @@ window.STATE_INDEX = {
   ],
   "counts": {
    "programs": 3671,
-   "resources": 183,
+   "resources": 180,
    "scholarships": 14,
    "guide": true,
    "apprenticeships": 907,
@@ -179,7 +179,7 @@ window.STATE_INDEX = {
    "Imperial",
    "Sierra"
   ],
-  "bytes": 2773311
+  "bytes": 2769087
  },
  "CO": {
   "name": "Colorado",

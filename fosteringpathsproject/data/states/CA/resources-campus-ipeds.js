@@ -1791,34 +1791,6 @@ window.registerResources([
   "lng": -117.02341
  },
  {
-  "id": "ca-campus-495271-nextup",
-  "name": "California Indian Nations College NextUp / foster youth program",
-  "org": "California Indian Nations College",
-  "category": "campus",
-  "state": "CA",
-  "county": "Riverside",
-  "city": "Palm Desert",
-  "region": "Inland Empire",
-  "address": "75080 Frank Sinatra Dr, Ste 222, Palm Desert, CA 92211",
-  "url": "https://cincollege.org/",
-  "phone": "(760) 933-9833",
-  "serves": "Current and former foster youth (in care in any state on or after your 13th birthday) enrolling at this college, first enrolling before 26.",
-  "ages": "to 26",
-  "provides": "NextUp runs at all 115 California community colleges: case management, priority registration, book and transportation help, emergency housing grants, food support, career advising. Details vary by campus.",
-  "howToStart": "Call the main number and ask for the EOPS or NextUp office, or find the campus foster youth liaison in the statewide FYSI directory. Bring your foster care verification letter.",
-  "notes": "Campus office contact not yet verified by Fostering Paths; the college's main number and website are from federal records (IPEDS 2024).",
-  "tags": [
-   "nextup",
-   "eops",
-   "community-college",
-   "campus-contact-unverified"
-  ],
-  "verified": "2026-10",
-  "source": "ipeds-2024 + statewide program pages (see CA guide)",
-  "lat": 33.77373,
-  "lng": -116.35336
- },
- {
   "id": "ca-campus-110510-foster-youth-program",
   "name": "California State University-San Bernardino foster youth program (Guardian Scholars or similar)",
   "org": "California State University-San Bernardino",
@@ -2574,34 +2546,6 @@ window.registerResources([
   "lng": -118.29217
  },
  {
-  "id": "ca-campus-117803-nextup",
-  "name": "Los Angeles County College of Nursing and Allied Health NextUp / foster youth program",
-  "org": "Los Angeles County College of Nursing and Allied Health",
-  "category": "campus",
-  "state": "CA",
-  "county": "Los Angeles",
-  "city": "Los Angeles",
-  "region": "Los Angeles",
-  "address": "1237 N. Mission Rd., Los Angeles, CA 90033",
-  "url": "https://dhs.lacounty.gov/college-of-nursing-and-allied-health/",
-  "phone": "(323) 409-5911",
-  "serves": "Current and former foster youth (in care in any state on or after your 13th birthday) enrolling at this college, first enrolling before 26.",
-  "ages": "to 26",
-  "provides": "NextUp runs at all 115 California community colleges: case management, priority registration, book and transportation help, emergency housing grants, food support, career advising. Details vary by campus.",
-  "howToStart": "Call the main number and ask for the EOPS or NextUp office, or find the campus foster youth liaison in the statewide FYSI directory. Bring your foster care verification letter.",
-  "notes": "Campus office contact not yet verified by Fostering Paths; the college's main number and website are from federal records (IPEDS 2024).",
-  "tags": [
-   "nextup",
-   "eops",
-   "community-college",
-   "campus-contact-unverified"
-  ],
-  "verified": "2026-10",
-  "source": "ipeds-2024 + statewide program pages (see CA guide)",
-  "lat": 34.06265,
-  "lng": -118.21185
- },
- {
   "id": "ca-campus-117690-nextup",
   "name": "Los Angeles Harbor College NextUp / foster youth program",
   "org": "Los Angeles Harbor College",
@@ -2796,34 +2740,6 @@ window.registerResources([
   "source": "ipeds-2024 + statewide program pages (see CA guide)",
   "lat": 34.14455,
   "lng": -118.1182
- },
- {
-  "id": "ca-campus-484233-nextup",
-  "name": "Tri-Community Adult Education NextUp / foster youth program",
-  "org": "Tri-Community Adult Education",
-  "category": "campus",
-  "state": "CA",
-  "county": "Los Angeles",
-  "city": "Covina",
-  "region": "Los Angeles",
-  "address": "231 Stephanie Drive, Covina, CA 91722",
-  "url": "https://www.tri-communityadulted.org/",
-  "phone": "(626) 974-4200",
-  "serves": "Current and former foster youth (in care in any state on or after your 13th birthday) enrolling at this college, first enrolling before 26.",
-  "ages": "to 26",
-  "provides": "NextUp runs at all 115 California community colleges: case management, priority registration, book and transportation help, emergency housing grants, food support, career advising. Details vary by campus.",
-  "howToStart": "Call the main number and ask for the EOPS or NextUp office, or find the campus foster youth liaison in the statewide FYSI directory. Bring your foster care verification letter.",
-  "notes": "Campus office contact not yet verified by Fostering Paths; the college's main number and website are from federal records (IPEDS 2024).",
-  "tags": [
-   "nextup",
-   "eops",
-   "community-college",
-   "campus-contact-unverified"
-  ],
-  "verified": "2026-10",
-  "source": "ipeds-2024 + statewide program pages (see CA guide)",
-  "lat": 34.10439,
-  "lng": -117.8871
  },
  {
   "id": "ca-campus-110246-nextup",

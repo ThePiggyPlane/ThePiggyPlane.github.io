@@ -92,8 +92,8 @@ def main():
             continue  # UCSF / law: graduate-only
         if norm(name) in have:
             continue
-        if re.search(r"Chancellor|System Administration|Central Office|Adult School", name):
-            continue
+        if re.search(r"Chancellor|System Administration|Central Office|Adult School|Adult Education|Nursing and Allied Health|Indian Nations", name):
+            continue  # not one of the 115 California community colleges
         if re.search(r"District|System Office", name) and name not in ("El Camino Community College District", "Mt San Jacinto Community College District"):
             continue  # district offices; their colleges have their own records
         if int(r.UNITID) == 110662:   # UCLA: verified record already in resources-campus-4yr.js
