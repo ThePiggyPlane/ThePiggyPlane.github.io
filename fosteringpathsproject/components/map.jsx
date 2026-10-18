@@ -270,7 +270,7 @@ const CpMap = ({ onOpenCareer, onPickLocation }) => {
         <div class="cp-map-popup">
           <div class="cp-map-popup-tier" style="color:${escAttr(color)}">${esc(tierLabel)}${g.forProfit ? " · for-profit" : ""}</div>
           <div class="cp-map-popup-name">${esc(g.org)}</div>
-          <div class="cp-map-popup-meta">${esc(g.loc || "")} · ${count} program${count === 1 ? "" : "s"}${g.url ? ` · <a href="${escAttr(g.url)}" target="_blank" rel="noopener">site →</a>` : ""}</div>
+          <div class="cp-map-popup-meta">${esc(g.loc || "")} · ${count} program${count === 1 ? "" : "s"}${g.url ? ` · <a href="${escAttr(g.url)}" target="_blank" rel="noopener">site →</a>` : ""} · <a href="${escAttr(window.schoolKey(loc.state, g.programs[0].p.inst || g.org))}">school page →</a></div>
           <ul class="cp-map-popup-progs">${progsHtml}${more}</ul>
         </div>`;
       const radius = Math.min(13, 7 + Math.round(Math.log2(count + 1)));

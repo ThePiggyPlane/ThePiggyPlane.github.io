@@ -207,8 +207,10 @@ const byDistance = (a, b) => (a.miles ?? 1e9) - (b.miles ?? 1e9);
 
 const fmtK = (n) => n == null ? null : "$" + Math.round(n / 1000) + "K";
 
-const CpProgramCard = ({ p }) => {
+const CpProgramCard = ({ p, hideSchool }) => {
   const tierLabels = window.APP_META.tierLabels;
+  const sep = p.name.indexOf(" — ");
+  const title = hideSchool && sep > 0 ? p.name.slice(sep + 3) : p.name;
   const e = p.earnings || null;
   const earnLine = e && (e.yr1 || e.yr4) ? (
     <div className="cp-prog-earn">
@@ -223,7 +225,7 @@ const CpProgramCard = ({ p }) => {
       <div className="cp-prog-head">
         <div>
           <div className="cp-prog-tier">{tierLabels[p.tier] || p.tier}{p.forProfit ? <span className="cp-badge warn" title="For-profit school: compare cost and job placement rates carefully before enrolling">for-profit</span> : null}{p.curated ? <span className="cp-badge good">verified listing</span> : null}{p.housing ? <span className="cp-badge info" title="This school has on-campus housing">campus housing</span> : null}{p.childcare ? <span className="cp-badge info" title="On-campus childcare available">childcare</span> : null}</div>
-          <div className="cp-prog-name">{p.name}</div>
+          <div className="cp-prog-name">{title}</div>
           <div className="cp-prog-loc">{p.miles != null && <strong>{fmtMiles(p.miles)} · </strong>}{p.loc}{p.region && p.region !== p.loc ? `, ${p.region}` : ""} · {p.duration}{p.grads ? ` · ${p.grads} grads in 2023-24` : ""}{p.gradRate != null && p.tier !== "cc" ? <span title="Share of first-time, full-time students who finish within 150% of the normal time (transfers out are not counted)">{` · ${p.gradRate}% graduate`}</span> : ""}</div>
           {earnLine}
         </div>
@@ -239,6 +241,7 @@ const CpProgramCard = ({ p }) => {
       <div className="cp-prog-action">
         <span>Next: {p.action}{p.applFee === 0 ? " (no application fee)" : ""}</span>
         <span className="cp-prog-links">
+          {!hideSchool && p.inst && p.state && <a href={window.schoolKey(p.state, p.inst)} className="cp-prog-link">This school →</a>}
           {p.phone && <a href={"tel:" + String(p.phone).replace(/[^0-9+]/g, "")} className="cp-prog-link">{p.phone}</a>}
           {p.url && <a href={p.url} target="_blank" rel="noopener" className="cp-prog-link">Visit site →</a>}
         </span>

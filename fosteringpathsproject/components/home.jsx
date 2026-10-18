@@ -122,7 +122,7 @@ const CpHome = ({ onOpen, onWizard, saved, toggleSave, go, onPickLocation }) => 
             <div className="cp-sec-head"><h2>Closest schools to you</h2><button className="cp-link" onClick={() => go("map")}>See the map →</button></div>
             <div className="cp-near-list">
               {nearest.map(x => (
-                <button key={x.inst + x.loc} className="cp-near" onClick={() => go("map")}>
+                <button key={x.inst + x.loc} className="cp-near" onClick={() => { window.location.hash = window.schoolKey(loc.state, x.inst); }}>
                   <span className="cp-near-dist">{x.miles < 10 ? x.miles.toFixed(1) : Math.round(x.miles)} mi</span>
                   <span className="cp-near-name">{x.inst}</span>
                   <span className="cp-near-meta">{tierLabels[x.tier] || x.tier}{x.forProfit ? " · for-profit" : ""} · {x.loc} · {x.n} program{x.n === 1 ? "" : "s"} for these careers</span>

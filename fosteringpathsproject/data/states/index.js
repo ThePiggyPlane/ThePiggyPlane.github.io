@@ -142,7 +142,7 @@ window.STATE_INDEX = {
    "Sierra Vista",
    "Show Low"
   ],
-  "bytes": 556450
+  "bytes": 555255
  },
  "CA": {
   "name": "California",
@@ -178,7 +178,7 @@ window.STATE_INDEX = {
    "Imperial",
    "Sierra"
   ],
-  "bytes": 2633035
+  "bytes": 2631025
  },
  "CO": {
   "name": "Colorado",
@@ -214,7 +214,7 @@ window.STATE_INDEX = {
    "Gunnison County",
    "Alamosa"
   ],
-  "bytes": 556687
+  "bytes": 555477
  },
  "CT": {
   "name": "Connecticut",
@@ -277,7 +277,7 @@ window.STATE_INDEX = {
    "Dover",
    "Seaford"
   ],
-  "bytes": 95748
+  "bytes": 95628
  },
  "FL": {
   "name": "Florida",
@@ -325,7 +325,7 @@ window.STATE_INDEX = {
    "Taylor County",
    "Wildwood"
   ],
-  "bytes": 1480453
+  "bytes": 1479463
  },
  "GA": {
   "name": "Georgia",
@@ -374,7 +374,7 @@ window.STATE_INDEX = {
    "White County",
    "Toccoa"
   ],
-  "bytes": 924473
+  "bytes": 924443
  },
  "HI": {
   "name": "Hawaii",
@@ -396,7 +396,7 @@ window.STATE_INDEX = {
    "Kapaa",
    "Kahului"
   ],
-  "bytes": 122452
+  "bytes": 122407
  },
  "IA": {
   "name": "Iowa",
@@ -470,7 +470,7 @@ window.STATE_INDEX = {
    "Coeur d'Alene",
    "Burley"
   ],
-  "bytes": 250930
+  "bytes": 250800
  },
  "IL": {
   "name": "Illinois",
@@ -714,7 +714,7 @@ window.STATE_INDEX = {
    "Barnstable Town",
    "Greenfield"
   ],
-  "bytes": 634555
+  "bytes": 634520
  },
  "MD": {
   "name": "Maryland",
@@ -820,7 +820,7 @@ window.STATE_INDEX = {
    "Cadillac",
    "Baraga County"
   ],
-  "bytes": 928875
+  "bytes": 928371
  },
  "MN": {
   "name": "Minnesota",
@@ -905,7 +905,7 @@ window.STATE_INDEX = {
    "Texas County",
    "Vernon County"
   ],
-  "bytes": 602605
+  "bytes": 602375
  },
  "MS": {
   "name": "Mississippi",
@@ -1081,7 +1081,7 @@ window.STATE_INDEX = {
    "Barnes County",
    "Benson County"
   ],
-  "bytes": 170448
+  "bytes": 170353
  },
  "NE": {
   "name": "Nebraska",
@@ -1222,7 +1222,7 @@ window.STATE_INDEX = {
    "Elko",
    "Carson City"
   ],
-  "bytes": 173665
+  "bytes": 173295
  },
  "NY": {
   "name": "New York",
@@ -1328,7 +1328,7 @@ window.STATE_INDEX = {
    "Wilmington",
    "Celina"
   ],
-  "bytes": 1196143
+  "bytes": 1194813
  },
  "OK": {
   "name": "Oklahoma",
@@ -1375,7 +1375,7 @@ window.STATE_INDEX = {
    "Latimer County",
    "Seminole County"
   ],
-  "bytes": 490720
+  "bytes": 490590
  },
  "OR": {
   "name": "Oregon",
@@ -1411,7 +1411,7 @@ window.STATE_INDEX = {
    "Tillamook County",
    "The Dalles"
   ],
-  "bytes": 382619
+  "bytes": 382374
  },
  "PA": {
   "name": "Pennsylvania",
@@ -1520,7 +1520,7 @@ window.STATE_INDEX = {
    "Gaffney",
    "Marion County"
   ],
-  "bytes": 498625
+  "bytes": 498515
  },
  "SD": {
   "name": "South Dakota",
@@ -1673,7 +1673,7 @@ window.STATE_INDEX = {
    "Wood County",
    "Eagle Pass"
   ],
-  "bytes": 1861733
+  "bytes": 1858963
  },
  "UT": {
   "name": "Utah",
@@ -1700,7 +1700,7 @@ window.STATE_INDEX = {
    "Vernal",
    "Heber"
   ],
-  "bytes": 345214
+  "bytes": 345134
  },
  "VA": {
   "name": "Virginia",
@@ -1801,7 +1801,7 @@ window.STATE_INDEX = {
    "Centralia",
    "Longview"
   ],
-  "bytes": 650129
+  "bytes": 648014
  },
  "WI": {
   "name": "Wisconsin",
@@ -1846,7 +1846,7 @@ window.STATE_INDEX = {
    "Beaver Dam",
    "Shawano"
   ],
-  "bytes": 657901
+  "bytes": 657726
  },
  "WV": {
   "name": "West Virginia",
@@ -1910,6 +1910,6 @@ window.STATE_INDEX = {
    "Goshen County",
    "Rock Springs"
   ],
-  "bytes": 100684
+  "bytes": 100449
  }
 };

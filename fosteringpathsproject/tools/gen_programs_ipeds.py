@@ -116,6 +116,14 @@ def cbsa_short_names(cbsa):
     return out
 
 
+def carnegie(inst):
+    """Carnegie basic classification (C21BASIC); 1-14 are associate's colleges."""
+    try:
+        return int(inst.C21BASIC)
+    except Exception:
+        return -1
+
+
 def read_csv(path):
     try:
         return pd.read_csv(path, encoding="utf-8-sig", low_memory=False)
@@ -335,6 +343,8 @@ def main():
             tier = "uc"
         elif sector == 4:
             tier = "cc"
+        elif sector == 1 and 1 <= carnegie(inst) <= 14:
+            tier = "cc"   # associate's-dominant public college that also grants a few bachelor's degrees
         elif sector == 1:
             tier = "public4"
         elif sector in (2, 5):

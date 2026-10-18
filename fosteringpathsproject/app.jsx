@@ -45,8 +45,9 @@ const SIMPLE_VIEWS = new Set(["home","map","apprenticeships","money","week","abo
 const parseHash = () => {
   const h = (window.location.hash || "").replace(/^#\/?/, "");
   if (!h) return { view: "home" };
-  const [view, id] = h.split("/");
+  const [view, id, ...rest] = h.split("/");
   if (view === "career" && id) return { view: "career", careerId: decodeURIComponent(id) };
+  if (view === "school" && id && rest.length) return { view: "school", st: id.toUpperCase(), inst: decodeURIComponent(rest.join("/")) };
   if (view === "aid"    && id) return { view: "aid",    aidId:    decodeURIComponent(id) };
   if (SIMPLE_VIEWS.has(view))  return { view };
   // result has transient state (quiz answers); fall back to home on refresh
@@ -57,6 +58,7 @@ const buildHash = (route) => {
   const { view, careerId, aidId } = route;
   if (!view || view === "home")          return "#/";
   if (view === "career" && careerId)     return "#/career/" + encodeURIComponent(careerId);
+  if (view === "school" && route.inst)   return "#/school/" + route.st + "/" + encodeURIComponent(route.inst);
   if (view === "aid"    && aidId)        return "#/aid/"    + encodeURIComponent(aidId);
   if (view === "result")                 return "#/";   // not addressable; quiz state is transient
   return "#/" + view;
@@ -113,6 +115,9 @@ const App = () => {
   switch (route.view) {
     case "career":
       view = <CpCareer careerId={route.careerId} saved={saved} toggleSave={toggleSave} onBack={() => go("home")} onOpenAid={onOpenAid} />;
+      break;
+    case "school":
+      view = <CpSchool st={route.st} inst={route.inst} go={go} saved={saved} toggleSave={toggleSave} />;
       break;
     case "money":
       view = <CpMoney onOpenAid={onOpenAid} profile={profile} setProfile={setProfile} go={go} />;
