@@ -752,3 +752,4 @@ a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-ra
 .cp-prog-real span { max-width: 150px; white-space: normal; line-height: 1.2; }
 .cp-crisis { font-size: 14px; }
 .cp-crisis a { font-weight: 600; white-space: nowrap; }
+.cp-step-links .cp-link { margin-left: 0; font-size: inherit; }
