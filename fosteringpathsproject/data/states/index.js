@@ -143,6 +143,7 @@ window.STATE_INDEX = {
  "CA": {
   "name": "California",
   "files": [
+   "guide.js",
    "scholarships.js",
    "resources-campus-4yr.js",
    "resources-county-north.js",
@@ -152,9 +153,9 @@ window.STATE_INDEX = {
   ],
   "counts": {
    "programs": 3671,
-   "resources": 28,
-   "scholarships": 5,
-   "guide": false,
+   "resources": 42,
+   "scholarships": 14,
+   "guide": true,
    "apprenticeships": 907,
    "wages": 0
   },
@@ -171,7 +172,7 @@ window.STATE_INDEX = {
    "Imperial",
    "Sierra"
   ],
-  "bytes": 2013253
+  "bytes": 2041419
  },
  "CO": {
   "name": "Colorado",

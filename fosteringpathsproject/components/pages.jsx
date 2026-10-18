@@ -325,9 +325,9 @@ const AID_TOTALS = {
 
 // Which aid IDs each profile status typically qualifies for.
 const AID_FOR_STATUS = {
-  foster:    new Set(["chafee","pell","calgrant","ccpg","nextup","gs","jbay"]),
-  agedout:   new Set(["chafee","pell","calgrant","ccpg","nextup","gs","jbay"]),
-  adopted:   new Set(["chafee","pell","calgrant","ccpg","gs"]),
+  foster:    new Set(["chafee","pell","calgrant","mcs","ccpg","nextup","gs","jbay"]),
+  agedout:   new Set(["chafee","pell","calgrant","mcs","ccpg","nextup","gs","jbay"]),
+  adopted:   new Set(["chafee","pell","calgrant","mcs","ccpg","gs"]),
   probation: new Set(["pell","calgrant","ccpg"]),
   none:      new Set(["pell","calgrant","ccpg"]),
 };
@@ -589,7 +589,7 @@ const CpMoney = ({ onOpenAid, profile, setProfile, go }) => {
   const livingAdd  = { home: 0, ils: 2000, dorms: 16000, solo: 20000 };
   const sticker    = stickers[school] + livingAdd[living];
   const baseAid    = aidStackForProfile(profile, school);
-  const chafeeBonus = (["foster","agedout"].includes(profile.status) && profile.age >= 14 && profile.age <= 23) ? 5000 : 0;
+  const chafeeBonus = (["foster","agedout"].includes(profile.status) && profile.age >= 16 && profile.age <= 25) ? 4500 : 0;
   const aidCovered = Math.min(sticker, baseAid + chafeeBonus);
   const gap        = Math.max(0, sticker - aidCovered);
   const eligibleAid = aid.filter(a => isAidEligible(a.id, profile));
@@ -686,8 +686,8 @@ const STEPS = [
     ],
   },
   {
-    title: "Chafee ETV",
-    body: <>California Chafee Educational and Training Voucher. $5,000 per year for foster youth ages 14–25 enrolled at least half-time. Renewable annually.</>,
+    title: "Chafee Grant (ETV)",
+    body: <>California's Chafee Grant for Foster Youth. $4,500 per year for 2026-27 (program maximum $5,000) for foster youth who were in care between 16 and 18, under 26, enrolled at least half time. One application, valid until 26, first come first served.</>,
     links: [
       { label: "Apply at chafee.csac.ca.gov", href: "https://chafee.csac.ca.gov/" },
     ],
@@ -703,17 +703,19 @@ const STEPS = [
   },
   {
     title: "Contact Guardian Scholars / NextUp",
-    body: <>Foster-youth support programs at most CSU/UC/private campuses (Guardian Scholars) and California community colleges (NextUp). Email or visit before applying to confirm eligibility and ask what your campus offers.</>,
+    body: <>Foster youth support programs at every CSU and UC campus (Guardian Scholars and similar) and at all 115 California community colleges (NextUp). Email or visit before applying to confirm eligibility and ask about housing over breaks, priority registration, and grants.</>,
     links: [
-      { label: "Guardian Scholars campus directory", href: "https://www.csac.ca.gov/foster-youth-services" },
-      { label: "NextUp / Foster Youth Success",      href: "https://www.cccco.edu/About-Us/Chancellors-Office/Divisions/Educational-Services-and-Support/What-we-do/Student-Services/cooperating-agencies/foster-youth-success-initiative" },
-      { label: "JBAY emergency grants",              href: "https://jbaforyouth.org/emergency-grants/" },
+      { label: "CSAC foster youth page",           href: "https://www.csac.ca.gov/foster-youth" },
+      { label: "NextUp (community colleges)",      href: "https://icangotocollege.com/financial-aid/foster-youth-support" },
+      { label: "Campus program search (CCP)",      href: "https://cacollegepathways.org/search/" },
     ],
   },
   {
     title: "Gather documents",
-    body: <>High school transcript, foster-care verification letter (from your social worker or ILP coordinator), Social Security card or number, photo ID. Keep digital copies on your phone.</>,
-    links: [],
+    body: <>High school transcript, foster care verification letter (request it from the Foster Care Ombudsperson, 1-877-846-1602, or your social worker), Social Security card or number, photo ID. Keep digital copies on your phone.</>,
+    links: [
+      { label: "Request a verification letter", href: "https://fosteryouthhelp.ca.gov/verification-request-form/" },
+    ],
   },
 ];
 
