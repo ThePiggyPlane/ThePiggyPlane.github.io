@@ -1,13 +1,13 @@
-// Career detail, Money calculator, First Week, About — secondary pages.
+// Career detail, Money calculator, First Week, About: secondary pages.
 
 // Format an integer with thin spaces for thousands (Wolfram Alpha style: "34 570").
 const fmtNum = (n) => {
-  if (n == null || Number.isNaN(n)) return "—";
+  if (n == null || Number.isNaN(n)) return "n/a";
   return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 };
 const fmtSigned = (n) => (n >= 0 ? "+" + fmtNum(n) : "-" + fmtNum(-n));
 const fmtPct = (n, sign = false) => {
-  if (n == null || Number.isNaN(n)) return "—";
+  if (n == null || Number.isNaN(n)) return "n/a";
   const s = (Math.round(n * 10) / 10).toString();
   return (sign && n >= 0 ? "+" : "") + s + "%";
 };
@@ -41,13 +41,13 @@ const CpDolStats = ({ stats }) => {
       )}
     </>,
   });
-  if (s.fractionPct != null && s.oneInN != null) rows.push({
-    label: "workforce fraction",
+  if (s.oneInN != null) rows.push({
+    label: "how common",
     value: <>
-      <strong>{fmtPct(s.fractionPct)}</strong>
-      <span className="cp-stat-meta"> (1 in {fmtNum(s.oneInN)})</span>
+      <strong>1 in {fmtNum(s.oneInN)} jobs</strong>
+      {s.fractionPct != null && s.fractionPct >= 0.1 && <span className="cp-stat-meta"> ({fmtPct(s.fractionPct)} of all jobs)</span>}
       {s.vsNational != null && (
-        <span className="cp-stat-meta"> ({s.vsNational}× national average)</span>
+        <span className="cp-stat-meta"> ({s.vsNational}× the national concentration)</span>
       )}
     </>,
   });
@@ -75,7 +75,11 @@ const CpDolStats = ({ stats }) => {
   });
   if (s.range80Low != null && s.range80High != null) rows.push({
     label: "80% range",
-    value: <><strong>${fmtNum(s.range80Low)} to ${fmtNum(s.range80High)}</strong> <span className="cp-stat-meta"> per year</span></>,
+    value: <><strong>${fmtNum(s.range80Low)} to ${fmtNum(s.range80High)}</strong> <span className="cp-stat-meta"> per year; new hires usually start near the low end</span></>,
+  });
+  if (s.hourlyMedian != null) rows.push({
+    label: "median hourly",
+    value: <><strong>${s.hourlyMedian.toFixed(2)} an hour</strong></>,
   });
 
   if (rows.length === 0) return null;
@@ -92,7 +96,7 @@ const CpDolStats = ({ stats }) => {
         </tbody>
       </table>
       <figcaption className="cp-dol-cap">
-        ({s.dataYear || 2022} BLS OES — {s.geoLabel || "Riverside–San Bernardino–Ontario MSA"}, with national figures for comparison)
+(BLS Occupational Employment and Wage Statistics, May {s.dataYear || 2025}: {s.geoLabel || "Riverside-San Bernardino-Ontario metro"}, with national figures for comparison. Yearly change is May {(s.dataYear || 2025) - 1} to May {s.dataYear || 2025}.)
       </figcaption>
     </figure>
   );
@@ -317,12 +321,16 @@ const CpCareer = ({ careerId, saved, toggleSave, onBack, onOpenAid }) => {
   const inState = sortPrograms(window.PROGRAMS.forCareer(career.id, { state: loc.state }));
   const here = loc.region ? inState.filter(p => p.region === loc.region) : inState;
   const elsewhere = loc.region ? inState.filter(p => p.region !== loc.region) : [];
-  const wages = window.WAGES.forCareer(loc.state, career.id);
   const guide = window.STATE_GUIDES.get(loc.state);
+  // Wages: the metro or state figures from the BLS files when the state has
+  // them, else the career file's California (Inland Empire) numbers.
+  const local = window.WAGES.local(career.id, loc);
+  const nat = window.WAGES.national(career.id) || (career.dolStats ? { medianWage: career.dolStats.nationalMedianWage, employed: career.dolStats.nationalEmployed, yearlyChangePct: career.dolStats.nationalGrowthPct } : null);
+  const wages = local ? local.rec : null;
   const medianK = wages && wages.medianWage ? Math.round(wages.medianWage / 1000) : career.salary.median;
-  const payLabel = wages && wages.medianWage ? `median pay, ${loc.state}` : "median pay, CA";
+  const payLabel = wages && wages.medianWage ? (local.level === "region" ? `median pay, ${loc.region}` : `median pay, ${stateName}`) : "median pay, CA";
   const dolStats = wages && wages.medianWage
-    ? { nationalEmployed: career.dolStats && career.dolStats.nationalEmployed, nationalMedianWage: career.dolStats && career.dolStats.nationalMedianWage, dataYear: (window.WAGES.get(loc.state) || {}).dataYear || 2024, ...wages, geoLabel: (window.WAGES.get(loc.state) || {}).geo || stateName }
+    ? { ...wages, nationalEmployed: nat && nat.employed, nationalMedianWage: nat && nat.medianWage, nationalGrowthPct: nat && nat.yearlyChangePct, dataYear: local.dataYear, geoLabel: local.geo }
     : career.dolStats;
   const steps = guide && guide.firstWeek && guide.firstWeek.length ? guide.firstWeek.slice(0, 4).map(s => s.title)
     : (loc.state === "CA" ? ["FAFSA / CADAA", "Chafee ETV app", "CCCApply or Cal State Apply", "Email Guardian Scholars"]
@@ -339,12 +347,15 @@ const CpCareer = ({ careerId, saved, toggleSave, onBack, onOpenAid }) => {
             <div><div className="cp-stat">${medianK}K</div><div className="cp-stat-lbl">{payLabel}</div></div>
             <div><div className="cp-stat">{career.length}</div><div className="cp-stat-lbl">time</div></div>
             <div><div className="cp-stat">{career.demand}</div><div className="cp-stat-lbl">demand</div></div>
-            <div><div className="cp-stat">{(career.grads2yr || '—').split(' ')[0]}</div><div className="cp-stat-lbl">grads employed</div></div>
+            <div><div className="cp-stat">{(career.grads2yr || 'n/a').split(' ')[0]}</div><div className="cp-stat-lbl">grads employed</div></div>
           </div>
 
           {dolStats && (loc.state === "CA" || (wages && wages.medianWage)) && <CpDolStats stats={dolStats} />}
-          {loc.state !== "CA" && !(wages && wages.medianWage) && career.dolStats && career.dolStats.nationalMedianWage && (
-            <p className="cp-filter-meta">Pay shown is California's. Nationally, the median is ${fmtNum(career.dolStats.nationalMedianWage)} a year{career.dolStats.nationalEmployed ? ` across ${fmtNum(career.dolStats.nationalEmployed)} jobs` : ""} (BLS, {career.dolStats.dataYear || 2025}). {stateName} figures are being added.</p>
+          {!(wages && wages.medianWage) && loc.state !== "CA" && status !== "loading" && nat && nat.medianWage && (
+            <p className="cp-filter-meta">Pay shown is California's. Nationally, the median is ${fmtNum(nat.medianWage)} a year{nat.employed ? ` across ${fmtNum(nat.employed)} jobs` : ""} (BLS, 2025). BLS does not publish a {stateName} figure for this job.</p>
+          )}
+          {wages && wages.medianWage && local.level === "state" && loc.region && (
+            <p className="cp-filter-meta">BLS does not publish {loc.region} figures for this job; statewide {stateName} numbers are shown.</p>
           )}
 
           <CpCareerAbout career={career} onOpen={(id) => { window.location.hash = "#/career/" + encodeURIComponent(id); }} />
@@ -864,15 +875,15 @@ const CpAbout = () => {
         <div><strong>Cal Grant</strong>California Student Aid Commission, current cycle</div>
         <div><strong>Pell Grant</strong>U.S. Dept. of Education, 2025–26 schedule</div>
         <div><strong>Chafee ETV</strong>CSAC Chafee program, current annual maximum</div>
-        <div><strong>Salary &amp; employment</strong>U.S. Bureau of Labor Statistics OEWS, 2025 release (Riverside–San Bernardino–Ontario MSA), via the BLS public API</div>
+        <div><strong>Pay and employment</strong>U.S. Bureau of Labor Statistics, Occupational Employment and Wage Statistics, May 2025 state and metro tables (with May 2024 for the yearly change). Every state and about 390 metro areas. The figures are for all workers in the job, not just new graduates; new hires usually start near the low end of the 80% range.</div>
         <div><strong>Apprenticeships</strong>CA Division of Apprenticeship Standards public registry</div>
-        <div><strong>Coverage</strong>{Object.keys(window.STATE_INDEX || {}).length} states · {Object.values(window.STATE_INDEX || {}).reduce((n, s) => n + (s.counts ? s.counts.programs : 0), 0).toLocaleString()} programs · {Object.values(window.STATE_INDEX || {}).reduce((n, s) => n + (s.counts ? s.counts.resources : 0), 0).toLocaleString()} support resources · {Object.values(window.STATE_INDEX || {}).filter(s => s.counts && s.counts.guide).length} state guides</div>
+        <div><strong>Coverage</strong>{Object.keys(window.STATE_INDEX || {}).length} states · {Object.values(window.STATE_INDEX || {}).reduce((n, s) => n + (s.counts ? s.counts.programs : 0), 0).toLocaleString()} programs · {Object.values(window.STATE_INDEX || {}).reduce((n, s) => n + (s.counts ? s.counts.resources : 0), 0).toLocaleString()} support resources · {Object.values(window.STATE_INDEX || {}).filter(s => s.counts && s.counts.guide).length} state guides · wages for {Object.values(window.STATE_INDEX || {}).filter(s => s.counts && s.counts.wages).length} states</div>
         <div><strong>Updated</strong>October 2026 · v2.0</div>
       </div>
       <p>Something wrong or missing? Tell Tyler through the contact form at <a href="https://www.tylerjohnpeters.com/#contact">tylerjohnpeters.com</a>. A wrong phone number gets fixed the same week.</p>
 
       <h2 className="cp-h2">Your privacy</h2>
-      <p>This site stores your aid-quiz answers and saved careers in your own browser only — nothing is sent to a server. Anyone with access to this browser can see those answers, so if you're on a shared or public computer, clear your data before handing the device back.</p>
+      <p>This site stores your aid-quiz answers and saved careers in your own browser only. Nothing is sent to a server. Anyone with access to this browser can see those answers, so if you're on a shared or public computer, clear your data before handing the device back.</p>
       <p>
         <button className="cp-btn-ghost" onClick={clearData} disabled={cleared}>
           {cleared ? "✓ Data cleared" : "Clear my saved data"}

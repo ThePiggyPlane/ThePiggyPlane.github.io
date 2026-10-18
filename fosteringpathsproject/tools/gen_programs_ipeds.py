@@ -98,6 +98,24 @@ PELL = 7395
 ETV = 5000
 
 
+def cbsa_short_names(cbsa):
+    """CBSA code -> the short metro name used as a region label (shared with gen_wages_oes.py)."""
+    cbsa = cbsa.copy()
+    cbsa["CBSA Code"] = pd.to_numeric(cbsa["CBSA Code"], errors="coerce")
+    out = {}
+    for _, r in cbsa.dropna(subset=["CBSA Code"]).iterrows():
+        title = str(r["CBSA Title"]).split(",")[0]
+        parts = title.split("-")
+        short = parts[0] if len(parts) == 1 or len(parts[0]) > 4 else "-".join(parts[:2])
+        # A few CBSAs lead with a small place; use the name people say.
+        short = {"Kiryas Joel": "Poughkeepsie", "Urban Honolulu": "Honolulu", "Louisville/Jefferson County": "Louisville",
+                 "Nashville": "Nashville", "Crestview": "Fort Walton Beach", "Deltona": "Daytona Beach", "North Port": "Sarasota",
+                 "Homosassa Springs": "Citrus County", "Sebastian": "Vero Beach", "Palm Bay": "Melbourne", "Myrtle Beach": "Myrtle Beach",
+                 "Hilton Head Island": "Hilton Head", "Bremerton": "Bremerton", "Kennewick": "Tri-Cities", "Riverside": "Inland Empire"}.get(short, short)
+        out[int(r["CBSA Code"])] = short
+    return out
+
+
 def read_csv(path):
     try:
         return pd.read_csv(path, encoding="utf-8-sig", low_memory=False)
@@ -270,19 +288,7 @@ def main():
                         earn[(uid, str(pr.get("code")).zfill(4), lvl)] = {k: v for k, v in rec.items() if v is not None}
     SC_LEVELS = {"cert": [1], "assoc": [2], "bach": [3], "grad": [5, 6, 7, 4, 8]}
 
-    # CBSA code -> short metro name
-    cbsa["CBSA Code"] = pd.to_numeric(cbsa["CBSA Code"], errors="coerce")
-    cbsa_name = {}
-    for _, r in cbsa.dropna(subset=["CBSA Code"]).iterrows():
-        title = str(r["CBSA Title"]).split(",")[0]
-        parts = title.split("-")
-        short = parts[0] if len(parts) == 1 or len(parts[0]) > 4 else "-".join(parts[:2])
-        # A few CBSAs lead with a small place; use the name people say.
-        short = {"Kiryas Joel": "Poughkeepsie", "Urban Honolulu": "Honolulu", "Louisville/Jefferson County": "Louisville",
-                 "Nashville": "Nashville", "Crestview": "Fort Walton Beach", "Deltona": "Daytona Beach", "North Port": "Sarasota",
-                 "Homosassa Springs": "Citrus County", "Sebastian": "Vero Beach", "Palm Bay": "Melbourne", "Myrtle Beach": "Myrtle Beach",
-                 "Hilton Head Island": "Hilton Head", "Bremerton": "Bremerton", "Kennewick": "Tri-Cities", "Riverside": "Inland Empire"}.get(short, short)
-        cbsa_name[int(r["CBSA Code"])] = short
+    cbsa_name = cbsa_short_names(cbsa)
 
     # CIP lookup
     cip_info = {}

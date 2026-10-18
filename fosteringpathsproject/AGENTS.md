@@ -26,8 +26,13 @@ fosteringpathsproject/
   data/states/<ST>/resources*.js  window.registerResources([...])  (several files allowed)
   data/states/<ST>/programs*.js   window.registerPrograms({...})   (ipeds-generated + curated)
   data/states/<ST>/apprenticeships*.js  window.registerApprenticeships([...])
+  data/states/<ST>/wages.js       window.registerWages({...})  generated from BLS OES (tools/gen_wages_oes.py)
+  data/national/wages.js          national BLS figures for comparison (generated)
+  data/onet.js                    career descriptions from O*NET (tools/gen_onet.py)
   tools/validate.js               node tools/validate.js  -> must print OK before committing
   tools/build-index.js            regenerates data/states/index.js from the files on disk
+  tools/gen_programs_ipeds.py     programs for every state from IPEDS + College Scorecard
+  tools/gen_wages_oes.py          wages for every state and metro from the BLS OES tables
 ```
 
 `<ST>` is the two-letter USPS code in upper case (`CA`, `TX`, `DC`).
@@ -186,6 +191,18 @@ added.
 Same shape as `data/apprenticeships.js` (DAS fields). Minimum for non-CA
 records: `id` (prefix `<st>-`), `occupation`, `sponsor`, `state`, `loc`,
 `address` or `lat/lng`, `websiteUrl` or `phone` or `email`, `verified`.
+
+### Wages  (`window.registerWages({ ... })`) — generated, do not hand-edit
+
+```js
+{
+  state: "TX", geo: "Texas", dataYear: 2025, source: "BLS Occupational Employment and Wage Statistics, May 2025 (...)", verified: "2026-10",
+  careers: { nurse: { employed, fractionPct, oneInN, vsNational, medianWage, range50Low, range50High, range80Low, range80High, hourlyMedian, yearlyChange, yearlyChangePct, wageChange, wageChangePct } },
+  regions: { "Houston": { geo: "Houston-Pasadena-The Woodlands metro", careers: { ... } } }   // keys match program regions
+}
+```
+`data/national/wages.js` uses `state: "US"`. Suppressed BLS cells are simply absent; never estimate them.
+Regenerate with `python3 tools/gen_wages_oes.py --csv <filtered OES csv dir> --cbsa <cbsa_list1_2023.xlsx>` after a new May release.
 
 ## Career ids (for `careers: [...]` and validation)
 

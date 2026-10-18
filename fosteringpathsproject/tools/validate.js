@@ -45,7 +45,7 @@ for (const f of walk(path.join(DATA, "careers"))) {
 
 // ---------- load each file in a sandbox ----------
 const allIds = new Map(); // id -> file
-const counts = { programs: 0, resources: 0, scholarships: 0, guides: 0, apprenticeships: 0, careers: 0 };
+const counts = { programs: 0, resources: 0, scholarships: 0, guides: 0, apprenticeships: 0, careers: 0, wages: 0 };
 const isUrl = (u) => typeof u === "string" && /^https?:\/\/[^\s"']+$/i.test(u);
 const isVerified = (v) => typeof v === "string" && /^\d{4}-(0[1-9]|1[0-2])$/.test(v);
 const takeId = (f, id, kind) => {
@@ -140,6 +140,34 @@ const checkApprenticeship = (f, a, legacy) => {
   if (a.lat != null && (!latOk(a.lat) || !lngOk(a.lng))) err(f, `apprenticeship ${a.id}: lat/lng out of range`);
 };
 
+const WAGE_NUM = ["employed","fractionPct","oneInN","vsNational","medianWage","range50Low","range50High","range80Low","range80High","hourlyMedian","yearlyChange","yearlyChangePct","wageChange","wageChangePct"];
+const checkWageCareers = (f, where, careers) => {
+  if (!careers || typeof careers !== "object") { err(f, `${where}: careers object required`); return; }
+  for (const [cid, rec] of Object.entries(careers)) {
+    if (!careerIds.has(cid)) err(f, `${where}: unknown career "${cid}"`);
+    if (!rec || typeof rec !== "object") { err(f, `${where}/${cid}: record must be an object`); continue; }
+    for (const [k, v] of Object.entries(rec)) {
+      if (!WAGE_NUM.includes(k)) warn(f, `${where}/${cid}: unknown wage field "${k}"`);
+      else if (typeof v !== "number" || Number.isNaN(v)) err(f, `${where}/${cid}: ${k} must be a number`);
+    }
+    if (rec.medianWage != null && (rec.medianWage < 15000 || rec.medianWage > 400000)) warn(f, `${where}/${cid}: medianWage ${rec.medianWage} looks wrong`);
+    counts.wages++;
+  }
+};
+const checkWages = (f, w) => {
+  if (!w || typeof w !== "object") { err(f, "registerWages expects an object"); return; }
+  if (!w.state || !(STATES.has(w.state) || w.state === "US")) err(f, `wages: bad state "${w.state}"`);
+  if (typeof w.dataYear !== "number") err(f, `wages ${w.state}: dataYear (number) required`);
+  if (!w.source) err(f, `wages ${w.state}: source required`);
+  if (!isVerified(w.verified)) err(f, `wages ${w.state}: verified "YYYY-MM" required`);
+  checkWageCareers(f, `wages ${w.state}`, w.careers);
+  for (const [region, r] of Object.entries(w.regions || {})) {
+    if (!r || !r.geo) err(f, `wages ${w.state}/${region}: geo label required`);
+    if (w.state === "CA" && !CA_REGIONS.has(region)) warn(f, `wages CA: non-standard region "${region}"`);
+    checkWageCareers(f, `wages ${w.state}/${region}`, r && r.careers);
+  }
+};
+
 const checkCareer = (f, c) => {
   counts.careers++;
   takeId(f, c.id, "career");
@@ -160,7 +188,7 @@ for (const f of files) {
     registerCareer: (c) => checkCareer(f, c),
     registerCareers: (arr) => arr.forEach(c => checkCareer(f, c)),
     registerCareerDetails: (obj) => { Object.keys(obj || {}).forEach(id => { if (!careerIds.has(id)) err(f, `career detail for unknown career "${id}"`); }); },
-    registerWages: () => {},
+    registerWages: (w) => checkWages(f, w),
     STATE_INDEX: null,
   };
   const ctx = { window: win, console };

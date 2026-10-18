@@ -4,6 +4,7 @@ window.STATE_INDEX = {
  "AK": {
   "name": "Alaska",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -12,7 +13,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 34
   },
   "regions": [
    "Anchorage",
@@ -21,11 +22,12 @@ window.STATE_INDEX = {
    "Kenai Peninsula Borough",
    "North Slope Borough"
   ],
-  "bytes": 69929
+  "bytes": 94735
  },
  "AL": {
   "name": "Alabama",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -34,7 +36,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 37
   },
   "regions": [
    "Birmingham",
@@ -64,11 +66,12 @@ window.STATE_INDEX = {
    "Talladega",
    "Clarke County"
   ],
-  "bytes": 418198
+  "bytes": 526539
  },
  "AR": {
   "name": "Arkansas",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -77,7 +80,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 36
   },
   "regions": [
    "Little Rock",
@@ -112,11 +115,12 @@ window.STATE_INDEX = {
    "Paragould",
    "Lawrence County"
   ],
-  "bytes": 380251
+  "bytes": 446298
  },
  "AZ": {
   "name": "Arizona",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -125,7 +129,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 37
   },
   "regions": [
    "Phoenix",
@@ -138,7 +142,7 @@ window.STATE_INDEX = {
    "Sierra Vista",
    "Show Low"
   ],
-  "bytes": 490634
+  "bytes": 556450
  },
  "CA": {
   "name": "California",
@@ -150,6 +154,7 @@ window.STATE_INDEX = {
    "resources-county-north.js",
    "resources-county-south.js",
    "resources-statewide.js",
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -158,7 +163,7 @@ window.STATE_INDEX = {
    "scholarships": 14,
    "guide": true,
    "apprenticeships": 907,
-   "wages": 0
+   "wages": 39
   },
   "regions": [
    "Los Angeles",
@@ -173,11 +178,12 @@ window.STATE_INDEX = {
    "Imperial",
    "Sierra"
   ],
-  "bytes": 2521110
+  "bytes": 2633035
  },
  "CO": {
   "name": "Colorado",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -186,7 +192,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 38
   },
   "regions": [
    "Denver",
@@ -208,11 +214,12 @@ window.STATE_INDEX = {
    "Gunnison County",
    "Alamosa"
   ],
-  "bytes": 483013
+  "bytes": 556687
  },
  "CT": {
   "name": "Connecticut",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -221,7 +228,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 36
   },
   "regions": [
    "Hartford",
@@ -230,11 +237,12 @@ window.STATE_INDEX = {
    "Waterbury",
    "Norwich"
   ],
-  "bytes": 228438
+  "bytes": 286418
  },
  "DC": {
   "name": "District of Columbia",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -243,16 +251,17 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 35
   },
   "regions": [
    "Washington"
   ],
-  "bytes": 103318
+  "bytes": 124486
  },
  "DE": {
   "name": "Delaware",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -261,18 +270,19 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 33
   },
   "regions": [
    "Philadelphia",
    "Dover",
    "Seaford"
   ],
-  "bytes": 69282
+  "bytes": 95748
  },
  "FL": {
   "name": "Florida",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -281,7 +291,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 38
   },
   "regions": [
    "Miami",
@@ -315,11 +325,12 @@ window.STATE_INDEX = {
    "Taylor County",
    "Wildwood"
   ],
-  "bytes": 1278514
+  "bytes": 1480453
  },
  "GA": {
   "name": "Georgia",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -328,7 +339,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 37
   },
   "regions": [
    "Atlanta",
@@ -363,11 +374,12 @@ window.STATE_INDEX = {
    "White County",
    "Toccoa"
   ],
-  "bytes": 800436
+  "bytes": 924473
  },
  "HI": {
   "name": "Hawaii",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -376,7 +388,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 34
   },
   "regions": [
    "Honolulu",
@@ -384,11 +396,12 @@ window.STATE_INDEX = {
    "Kapaa",
    "Kahului"
   ],
-  "bytes": 97317
+  "bytes": 122452
  },
  "IA": {
   "name": "Iowa",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -397,7 +410,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 37
   },
   "regions": [
    "Des Moines",
@@ -430,11 +443,12 @@ window.STATE_INDEX = {
    "Henry County",
    "Spirit Lake"
   ],
-  "bytes": 421012
+  "bytes": 510366
  },
  "ID": {
   "name": "Idaho",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -443,7 +457,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 36
   },
   "regions": [
    "Boise City",
@@ -456,11 +470,12 @@ window.STATE_INDEX = {
    "Coeur d'Alene",
    "Burley"
   ],
-  "bytes": 191524
+  "bytes": 250930
  },
  "IL": {
   "name": "Illinois",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -469,7 +484,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 39
   },
   "regions": [
    "Chicago",
@@ -501,11 +516,12 @@ window.STATE_INDEX = {
    "Warren County",
    "Sterling"
   ],
-  "bytes": 1108939
+  "bytes": 1218408
  },
  "IN": {
   "name": "Indiana",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -514,7 +530,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 38
   },
   "regions": [
    "Indianapolis",
@@ -543,11 +559,12 @@ window.STATE_INDEX = {
    "Plymouth",
    "Starke County"
   ],
-  "bytes": 407942
+  "bytes": 540725
  },
  "KS": {
   "name": "Kansas",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -556,7 +573,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 35
   },
   "regions": [
    "Wichita",
@@ -591,11 +608,12 @@ window.STATE_INDEX = {
    "Rice County",
    "Marion County"
   ],
-  "bytes": 407036
+  "bytes": 472552
  },
  "KY": {
   "name": "Kentucky",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -604,7 +622,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 37
   },
   "regions": [
    "Louisville",
@@ -637,11 +655,12 @@ window.STATE_INDEX = {
    "Glasgow",
    "Johnson County"
   ],
-  "bytes": 447245
+  "bytes": 529941
  },
  "LA": {
   "name": "Louisiana",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -650,7 +669,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 36
   },
   "regions": [
    "New Orleans",
@@ -669,11 +688,12 @@ window.STATE_INDEX = {
    "Opelousas",
    "New Iberia"
   ],
-  "bytes": 379510
+  "bytes": 468019
  },
  "MA": {
   "name": "Massachusetts",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -682,7 +702,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 38
   },
   "regions": [
    "Boston",
@@ -694,11 +714,12 @@ window.STATE_INDEX = {
    "Barnstable Town",
    "Greenfield"
   ],
-  "bytes": 560373
+  "bytes": 634555
  },
  "MD": {
   "name": "Maryland",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -707,7 +728,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 39
   },
   "regions": [
    "Baltimore",
@@ -720,11 +741,12 @@ window.STATE_INDEX = {
    "Kent County",
    "Lexington Park"
   ],
-  "bytes": 358281
+  "bytes": 423046
  },
  "ME": {
   "name": "Maine",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -733,7 +755,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 36
   },
   "regions": [
    "Portland",
@@ -745,11 +767,12 @@ window.STATE_INDEX = {
    "Washington County",
    "Franklin County"
   ],
-  "bytes": 157654
+  "bytes": 191608
  },
  "MI": {
   "name": "Michigan",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -758,7 +781,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 38
   },
   "regions": [
    "Detroit",
@@ -797,11 +820,12 @@ window.STATE_INDEX = {
    "Cadillac",
    "Baraga County"
   ],
-  "bytes": 795233
+  "bytes": 928875
  },
  "MN": {
   "name": "Minnesota",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -810,7 +834,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 37
   },
   "regions": [
    "Minneapolis",
@@ -836,11 +860,12 @@ window.STATE_INDEX = {
    "Worthington",
    "New Ulm"
   ],
-  "bytes": 598882
+  "bytes": 684795
  },
  "MO": {
   "name": "Missouri",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -849,7 +874,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 37
   },
   "regions": [
    "St. Louis",
@@ -880,11 +905,12 @@ window.STATE_INDEX = {
    "Texas County",
    "Vernon County"
   ],
-  "bytes": 525721
+  "bytes": 602605
  },
  "MS": {
   "name": "Mississippi",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -893,7 +919,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 36
   },
   "regions": [
    "Jackson",
@@ -922,11 +948,12 @@ window.STATE_INDEX = {
    "Greenville",
    "Monroe County"
   ],
-  "bytes": 357874
+  "bytes": 402822
  },
  "MT": {
   "name": "Montana",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -935,7 +962,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 35
   },
   "regions": [
    "Missoula",
@@ -956,11 +983,12 @@ window.STATE_INDEX = {
    "Chouteau County",
    "Rosebud County"
   ],
-  "bytes": 134832
+  "bytes": 181069
  },
  "NC": {
   "name": "North Carolina",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -969,7 +997,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 38
   },
   "regions": [
    "Charlotte",
@@ -1020,11 +1048,12 @@ window.STATE_INDEX = {
    "Brevard",
    "Laurinburg"
   ],
-  "bytes": 1148175
+  "bytes": 1296155
  },
  "ND": {
   "name": "North Dakota",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -1033,7 +1062,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 36
   },
   "regions": [
    "Bismarck",
@@ -1052,11 +1081,12 @@ window.STATE_INDEX = {
    "Barnes County",
    "Benson County"
   ],
-  "bytes": 130348
+  "bytes": 170448
  },
  "NE": {
   "name": "Nebraska",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -1065,7 +1095,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 37
   },
   "regions": [
    "Omaha",
@@ -1084,11 +1114,12 @@ window.STATE_INDEX = {
    "Dawes County",
    "Thurston County"
   ],
-  "bytes": 204123
+  "bytes": 247413
  },
  "NH": {
   "name": "New Hampshire",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -1097,7 +1128,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 35
   },
   "regions": [
    "Concord",
@@ -1108,11 +1139,12 @@ window.STATE_INDEX = {
    "Coos County",
    "Laconia"
   ],
-  "bytes": 161990
+  "bytes": 192208
  },
  "NJ": {
   "name": "New Jersey",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -1121,7 +1153,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 38
   },
   "regions": [
    "New York",
@@ -1131,11 +1163,12 @@ window.STATE_INDEX = {
    "Vineland",
    "Allentown"
   ],
-  "bytes": 480796
+  "bytes": 546797
  },
  "NM": {
   "name": "New Mexico",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -1144,7 +1177,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 37
   },
   "regions": [
    "Albuquerque",
@@ -1167,11 +1200,12 @@ window.STATE_INDEX = {
    "Taos",
    "Quay County"
   ],
-  "bytes": 262008
+  "bytes": 303700
  },
  "NV": {
   "name": "Nevada",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -1180,7 +1214,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 37
   },
   "regions": [
    "Las Vegas",
@@ -1188,11 +1222,12 @@ window.STATE_INDEX = {
    "Elko",
    "Carson City"
   ],
-  "bytes": 137819
+  "bytes": 173665
  },
  "NY": {
   "name": "New York",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -1201,7 +1236,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 38
   },
   "regions": [
    "New York",
@@ -1236,11 +1271,12 @@ window.STATE_INDEX = {
    "Franklin County",
    "Chenango County"
   ],
-  "bytes": 1116188
+  "bytes": 1236416
  },
  "OH": {
   "name": "Ohio",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -1249,7 +1285,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 37
   },
   "regions": [
    "Cleveland",
@@ -1292,11 +1328,12 @@ window.STATE_INDEX = {
    "Wilmington",
    "Celina"
   ],
-  "bytes": 1060854
+  "bytes": 1196143
  },
  "OK": {
   "name": "Oklahoma",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -1305,7 +1342,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 37
   },
   "regions": [
    "Oklahoma City",
@@ -1338,11 +1375,12 @@ window.STATE_INDEX = {
    "Latimer County",
    "Seminole County"
   ],
-  "bytes": 443449
+  "bytes": 490720
  },
  "OR": {
   "name": "Oregon",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -1351,7 +1389,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 37
   },
   "regions": [
    "Portland",
@@ -1373,11 +1411,12 @@ window.STATE_INDEX = {
    "Tillamook County",
    "The Dalles"
   ],
-  "bytes": 309033
+  "bytes": 382619
  },
  "PA": {
   "name": "Pennsylvania",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -1386,7 +1425,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 37
   },
   "regions": [
    "Philadelphia",
@@ -1426,11 +1465,12 @@ window.STATE_INDEX = {
    "Sayre",
    "Oil City"
   ],
-  "bytes": 1121158
+  "bytes": 1262296
  },
  "RI": {
   "name": "Rhode Island",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -1439,16 +1479,17 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 38
   },
   "regions": [
    "Providence"
   ],
-  "bytes": 106195
+  "bytes": 127244
  },
  "SC": {
   "name": "South Carolina",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -1457,7 +1498,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 36
   },
   "regions": [
    "Greenville",
@@ -1479,11 +1520,12 @@ window.STATE_INDEX = {
    "Gaffney",
    "Marion County"
   ],
-  "bytes": 401827
+  "bytes": 498625
  },
  "SD": {
   "name": "South Dakota",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -1492,7 +1534,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 35
   },
   "regions": [
    "Sioux Falls",
@@ -1509,11 +1551,12 @@ window.STATE_INDEX = {
    "Todd County",
    "Roberts County"
   ],
-  "bytes": 120060
+  "bytes": 154910
  },
  "TN": {
   "name": "Tennessee",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -1522,7 +1565,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 37
   },
   "regions": [
    "Nashville",
@@ -1558,11 +1601,12 @@ window.STATE_INDEX = {
    "Monroe County",
    "Fayetteville"
   ],
-  "bytes": 543211
+  "bytes": 633708
  },
  "TX": {
   "name": "Texas",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -1571,7 +1615,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 37
   },
   "regions": [
    "Houston",
@@ -1629,11 +1673,12 @@ window.STATE_INDEX = {
    "Wood County",
    "Eagle Pass"
   ],
-  "bytes": 1646650
+  "bytes": 1861733
  },
  "UT": {
   "name": "Utah",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -1642,7 +1687,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 37
   },
   "regions": [
    "Salt Lake City",
@@ -1655,11 +1700,12 @@ window.STATE_INDEX = {
    "Vernal",
    "Heber"
   ],
-  "bytes": 290450
+  "bytes": 345214
  },
  "VA": {
   "name": "Virginia",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -1668,7 +1714,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 38
   },
   "regions": [
    "Virginia Beach",
@@ -1696,11 +1742,12 @@ window.STATE_INDEX = {
    "Lexington City County",
    "Buena Vista City County"
   ],
-  "bytes": 511087
+  "bytes": 614473
  },
  "VT": {
   "name": "Vermont",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -1709,7 +1756,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 35
   },
   "regions": [
    "Burlington",
@@ -1718,11 +1765,12 @@ window.STATE_INDEX = {
    "Bennington",
    "Addison County"
   ],
-  "bytes": 68851
+  "bytes": 87519
  },
  "WA": {
   "name": "Washington",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -1731,7 +1779,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 39
   },
   "regions": [
    "Seattle",
@@ -1753,11 +1801,12 @@ window.STATE_INDEX = {
    "Centralia",
    "Longview"
   ],
-  "bytes": 539023
+  "bytes": 650129
  },
  "WI": {
   "name": "Wisconsin",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -1766,7 +1815,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 37
   },
   "regions": [
    "Milwaukee",
@@ -1797,11 +1846,12 @@ window.STATE_INDEX = {
    "Beaver Dam",
    "Shawano"
   ],
-  "bytes": 521561
+  "bytes": 657901
  },
  "WV": {
   "name": "West Virginia",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -1810,7 +1860,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 35
   },
   "regions": [
    "Huntington",
@@ -1834,11 +1884,12 @@ window.STATE_INDEX = {
    "Mingo County",
    "Jackson County"
   ],
-  "bytes": 235669
+  "bytes": 320507
  },
  "WY": {
   "name": "Wyoming",
   "files": [
+   "wages.js",
    "programs-ipeds.js"
   ],
   "counts": {
@@ -1847,7 +1898,7 @@ window.STATE_INDEX = {
    "scholarships": 0,
    "guide": false,
    "apprenticeships": 0,
-   "wages": 0
+   "wages": 34
   },
   "regions": [
    "Casper",
@@ -1859,6 +1910,6 @@ window.STATE_INDEX = {
    "Goshen County",
    "Rock Springs"
   ],
-  "bytes": 79375
+  "bytes": 100684
  }
 };

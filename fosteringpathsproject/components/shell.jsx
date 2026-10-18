@@ -108,7 +108,7 @@ const CpCareerRow = ({ c, saved, toggleSave, onOpen, nearby }) => (
       <h3>{c.name}</h3>
       {nearby != null && <div className="cp-cr-nearby">{nearby === 0 ? "no programs listed here yet" : `${nearby} program${nearby === 1 ? "" : "s"} near you`}</div>}
     </div>
-    <div className="cp-cr-stat"><div>${c.salary.median}K</div><div>{window.getLocation().state === "CA" ? "median" : "median (CA)"}</div></div>
+    {(() => { const w = window.WAGES.salary(c); return <div className="cp-cr-stat"><div>${w.median}K</div><div>{w.short}</div></div>; })()}
     <div className="cp-cr-stat"><div>{c.length}</div><div>time</div></div>
     <div className="cp-cr-stat"><div>{c.demand}</div><div>demand</div></div>
     <button

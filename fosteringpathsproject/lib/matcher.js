@@ -78,7 +78,7 @@ window.matchCareer = function (answers) {
   if (parts.length === 0) {
     reasoning = `${top.c.name} is the closest match across what you told us.`;
   } else if (parts.length === 1) {
-    reasoning = `You said ${parts[0]} — that lines up with ${top.c.name}.`;
+    reasoning = `You said ${parts[0]}. That lines up with ${top.c.name}.`;
   } else {
     const last = parts.pop();
     reasoning = `You said ${parts.join(", ")}, and ${last}. ${top.c.name} hits all of those.`;

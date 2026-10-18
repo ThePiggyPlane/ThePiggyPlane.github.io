@@ -14,18 +14,18 @@ const CpWizard = ({ onClose, onMatch }) => {
       ["outdoors", "Being outdoors or moving around"],
     ]},
     { key: "speed", q: "How fast do you want to be earning real money?", opts: [
-      ["fast", "ASAP — under 2 years"],
+      ["fast", "ASAP, under 2 years"],
       ["mid", "2–4 years is fine"],
       ["long", "I'll go as long as it takes"],
     ]},
     { key: "school", q: "How do you feel about school right now?", opts: [
       ["love", "I like it. I'd go further if it pays off."],
       ["ok", "It's okay. I'll do what's needed."],
-      ["done", "I'm done with classrooms — give me hands-on."],
+      ["done", "I'm done with classrooms. Give me hands-on."],
     ]},
     { key: "stay", q: "Do you want to stay close to home?", opts: [
-      ["close", "Yes — Inland Empire / OC only"],
-      ["ca", "Anywhere in California is fine"],
+      ["close", `Yes, ${(window.getLocation && window.getLocation().region) || "my area"} only`],
+      ["ca", `Anywhere in ${window.stateName ? window.stateName(window.getLocation().state) : "my state"} is fine`],
       ["far", "Take me far away"],
     ]},
   ];
@@ -84,7 +84,7 @@ const CpResult = ({ result, onOpen, onRetake, onBack }) => {
             {alts.map(c => (
               <button className="cp-alt" key={c.id} onClick={() => onOpen(c.id)}>
                 <div className="cp-alt-name">{c.name}</div>
-                <div className="cp-alt-meta"><span>${c.salary.median}K</span><span>{c.length}</span></div>
+                <div className="cp-alt-meta"><span>${window.WAGES.salary(c).median}K</span><span>{c.length}</span></div>
               </button>
             ))}
           </div>
@@ -126,8 +126,8 @@ const CpCompare = ({ saved, toggleSave, onOpen, onBack }) => {
           </tr>
         </thead>
         <tbody>
-          <tr><th>Median pay</th>{careers.map(c => <td key={c.id}>${c.salary.median}K/yr</td>)}</tr>
-          <tr><th>Range</th>{careers.map(c => <td key={c.id}>${c.salary.low}K – ${c.salary.high}K</td>)}</tr>
+          <tr><th>Median pay</th>{careers.map(c => { const w = window.WAGES.salary(c); return <td key={c.id}>${w.median}K/yr <span className="cp-stat-meta">({w.label})</span></td>; })}</tr>
+          <tr><th>Middle half earn</th>{careers.map(c => { const w = window.WAGES.salary(c); return <td key={c.id}>${w.low}K to ${w.high}K</td>; })}</tr>
           <tr><th>Time to start</th>{careers.map(c => <td key={c.id}>{c.length}</td>)}</tr>
           <tr><th>Demand</th>{careers.map(c => <td key={c.id}>{c.demand}</td>)}</tr>
           <tr><th>Grads 2 yrs out</th>{careers.map(c => <td key={c.id}>{c.grads2yr}</td>)}</tr>

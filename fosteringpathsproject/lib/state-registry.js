@@ -67,5 +67,38 @@
   window.WAGES = {
     get: (st) => wages[st],
     forCareer: (st, careerId) => (wages[st] && wages[st].careers && wages[st].careers[careerId]) || null,
+    // Most local figures available for a career: the metro/region if the state
+    // file has one for the current region, else statewide. Returns null when the
+    // state has no wage file yet.
+    local: (careerId, loc) => {
+      loc = loc || (window.getLocation ? window.getLocation() : { state: "CA" });
+      const w = wages[loc.state];
+      if (!w) return null;
+      const reg = loc.region && w.regions && w.regions[loc.region];
+      if (reg && reg.careers && reg.careers[careerId]) {
+        return { rec: reg.careers[careerId], geo: reg.geo, level: "region", dataYear: w.dataYear, source: w.source, state: loc.state };
+      }
+      if (w.careers && w.careers[careerId]) {
+        return { rec: w.careers[careerId], geo: w.geo, level: "state", dataYear: w.dataYear, source: w.source, state: loc.state };
+      }
+      return null;
+    },
+    national: (careerId) => (wages.US && wages.US.careers && wages.US.careers[careerId]) || null,
+    // Headline pay for lists: { median, low, high, label } in $K, from the most
+    // local BLS figures, falling back to the career file's California numbers.
+    salary: (career, loc) => {
+      const l = window.WAGES.local(career.id, loc);
+      if (l && l.rec.medianWage) {
+        const st = l.state;
+        return {
+          median: Math.round(l.rec.medianWage / 1000),
+          low: l.rec.range50Low ? Math.round(l.rec.range50Low / 1000) : career.salary.low,
+          high: l.rec.range50High ? Math.round(l.rec.range50High / 1000) : career.salary.high,
+          label: l.level === "region" ? `median, ${(loc || window.getLocation()).region}` : `median, ${st}`,
+          short: l.level === "region" ? "median here" : `median, ${st}`,
+        };
+      }
+      return { median: career.salary.median, low: career.salary.low, high: career.salary.high, label: "median, CA", short: "median (CA)" };
+    },
   };
 })();
